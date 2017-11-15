@@ -1,0 +1,43 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>登录</title>
+<link rel="stylesheet" href="__HOME__/css/login.css" />
+{/block}
+{block name="main"}
+		<div id="login">
+			<ul>
+				<li>
+					<img src="__HOME__/img/LoginLogo.png"/>
+				</li>
+				<li>
+					<input  type="text" name="phone" placeholder="手机号码"/>
+				</li>
+				<li>
+					<input  type="text" name="phone" placeholder="动态密码" maxlength="8"/>
+					<button id="getCode">获取动态密码</button>
+				</li>
+				<li>
+					<div class="checkBox floatl">
+						<img src="__HOME__/img/yes.png" />
+						<input type="checkbox" checked="checked" name="yes"/>
+					</div>
+					<div class="floatl read">
+						<a href="###">同意雅洁协议</a>
+					</div>
+					<div class="clearl"></div>
+				</li>
+				<li>
+					<button>登录</button>
+				</li>
+			</ul>
+		</div>
+		<div id="content">
+			
+		</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/login.js" ></script>
+
+{/block}

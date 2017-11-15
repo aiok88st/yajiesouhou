@@ -1,0 +1,56 @@
+{include file="common/header"/}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">个人中心</a>
+        <a href="">个人信息</a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <table class="layui-table" lay-skin="line" style="border: none;">
+        <tbody>
+            <tr>
+                <td style="width: 100px">
+                    <img src="__STATIC__/common/images/personHead.png" alt=""/>
+                </td>
+                <td colspan="3">
+                    <ul>
+                        <li style="font-size: 18px;line-height: 40px;">用户名：{$username} </li>
+                        <li>
+                            <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('修改密码','{:url('edit')}',600,300)">修改密码</button>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="layui-table" lay-skin="line" lay-size="lg" style="border: none;">
+        <tbody>
+            <tr>
+                <td style="width: 300px">店面名称</td>
+                <td style="width: 300px">联系电话</td>
+                <td>店面地址</td>
+                <td></td>
+            </tr>
+            {volist name="list" id="vo"}
+            <tr>
+                <td>{$vo.title}</td>
+                <td>{$vo.tel}</td>
+                <td>{$vo.province}{$vo.city}{$vo.area}{$vo.addr}</td>
+                <td>
+                    <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('编辑','{:url('editTitle')}?id={$vo.id}&title={$vo.title}&tel={$vo.tel}',600,300)">编辑</button>
+                </td>
+            </tr>
+            {/volist}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>视频中心</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/publicSI.css" />
+<link rel="stylesheet" href="__HOME__/css/search.css" />
+<link rel="stylesheet" href="__HOME__/css/help.css" />
+<link rel="stylesheet" href="__HOME__/css/helpHistory.css" />
+{/block}
+{block name="main"}
+
+		<!--导航栏-->
+		<div id = "home">
+			<div id="head">
+				<div class="hleft floatl">
+					<a class="back" href="###"></a>
+				</div>
+				<div class="hmiddle floatl">
+					<img src="__HOME__/img/logo.png" />
+				</div>
+				<div class="hright floatl">
+					<a href="index.html"><img src="__HOME__/img/home.png"/></a>
+					<div class="clearr"></div>
+				</div>
+				<div class="clearl"></div>
+			</div>
+			<div class="null"></div>
+
+			<div class="search">
+                <form action="{:url('video/search')}" method="get">
+                    <div class="sLeft floatl">
+                        <div class="sImg">
+                            <img src="__HOME__/img/searchBkg.png" />
+                        </div>
+                        <input id="search" name="key" type="search" placeholder="输入产品型号" />
+                    </div>
+                    <div class="sRight floatr">
+                        <button id="submit">搜索</button>
+                    </div>
+                </form>
+				<div class="clearBoth"></div>
+			</div>
+
+			<div class="history">
+                {notempty name="history"}
+                <div class="historyBox">
+                    <div class="historySearch">
+                        <p>历史搜索</p>
+                    </div>
+                    <div class="historyContent">
+                        <ul>
+                            {volist name="history" id="vo"}
+                            <li>
+                                <p href="###">{$vo}</p>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div class="clearHistory">
+                        <button onclick="removeHistory()">清空历史搜索</button>
+                    </div>
+                </div>
+                {/notempty}
+
+				</div>
+			<!--<div class="bottomText">
+				<p>ARCHIE 雅洁五金</p>
+				<p>www.archie.com</p>
+			</div>-->
+		</div>
+
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript">
+    function removeHistory(){
+        window.location.href="{:url('Video/clear')}";
+    }
+</script>
+<script type="text/javascript" src="__HOME__/js/public.js" ></script>
+<script type="text/javascript" src="__HOME__/js/helpHistory.js" ></script>
+
+{/block}
+
+

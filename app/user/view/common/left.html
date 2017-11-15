@@ -1,0 +1,58 @@
+<!-- 左侧菜单开始 -->
+<div class="left-nav">
+    <div id="side-nav">
+        <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>报修中心</cite>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>培训中心</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{:url('Train/tvdList')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>培训资料</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>收藏夹</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{:url('Exam/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>我的试卷</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+
+            <li>
+                <a _href="{:url('user/Person/index')}">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>个人中心</cite>
+                </a>
+            </li>
+            {if condition="$pid eq 0"}
+                <li>
+                    <a _href="{:url('Distrit/index')}">
+                        <i class="iconfont">&#xe726;</i>
+                        <cite>我的分销商</cite>
+                    </a>
+                </li>
+            {/if}
+        </ul>
+    </div>
+</div>
+<!-- <div class="x-slide_left"></div> -->
+<!-- 左侧菜单结束 -->

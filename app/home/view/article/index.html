@@ -1,0 +1,143 @@
+
+{extend name="common/header" /}
+{block name="headers"}
+<title>首页</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/publicSI.css" />
+<link rel="stylesheet" href="__HOME__/css/index.css" />
+<link rel="stylesheet" href="__HOME__/css/search.css" />
+{/block}
+{block name="main"}
+		<!--导航栏-->
+		<div id = "home">
+			<div id="head">
+				<div class="hleft floatl" style="visibility: hidden;">
+					<a href="###"></a>
+				</div>
+				<div class="hmiddle floatl">
+					<img src="__HOME__/img/logo.png" />
+				</div>
+				<div class="hright floatl" style="visibility: hidden;">
+					<a href="###"><img src="__HOME__/img/home.png"/></a>
+					<div class="clearr"></div>
+				</div>
+				<div class="clearl"></div>
+			</div>
+			<div class="null"></div>
+			<div class="search">
+				<form action="{:url('article/search')}" method="get">
+					<div class="sLeft floatl">
+						<div class="sImg">
+							<img src="__HOME__/img/searchBkg.png" />
+						</div>
+						<input type="search" name="key" id="key" placeholder="防盗开锁" value="" />
+					</div>
+					<div class="sRight floatr">
+						<button>搜索</button>
+					</div>
+				</form>
+				<div class="clearBoth"></div>
+			</div>
+			<div class="hotQuestion">
+				<div class="qusetionBox">
+					<div class="qTitle">
+						<p>热门问题</p>
+					</div>
+					<div class="qList" id="searchResult">
+
+                        <template v-for="(key,item) in searchResult">
+						<a href="{:url('article/detail')}?id={{item.id}}" class="questionDetails">
+							<div class="qdl floatl centerCenter">
+								<img src="__PUBLIC__/{{item.thumb}}" />
+							</div>
+							<div class="qdr floatl">
+								<ul>
+									<li>
+										<p>{{item.title}}</p>
+									</li>
+									<li>
+										<p>{{item.f_title}}</p>
+									</li>
+									<li>
+										<p>{{item.createtime}}</p>
+									</li>
+								</ul>
+							</div>
+							<div class="clearl"></div>
+						</a>
+                        </template>
+
+					</div>
+				</div>
+			</div>
+			<div class="bottomText">
+				<p>ARCHIE 雅洁五金</p>
+				<p>www.archie.com</p>
+			</div>
+		</div>
+		<div class="bNull">
+			
+		</div>
+		<div id="bottomNav">
+			<ul>
+				<li>
+					<a href="{:url('article/problemFirst')}" class="centerCenter">
+						<img src="__HOME__/img/all.png" />
+						<p>全部问题</p>
+					</a>
+				</li>
+				<li>
+					<a href="{:url('article/feedBack')}" class="centerCenter">
+						<img src="__HOME__/img/suggest.png" />
+						<p>意见反馈</p>
+					</a>
+				</li>
+				<li>
+					<a href="###" class="centerCenter">
+						<img src="__HOME__/img/phoneIndex.png" />
+						<p>联系我们</p>
+					</a>
+				</li>
+				
+			</ul>
+			<div class="clearl"></div>
+		</div>
+
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript">
+    var data={
+        searchResult:[],
+    };
+    var all = new Vue({
+        el:'#vueMain',
+        data:data,
+        created:function(){
+            var $this=this;
+            $this.searchResult=[];
+            layui.use('flow', function(){
+                var flow = layui.flow;
+                flow.load({
+                    elem: '#searchResult'
+                    ,done: function(page, next){
+                        var lis = [];
+                        AjaxL('{:url("article/index")}','GET',{"page":page},function(res){
+                            list=res.list;
+                            for (x in list){
+                                $this.searchResult.push(list[x]);
+                            }
+                            next('', page <= res.last_page);
+                        });
+                    }
+                });
+            });
+        }
+    });
+
+</script>
+
+{/block}
+
+

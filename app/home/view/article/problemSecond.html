@@ -1,0 +1,120 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>售后服务中心</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/publicSI.css" />
+{/block}
+{block name="main"}
+		<!--导航栏-->
+		<div id = "home">
+			<div id="head">
+				<div class="hleft floatl">
+					<a class="back" href="###"></a>
+				</div>
+				<div class="hmiddle floatl">
+					<p>全部问题</p>
+				</div>
+				<div class="hright floatl">
+					<a href="index.html"><img src="__HOME__/img/home.png"/></a>
+					<div class="clearr"></div>
+				</div>
+				<div class="clearl"></div>
+			</div>
+			<div class="null"></div>
+
+            <template v-if='searchResult.length>0'>
+			<div class="hotQuestion">
+				<div class="qusetionBox">
+					<div class="qTitle">
+						<p>{$catname}</p>
+					</div>
+					<div class="qList">
+
+                        <template v-for="(key,item) in searchResult">
+                            <a href="{:url('article/detail')}?id={{item.id}}" class="questionDetails">
+                                <div class="qdl floatl centerCenter">
+                                    <img src="__PUBLIC__/{{item.thumb}}" />
+                                </div>
+                                <div class="qdr floatl">
+                                    <ul>
+                                        <li>
+                                            <p>{{item.title}}</p>
+                                        </li>
+                                        <li>
+                                            <p>{{item.f_title}}</p>
+                                        </li>
+                                        <li>
+                                            <p>{{item.createtime}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clearl"></div>
+                            </a>
+                        </template>
+
+					</div>
+				</div>
+			</div>
+            </template>
+            <template v-else>
+                <div class="noResult">
+                    <ul>
+                        <li style="text-align: center;">
+                            <img src="__HOME__/img/noResult.png" />
+                        </li>
+                        <li>
+                            <p>没有找到相关分类的结果</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </template>
+			<!--<div class="bottomText">-->
+				<!--<p>ARCHIE 雅洁五金</p>-->
+				<!--<p>www.archie.com</p>-->
+			<!--</div>-->
+		</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/public.js" ></script>
+<script type="text/javascript" src="__HOME__/js/prpblemFirst.js" ></script>
+<script type="text/javascript">
+    var data={
+        searchResult:[],
+    };
+    var all = new Vue({
+        el:'#vueMain',
+        data:data,
+        created:function(){
+            var $this=this;
+            $this.searchResult=[];
+            layui.use('flow', function(){
+                var flow = layui.flow;
+                flow.load({
+                    elem: '#home'
+                    ,done: function(page, next){
+                        var lis = [];
+                        AjaxL('{:url("article/problemSecond")}','GET',{"page":page,"catid":"{$catid}"},function(res){
+                            list=res.list;
+                            if(list.length<=0){
+                                $('.layui-flow-more').hide();
+                                $('.noResult').show();
+                            }else{
+                                $('.layui-flow-more').show();
+                                $('.noResult').hide();
+                            }
+                            for (x in list){
+                                $this.searchResult.push(list[x]);
+                            }
+                            next('', page <= res.last_page);
+                        });
+                    }
+                });
+            });
+        }
+    });
+</script>
+{/block}
+

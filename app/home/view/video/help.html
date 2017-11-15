@@ -1,0 +1,151 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>视频中心</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/publicSI.css" />
+<link rel="stylesheet" href="__HOME__/css/problemFirst.css" />
+<link rel="stylesheet" href="__HOME__/css/help.css" />
+{/block}
+{block name="main"}
+		<!--导航栏-->
+		<div id = "home">
+			<div id="head">
+				<div class="hleft floatl">
+					<a class="back" href="###"></a>
+				</div>
+				<div class="hmiddle floatl">
+					<p>自助维修教程</p>
+				</div>
+				<div class="hright floatl">
+					<a href="index.html"><img src="__HOME__/img/home.png"/></a>
+					<div class="clearr"></div>
+				</div>
+				<div class="clearl"></div>
+			</div>
+			<div class="null"></div>
+			<div class="search">
+				<a href="{:url('Video/helpHistory')}">输入产品型号</a>
+			</div>
+			<div class="videoContent">
+				<div class="vType">
+					<div class="vTypeIn">
+						<ul>
+                            {volist name="cate" id="vo" key="k"}
+							<li>
+								<a onclick="change('{$vo.id}')" href="javascript:;" {if condition="$catid eq $vo['id']"}class="aActive"{/if}>{$vo.catname}</a>
+							</li>
+							{/volist}
+						</ul>
+						<span></span>
+						<div class="clearl"></div>
+					</div>
+				</div>
+				<div class="hotVideo">
+					<img src="__HOME__/img/up.png" />
+					<a href="###" isOpen='true'>热门教程</a>
+					<div class="classifyBox">
+						<ul id="childen">
+                            {volist name="childen" id="vv"}
+							<li class="classify">
+								<a isOpen='true' href="{:url('video/search')}?catid={$vv.id}">{$vv.catname}</a>
+							</li>
+							{/volist}
+						</ul>
+					</div>	
+				</div>
+                {empty name="video"}
+                <div class="noResult" style="">
+                    <ul>
+                        <li>
+                            <img src="__HOME__/img/noResult.png" />
+                        </li>
+                        <li>
+                            <p style="margin-bottom: 0;">该分类下暂无热门视频</p>
+                        </li>
+                    </ul>
+                </div>
+                {else/}
+				<div class="videoOut" id="proListRow">
+                    {volist name="video" id="vc"}
+					<div class="videoIn" >
+						<div class="videoShow" style="height: 3.56rem;overflow: hidden;">
+							<img src="__PUBLIC__{$vc.thumb}" style="position:relative"/>
+							<div class="videoBox">
+								<a href='###'><img src="__HOME__/img/play.png"/></a>
+							</div>
+						</div>
+						<div class="topTitle">
+							<p>{$vc.title}</p>
+						</div>
+						<div class="bottomTitle">
+							<p>{$vc.f_title}</p>
+							<p>{$vc.hits}</p>
+						</div>
+					</div>
+                    {/volist}
+
+				</div>
+				{/empty}
+			</div>
+			<div class="bottomText">
+				<p>ARCHIE 雅洁五金</p>
+				<p>www.archie.com</p>
+			</div>
+		</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript">
+    function change(id){
+        $.ajax({
+            url:"{:url('Video/cats')}?catid="+id,
+            type:"GET",
+            dataType:"json",
+            success:function(re){
+                console.log(re);
+                var ch = "";
+                var html="";
+                var list=re.video;
+                var childens = re.childen;
+                if(childens.length>=1){
+                    for(item in childens){
+                        ch +='<li class="classify">';
+                        ch +='<a isOpen="true" href="{:url("video/search")}?catid='+childens[item].id+'">'+childens[item].catname+'</a>';
+                        ch +='</li>';
+                    }
+                }
+                $('#childen').html(ch);
+                if(list.length>=1){
+                    for(item in list){
+                        html +='<div class="videoIn">';
+                        html +='<div class="videoShow" style="height: 3.56rem;overflow: hidden;">';
+                        html +='<img src="__PUBLIC__'+list[item].thumb+'" style="position:relative"/>';
+                        html +='<div class="videoBox">';
+                        html +='<a href="###"><img src="__HOME__/img/play.png"/></a>';
+                        html +='</div> </div>';
+                        html +='<div class="topTitle">';
+                        html +='<p>'+list[item].title+'</p>';
+                        html +='</div>';
+                        html +='<div class="bottomTitle">';
+                        html +='<p>'+list[item].f_title+'</p>';
+                        html +='<p>'+list[item].hits+'</p>';
+                        html +='</div></div>';
+                    }
+                }else{
+                    html +='<div class="noResult" style=""><ul>';
+                    html +='<li><img src="__HOME__/img/noResult.png" /></li>';
+                    html +='<li><p style="margin-bottom: 0;">该分类下暂无热门视频</p></li>';
+                    html +='</ul></div>';
+                }
+                $('#proListRow').html(html);
+            }
+        });
+    }
+
+</script>
+<script type="text/javascript" src="__HOME__/js/help.js" ></script>
+
+{/block}
+
+

@@ -1,0 +1,69 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>详细信息</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/problemDetails.css" />
+{/block}
+{block name="main"}
+
+<!--导航栏-->
+<div id = "home">
+    <div id="head">
+        <div class="hleft floatl">
+            <a class="back" href="###"></a>
+        </div>
+        <div class="hmiddle floatl">
+            <p>{$cate.catname}</p>
+        </div>
+        <div class="hright floatl">
+            <a href="index.html"><img src="__HOME__/img/home.png"/></a>
+            <div class="clearr"></div>
+        </div>
+        <div class="clearl"></div>
+    </div>
+    <div class="null"></div>
+    <div class="detailsBox">
+        <div class="detailsIn">
+            <ul>
+                <li>
+                    <p>{$data.title}</p>
+                </li>
+                <li>
+                    <p>{$data['createtime']|date="Y-m-d",###}</p>
+                </li>
+                <li>
+                    <div class="content">
+                        <p>{$data.content}</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="goodAndBad">
+                        <span></span>
+                        <div class="gbLeft floatl">
+                            <button hasClick='true'>已解决<span class="clicknum_{$data.id}">{$data.clicknum}</span><p>+1</p></button>
+                        </div>
+                        <div class="gbRight floatr">
+                            <button hasClick='true'>未解决<span></span></button>
+                        </div>
+                        <div class="clearBoth"></div>
+                    </div>
+                    <input type="hidden" name="id" id="aid" value="{$data.id}">
+                </li>
+                <li>
+                    <a href="{:url('article/feedBack')}">意见反馈</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--<div class="bottomText">-->
+        <!--<p>ARCHIE 雅洁五金</p>-->
+        <!--<p>www.archie.com</p>-->
+    <!--</div>-->
+</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/public.js" ></script>
+<script type="text/javascript" src="__HOME__/js/problemDetails.js" ></script>
+{/block}

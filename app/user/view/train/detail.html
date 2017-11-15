@@ -1,0 +1,38 @@
+{include file="common/header"/}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">培训管理</a>
+        <a href="">培训资料</a>
+        <a href="">培训视频</a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <table class="layui-table" lay-skin="line" style="border: none;">
+        <tbody>
+            <tr>
+                <td>
+                    <iframe frameborder="0" width="640" height="498" src="{$data.link}" allowfullscreen></iframe>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>{$data.title}</li>
+                        <li>{$data.f_title}</li>
+                        <li>{$data.createtime|date="Y-m-d",###}</li>
+                        <li>浏览量：{$data.hits}</li>
+                        <li>资料提取码：{$data.webnum}</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{:url('Exam/test')}?id={$data.tid}"><button class="layui-btn" data-type="reload">答题</button></a>
+                    <a href="{$data.weblink}" target="_blank"><button class="layui-btn" data-type="reload">下载资料</button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

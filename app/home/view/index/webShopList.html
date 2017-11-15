@@ -1,0 +1,122 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>售后网点</title>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+<script type="text/javascript" src="__HOME__/load/js/bemLoad.js?v=3" ></script>
+<script type="text/javascript">
+    var link = "http://archie.hengdikeji.com/yajie/index.php/home/Index/";
+</script>
+{/block}
+{block name="main"}
+<div id="shopList">
+    <!--导航栏-->
+    <div id="head" class="rHead">
+        <div class="hleft return floatl">
+            <a href="javascript:window.history.go(-1);">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+        <div class="hmiddle floatl">
+            <p>附近网点</p>
+        </div>
+        <div class="hright floatl">
+
+        </div>
+        <div class="clearl"></div>
+    </div>
+
+    <div class="shopSearch">
+        <div class="searchCondition">
+            <ul>
+                <li class="choiceArea">
+                    <p>{$p}</p>
+                    <select name="province"  onchange="loadRegion('province',2,'city','getAddrs')" id="province">
+                        {volist name="province" id="vo"}
+                        <option value="{$vo.id}" {if condition="$p eq $vo['name']"}selected{/if}>{$vo.name}</option>
+                        {/volist}
+                    </select>
+                    <img src="__HOME__/img/circle.png" class="selected circle"/>
+                    <img src="__HOME__/img/right.png" />
+                </li>
+                <li class="choiceArea citys">
+                    <p>{$c}</p>
+                    <select name="city" onchange="loadRegion('city',3,'area','getAddrs')" id="city">
+                    </select>
+                    <img src="__HOME__/img/circle.png" class="circle" />
+                    <img src="__HOME__/img/right.png" />
+                </li>
+                <li class="choiceArea area">
+                    <p>{$d}</p>
+                    <select name="area" id="area">
+                    </select>
+                    <img src="__HOME__/img/circle.png" class="circle" />
+                    <img src="__HOME__/img/right.png" />
+                </li>
+            </ul>
+        </div>
+        <div class="searchBtn" onclick="search()">
+            <input type="hidden" name="" id="latitude" value="{$latitude}">
+            <input type="hidden" name="" id="longitude" value="{$longitude}">
+            <input type="hidden" name="" id="cy" value="{$c}">
+            <button>查找</button>
+        </div>
+    </div>
+</div>
+
+
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+
+<script type="text/javascript">
+
+    function loadRegion(sel,type_id,selName,url,oldName){
+        jQuery("#"+selName+" option").each(function(){
+            jQuery(this).remove();
+        });
+        jQuery("<option value=0>请选择</option>").appendTo(jQuery("#"+selName));
+        if(jQuery("#"+sel).val()==0){
+            return;
+        }
+
+        jQuery.getJSON(link+url,{pid:jQuery("#"+sel).val(),type:type_id},
+                function(data){
+                    if(data){
+                        jQuery.each(data,function(idx,item){
+                            if(item.name==oldName){
+                                jQuery('<option value="'+item.id+'" selected="selected">'+item.name+'</option>').appendTo(jQuery("#"+selName));
+                            }else{
+                                jQuery("<option value="+item.id+">"+item.name+"</option>").appendTo(jQuery("#"+selName));
+                            }
+                        });
+                    }else{
+                        jQuery("<option value='0'>请选择</option>").appendTo(jQuery("#"+selName));
+                    }
+                }
+        );
+    }
+    var ct = $('.citys p').text();
+    var dt = $('.area p').text();
+    setTimeout(function(){
+        loadRegion('province',2,'city','getAddrs',ct);
+    },200);
+    setTimeout(function(){
+        loadRegion('city',3,'area','getAddrs',dt);
+    },300);
+
+
+    function search(){
+        var lats = $('#latitude').val();
+        var longs = $('#longitude').val();
+
+        var region = $('#area').val();
+        var province = $("#province").find("option:selected").text();
+        var city=$("#city").find("option:selected").text();
+        var area=$("#area").find("option:selected").text();
+        window.location.href='{:url("index/webShop")}?city='+city+'&ar='+area+'&pro='+province+'&region='+region+'&lats='+lats+'&longs='+longs;
+    }
+
+</script>
+<script type="text/javascript" src="__HOME__/js/webShopList.js?v=1" ></script>
+{/block}
+

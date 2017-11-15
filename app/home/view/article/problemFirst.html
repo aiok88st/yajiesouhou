@@ -1,0 +1,55 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>全部问题</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/problemFirst.css" />
+{/block}
+{block name="main"}
+		<!--导航栏-->
+		<div id = "home">
+			<div id="head">
+				<div class="hleft floatl">
+					<a class="back" href="###"></a>
+				</div>
+				<div class="hmiddle floatl">
+					<p>全部问题</p>
+				</div>
+				<div class="hright floatl">
+					<a href="index.html"><img src="__HOME__/img/home.png"/></a>
+					<div class="clearr"></div>
+				</div>
+				<div class="clearl"></div>
+			</div>
+			<div class="null"></div>
+			<div class="classifyBox">
+				<ul>
+                    {volist name="cate" id="vo"}
+					<li class="classify" >
+						<a isOpen='true' href="javascript:;">{$vo.catname}<img src="__HOME__/img/down.png"></a>
+						<ul>
+							<li>
+								<a href="{:url('article/problemSecond')}?catid={$vo.id}&catname=全部">全部<span></span></a>
+							</li>
+                            {volist name="vo['childen']" id="vv"}
+							<li>
+								<a href="{:url('article/problemSecond')}?catid={$vv.id}&catname={$vv.catname}">{$vv.catname}<span></span></a>
+							</li>
+							{/volist}
+						</ul>
+					</li>
+                    {/volist}
+
+				</ul>
+			</div>
+			<!--<div class="bottomText">-->
+				<!--<p>ARCHIE 雅洁五金</p>-->
+				<!--<p>www.archie.com</p>-->
+			<!--</div>-->
+		</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/public.js" ></script>
+<script type="text/javascript" src="__HOME__/js/prpblemFirst.js" ></script>
+{/block}

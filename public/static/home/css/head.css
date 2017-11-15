@@ -1,0 +1,30 @@
+#home #head .hleft a {
+  background: url(../img/back.png) no-repeat left center;
+  background-size: auto 0.36rem;
+  height: 0.8rem; }
+
+#head .hmiddle img {
+  margin: 0 auto;
+  height: 0.4rem;
+  padding: 0.2rem; }
+
+#head .hmiddle p {
+  color: #030303;
+  font-weight: 500;
+  font-size: 0.34rem; }
+
+#home #head .hleft {
+  width: 25%; }
+
+#home #head .hmiddle {
+  width: 50%; }
+
+#home #head .hright {
+  width: 25%; }
+
+#home #head .hright img {
+  height: 0.36rem;
+  padding: 0.22rem 0;
+  float: right; }
+
+/*# sourceMappingURL=head.css.map */

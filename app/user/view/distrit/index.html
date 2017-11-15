@@ -15,12 +15,13 @@
         </form>
     </div>
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加分销商','{:url('add')}',600,400)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加分销商','{:url('add')}',600,450)"><i class="layui-icon"></i>添加</button>
     </xblock>
     <table class="layui-table">
         <thead>
         <tr>
-            <th>分销商账号名</th>
+            <th>分销商账号</th>
+            <th>姓名</th>
             <th>联系电话</th>
             <th>添加时间</th>
             <th>状态</th>
@@ -30,6 +31,7 @@
         {volist name="list" id="vo"}
         <tr>
             <td>{$vo.username}</td>
+            <td>{$vo.nikename}</td>
             <td>{$vo.tel}</td>
             <td>{$vo.add_time|date="Y-m-d",###}</td>
             <td>

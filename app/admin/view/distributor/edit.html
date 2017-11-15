@@ -25,9 +25,9 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('username')}</label>
+            <label class="layui-form-label">账号</label>
             <div class="layui-input-4">
-                <input type="text"  name="username" ng-model="field.username" lay-verify="required" placeholder="{:lang('pleaseEnter')}登录用户名" class="layui-input">
+                <input type="text"  name="username" ng-model="field.username" lay-verify="required" placeholder="{:lang('pleaseEnter')}登录账号" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -39,7 +39,12 @@
                 密码必须大于等于6位，小于15位.
             </div>
         </div>
-
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-4">
+                <input type="text" name="nikename" id="L_nikename" ng-model="field.nikename" required="" lay-verify="nikename" placeholder="{:lang('pleaseEnter')}姓名" class="layui-input">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{:lang('tel')}</label>
             <div class="layui-input-4">

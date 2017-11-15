@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-15 08:58:56
+Date: 2017-11-15 11:03:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -404,15 +404,17 @@ CREATE TABLE `clt_distributor` (
   `is_open` tinyint(255) DEFAULT '0' COMMENT '审核状态',
   `pid` tinyint(4) NOT NULL DEFAULT '0' COMMENT '父级经销商',
   `tel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nikename` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '姓名',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_distributor
 -- ----------------------------
-INSERT INTO `clt_distributor` VALUES ('5', 'root', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509527565', '1', '4', '15173301601');
-INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '15173301602');
-INSERT INTO `clt_distributor` VALUES ('6', 'root01', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510646065', '0', '4', '15173301603');
+INSERT INTO `clt_distributor` VALUES ('5', 'root', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509527565', '1', '4', '15173301601', '小李');
+INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '15173301602', '小王');
+INSERT INTO `clt_distributor` VALUES ('6', 'root01', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510646065', '0', '4', '15173301603', '小张');
+INSERT INTO `clt_distributor` VALUES ('7', 'admin00', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510712653', '0', '0', '15173301603', '张三');
 
 -- ----------------------------
 -- Table structure for clt_field

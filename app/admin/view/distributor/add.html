@@ -20,25 +20,30 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('username')}</label>
+            <label class="layui-form-label">账号</label>
             <div class="layui-input-4">
-                <input type="text" name="username" ng-model="field.username" lay-verify="required" placeholder="{:lang('pleaseEnter')}登录用户名" class="layui-input">
+                <input type="text" name="username" id="L_username" ng-model="field.username" required="" lay-verify="username" placeholder="{:lang('pleaseEnter')}登录账号" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{:lang('pwd')}</label>
             <div class="layui-input-4">
-                <input type="password" name="pwd" placeholder="{:lang('pleaseEnter')}登录密码" {if condition="ACTION_NAME eq 'add'"}lay-verify="required"{/if} class="layui-input">
+                <input type="password" name="pwd" id="L_pwd" placeholder="{:lang('pleaseEnter')}登录密码" required="" lay-verify="pwd" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 密码必须大于等于6位，小于15位.
             </div>
         </div>
-
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-4">
+                <input type="text" name="nikename" id="L_nikename" ng-model="field.nikename" required="" lay-verify="nikename" placeholder="{:lang('pleaseEnter')}姓名" class="layui-input">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{:lang('tel')}</label>
             <div class="layui-input-4">
-                <input type="text" name="tel" ng-model="field.tel" lay-verify="phone" value="" placeholder="{:lang('pleaseEnter')}手机号" class="layui-input">
+                <input type="text" name="tel" id="L_tel" ng-model="field.tel" required="" lay-verify="tel" value="" placeholder="{:lang('pleaseEnter')}手机号" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -60,6 +65,21 @@
     layui.use(['form', 'layer'], function () {
         var form = layui.form, layer = layui.layer,$= layui.jquery;
         form.render();
+        //自定义验证规则
+        form.verify({
+            username: function(value){
+                if($('#L_username').val()==''){
+                    return '账号不能为空';
+                }
+            }
+            ,pwd: [/(.+){6,15}$/, '密码必须6到15位']
+            ,nikename: function(value){
+                if($('#L_nikename').val()==''){
+                    return '姓名不能为空';
+                }
+            },
+            tel: [/^1[3|5|7|8]\d{9}$/, '手机号码格式不正确']
+        });
         form.on('submit(submit)', function (data) {
             loading =layer.load(1, {shade: [0.1,'#fff']});
             $.post("{:url('Distributor/add')}", data.field, function (res) {

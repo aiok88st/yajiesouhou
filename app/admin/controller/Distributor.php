@@ -9,7 +9,7 @@ class Distributor extends Common
     public function getList($key,$where,$page,$pageSize){
         $map = '';
         if ($key) {
-            $map['username|tel'] = array('like', "%" . $key . "%");
+            $map['username|tel|nikename'] = array('like', "%" . $key . "%");
         }
         $list = Db::table(config('database.prefix') .'distributor')
             ->where($map)
@@ -17,7 +17,7 @@ class Distributor extends Common
             ->paginate(array('list_rows'=>$pageSize,'page'=>$page))
             ->toArray();
         foreach ($list['data'] as $k=>$v ){
-            $list[$k]['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
+            $list['data'][$k]['add_time'] = date('Y-m-d H:i:s',$v['add_time']);
         }
         return $list;
     }
@@ -30,7 +30,7 @@ class Distributor extends Common
             $pageSize =input('limit')?input('limit'):config('pageSize');
             $where['pid'] = ['=',0];
             $list = $this->getList($key,$where,$page,$pageSize);
-            return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $list['data'], 'rel' => 1];
+            return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $list['data'], 'rel' => 1,'count'=>$list['total']];
         }
         return $this->fetch('list');
     }
@@ -45,7 +45,7 @@ class Distributor extends Common
             foreach($list['data'] as $k=>$v){
                 $list[$k]['pname'] = db('distributor')->where('id',$v['pid'])->field('username')->find();
             }
-            return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $list['data'], 'rel' => 1];
+            return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $list['data'], 'rel' => 1,'count'=>$list['total']];
         }
         return $this->fetch();
     }
@@ -54,28 +54,29 @@ class Distributor extends Common
     {
         if (request()->isPost()) {
             $data = input('post.');
+            $result = $this->validate($data, [
+                'username|账号名'  => ['require'],
+                'pwd|密码'  => ['require','max:15','min:6'],
+                'nikename|姓名'  => ['require'],
+                'tel|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
+            ]);
+            if(true !== $result){
+                // 验证失败 输出错误信息
+                return json(['code'=>0, 'msg'=>$result,]);
+            }
             if($data['pid'] != 0){
                 $url = url('list2');
             }else{
                 $url = url('lists');
             }
+
             $check_user = DistributorModel::get(['username' => $data['username']]);
             if ($check_user) {
-                return $result = ['code' => 0, 'msg' => '用户已存在，请重新输入用户名!'];
+                return $result = ['code' => 0, 'msg' => '账号已存在，请重新输入账号名!'];
             }
             $data['pwd'] = input('post.pwd', '', 'md5');
             $data['add_time'] = time();
             $data['ip'] = request()->ip();
-            //验证
-            $msg = $this->validate($data, 'Distributor');
-            if ($msg != 'true') {
-                return $result = ['code' => 0, 'msg' => $msg];
-            }
-            //单独验证密码
-            $checkPwd = Validate::is(input('post.pwd'), 'require');
-            if (false === $checkPwd) {
-                return $result = ['code' => 0, 'msg' => '密码不能为空！'];
-            }
             //添加
             if (DistributorModel::create($data)) {
                 return ['code' => 1, 'msg' => '添加成功!', 'url' => $url];
@@ -94,12 +95,8 @@ class Distributor extends Common
     public function adminDel()
     {
         $id = input('post.id');
-        if (session('aid') == 1) {
-            DistributorModel::destroy(['id' => $id]);
-            return $result = ['code' => 1, 'msg' => '删除成功!'];
-        } else {
-            return $result = ['code' => 0, 'msg' => '您没有删除管理员的权限!'];
-        }
+        DistributorModel::destroy(['id' => $id]);
+        return $result = ['code' => 1, 'msg' => '删除成功!'];
     }
 
     //修改管理员状态
@@ -132,6 +129,15 @@ class Distributor extends Common
     {
         if (request()->isPost()) {
             $data = input('post.');
+            $result = $this->validate($data, [
+                'username|账号名'  => ['require'],
+                'nikename|姓名'  => ['require'],
+                'tel|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
+            ]);
+            if(true !== $result){
+                // 验证失败 输出错误信息
+                return json(['code'=>0, 'msg'=>$result,]);
+            }
             $pwd = input('post.pwd');
             $map['id'] = array('neq', input('post.id'));
             $where['id'] = input('post.id');
@@ -144,17 +150,13 @@ class Distributor extends Common
                 $map['username'] = input('post.username');
                 $check_user = DistributorModel::get($map);
                 if ($check_user) {
-                    return $result = ['code' => 0, 'msg' => '用户已存在，请重新输入用户名!'];
+                    return $result = ['code' => 0, 'msg' => '账号已存在，请重新输入账号名!'];
                 }
             }
             if ($pwd) {
                 $data['pwd'] = input('post.pwd', '', 'md5');
             } else {
                 unset($data['pwd']);
-            }
-            $msg = $this->validate($data, 'distributor');
-            if ($msg != 'true') {
-                return $result = ['code' => 0, 'msg' => $msg];
             }
             DistributorModel::update($data);
             return $result = ['code' => 1, 'msg' => '修改成功!', 'url' => $url];
@@ -174,7 +176,6 @@ class Distributor extends Common
         $model->where($map)->delete();
         $result['code'] = 1;
         $result['msg'] = '删除成功！';
-        $result['url'] = url('lists');
         return $result;
     }
 

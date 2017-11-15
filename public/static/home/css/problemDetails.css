@@ -1,0 +1,90 @@
+body {
+  background-color: #efeff3; }
+
+.detailsBox {
+  width: 100%;
+  background-color: white;
+  margin-top: 0.2rem; }
+  .detailsBox .detailsIn {
+    width: 86%;
+    margin: 0 auto; }
+    .detailsBox .detailsIn ul li:nth-child(1) {
+      font-size: 0.3rem;
+      line-height: 0.5rem;
+      padding: 0.2rem 0 0.1rem;
+      color: #353535; }
+    .detailsBox .detailsIn ul li:nth-child(2) {
+      font-size: 0.24rem;
+      line-height: 0.5rem;
+      color: #353535;
+      padding: 0rem 0 0.2rem;
+      color: #999999;
+      border-bottom: 1px solid #efeff3; }
+    .detailsBox .detailsIn ul li:nth-child(3) .content {
+      padding: 0.5rem 0;
+      font-size: 0.26rem;
+      line-height: 0.5rem; }
+    .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad {
+      width: 84%;
+      margin: 0 auto;
+      border-radius: 0.4rem;
+      border: 1px solid #d2d2d2;
+      position: relative; }
+      .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad > div {
+        width: 50%;
+        height: 0.75rem; }
+        .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad > div button {
+          display: block;
+          width: 100%;
+          line-height: 0.75rem;
+          background-color: transparent;
+          position: relative;
+          font-size: 0.26rem;
+          color: #666666;
+          outline: none; }
+          .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad > div button p {
+            position: absolute;
+            display: none;
+            text-align: center;
+            width: 0.8rem;
+            line-height: 0.75rem;
+            font-size: 0.24rem;
+            right: 0;
+            top: 0;
+            color: #6d1a7a; }
+          .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad > div button span {
+            position: absolute;
+            display: block;
+            text-align: center;
+            width: 0.8rem;
+            line-height: 0.75rem;
+            font-size: 0.24rem;
+            right: 0;
+            top: 0; }
+      .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad .gbLeft button {
+        background: url(../img/goodv.png) no-repeat 0.3rem 0.15rem;
+        background-size: auto 0.35rem; }
+      .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad .gbRight button {
+        background: url(../img/badv.png) no-repeat 0.3rem 0.25rem;
+        background-size: auto 0.35rem; }
+      .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad > span {
+        position: absolute;
+        top: 0.14rem;
+        left: 50%;
+        border-right: 1px solid #d2d2d2;
+        height: 0.5rem; }
+      .detailsBox .detailsIn ul li:nth-child(4) .goodAndBad > div:last-child {
+        height: 0px; }
+    .detailsBox .detailsIn ul li:nth-child(5) {
+      padding: 0.5rem 0; }
+    .detailsBox .detailsIn ul li:nth-child(5) a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #6d1a7a;
+      line-height: 0.8rem;
+      border-radius: 5px;
+      color: white;
+      font-size: 0.3rem; }
+
+/*# sourceMappingURL=problemDetails.css.map */

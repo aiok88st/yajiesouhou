@@ -25,7 +25,7 @@ class Test extends Common
             foreach ($lists as $k=>$v ){
                 $lists[$k]['createtime'] = date('Y-m-d H:i:s',$v['createtime']);
             }
-            return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $lists, 'rel' => 1];
+            return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $lists, 'rel' => 1,'count'=>$list['total']];
         }
         return $this->fetch();
     }

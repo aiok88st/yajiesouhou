@@ -15,7 +15,7 @@ class Distrit extends Common
         $name = input('key');
         $where = array();
         if($name){
-            $where['username|tel'] = array('like', "%$name%");
+            $where['username|tel|nikename'] = array('like', "%$name%");
         }
         $data = Db::name('distributor')->where($where)->where('pid',session('sid'))->order("add_time desc")->paginate(12);
         $page = $data->render();//获取分页
@@ -30,8 +30,9 @@ class Distrit extends Common
         if (request()->isPost()) {
             $data = input('post.');
             $result = $this->validate($data, [
-                'username|用户名'  => ['require'],
+                'username|账号'  => ['require'],
                 'password|密码'  => ['require','max:15','min:6','confirm'],
+                'nikename|姓名'  => ['require'],
                 'tel|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
             ]);
             if(true !== $result){
@@ -40,11 +41,12 @@ class Distrit extends Common
             }
             $check_user = Distributor::get(['username' => $data['username']]);
             if ($check_user) {
-                return $result = ['code' => 0, 'msg' => '用户已存在，请重新输入用户名!'];
+                return $result = ['code' => 0, 'msg' => '账号已存在，请重新输入账号名!'];
             }
             $user = [
                 'username'=>$data['username'],
                 'pwd'=>md5($data['password']),
+                'nikename'=>$data['nikename'],
                 'ip'=>request()->ip(),
                 'add_time'=>time(),
                 'is_open'=>0,

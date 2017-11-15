@@ -1,0 +1,49 @@
+body {
+  background-color: #efeff3; }
+
+.classifyBox {
+  background-color: white;
+  width: 100%;
+  margin-top: 0.2rem;
+  padding: 0rem 0 0.2rem; }
+  .classifyBox > ul > li > a {
+    display: block;
+    position: relative;
+    width: 88%;
+    margin: 0 auto;
+    font-size: 0.3rem;
+    line-height: 1.0rem;
+    color: #030303;
+    text-indent: 0.2rem;
+    border-bottom: 1px solid #d2d2d2; }
+    .classifyBox > ul > li > a img {
+      position: absolute;
+      right: 0.2rem;
+      top: 0.4rem;
+      height: 0.3rem;
+      transition: transform 0.5s; }
+    .classifyBox > ul > li > a .imgR {
+      transform: rotate(90deg); }
+  .classifyBox > ul > li > ul {
+    display: none; }
+  .classifyBox > ul > li > ul > li > a {
+    display: block;
+    position: relative;
+    width: 88%;
+    margin: 0 auto;
+    font-size: 0.28rem;
+    line-height: 1.0rem;
+    color: #666666;
+    text-indent: 0.73rem;
+    border-bottom: 1px solid #d2d2d2; }
+    .classifyBox > ul > li > ul > li > a span {
+      display: block;
+      position: absolute;
+      top: 0.42rem;
+      left: 0.3rem;
+      border-radius: 50%;
+      width: 0.14rem;
+      height: 0.14rem;
+      border: 1px solid #a0a0a0; }
+
+/*# sourceMappingURL=problemFirst.css.map */

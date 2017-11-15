@@ -1,0 +1,51 @@
+.search .sLeft {
+  width: 85%;
+  position: relative; }
+  .search .sLeft input {
+    display: block;
+    width: 94%;
+    height: 0.5rem;
+    margin: 0 auto;
+    border-radius: 4px 4px 0px 0px;
+    text-indent: 0.6rem;
+    background-color: #efeff3;
+    font-size: 0.24rem;
+    line-height: 0.65rem;
+    color: #757575;
+    border: 0;
+    overflow: hidden;
+    outline: none; }
+  .search .sLeft input::-ms-input-placeholder {
+    line-height: 0.5rem;
+    line-height: 0.24rem; }
+  .search .sLeft input::-moz-placeholder {
+    line-height: 0.5rem;
+    line-height: 0.24rem; }
+  .search .sLeft input::-webkit-input-placeholder {
+    line-height: 0.5rem;
+    line-height: 0.24rem; }
+  .search .sLeft .sImg {
+    width: 0.6rem;
+    height: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 3%;
+    background-color: #efeff3;
+    border-radius: 4px; }
+    .search .sLeft .sImg img {
+      height: 0.24rem;
+      margin: 0 auto;
+      margin-top: 0.13rem; }
+.search .sRight {
+  width: 15%;
+  height: 0.5rem;
+  font-size: 0.24rem; }
+  .search .sRight button {
+    height: 0.5rem;
+    font-size: 0.24rem;
+    color: #333333;
+    width: 82%;
+    line-height: 0.5rem;
+    background-color: transparent; }
+
+/*# sourceMappingURL=search.css.map */

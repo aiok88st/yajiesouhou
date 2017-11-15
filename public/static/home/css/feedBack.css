@@ -1,0 +1,171 @@
+body {
+  background-color: #efeff3; }
+
+.problem {
+  width: 100%; }
+  .problem .type {
+    width: 100%;
+    background-color: white;
+    height: 1.0rem;
+    position: relative; }
+    .problem .type p {
+      width: 88%;
+      margin: 0 auto;
+      font-size: 0.29rem;
+      line-height: 1.0rem;
+      position: relative; }
+    .problem .type img {
+      position: absolute;
+      right: 6%;
+      top: 0.32rem;
+      height: 0.36rem; }
+    .problem .type select {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      border: 0; }
+  .problem .message ul li {
+    width: 100%; }
+    .problem .message ul li p {
+      width: 88%;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      font-size: 0.26rem;
+      color: #000000;
+      margin: 0 auto; }
+      .problem .message ul li p span {
+        color: #fc0303;
+        font-size: 0.3rem; }
+    .problem .message ul li input {
+      display: block;
+      width: 88%;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      margin: 0 auto;
+      border: 0;
+      font-size: 0.24rem; }
+    .problem .message ul li input::-moz-placeholder {
+      color: #999999;
+      font-size: 0.24rem; }
+    .problem .message ul li input::-webkit-input-placeholder {
+      color: #999999;
+      font-size: 0.24rem; }
+    .problem .message ul li input::-ms-input-placeholder {
+      color: #999999;
+      font-size: 0.24rem; }
+    .problem .message ul li textarea {
+      display: block;
+      width: 88%;
+      height: 2.0rem;
+      margin: 0 auto;
+      border: 0;
+      padding: 0.2rem;
+      line-height: 0.4rem;
+      resize: none;
+      font-size: 0.24rem; }
+    .problem .message ul li textarea::-moz-placeholder {
+      color: #999999;
+      font-size: 0.24rem; }
+    .problem .message ul li textarea::-webkit-input-placeholder {
+      color: #999999;
+      font-size: 0.24rem; }
+    .problem .message ul li textarea::-ms-input-placeholder {
+      color: #999999;
+      font-size: 0.24rem; }
+  .problem .message ul li:nth-child(2) {
+    background-color: white;
+    border-top: 1px solid #D2D2D2;
+    border-bottom: 1px solid #D2D2D2; }
+  .problem .imgUp {
+    width: 86%;
+    margin: 0 auto;
+    margin-top: 0.4rem; }
+    .problem .imgUp .upBtn {
+      width: 23%;
+      margin: 0% 1%;
+      position: relative; }
+      .problem .imgUp .upBtn img {
+        width: 100%; }
+      .problem .imgUp .upBtn input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        height: 100%; }
+      .problem .imgUp .upBtn a {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        width: 25%; }
+        .problem .imgUp .upBtn a img {
+          width: 100%; }
+      .problem .imgUp .upBtn .sameView {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent !important; }
+    .problem .imgUp .upBtn0 {
+      margin-right: 0%; }
+    .problem .imgUp .upBtn:last-child {
+      margin-right: 0%; }
+  .problem .submit {
+    width: 86%;
+    margin: 0 auto;
+    padding: 0.4rem 0 0.1rem;
+    height: 0.8rem; }
+    .problem .submit a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #6d1a7a;
+      line-height: 0.8rem;
+      border-radius: 5px;
+      color: white;
+      font-size: 0.3rem; }
+
+#clipArea {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  #clipArea button {
+    width: 50%;
+    height: 0.8rem;
+    background-color: #6d1a7a;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    font-size: 0.3rem;
+    left: 25%;
+    bottom: 2%;
+    z-index: 100; }
+
+#showAll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; }
+  #showAll img {
+    width: 200px;
+    height: 200px; }
+
+/*# sourceMappingURL=feedBack.css.map */

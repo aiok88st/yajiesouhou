@@ -1,0 +1,48 @@
+.history {
+  width: 100%;
+  margin-top: 0.1rem;
+  background-color: white;
+  z-index: 10; }
+  .history ul li {
+    display: block;
+    position: relative;
+    width: 92%;
+    margin: 0 auto;
+    font-size: 0.24rem;
+    line-height: 0.65rem;
+    color: #030303;
+    text-indent: 0.2rem;
+    border-bottom: 1px solid #eeeeee;
+    color: #999999; }
+  .history .historySearch {
+    display: block;
+    position: relative;
+    width: 92%;
+    margin: 0 auto;
+    font-size: 0.24rem;
+    line-height: 0.65rem;
+    color: #030303;
+    text-indent: 0.2rem;
+    border-bottom: 1px solid #eeeeee;
+    text-indent: 0.6rem;
+    background: url(../img/history.png) no-repeat 0.2rem center;
+    background-size: auto 0.24rem;
+    color: #020202; }
+  .history .clearHistory {
+    height: 0.5rem;
+    padding: 0.2rem; }
+    .history .clearHistory button {
+      width: 50%;
+      display: block;
+      margin: 0 auto;
+      font-size: 0.24rem;
+      line-height: 0.5rem;
+      height: 0.5rem;
+      background-color: transparent;
+      color: #999999;
+      border: 1px solid #d2d2d2;
+      background: url(../img/delete.png) no-repeat 23% center;
+      background-size: auto 0.24rem;
+      text-indent: 0.40rem; }
+
+/*# sourceMappingURL=helpHistory.css.map */

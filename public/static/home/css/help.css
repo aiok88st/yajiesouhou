@@ -1,0 +1,127 @@
+.videoContent {
+  margin-top: 0.2rem; }
+  .videoContent .vType {
+    height: 1.0rem;
+    background-color: white;
+    border-bottom: 1px solid #D2D2D2; }
+    .videoContent .vType .vTypeIn {
+      width: 94%;
+      margin: 0 auto;
+      position: relative;
+      height: 1.0rem; }
+      .videoContent .vType .vTypeIn span {
+        width: 0.4rem;
+        display: block;
+        height: 6px;
+        border-radius: 6px;
+        background-color: #6c1d76;
+        position: absolute;
+        left: 0.28rem;
+        bottom: 0; }
+    .videoContent .vType ul {
+      width: 100%; }
+    .videoContent .vType ul li {
+      float: left;
+      width: 1.0rem; }
+      .videoContent .vType ul li a {
+        font-size: 0.32rem;
+        display: block;
+        color: #333333;
+        line-height: 1.0rem;
+        text-align: center; }
+      .videoContent .vType ul li .aActive {
+        color: #6c1d76; }
+  .videoContent .hotVideo {
+    background-color: white;
+    width: 100%;
+    height: 1.01rem;
+    position: relative; }
+    .videoContent .hotVideo > a {
+      width: 100%;
+      font-size: 0.32rem;
+      display: block;
+      color: #333333;
+      line-height: 1.0rem;
+      text-align: center;
+      border-bottom: 1px solid #D2D2D2;
+      text-indent: -0.5rem; }
+    .videoContent .hotVideo .classifyBox {
+      position: absolute;
+      top: 100%;
+      margin: 0;
+      padding: 0rem 0 0rem;
+      z-index: 5;
+      display: none; }
+    .videoContent .hotVideo > img {
+      position: absolute;
+      left: 58%;
+      top: 0.42rem;
+      height: 0.12rem;
+      transition: transform 0.5s; }
+    .videoContent .hotVideo .r90 {
+      transform: rotate(180deg); }
+
+.videoIn {
+  background-color: white;
+  margin-bottom: 0.2rem; }
+  .videoIn .videoShow {
+    width: 100%;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -webkit-flex-direction: column;
+    position: relative; }
+    .videoIn .videoShow iframe, .videoIn .videoShow > img {
+      width: 100%;
+      height: 100%; }
+    .videoIn .videoShow > img {
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .videoIn .videoShow .videoBox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: -webkit-flex;
+      -webkit-align-items: center;
+      -webkit-justify-content: center;
+      -webkit-flex-direction: column; }
+      .videoIn .videoShow .videoBox a {
+        display: block;
+        width: 18%; }
+        .videoIn .videoShow .videoBox a img {
+          width: 100%; }
+  .videoIn .topTitle, .videoIn .bottomTitle {
+    width: 90%;
+    margin: 0 auto;
+    line-height: 0.4rem;
+    position: relative; }
+  .videoIn .topTitle p {
+    padding-top: 0.1rem;
+    font-size: 0.28rem;
+    color: #333333; }
+  .videoIn .bottomTitle p {
+    font-size: 0.26rem;
+    padding-bottom: 0.1rem;
+    color: #999999; }
+  .videoIn .bottomTitle p:nth-child(2) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(../img/eye.png) no-repeat 0 center;
+    background-size: auto 0.2rem;
+    padding-bottom: 0rem;
+    text-indent: 0.4rem; }
+
+/*# sourceMappingURL=help.css.map */

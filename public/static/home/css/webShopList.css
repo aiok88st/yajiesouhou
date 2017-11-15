@@ -1,0 +1,92 @@
+body {
+  background-color: #eeeeee; }
+
+#shopList .shopList {
+  padding-bottom: 0.3rem; }
+  #shopList .shopList .addressBox {
+    margin-top: 0.3rem; }
+#shopList .shopSearch {
+  width: 100%; }
+  #shopList .shopSearch .searchBox {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    background-color: white;
+    border-bottom: 1px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf; }
+    #shopList .shopSearch .searchBox p {
+      display: block;
+      width: 92%;
+      margin: 0 auto;
+      font-size: 0.28rem;
+      line-height: 0.8rem;
+      height: 0.8rem;
+      color: #999999;
+      background: url(../img/address.png) no-repeat left center;
+      background-size: 0.25rem;
+      text-indent: 0.5rem; }
+  #shopList .shopSearch .searchCondition {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    background-color: white;
+    border-bottom: 1px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf; }
+    #shopList .shopSearch .searchCondition select {
+      display: block;
+      width: 92%;
+      position: absolute;
+      left: 4%;
+      margin: 0 auto;
+      font-size: 0.28rem;
+      line-height: 0.8rem;
+      height: 0.8rem;
+      color: #999999;
+      text-indent: 0.5rem;
+      border: 0px;
+      border-bottom: 1px solid #dfdfdf;
+      background-color: white;
+      top: 0%;
+      opacity: 0; }
+    #shopList .shopSearch .searchCondition ul li {
+      position: relative; }
+      #shopList .shopSearch .searchCondition ul li p {
+        display: block;
+        width: 92%;
+        margin: 0 auto;
+        font-size: 0.28rem;
+        line-height: 0.8rem;
+        height: 0.8rem;
+        color: #999999;
+        text-indent: 0.5rem;
+        border: 0px;
+        border-bottom: 1px solid #dfdfdf;
+        background-color: white; }
+      #shopList .shopSearch .searchCondition ul li img:nth-child(3) {
+        position: absolute;
+        width: 0.28rem;
+        top: 0.26rem;
+        display: none;
+        margin-left: 5%; }
+      #shopList .shopSearch .searchCondition ul li .selected {
+        display: block !important; }
+      #shopList .shopSearch .searchCondition ul li img:nth-child(4) {
+        position: absolute;
+        right: 0;
+        top: 0.3rem;
+        width: 0.14rem;
+        margin-right: 5%;
+        background-color: white; }
+    #shopList .shopSearch .searchCondition ul li:last-child select {
+      border-bottom: 0px; }
+  #shopList .shopSearch .searchBtn {
+    font-size: 0.28rem; }
+    #shopList .shopSearch .searchBtn button {
+      display: block;
+      width: 92%;
+      margin: 0 auto;
+      border-radius: 10px;
+      height: 0.6rem;
+      background-color: #6c1d76;
+      color: white;
+      font-size: 0.28rem; }
+
+/*# sourceMappingURL=webShopList.css.map */

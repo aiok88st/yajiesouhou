@@ -1,0 +1,255 @@
+@charset "UTF-8";
+#head {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  line-height: 0.8rem;
+  box-shadow: 0px 0px 5px #acacac;
+  background-color: white;
+  z-index: 999; }
+  #head .hleft {
+    width: 33%;
+    font-size: 0.28rem;
+    font-weight: bold;
+    height: 0.8rem; }
+    #head .hleft a {
+      display: block;
+      width: 1.2rem;
+      background: url(../img/address.png) no-repeat left center;
+      background-size: auto 0.4rem;
+      text-indent: 0.4rem;
+      margin-left: 0.28rem;
+      color: #6c1d76; }
+    #head .hleft a:active {
+      color: #6c1d76; }
+  #head .return a {
+    background-image: url(../img/return.png);
+    background-size: auto 0.3rem; }
+  #head .hright {
+    height: 0.8rem;
+    width: 33%;
+    font-size: 0.28rem;
+    color: #6c1d76;
+    font-weight: bold; }
+    #head .hright a {
+      float: right;
+      margin-right: 0.28rem;
+      color: #6c1d76; }
+    #head .hright a:active {
+      color: #6c1d76; }
+  #head .hmiddle {
+    width: 34%;
+    text-align: center;
+    font-size: 0.32rem;
+    color: #6c1d76;
+    font-weight: bold; }
+
+.rHead {
+  position: relative !important; }
+
+.null {
+  width: 100%;
+  height: 0.8rem; }
+
+.addressBox {
+  width: 95%;
+  margin: 0 auto;
+  height: 2.52rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #cecece; }
+  .addressBox .addressShow {
+    width: 100%;
+    height: 66%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -webkit-flex-direction: column; }
+    .addressBox .addressShow ul {
+      width: 90%; }
+    .addressBox .addressShow ul li:nth-child(1) p {
+      font-size: 0.28rem;
+      margin-bottom: 0.25rem;
+      font-weight: bold; }
+    .addressBox .addressShow ul li:nth-child(2) p {
+      font-size: 0.24rem;
+      color: #999999;
+      text-indent: 0.1rem; }
+  .addressBox .addressMethod {
+    border-top: 1px solid #bdbdbd;
+    width: 100%;
+    height: 34%;
+    font-size: 0.28rem; }
+    .addressBox .addressMethod .go {
+      width: 49.5%;
+      height: 100%;
+      border-right: 1px solid #bdbdbd; }
+    .addressBox .addressMethod .phone {
+      width: 49.5%;
+      height: 100%; }
+    .addressBox .addressMethod .phone a {
+      background: url(../img/phone.png) no-repeat center center;
+      background-size: auto 0.4rem;
+      background-position-x: 0.8rem; }
+    .addressBox .addressMethod .go a {
+      background: url(../img/go.png) no-repeat center center;
+      background-size: auto 0.4rem;
+      background-position-x: 0.8rem; }
+    .addressBox .addressMethod a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      font-size: 0.28rem;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: -webkit-flex;
+      -webkit-align-items: center;
+      -webkit-justify-content: center;
+      -webkit-flex-direction: column;
+      text-indent: 0.5rem; }
+
+.centerCenter {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  display: -webkit-flex !important;
+  -webkit-align-items: center !important;
+  -webkit-justify-content: center !important;
+  -webkit-flex-direction: column !important; }
+
+.bottomText {
+  padding: 0.3rem 0; }
+  .bottomText p {
+    font-size: 0.24rem;
+    color: #b2b2b2;
+    text-align: center; }
+
+.popWindow {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column; }
+  .popWindow .popBox {
+    background-color: white;
+    width: 80%;
+    border-radius: 10px; }
+    .popWindow .popBox ul li:nth-child(1) p {
+      font-size: 0.3rem;
+      font-weight: bold;
+      text-align: center;
+      line-height: 0.55rem;
+      color: #272529;
+      padding-top: 0.2rem;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      /** 对象作为伸缩盒子模型显示 **/
+      -webkit-box-orient: vertical;
+      /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+      -webkit-line-clamp: 1;
+      /** 显示的行数 **/
+      overflow: hidden;
+      /** 隐藏超出的内容 **/ }
+    .popWindow .popBox ul li:nth-child(2) p {
+      font-size: 0.26rem;
+      text-align: center;
+      line-height: 0.55rem;
+      color: #666666;
+      padding-bottom: 0.2rem;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      /** 对象作为伸缩盒子模型显示 **/
+      -webkit-box-orient: vertical;
+      /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+      -webkit-line-clamp: 1;
+      /** 显示的行数 **/
+      overflow: hidden;
+      /** 隐藏超出的内容 **/ }
+    .popWindow .popBox ul li:nth-child(2) {
+      border-bottom: 1px solid #d2d2d2; }
+    .popWindow .popBox ul li:nth-child(3) .onlyOne {
+      width: 100%;
+      height: 0.8rem; }
+      .popWindow .popBox ul li:nth-child(3) .onlyOne button {
+        width: 100%;
+        display: block;
+        height: 0.8rem;
+        color: #3674df;
+        font-size: 0.28rem;
+        background-color: transparent; }
+    .popWindow .popBox ul li:nth-child(3) .onlyTwo {
+      width: 100%;
+      height: 0.8rem;
+      position: relative; }
+      .popWindow .popBox ul li:nth-child(3) .onlyTwo .oLeft {
+        width: 50%; }
+      .popWindow .popBox ul li:nth-child(3) .onlyTwo .oRight {
+        width: 50%; }
+      .popWindow .popBox ul li:nth-child(3) .onlyTwo span {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -0.5px;
+        border-right: 1px solid #d2d2d2;
+        height: 0.8rem; }
+      .popWindow .popBox ul li:nth-child(3) .onlyTwo button {
+        width: 100%;
+        display: block;
+        height: 0.8rem;
+        color: #3674df;
+        font-size: 0.28rem;
+        background-color: transparent; }
+
+.noResult {
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column; }
+  .noResult img {
+    width: 40%;
+    margin: 0 auto; }
+  .noResult p {
+    color: #999999;
+    text-align: center;
+    line-height: 0.6rem;
+    font-size: 0.26rem;
+    margin-bottom: 0.1rem; }
+  .noResult a {
+    display: block;
+    background-color: #60116a;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 0.3rem;
+    color: white;
+    line-height: 0.7rem;
+    text-align: center;
+    border-radius: 5px; }
+
+/*# sourceMappingURL=public.css.map */

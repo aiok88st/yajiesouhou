@@ -1,0 +1,91 @@
+@charset "UTF-8";
+body {
+  background-color: #efeff3; }
+
+#home .search {
+  background-color: white;
+  padding: 0.2rem 0; }
+#home .search a {
+  display: block;
+  width: 94%;
+  height: 0.5rem;
+  margin: 0 auto;
+  border-radius: 4px;
+  background: url(../img/searchBkg.png) no-repeat 0.15rem center;
+  background-size: auto 0.24rem;
+  text-indent: 0.6rem;
+  background-color: #efeff3;
+  font-size: 0.24rem;
+  line-height: 0.5rem;
+  color: #757575; }
+#home .hotQuestion {
+  margin-top: 0.2rem;
+  background-color: white;
+  width: 100%; }
+  #home .hotQuestion .qusetionBox {
+    width: 92%;
+    margin: 0 auto; }
+    #home .hotQuestion .qusetionBox .qTitle p {
+      font-size: 0.32rem;
+      padding: 0.4rem 0 0;
+      color: #353535; }
+    #home .hotQuestion .qusetionBox .qList .questionDetails {
+      display: block;
+      width: 100%;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #efeff3; }
+      #home .hotQuestion .qusetionBox .qList .questionDetails .qdl {
+        width: 25%;
+        height: 1.5118rem;
+        overflow: hidden; }
+        #home .hotQuestion .qusetionBox .qList .questionDetails .qdl img {
+          width: 100%; }
+      #home .hotQuestion .qusetionBox .qList .questionDetails .qdr {
+        width: 75%;
+        text-indent: 0.1rem; }
+        #home .hotQuestion .qusetionBox .qList .questionDetails .qdr ul li:nth-child(1) {
+          font-size: 0.28rem;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          /** 对象作为伸缩盒子模型显示 **/
+          -webkit-box-orient: vertical;
+          /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+          -webkit-line-clamp: 1;
+          /** 显示的行数 **/
+          overflow: hidden;
+          /** 隐藏超出的内容 **/
+          color: #353535;
+          margin-bottom: 0.075rem;
+          margin-top: 0.12rem; }
+        #home .hotQuestion .qusetionBox .qList .questionDetails .qdr ul li:nth-child(2) {
+          font-size: 0.26rem;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          /** 对象作为伸缩盒子模型显示 **/
+          -webkit-box-orient: vertical;
+          /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+          -webkit-line-clamp: 1;
+          /** 显示的行数 **/
+          overflow: hidden;
+          /** 隐藏超出的内容 **/
+          color: #666666;
+          margin-bottom: 0.12rem; }
+        #home .hotQuestion .qusetionBox .qList .questionDetails .qdr ul li:nth-child(3) {
+          font-size: 0.24rem;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          /** 对象作为伸缩盒子模型显示 **/
+          -webkit-box-orient: vertical;
+          /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+          -webkit-line-clamp: 1;
+          /** 显示的行数 **/
+          overflow: hidden;
+          /** 隐藏超出的内容 **/
+          color: #999999; }
+    #home .hotQuestion .qusetionBox .qList .questionDetails:last-child {
+      border: 0px; }
+
+/*# sourceMappingURL=publicSI.css.map */

@@ -11,7 +11,6 @@ class Person extends Common
     }
 
     public function index(){
-        $username = session('uname');
         $id = session('sid');
         $map['did']=['=',$id];
         $list=Db::table(config('database.prefix').'network')->alias('a')
@@ -21,8 +20,9 @@ class Person extends Common
             ->field('a.*,ag.name as province,r.name as city,rs.name as area')
             ->where($map)
            ->select();
+        $user = db('distributor')->where('id',$id)->find();
         $this->assign('list',$list);
-        $this->assign('username',$username);
+        $this->assign('user',$user);
         return $this->fetch();
     }
 

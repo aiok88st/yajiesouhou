@@ -55,6 +55,9 @@
         <div style="margin-top: 10px;margin-left: 115px;">
             <h1 id="tile">{$test.title}</h1>
         </div>
+        <div style="margin-top: 10px;margin-left: 115px;">
+            <h1 id="f_tile">{$test.f_title}</h1>
+        </div>
         <div id="content" class="yd_box" style="margin-left: 110px;width: 650px">
             {volist name="$test.content" id="vo" key="k"}
             <div class="movie_box" style="border: 1px solid rgb(255, 255, 255);">
@@ -122,13 +125,14 @@
                 layer.load(1);
             });
             var titles = $('#tile').text();
+            var f_title = $('#f_tile').text();
             var id = $('#tsetid').val();
             var tid = $('#tid').val();
             var content = getTest();
             $.ajax({
                 url:"{:url('Exam/edit')}",
                 type:"post",
-                data:{"id":id,"title":titles,"content":content,"tid":tid},
+                data:{"id":id,"title":titles,"content":content,"tid":tid,"f_title":f_title},
                 success:function(res){
                     layer.closeAll();
                     if (res.code > 0) {

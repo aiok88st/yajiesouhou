@@ -38,6 +38,32 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">分类</label>
+            <div class="layui-input-4">
+                <select name="selid" lay-verify="required">
+                    {if condition="$info['id'] neq ''"}
+                        {if condition="$info['selid'] eq 1"}
+                        <option value="1" selected="selected">教学视频</option>
+                        <option value="2">视频小知识</option>
+                        {else/}
+                        <option value="1">教学视频</option>
+                        <option value="2" selected="selected">视频小知识</option>
+                        {/if}
+                    {else/}
+                    <option value="">请选择</option>
+                    <option value="1">教学视频</option>
+                    <option value="2">视频小知识</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">期数</label>
+            <div class="layui-input-4">
+                <input type="text" name="date_num" {if condition="$info['id'] neq ''"}value="{$info['date_num']}"{/if} lay-verify="required" placeholder="请输入期数" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">标题</label>
             <div class="layui-input-4">
                 <input type="text" name="title" {if condition="$info['id'] neq ''"}value="{$info['title']}"{/if} lay-verify="required" placeholder="请输入标题" class="layui-input">
@@ -48,6 +74,13 @@
             <div class="layui-input-4">
                 <input type="text" name="f_title" {if condition="$info['id'] neq ''"}value="{$info['f_title']}"{/if} lay-verify="required" placeholder="请输入副标题" class="layui-input">
             </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">关键词</label>
+            <div class="layui-input-4">
+                <input type="text" name="keywords" {if condition="$info['id'] neq ''"}value="{$info['keywords']}"{/if} lay-verify="required" placeholder="请输入关键词" class="layui-input">
+            </div>
+            <label class="layui-form-label" style="width: 150px;color: #9C9C9C;">多个关键词用空格隔开</label>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">缩略图</label>

@@ -32,6 +32,7 @@ class Exam extends Common
             }else{
                 $list[$k]['score'] = "您还没有答题";
             }
+            $list[$k]['status'] = $score['status'];
         }
         $this->assign('list',$list);
         $this->assign('page',$page);
@@ -55,6 +56,17 @@ class Exam extends Common
             $this->assign('test',$utest);
             return $this->fetch('edit');
         }
+    }
+    public function getDetail(){
+        $id = input('id');
+        $utest = db('utest')->where('uid',session('sid'))->where('tid',$id)->find();
+        $utest['content']=json_decode($utest['content'],true);
+        $utest['answer']=json_decode($utest['answer'],true);
+        foreach($utest['answer'] as $k=>$v){
+            $utest['content'][$k]['answers']=$v;
+        }
+        $this->assign('test',$utest);
+        return $this->fetch('detail');
     }
 
     //交卷
@@ -103,6 +115,7 @@ class Exam extends Common
             'tid'=>$tests['id'],
             'score'=>$score,
             'title'=>$tests['title'],
+            'f_title'=>$tests['f_title'],
             'content'=>json_encode($tests['content']),
             'answer'=>json_encode($blood),
             'addtime'=>time()
@@ -158,6 +171,7 @@ class Exam extends Common
         $list = [
             'score'=>$score,
             'title'=>$tests['title'],
+            'f_title'=>$tests['f_title'],
             'content'=>json_encode($tests['content']),
             'answer'=>json_encode($blood),
         ];

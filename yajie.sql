@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-15 11:03:13
+Date: 2017-11-16 08:50:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -412,7 +412,7 @@ CREATE TABLE `clt_distributor` (
 -- Records of clt_distributor
 -- ----------------------------
 INSERT INTO `clt_distributor` VALUES ('5', 'root', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509527565', '1', '4', '15173301601', '小李');
-INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '15173301602', '小王');
+INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '13556071153', '小王');
 INSERT INTO `clt_distributor` VALUES ('6', 'root01', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510646065', '0', '4', '15173301603', '小张');
 INSERT INTO `clt_distributor` VALUES ('7', 'admin00', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510712653', '0', '0', '15173301603', '张三');
 
@@ -440,7 +440,7 @@ CREATE TABLE `clt_field` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `issystem` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=270 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_field
@@ -554,9 +554,12 @@ INSERT INTO `clt_field` VALUES ('252', '23', 'f_title', '副标题', '', '0', '0
 INSERT INTO `clt_field` VALUES ('253', '23', 'link', '视频链接', '', '1', '0', '0', 'defaul', '', 'link', 'text', 'array (\n  \'default\' => \'\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '4', '1', '0');
 INSERT INTO `clt_field` VALUES ('256', '23', 'content', '视频简介', '', '0', '0', '0', 'defaul', '', 'content', 'textarea', 'array (\n  \'fieldtype\' => \'text\',\n  \'default\' => \'\',\n)', '0', '', '7', '1', '0');
 INSERT INTO `clt_field` VALUES ('255', '23', 'tid', '试题', '', '1', '0', '0', 'defaul', '', 'tid', 'select', 'array (\n  \'options\' => \'\',\n  \'multiple\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n  \'numbertype\' => \'1\',\n  \'size\' => \'\',\n  \'default\' => \'\',\n)', '0', '', '0', '1', '0');
+INSERT INTO `clt_field` VALUES ('267', '23', 'date_num', '期数', '', '1', '0', '0', 'defaul', '', 'date_num', 'text', 'array (\n  \'default\' => \'\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '0', '1', '0');
 INSERT INTO `clt_field` VALUES ('266', '23', 'webnum', '网盘提取码', '', '1', '0', '0', 'defaul', '', 'webnum', 'text', 'array (\n  \'default\' => \'\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '6', '1', '0');
 INSERT INTO `clt_field` VALUES ('265', '23', 'weblink', '网盘链接', '', '1', '0', '0', 'defaul', '', 'weblink', 'text', 'array (\n  \'default\' => \'\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '5', '1', '0');
 INSERT INTO `clt_field` VALUES ('264', '2', 'clicknum', '点赞数', '', '0', '0', '0', 'defaul', '', 'clicknum', 'text', 'array (\n  \'default\' => \'0\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '11', '1', '0');
+INSERT INTO `clt_field` VALUES ('268', '23', 'keywords', '关键词', '', '0', '0', '0', 'defaul', '', 'keywords', 'text', 'array (\n  \'default\' => \'\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '0', '1', '0');
+INSERT INTO `clt_field` VALUES ('269', '23', 'selid', '分类', '', '1', '0', '0', 'defaul', '', 'selid', 'select', 'array (\n  \'options\' => \'教学视频|1\n视频小知识|2\',\n  \'multiple\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n  \'numbertype\' => \'1\',\n  \'size\' => \'\',\n  \'default\' => \'\',\n)', '0', '', '0', '1', '0');
 
 -- ----------------------------
 -- Table structure for clt_member_open
@@ -569,13 +572,14 @@ CREATE TABLE `clt_member_open` (
   `open_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `addtime` int(11) DEFAULT NULL,
   `ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `did` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_member_open
 -- ----------------------------
-INSERT INTO `clt_member_open` VALUES ('1', 'ソ江南Ⅲ', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', 'oqL9H1ZMbgwwfJvBoCT6giSHho4g', '1507803479', '14.17.37.72');
+INSERT INTO `clt_member_open` VALUES ('1', 'ソ江南Ⅲ', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', 'oqL9H1ZMbgwwfJvBoCT6giSHho4g', '1507803479', '14.17.37.72', '4');
 
 -- ----------------------------
 -- Table structure for clt_module
@@ -4298,14 +4302,15 @@ CREATE TABLE `clt_test` (
   `createtime` int(11) NOT NULL DEFAULT '0',
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '标题',
+  `f_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '副标题',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_test
 -- ----------------------------
-INSERT INTO `clt_test` VALUES ('7', '1510565793', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '第一期');
-INSERT INTO `clt_test` VALUES ('6', '1510294784', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"1\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"1\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '第二期');
+INSERT INTO `clt_test` VALUES ('7', '1510565793', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '雅洁培训试题1', '第一期试题');
+INSERT INTO `clt_test` VALUES ('6', '1510294784', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"1\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"1\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '雅洁培训试题2', '第二期试题');
 
 -- ----------------------------
 -- Table structure for clt_tvd
@@ -4332,14 +4337,17 @@ CREATE TABLE `clt_tvd` (
   `thumb_s` varchar(255) DEFAULT NULL,
   `weblink` varchar(255) NOT NULL DEFAULT '',
   `webnum` varchar(255) NOT NULL DEFAULT '',
+  `date_num` varchar(255) NOT NULL DEFAULT '',
+  `keywords` varchar(255) NOT NULL DEFAULT '',
+  `selid` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_tvd
 -- ----------------------------
-INSERT INTO `clt_tvd` VALUES ('1', '烦得很', 'color:#222;font-weight:normal;', '/uploads/20171113/3cf51b7288510ed26aef4be7b512beeb.jpg', '100', '0', '1', 'admin', '1', '1510124882', '1510562100', '0', '', '让人好好', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '5', '刮风', '/uploads/20171113/s_3cf51b7288510ed26aef4be7b512beeb.jpg', 'http://www.baidu.com', '123');
-INSERT INTO `clt_tvd` VALUES ('2', '肥嘟嘟', 'color:#222;font-weight:normal;', '/uploads/20171113/845737304c0d25fbd812782d825ba91d.jpg', '18', '0', '1', 'admin', '0', '1510125795', '1510562088', '0', '', '鼓风机', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急', '/uploads/20171113/s_845737304c0d25fbd812782d825ba91d.jpg', 'http://www.baidu.com', '123');
+INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171113/3cf51b7288510ed26aef4be7b512beeb.jpg', '100', '0', '1', 'admin', '1', '1510124882', '1510719333', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '刮风', '/uploads/20171113/s_3cf51b7288510ed26aef4be7b512beeb.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '1');
+INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171113/845737304c0d25fbd812782d825ba91d.jpg', '19', '0', '1', 'admin', '0', '1510125795', '1510719279', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急', '/uploads/20171113/s_845737304c0d25fbd812782d825ba91d.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '2');
 
 -- ----------------------------
 -- Table structure for clt_uplome
@@ -4402,14 +4410,16 @@ CREATE TABLE `clt_utest` (
   `addtime` int(11) NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `f_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '副标题',
+  `status` tinyint(255) NOT NULL DEFAULT '1' COMMENT '重考状态',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_utest
 -- ----------------------------
-INSERT INTO `clt_utest` VALUES ('2', '4', '6', '[false,true,true,true]', '9', '1510559461', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"0\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"1\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"1\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '第二期');
-INSERT INTO `clt_utest` VALUES ('3', '4', '7', '[true,true,true]', '9', '1510566204', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '第一期');
+INSERT INTO `clt_utest` VALUES ('2', '4', '6', '[false,true,true,true]', '9', '1510559461', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"0\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"1\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"1\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '雅洁培训试题2', '第二期试题', '2');
+INSERT INTO `clt_utest` VALUES ('3', '4', '7', '[true,true,true]', '9', '1510566204', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '雅洁培训试题1', '第一期试题', '1');
 
 -- ----------------------------
 -- Table structure for clt_video

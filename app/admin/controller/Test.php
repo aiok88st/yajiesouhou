@@ -36,13 +36,14 @@ class Test extends Common
             $tests = $request->param();
             $result = $this->validate(
                 $tests,
-                ['title|标题' => 'require', 'content|题目' => 'require',]);
+                ['title|标题' => 'require', 'content|题目' => 'require','f_title|副标题' => 'require',]);
             if (true !== $result) {
                 // 验证失败 输出错误信息
                 return json(['code' => 0, 'msg' => $result,]);
             }
             $data = [
                 'title'=>$tests['title'],
+                'f_title'=>$tests['f_title'],
                 'content'=>json_encode($tests['content']),
                 'createtime'=>time(),
             ];
@@ -65,7 +66,7 @@ class Test extends Common
             $tests = $request->param();
             $result = $this->validate(
                 $tests,
-                ['title|标题' => 'require', 'content|题目' => 'require',]);
+                ['title|标题' => 'require', 'content|题目' => 'require','f_title|副标题' => 'require',]);
             if (true !== $result) {
                 // 验证失败 输出错误信息
                 return json(['code' => 0, 'msg' => $result,]);

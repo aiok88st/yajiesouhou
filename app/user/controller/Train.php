@@ -13,7 +13,7 @@ class Train extends Common
         $name = input('key');
         $where = array();
         if($name){
-            $where['title'] = array('like', "%$name%");
+            $where['title|date_num|keywords'] = array('like', "%$name%");
         }
         $data = Db::name('tvd')->where($where)->order("createtime desc")->paginate(12);
         $page = $data->render();//获取分页

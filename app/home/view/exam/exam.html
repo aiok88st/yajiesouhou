@@ -27,18 +27,20 @@
 						<ul class="wjdc_list">
 							<input type='hidden' class='scot' value='{$vo.score}'>
 							<li>
-								<p class="tm_btitlt">
-									{$k}.<i class="btwenzi">{$vo.title}</i>
-									{if condition="$vo.type eq 1"}
-		                            <span class="tip_wz">【单选】</span><span>（{$vo.score}分）</span>
-		                            {elseif condition="$vo.type eq 2"}
-		                            <span class="tip_wz">【多选】</span><span>（{$vo.score}分）</span>
-		                            {elseif condition="$vo.type eq 3"}
-		                            <span class="tip_wz">【判断】</span><span>（{$vo.score}分）</span>
-		                            {else/}
-		                            <span class="tip_wz">【问答】</span><span>（{$vo.score}分）</span>
-		                            {/if}
-								</p>
+								<div class="pt">
+									<p class="tm_btitlt">
+										{$k}.<span class="btwenzi">{$vo.title}</span>
+										{if condition="$vo.type eq 1"}
+										<span class="tip_wz">【单选】</span><span>（{$vo.score}分）</span>
+										{elseif condition="$vo.type eq 2"}
+										<span class="tip_wz">【多选】</span><span>（{$vo.score}分）</span>
+										{elseif condition="$vo.type eq 3"}
+										<span class="tip_wz">【判断】</span><span>（{$vo.score}分）</span>
+										{else/}
+										<span class="tip_wz">【问答】</span><span>（{$vo.score}分）</span>
+										{/if}
+									</p>
+								</div>
 							</li>
 							<div class="choice"> 
 								<ul class="chput">
@@ -78,9 +80,23 @@
 				</div>		
 			</div>
 			<div class="st">
-			<input TYPE="hidden" name="id" id="tsetid" value="{$test.id}">
+			    <input TYPE="hidden" name="id" id="tsetid" value="{$test.id}">
 				<button onclick="addj()">提交</button>
 			</div>
+            <!--答题结果-->
+            <div class="result" style="display: none;">
+                <div class="score">
+                    <div>
+                        <p><span id="score">80</span>分</p>
+                        <p>回答错误&nbsp;&nbsp;<span id="false">2</span>&nbsp;&nbsp;回答正确&nbsp;&nbsp;<span id="true">8</span>&nbsp;&nbsp;</p>
+                    </div>
+                </div>
+                <div class="rBtn">
+                    <a class="floatl" href="{:url('Teach/index')}">返回首页</a>
+                    <a class="floatr toResult" href="">查看试题</a>
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
 		</div>
 {/block}
 {block name="footer"}
@@ -105,7 +121,13 @@
                     layer.closeAll();
                     if (res.code > 0) {
                         layer.msg(res.msg, {time: 1800, icon: 1}, function () {
-                            location.href = res.url;
+                            $('.problemBox').hide();
+                            $('.st').hide();
+                            $('.result').show();
+                            $('#score').text(res.lists.score);
+                            $('#false').text(res.lists.false);
+                            $('#true').text(res.lists.true);
+                            $('.toResult').attr('href',"{:url('Exam/detail')}?id="+res.lists.id);
                         });
                     } else {
                         layer.msg(res.msg, {time: 1800, icon: 2});
@@ -114,6 +136,12 @@
             });
         });
     }
+    $(function() {
+        //设置没有相关结果
+        setTimeout(function() {
+            $('.result').height($(window).height() - $('.pHead').height());
+        }, 200);
+    })
 </script>
 {/block}
 

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:48:"F:\wamp\www\yajie/app/home\view\user\person.html";i:1510829479;s:50:"F:\wamp\www\yajie/app/home\view\common\header.html";i:1510391119;s:50:"F:\wamp\www\yajie/app/home\view\common\footer.html";i:1510391232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:48:"F:\wamp\www\yajie/app/home\view\user\person.html";i:1510914890;s:50:"F:\wamp\www\yajie/app/home\view\common\header.html";i:1510391119;s:50:"F:\wamp\www\yajie/app/home\view\common\footer.html";i:1510391232;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +86,7 @@
 			<div class="myOrder">
 				<div class="moreOrder">
 					<p>查看更多</p>
-					<a href="order.html">保修进度</a>
+					<a href="javascript:;">保修进度</a>
 				</div>
 				<div class="orderBox">
 					<div class="orders floatl">
@@ -330,9 +330,10 @@
     layui.use('layer', function(){
         var layer = layui.layer;
     });
+
     $('.logouts').bind('click',function(){
         popw("温馨提示","确认要退出吗？",2,function(){
-            window.location.href="<?php echo url('Login/index'); ?>";
+            window.location.href="<?php echo url('Login/logout'); ?>";
         })
     })
     //保存

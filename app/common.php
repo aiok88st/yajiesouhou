@@ -704,6 +704,18 @@ function getTree2($table,$pid=0,$num=1,$selectId=0){
     }
     return $tree;
 }
+//无限极分类总数
+function getTreeNum($table,$pid=0){
+    $list=db($table)->where("parentid=$pid")->select();
+    $tree='';
+    foreach ($list as $key=>$v){
+        $tree.= $v['catname'].'-'.$v['id'].',';
+        //找第一级的子分类
+        $optionSon=getTreeNum($table,$v['id']);
+        $tree.=$optionSon;
+    }
+    return $tree;
+}
 
 //省市区三级联动
 function getLocation($table,$pid,$type){

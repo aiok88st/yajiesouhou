@@ -1,0 +1,72 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>我的收藏</title>
+<link rel="stylesheet" href="__HOME__/css/head.css" />
+<link rel="stylesheet" href="__HOME__/css/publicSI.css" />
+<link rel="stylesheet" href="__HOME__/css/search.css" />
+<link rel="stylesheet" href="__HOME__/css/help.css" />
+<link rel="stylesheet" href="__HOME__/css/helpHistory.css" />
+{/block}
+{block name="main"}
+		<!--导航栏-->
+		<div id = "home">
+			<div class="pHead">
+				<a href="teachSearch.html" class="back backP"><img src="__HOME__/img/back.png"/></a>
+				<p>视频搜索</p>
+			</div>
+			<div class="search">
+				<div class="sLeft floatl">
+					<div class="sImg">
+						<img src="__HOME__/img/searchBkg.png" />
+					</div>
+					<input id="search" type="search" placeholder="输入关键词" />
+				</div>
+				<div class="sRight floatr">
+					<button id="submit">搜索</button>
+				</div>
+				<div class="clearBoth"></div>
+			</div>
+			<div class="history">
+					<div class="historyBox">
+						<div class="historySearch">
+							<p>历史搜索</p>
+						</div>
+						<div class="historyContent">
+							<ul>
+                                {volist name="history" id="vo"}
+                                <li>
+                                    <p href="###">{$vo}</p>
+                                </li>
+                                {/volist}
+							</ul>
+						</div>
+						<div class="clearHistory">
+							<button onclick="removeHistory()">清空历史搜索</button>
+						</div>
+					</div>
+				</div>
+			<!--<div class="bottomText">
+				<p>ARCHIE 雅洁五金</p>
+				<p>www.archie.com</p>
+			</div>-->
+		</div>
+
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/public.js" ></script>
+<script type="text/javascript" src="__HOME__/js/helpHistory.js" ></script>
+<script>
+    $(function(){
+        $('#submit').on('click',function(){
+            var key = $('#search').val();
+            window.location.href ='{:url("Teach/search")}?key='+key;
+        });
+    });
+    function removeHistory(){
+        window.location.href="{:url('Teach/clear')}";
+    }
+</script>
+{/block}
+

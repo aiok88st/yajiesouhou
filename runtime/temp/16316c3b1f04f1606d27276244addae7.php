@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:45:"F:\wamp\www\yajie/app/admin\view\tvd\add.html";i:1510828447;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1507509539;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:45:"F:\wamp\www\yajie/app/admin\view\tvd\add.html";i:1510909836;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1507509539;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,6 +109,26 @@
 
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">视频图片</label>
+            <input type="hidden" name="images" id="images" <?php if($info['id'] != ''): ?>value="<?php echo $info['images']; ?>"<?php endif; ?>>
+            <div class="layui-input-block">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn layui-btn-primary" id="imagesBtn"><i class="icon icon-upload3"></i>点击上传</button>
+                    <label style="color: #9C9C9C;font-size: 12px;">请上传320X178规格图片</label>
+                    <div class="layui-upload-list">
+                        <?php if($info['id'] != ''): ?>
+                        <img class="layui-upload-img" id="cltimages" src="__PUBLIC__<?php echo $info['images']; ?>">
+                        <?php else: ?>
+                        <img class="layui-upload-img" id="cltimages">
+                        <?php endif; ?>
+                        <p id="images_demoText"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
             <label class="layui-form-label">视频链接</label>
             <div class="layui-input-4">
                 <input type="text" name="link" <?php if($info['id'] != ''): ?>value="<?php echo $info['link']; ?>"<?php endif; ?> lay-verify="required" placeholder="请输入视频链接" class="layui-input">
@@ -170,6 +190,16 @@
                 $('#cltThumb').attr('src', "__PUBLIC__"+res.url);
                 $('#thumb').val(res.url);
                 $('#thumb_s').attr('value',res.thumb_s);
+            }
+        });
+        upload.render({
+            elem: '#imagesBtn'
+            ,url: '<?php echo url("UpFiles/upload"); ?>'
+            ,accept: 'images' //普通文件
+            ,exts: 'jpg|png|gif' //只允许上传压缩文件
+            ,done: function(res){
+                $('#cltimages').attr('src', "__PUBLIC__"+res.url);
+                $('#images').val(res.url);
             }
         });
         //日期

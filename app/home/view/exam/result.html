@@ -1,0 +1,94 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>测试结果</title>
+<link rel="stylesheet" href="__HOME__/css/exam.css" />
+{/block}
+{block name="main"}
+		<div id="exam">
+			<div class="pHead">
+				<a href="{:url('user/index')}" class="back backP"><img src="__HOME__/img/back.png"/></a>
+				<p>我的测试</p>
+			</div>
+			<div class="problemOut">
+				<div class="problemBox">
+					<div class="score">
+						<p><span>{$test.score}</span>分</p>
+					</div>
+					<div class="pTitle">
+						<ul>
+							<li>
+								<p>{$test.title}</p>
+							</li>
+							<li>
+								<p>{$test.f_title}</p>
+							</li>
+						</ul>					
+					</div>
+					<div class="problems">
+
+                        {volist name="$test.content" id="vo" key="k"}
+                        <div class="problem dan movie_box" >
+                            <ul class="wjdc_list">
+                                <input type='hidden' class='scot' value='{$vo.score}'>
+                                <li>
+                                    <div class="pt">
+                                        <p class='tm_btitlt rt {if condition="$vo.answers eq false"}errorS{/if}'  />
+                                            {$k}.<span class="btwenzi">{$vo.title}</span>
+                                            {if condition="$vo.type eq 1"}
+                                            <span class="tip_wz">【单选】</span><span>（{$vo.score}分）</span>
+                                            {elseif condition="$vo.type eq 2"}
+                                            <span class="tip_wz">【多选】</span><span>（{$vo.score}分）</span>
+                                            {elseif condition="$vo.type eq 3"}
+                                            <span class="tip_wz">【判断】</span><span>（{$vo.score}分）</span>
+                                            {else/}
+                                            <span class="tip_wz">【问答】</span><span>（{$vo.score}分）</span>
+                                            {/if}
+                                        </p>
+                                        {if condition="$vo.answers eq false"}<img src="__HOME__/img/error.png">{/if}
+                                    </div>
+                                </li>
+                                <div class="choice">
+                                    <ul class="chput">
+                                        {volist name="$vo.input" id="vv"}
+                                        <li class="input">
+                                            {if condition="$vo.type eq 1"}
+                                            <label class='radio {if condition="$vo.answers eq false"}errorS{/if}' >
+                                                <input name="a{$k}0" type="radio" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}" />
+                                                <i></i>
+                                            {elseif condition="$vo.type eq 2"}
+                                                <label class='checkBox {if condition="$vo.answers eq false"}errorS{/if}' >
+                                                    <input name="a{$k}0" type="checkbox" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}" />
+                                                    <i></i>
+                                            {elseif condition="$vo.type eq 3"}
+                                                <label class='radio {if condition="$vo.answers eq false"}errorS{/if}' >
+                                                    <input name="a{$k}0" type="radio" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}" />
+                                                    <i></i>
+                                            {else/}
+                                                <label class='radio {if condition="$vo.answers eq false"}errorS{/if}' >
+                                                     <input name="a{$k}0" type="radio" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}">
+                                                     <i></i>
+                                            {/if}
+                                            <span>{$vv.val}</span>
+                                            </label>
+                                        </li>
+                                        {/volist}
+
+                                    </ul>
+                                </div>
+                            </ul>
+                        </div>
+                        {/volist}
+
+
+					</div>		
+				</div>
+			</div>
+		</div>
+{/block}
+{block name="footer"}
+{include file="common/footer" /}
+
+{/block}
+
+
+

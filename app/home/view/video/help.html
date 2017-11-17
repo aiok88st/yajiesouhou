@@ -67,7 +67,7 @@
                 {else/}
 				<div class="videoOut" id="proListRow">
                     {volist name="video" id="vc"}
-					<div class="videoIn" >
+					<div class="videoIn" onclick="getDetail('{$vc.id}')">
 						<div class="videoShow" style="height: 3.56rem;overflow: hidden;">
 							<img src="__PUBLIC__{$vc.thumb}" style="position:relative"/>
 							<div class="videoBox">
@@ -118,7 +118,7 @@
                 $('#childen').html(ch);
                 if(list.length>=1){
                     for(item in list){
-                        html +='<div class="videoIn">';
+                        html +='<div class="videoIn" onclick="getDetail('+list[item].id+')">';
                         html +='<div class="videoShow" style="height: 3.56rem;overflow: hidden;">';
                         html +='<img src="__PUBLIC__'+list[item].thumb+'" style="position:relative"/>';
                         html +='<div class="videoBox">';
@@ -142,7 +142,9 @@
             }
         });
     }
-
+	function getDetail(id){
+		window.location.href="{:url('Video/details')}?id="+id;
+	}
 </script>
 <script type="text/javascript" src="__HOME__/js/help.js" ></script>
 

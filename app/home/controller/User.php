@@ -112,18 +112,4 @@ class User extends Fater
     }
 
 
-
-    //收藏
-    public function collect(){
-        $did=4;
-        $tid=1;
-        $data = [
-            'uid'=>$did,
-            'tid'=>$tid
-        ];
-        $re = db('collect')->insert($data);
-    }
-
-
-
 }

@@ -41,7 +41,7 @@
 			<div class="myOrder">
 				<div class="moreOrder">
 					<p>查看更多</p>
-					<a href="order.html">保修进度</a>
+					<a href="javascript:;">保修进度</a>
 				</div>
 				<div class="orderBox">
 					<div class="orders floatl">
@@ -278,9 +278,10 @@
     layui.use('layer', function(){
         var layer = layui.layer;
     });
+
     $('.logouts').bind('click',function(){
         popw("温馨提示","确认要退出吗？",2,function(){
-            window.location.href="{:url('Login/index')}";
+            window.location.href="{:url('Login/logout')}";
         })
     })
     //保存

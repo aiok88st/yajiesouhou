@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"F:\wamp\www\yajie/app/home\view\collect\collect.html";i:1510829444;s:50:"F:\wamp\www\yajie/app/home\view\common\header.html";i:1510391119;s:50:"F:\wamp\www\yajie/app/home\view\common\footer.html";i:1510391232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:52:"F:\wamp\www\yajie/app/home\view\collect\collect.html";i:1510913727;s:50:"F:\wamp\www\yajie/app/home\view\common\header.html";i:1510391119;s:50:"F:\wamp\www\yajie/app/home\view\common\footer.html";i:1510391232;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +46,89 @@
 <title>我的收藏</title>
 <link rel="stylesheet" href="__HOME__/css/publicSI.css" />
 <link rel="stylesheet" href="__HOME__/css/collect.css" />
+<style>
+    .videoIn {
+        margin-bottom: 0rem;
+        margin-top: 0.2rem;
+    }
+    .videoIn .bottomTitle p:nth-child(1){
+        color: #641d90;
+        width: 50%;
+    }
+    .videoIn .bottomTitle p:nth-child(3){
+        position: absolute;
+        top: 0;
+        right: 25%;
+        background: url(__HOME__/img/time.png) no-repeat left center;
+        background-size: auto 0.24rem;
+        text-indent: 0.34rem;
+        padding: 0;
+    }
+    .videoIn .bottomTitle p:nth-child(2){
+        background-image: url(__HOME__/img/eyes.png);
+        background-size: auto 0.23rem;
+    }
+    /*一级*/
+    .clist{
+        width: 100%;
+        height: 0.8rem;
+        background-color: white;
+        overflow: hidden;
+        border-top: 1px solid #e5e5e5;
+    }
+    .clist ul li{
+        float: left;
+        font-size: 0.28rem;
+        line-height: 0.8rem;
+        text-align: center;
+        position: relative;
+    }
+    .clist ul li span{
+        position: absolute;
+        background-color: #6e0a95;
+        width: 0.56rem;
+        height: 3px;
+        bottom:0 ;
+        left: 50%;
+        margin-left: -0.28rem;
+        display: none;
+    }
+    .clist ul .at{
+        color: #6e0a95;
+    }
+    .clist ul .at span{
+        display: block;
+    }
+    .clistIn{
+        overflow-x: scroll;
+    }
+</style>
+<script>
+    $(function(){
+        $('.clistIn ul li').on('click',function(){
+            $(this).addClass('at');
+            $(this).siblings('li').removeClass('at');
+        });
+    });
+
+    $(function(){
+        //一级标题数目
+        var clist = <?php echo $count_num; ?>;
+        switch(clist){
+            case 1:
+                $(".clist ul li").width($(window).width());
+                break;
+            case 2:
+                $(".clist ul li").width($(window).width()/2);
+                break;
+            default:
+                $(".clistIn ul").width($(window).width()/3*clist);
+                $(".clist ul li").width($(window).width()/3);
+                break;
+        }
+    });
+
+</script>
 
 </head>
 <body id="vueMain">
@@ -57,13 +140,20 @@
 				<a href="person.html" class="back backP"><img src="__HOME__/img/back.png"/></a>
 				<p>我的收藏</p>
 			</div>
-			<div class="video">
-                <?php if(is_array($catids) || $catids instanceof \think\Collection || $catids instanceof \think\Paginator): $k = 0; $__LIST__ = $catids;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?>
-				<button href="###" v-on:click="changeCatid('<?php echo $vo['id']; ?>')" <?php if($k == 1): ?>class="tActive" disabled="disabled"<?php endif; ?>><?php echo $vo['catname']; ?></button>
-                <?php endforeach; endif; else: echo "" ;endif; ?>
-				<span></span>
-				<div class="clearl"></div>
-			</div>
+            <div class="clist">
+                <div class="clistIn">
+                    <ul>
+                        <?php if(is_array($catids) || $catids instanceof \think\Collection || $catids instanceof \think\Paginator): $k = 0; $__LIST__ = $catids;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;
+                                $data = explode('-',$vo);
+                             ?>
+                        <li v-on:click="changeCatid('<?php echo $data[1]; ?>')" <?php if($k == 1): ?>class="at" <?php endif; ?> ><?php echo $data[0]; ?><span></span></li>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+
+                    </ul>
+                    <div class="clearl"></div>
+                </div>
+            </div>
+
 
             <template v-if='searchResult.length>0'>
 
@@ -71,7 +161,7 @@
 				<div class="qusetionBox">
 					<div class="qList">
                         <template v-for="(key,item) in searchResult">
-						<a href="###" class="questionDetails">
+						<a href="<?php echo url('Teach/details'); ?>?id={{item.id}}" class="questionDetails">
 							<div class="qdl floatl centerCenter">
                                 <img src="__PUBLIC__{{item.thumb}}" />
 							</div>
@@ -105,7 +195,7 @@
 						<p style="margin-bottom: 0;">您没有收藏的视频</p>
 					</li>
 					<li>
-						<a href="###" >查看视频</a>
+						<a href="<?php echo url('Teach/index'); ?>" >查看视频</a>
 					</li>
 				</ul>			
 			</div>
@@ -129,7 +219,6 @@
     var data={
         searchResult:[],
     };
-
     var all = new Vue({
         el:'#vueMain',
         data:data,

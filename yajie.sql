@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-16 21:22:43
+Date: 2017-11-17 18:40:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -114,7 +114,7 @@ CREATE TABLE `clt_article` (
 -- ----------------------------
 -- Records of clt_article
 -- ----------------------------
-INSERT INTO `clt_article` VALUES ('1', '5', '1', 'admin', '智能门锁：你不知道的防盗秘密', 'color:;font-weight:normal;', '/uploads/20171108/5e647a20820372b4b6ba5d8815ba6a23.jpg', '智能门锁 防盗', '', '<p>智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。</p>', '', '0', '1', '1', '1509434586', '1510189469', 'CLTPHP', '2', '10086', '118', '', '防盗秘密你知道多少，关于雅洁智能防盗锁你', '2');
+INSERT INTO `clt_article` VALUES ('1', '5', '1', 'admin', '智能门锁：你不知道的防盗秘密', 'color:;font-weight:normal;', '/uploads/20171108/5e647a20820372b4b6ba5d8815ba6a23.jpg', '智能门锁 防盗', '', '<p>智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。</p>', '', '0', '1', '1', '1509434586', '1510189469', 'CLTPHP', '2', '10086', '119', '', '防盗秘密你知道多少，关于雅洁智能防盗锁你', '2');
 INSERT INTO `clt_article` VALUES ('2', '6', '1', 'admin', '智能门锁：你不知道的防盗秘密', 'color:;font-weight:normal;', '/uploads/20171108/5e647a20820372b4b6ba5d8815ba6a23.jpg', '智能门锁 防盗', '', '<p>智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。</p>', '', '0', '1', '0', '1509958054', '1510189510', 'CLTPHP', '2', '10086', '1', '', '防盗秘密你知道多少，关于雅洁智能防盗锁你', '0');
 INSERT INTO `clt_article` VALUES ('3', '7', '1', 'admin', '智能门锁：你不知道的防盗秘密', 'color:;font-weight:normal;', '/uploads/20171108/5e647a20820372b4b6ba5d8815ba6a23.jpg', '智能门锁 防盗', '', '<p>智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。</p>', '', '0', '1', '0', '1509958726', '1510189493', 'CLTPHP', '1', '10086', '0', '', '防盗秘密你知道多少，关于雅洁智能防盗锁你', '0');
 INSERT INTO `clt_article` VALUES ('4', '7', '1', 'admin', '智能门锁：你不知道的防盗秘密', 'color:;font-weight:normal;', '/uploads/20171108/5e647a20820372b4b6ba5d8815ba6a23.jpg', '智能门锁 防盗', '', '<p>智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。智能门锁控制方案中对门锁嵌入式开发是比较重要的一步，这样才能在硬件上实现无线数据转换以及无线控制。智能门锁主要采用的串口wifi模块TLN13UA06，它是新一代嵌入式Wi-Fi模块产品，软、硬件接口全面兼容TLG10UA03，蓝牙模块，蓝牙芯片，体积小，功耗低。</p>', '', '0', '1', '0', '1509959226', '1510189483', 'CLTPHP', '2', '10086', '24', '', '防盗秘密你知道多少，关于雅洁智能防盗锁你', '3');
@@ -314,7 +314,7 @@ CREATE TABLE `clt_category` (
   PRIMARY KEY (`id`),
   KEY `parentid` (`parentid`),
   KEY `listorder` (`listorder`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_category
@@ -343,9 +343,10 @@ INSERT INTO `clt_category` VALUES ('22', '智能门锁', 'z1', 'video_type/v2/',
 INSERT INTO `clt_category` VALUES ('23', '机械门锁', 'z2', 'video_type/v2/', '8', '19', 'video', '0,1,8', '23', '0', '机械门锁', '机械门锁', '机械门锁', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('24', '指纹锁', 'z3', 'video_type/v2/', '8', '19', 'video', '0,1,8', '24', '0', '指纹锁', '指纹锁', '指纹锁', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('25', '其他', 'z4', 'video_type/v2/', '8', '19', 'video', '0,1,8', '25', '0', '其他', '其他', '其他', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
-INSERT INTO `clt_category` VALUES ('26', '培训视频资料分类', 'p1', '', '0', '23', 'tvd', '0', '26,27', '0', '培训视频资料分类', '培训视频资料分类', '培训视频资料分类', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
+INSERT INTO `clt_category` VALUES ('26', '培训视频资料分类', 'p1', '', '0', '23', 'tvd', '0', '26,27,28', '0', '培训视频资料分类', '培训视频资料分类', '培训视频资料分类', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('27', '教学视频', 'p2', 'p1/', '26', '23', 'tvd', '0,26', '27', '0', '教学视频', '教学视频', '教学视频', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('28', '视频小知识', 'p3', 'p1/', '26', '23', 'tvd', '0,26', '28', '0', '视频小知识', '视频小知识', '视频小知识', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
+INSERT INTO `clt_category` VALUES ('29', '教学视频1', 'j1', 'p1/p2/', '27', '23', 'tvd', '0,26,27', '29', '0', '教学视频1', '教学视频1', '教学视频1', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 
 -- ----------------------------
 -- Table structure for clt_collect
@@ -356,13 +357,13 @@ CREATE TABLE `clt_collect` (
   `uid` int(11) NOT NULL,
   `tid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_collect
 -- ----------------------------
 INSERT INTO `clt_collect` VALUES ('1', '4', '1');
-INSERT INTO `clt_collect` VALUES ('3', '4', '2');
+INSERT INTO `clt_collect` VALUES ('5', '4', '2');
 
 -- ----------------------------
 -- Table structure for clt_config
@@ -461,7 +462,7 @@ CREATE TABLE `clt_field` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `issystem` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=271 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=272 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_field
@@ -581,6 +582,7 @@ INSERT INTO `clt_field` VALUES ('265', '23', 'weblink', '网盘链接', '', '1',
 INSERT INTO `clt_field` VALUES ('264', '2', 'clicknum', '点赞数', '', '0', '0', '0', 'defaul', '', 'clicknum', 'text', 'array (\n  \'default\' => \'0\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '11', '1', '0');
 INSERT INTO `clt_field` VALUES ('268', '23', 'keywords', '关键词', '', '0', '0', '0', 'defaul', '', 'keywords', 'text', 'array (\n  \'default\' => \'\',\n  \'ispassword\' => \'0\',\n  \'fieldtype\' => \'varchar\',\n)', '0', '', '0', '1', '0');
 INSERT INTO `clt_field` VALUES ('270', '23', 'catid', '分类', '', '1', '0', '0', 'defaul', '', 'catid', 'catid', '', '0', '', '0', '1', '0');
+INSERT INTO `clt_field` VALUES ('271', '23', 'images', '视频图片', '', '1', '0', '0', 'defaul', '', 'images', 'image', 'array (\n  \'upload_allowext\' => \'jpg|jpeg|gif|png\',\n)', '0', '', '4', '1', '0');
 
 -- ----------------------------
 -- Table structure for clt_member_open
@@ -4330,9 +4332,9 @@ CREATE TABLE `clt_test` (
 -- ----------------------------
 -- Records of clt_test
 -- ----------------------------
-INSERT INTO `clt_test` VALUES ('7', '1510565793', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '雅洁培训试题1', '第一期试题');
-INSERT INTO `clt_test` VALUES ('6', '1510294784', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"1\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"1\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '雅洁培训试题2', '第二期试题');
-INSERT INTO `clt_test` VALUES ('8', '1510794477', '[{\"type\":\"1\",\"title\":\"\\u5929\\u5927\\u8fd8\\u662f\\u5730\\u5927\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5929\",\"answer\":\"0\"},{\"val\":\"\\u5730\",\"answer\":\"0\"},{\"val\":\"\\u4e00\\u6837\\u5927\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u77e5\\u9053\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u6c64\",\"answer\":\"0\"}]}]', '雅洁测试', '雅洁测试1-1');
+INSERT INTO `clt_test` VALUES ('7', '1510565793', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '雅洁培训试题2', '第二期');
+INSERT INTO `clt_test` VALUES ('6', '1510294784', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"1\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"1\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '雅洁培训试题1', '第一期');
+INSERT INTO `clt_test` VALUES ('8', '1510794477', '[{\"type\":\"1\",\"title\":\"\\u5929\\u5927\\u8fd8\\u662f\\u5730\\u5927\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5929\",\"answer\":\"0\"},{\"val\":\"\\u5730\",\"answer\":\"0\"},{\"val\":\"\\u4e00\\u6837\\u5927\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u77e5\\u9053\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u6c64\",\"answer\":\"0\"}]}]', '雅洁培训试题3', '第三期');
 
 -- ----------------------------
 -- Table structure for clt_tvd
@@ -4362,14 +4364,15 @@ CREATE TABLE `clt_tvd` (
   `date_num` varchar(255) NOT NULL DEFAULT '',
   `keywords` varchar(255) NOT NULL DEFAULT '',
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `images` varchar(80) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_tvd
 -- ----------------------------
-INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171116/9a5ad67f95b0af4584099e8166795362.jpg', '103', '0', '1', 'admin', '1', '1510124882', '1510828499', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '刮风', '/uploads/20171116/s_9a5ad67f95b0af4584099e8166795362.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '27');
-INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '22', '0', '1', 'admin', '0', '1510125795', '1510828486', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28');
+INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171116/9a5ad67f95b0af4584099e8166795362.jpg', '109', '0', '1', 'admin', '1', '1510124882', '1510909886', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '刮风', '/uploads/20171116/s_9a5ad67f95b0af4584099e8166795362.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '27', '/uploads/20171117/e22879b375ae19bbe9ce7937c9b9ebf6.jpg');
+INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '53', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
 
 -- ----------------------------
 -- Table structure for clt_uplome
@@ -4435,14 +4438,14 @@ CREATE TABLE `clt_utest` (
   `f_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '副标题',
   `status` tinyint(255) NOT NULL DEFAULT '1' COMMENT '重考状态',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_utest
 -- ----------------------------
-INSERT INTO `clt_utest` VALUES ('2', '4', '6', '[true,false,true,true]', '9', '1510559461', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"1\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"1\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '雅洁培训试题2', '第二期试题', '1');
-INSERT INTO `clt_utest` VALUES ('3', '4', '7', '[true,true,true]', '9', '1510566204', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '雅洁培训试题1', '第一期试题', '1');
-INSERT INTO `clt_utest` VALUES ('4', '4', '8', '[true,true]', '6', '1510838292', '[{\"type\":\"1\",\"title\":\"\\u5929\\u5927\\u8fd8\\u662f\\u5730\\u5927\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5929\",\"answer\":\"0\"},{\"val\":\"\\u5730\",\"answer\":\"0\"},{\"val\":\"\\u4e00\\u6837\\u5927\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u77e5\\u9053\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u6c64\",\"answer\":\"0\"}]}]', '雅洁测试', '雅洁测试1-1', '1');
+INSERT INTO `clt_utest` VALUES ('2', '4', '6', '[true,false,true,true]', '9', '1510559461', '[{\"type\":\"1\",\"title\":\"\\u4f60\\u662f\\u8c01\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u6211\",\"answer\":\"0\"},{\"val\":\"\\u4f60\",\"answer\":\"1\"},{\"val\":\"\\u4ed6\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u5f00\\u5fc3\\u5417\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5f00\\u5fc3\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u5f00\\u5fc3\",\"answer\":\"1\"},{\"val\":\"\\u5475\\u5475\",\"answer\":\"0\"},{\"val\":\"\\u4f60\\u731c\",\"answer\":\"1\"}]},{\"type\":\"3\",\"title\":\"\\u4f60\\u597d\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u597d\",\"answer\":\"0\"},{\"val\":\"\\u4e0d\\u597d\",\"answer\":\"1\"}]},{\"type\":\"1\",\"title\":\"\\u55ef\\u597d\\u7684\",\"score\":\"3\",\"input\":[{\"val\":\"\\u989d\\u5982\\u4f55\",\"answer\":\"0\"},{\"val\":\"\\u8ba9\\u4ed6\\u8ba9\\u4ed6\",\"answer\":\"1\"},{\"val\":\"\\u800c\\u540c\\u6837\",\"answer\":\"0\"},{\"val\":\"\\u800c\\u8a00\\u9884\\u7ea6\",\"answer\":\"0\"}]}]', '雅洁培训试题1', '第一期', '1');
+INSERT INTO `clt_utest` VALUES ('3', '4', '7', '[true,true,true]', '9', '1510566204', '[{\"type\":\"1\",\"title\":\"\\u4eca\\u5929\\u5929\\u6c14\\u600e\\u4e48\\u6837\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u9634\\u5929\",\"answer\":\"1\"},{\"val\":\"\\u591a\\u4e91\",\"answer\":\"0\"},{\"val\":\"\\u4e0b\\u96e8\",\"answer\":\"0\"},{\"val\":\"\\u5fae\\u98ce\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u7ca5\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u4eca\\u5929\\u661f\\u671f\\u51e0\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u661f\\u671f\\u4e00\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e8c\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u4e09\",\"answer\":\"0\"},{\"val\":\"\\u661f\\u671f\\u56db\",\"answer\":\"1\"}]}]', '雅洁培训试题2', '第二期', '1');
+INSERT INTO `clt_utest` VALUES ('9', '4', '8', '[true,true]', '6', '1510890209', '[{\"type\":\"1\",\"title\":\"\\u5929\\u5927\\u8fd8\\u662f\\u5730\\u5927\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5929\",\"answer\":\"0\"},{\"val\":\"\\u5730\",\"answer\":\"0\"},{\"val\":\"\\u4e00\\u6837\\u5927\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u77e5\\u9053\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u6c64\",\"answer\":\"0\"}]}]', '雅洁培训试题3', '第三期', '1');
 
 -- ----------------------------
 -- Table structure for clt_video
@@ -4478,5 +4481,5 @@ CREATE TABLE `clt_video` (
 -- ----------------------------
 -- Records of clt_video
 -- ----------------------------
-INSERT INTO `clt_video` VALUES ('1', '3', '1', 'admin', '智能指纹锁AJD012213-123', 'color:;font-weight:normal;', '/uploads/20171114/b3bbea1b1e1b60363d943fb55df2087f.jpg', '', '', '', '0', '1', '1', '580000', '1509326032', '1510625531', '4', '智能指纹锁AJD012213-123', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');
-INSERT INTO `clt_video` VALUES ('2', '22', '1', 'admin', '智能指纹锁AJD012213-1222', 'color:;font-weight:normal;', '/uploads/20171114/61a4feffc27aef9a24c8321c895a972c.jpg', '', '', '', '0', '1', '0', '10', '1510380807', '1510625494', '1', '智能指纹锁AJD012213-1222', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');
+INSERT INTO `clt_video` VALUES ('1', '3', '1', 'admin', '智能指纹锁AJD012213-123', 'color:;font-weight:normal;', '/uploads/20171114/b3bbea1b1e1b60363d943fb55df2087f.jpg', '', '', '', '0', '1', '1', '580002', '1509326032', '1510625531', '4', '智能指纹锁AJD012213-123', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');
+INSERT INTO `clt_video` VALUES ('2', '22', '1', 'admin', '智能指纹锁AJD012213-1222', 'color:;font-weight:normal;', '/uploads/20171114/61a4feffc27aef9a24c8321c895a972c.jpg', '', '', '', '0', '1', '0', '12', '1510380807', '1510625494', '1', '智能指纹锁AJD012213-1222', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');

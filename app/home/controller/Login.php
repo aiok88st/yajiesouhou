@@ -69,6 +69,7 @@ class Login extends Fater
     }
 
     public function logout(){
+        session('did',null);
         $this->redirect(url('home/Login/index'));
     }
 

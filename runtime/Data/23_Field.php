@@ -99,6 +99,29 @@ return array (
     'status' => 1,
     'issystem' => 0,
   ),
+  'images' => 
+  array (
+    'id' => 271,
+    'moduleid' => 23,
+    'field' => 'images',
+    'name' => '视频图片',
+    'tips' => '',
+    'required' => 1,
+    'minlength' => 0,
+    'maxlength' => 0,
+    'pattern' => 'defaul',
+    'errormsg' => '',
+    'class' => 'images',
+    'type' => 'image',
+    'setup' => 'array (
+  \'upload_allowext\' => \'jpg|jpeg|gif|png\',
+)',
+    'ispost' => 0,
+    'unpostgroup' => '',
+    'listorder' => 0,
+    'status' => 1,
+    'issystem' => 0,
+  ),
   'title' => 
   array (
     'id' => 247,

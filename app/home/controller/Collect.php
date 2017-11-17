@@ -16,14 +16,16 @@ class Collect extends Fater
 
     public function index(){
         $catid = input('catid')?input('catid'):27;
-        $catids = db('category')->where('parentid',26)->field('id,catname,parentid')->select();
+        $catids=explode(',',rtrim(getTreeNum('category',26),','));
         if(request()->isAjax()){
             $where['catid'] = ['=',$catid];
             $list = $this->getList($where);
             return $list;
         }
+        $count_num = count($catids);
         $this->assign('catids',$catids);
         $this->assign('catid',$catid);
+        $this->assign('count_num',$count_num);
         return $this->fetch('collect');
     }
 

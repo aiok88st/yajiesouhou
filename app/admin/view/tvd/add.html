@@ -96,6 +96,26 @@
 
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">视频图片</label>
+            <input type="hidden" name="images" id="images" {if condition="$info['id'] neq ''"}value="{$info['images']}"{/if}>
+            <div class="layui-input-block">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn layui-btn-primary" id="imagesBtn"><i class="icon icon-upload3"></i>点击上传</button>
+                    <label style="color: #9C9C9C;font-size: 12px;">请上传320X178规格图片</label>
+                    <div class="layui-upload-list">
+                        {if condition="$info['id'] neq ''"}
+                        <img class="layui-upload-img" id="cltimages" src="__PUBLIC__{$info['images']}">
+                        {else/}
+                        <img class="layui-upload-img" id="cltimages">
+                        {/if}
+                        <p id="images_demoText"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
             <label class="layui-form-label">视频链接</label>
             <div class="layui-input-4">
                 <input type="text" name="link" {if condition="$info['id'] neq ''"}value="{$info['link']}"{/if} lay-verify="required" placeholder="请输入视频链接" class="layui-input">
@@ -157,6 +177,16 @@
                 $('#cltThumb').attr('src', "__PUBLIC__"+res.url);
                 $('#thumb').val(res.url);
                 $('#thumb_s').attr('value',res.thumb_s);
+            }
+        });
+        upload.render({
+            elem: '#imagesBtn'
+            ,url: '{:url("UpFiles/upload")}'
+            ,accept: 'images' //普通文件
+            ,exts: 'jpg|png|gif' //只允许上传压缩文件
+            ,done: function(res){
+                $('#cltimages').attr('src', "__PUBLIC__"+res.url);
+                $('#images').val(res.url);
             }
         });
         //日期

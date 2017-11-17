@@ -28,6 +28,9 @@
                 </td>
             </tr>
             <tr>
+                <td><button onclick="collet('{$data.id}')" class="layui-btn" data-type="reload">收藏</button></td>
+            </tr>
+            <tr>
                 <td>
                     <a href="{:url('Exam/test')}?id={$data.tid}"><button class="layui-btn" data-type="reload">答题</button></a>
                     <a href="{$data.weblink}" target="_blank"><button class="layui-btn" data-type="reload">下载资料</button></a>
@@ -36,3 +39,21 @@
         </tbody>
     </table>
 </div>
+<script type="text/javascript">
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    function collet(id){
+        $.ajax({
+            url:"{:url('Train/collet')}?tid="+id,
+            type:"post",
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg, {icon: 1, time: 1000});
+                }else{
+                    layer.msg(re.msg, {icon: 2, anim: 6, time: 1000});
+                }
+            }
+        });
+    }
+</script>

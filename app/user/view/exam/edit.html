@@ -69,13 +69,13 @@
                             .
                             <i class="btwenzi">{$vo.title}</i>
                             {if condition="$vo.type eq 1"}
-                            <span class="tip_wz">【单选】</span><span>（{$vo.score}分）</span>{if condition="$vo.answers eq true"}<span><img src="__STATIC__/common/images/dui.png" style="width: 30px;"></span>{else/}<span><img src="__STATIC__/common/images/cuo.png" style="width: 30px;"></span>{/if}
+                            <span class="tip_wz">【单选】</span><span>（{$vo.score}分）</span>
                             {elseif condition="$vo.type eq 2"}
-                            <span class="tip_wz">【多选】</span><span>（{$vo.score}分）</span>{if condition="$vo.answers eq true"}<span><img src="__STATIC__/common/images/dui.png" style="width: 30px;"></span>{else/}<span><img src="__STATIC__/common/images/cuo.png" style="width: 30px;"></span>{/if}
+                            <span class="tip_wz">【多选】</span><span>（{$vo.score}分）</span>
                             {elseif condition="$vo.type eq 3"}
-                            <span class="tip_wz">【判断】</span><span>（{$vo.score}分）</span>{if condition="$vo.answers eq true"}<span><img src="__STATIC__/common/images/dui.png" style="width: 30px;"></span>{else/}<span><img src="__STATIC__/common/images/cuo.png" style="width: 30px;"></span>{/if}
+                            <span class="tip_wz">【判断】</span><span>（{$vo.score}分）</span>
                             {else/}
-                            <span class="tip_wz">【问答】</span><span>（{$vo.score}分）</span>{if condition="$vo.answers eq true"}<span><img src="__STATIC__/common/images/dui.png" style="width: 30px;"></span>{else/}<span><img src="__STATIC__/common/images/cuo.png" style="width: 30px;"></span>{/if}
+                            <span class="tip_wz">【问答】</span><span>（{$vo.score}分）</span>
                             {/if}
 
                         </div>
@@ -84,11 +84,11 @@
                     <li class="input">
                         <label>
                             {if condition="$vo.type eq 1"}
-                            <input name="a{$k}0" type="radio" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}" />
+                            <input name="a{$k}0" type="radio" value="{$vv.val}" />
                             {elseif condition="$vo.type eq 2"}
-                            <input name="a{$k}0" type="checkbox" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}" />
+                            <input name="a{$k}0" type="checkbox" value="{$vv.val}" />
                             {elseif condition="$vo.type eq 3"}
-                            <input name="a{$k}0" type="radio" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}" />
+                            <input name="a{$k}0" type="radio" value="{$vv.val}" />
                             {else/}
                             <input name="a{$k}0" type="radio" value="{$vv.val}">
                             {/if}
@@ -106,7 +106,6 @@
             <input TYPE="hidden" name="id" id="tsetid" value="{$test.id}">
             <input TYPE="hidden" name="tid" id="tid" value="{$test.tid}">
             <button class="btu" onclick="addj()">提交</button>
-            <a href="javascript:;" onclick="goback()" class="layui-btn layui-btn-primary">返回</a>
         </div>
     </div>
 </div>

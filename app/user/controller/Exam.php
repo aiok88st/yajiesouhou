@@ -49,10 +49,6 @@ class Exam extends Common
             return $this->fetch();
         }else{
             $utest['content']=json_decode($utest['content'],true);
-            $utest['answer']=json_decode($utest['answer'],true);
-            foreach($utest['answer'] as $k=>$v){
-                $utest['content'][$k]['answers']=$v;
-            }
             $this->assign('test',$utest);
             return $this->fetch('edit');
         }
@@ -174,6 +170,7 @@ class Exam extends Common
             'f_title'=>$tests['f_title'],
             'content'=>json_encode($tests['content']),
             'answer'=>json_encode($blood),
+            'status'=>1
         ];
         $res = db('utest')->where('id',$tests['id'])->update($list);
         if($res !== false){

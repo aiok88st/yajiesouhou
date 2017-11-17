@@ -1,0 +1,122 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>我的测试</title>
+<link rel="stylesheet" href="__HOME__/css/exam.css" />
+{/block}
+{block name="main"}
+		<div id="exam">
+			<div class="pHead">
+				<a href="person.html" class="back backP"><img src="__HOME__/img/back.png"/></a>
+				<p>开始测试</p>
+			</div>
+			<div class="problemBox">
+				<div class="pTitle">
+					<ul>
+						<li>
+							<p id="tile">{$test.title}</p>
+						</li>
+						<li>
+							<p id="f_tile">{$test.f_title}</p>
+						</li>
+					</ul>					
+				</div>
+				<div class="problems">
+
+                    {volist name="$test.content" id="vo" key="k"}
+					<div class="problem dan movie_box" >
+						<ul class="wjdc_list">
+							<input type='hidden' class='scot' value='{$vo.score}'>
+							<li>
+								<p class="tm_btitlt">
+									{$k}.<i class="btwenzi">{$vo.title}</i>
+									{if condition="$vo.type eq 1"}
+		                            <span class="tip_wz">【单选】</span><span>（{$vo.score}分）</span>
+		                            {elseif condition="$vo.type eq 2"}
+		                            <span class="tip_wz">【多选】</span><span>（{$vo.score}分）</span>
+		                            {elseif condition="$vo.type eq 3"}
+		                            <span class="tip_wz">【判断】</span><span>（{$vo.score}分）</span>
+		                            {else/}
+		                            <span class="tip_wz">【问答】</span><span>（{$vo.score}分）</span>
+		                            {/if}
+								</p>
+							</li>
+							<div class="choice"> 
+								<ul class="chput">
+									{volist name="$vo.input" id="vv"}
+									<li class="input">
+										
+										{if condition="$vo.type eq 1"}
+										<label class="radio">
+			                            <input name="a{$k}0" type="radio" value="{$vv.val}" />
+			                            <i></i>
+			                            {elseif condition="$vo.type eq 2"}
+			                            <label class="checkBox">
+			                            <input name="a{$k}0" type="checkbox" value="{$vv.val}" />
+			                            <i></i>
+			                            {elseif condition="$vo.type eq 3"}
+			                            <label class="radio">
+			                            <input name="a{$k}0" type="radio" value="{$vv.val}" />
+			                            <i></i>
+			                            {else/}
+			                            <label class="radio">
+			                            <input name="a{$k}0" type="radio" value="{$vv.val}">
+			                            <i></i>
+			                            {/if}
+					
+										<span>{$vv.val}</span>
+										</label>  
+									</li>
+									{/volist}
+							
+								</ul>	
+							</div>  
+						</ul>							
+					</div>
+					{/volist}
+
+				
+				</div>		
+			</div>
+			<div class="st">
+			<input TYPE="hidden" name="id" id="tsetid" value="{$test.id}">
+				<button onclick="addj()">提交</button>
+			</div>
+		</div>
+{/block}
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/public.js?v=1" ></script>
+<script type="text/javascript">
+	layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    function addj(){
+    	var titles = $('#tile').text();
+        var f_title = $('#f_tile').text();
+        var id = $('#tsetid').val();
+        var content = getTest();
+        popw("温馨提示","确认要提交吗？",2,function(){
+        	layer.load(1);
+            $.ajax({
+                url:"{:url('Exam/add')}",
+                type:"post",
+                data:{"id":id,"title":titles,"content":content,"f_title":f_title},
+                success:function(res){
+                    layer.closeAll();
+                    if (res.code > 0) {
+                        layer.msg(res.msg, {time: 1800, icon: 1}, function () {
+                            location.href = res.url;
+                        });
+                    } else {
+                        layer.msg(res.msg, {time: 1800, icon: 2});
+                    }
+                }
+            });
+        });
+    }
+</script>
+{/block}
+
+
+
+

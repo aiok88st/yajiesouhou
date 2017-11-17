@@ -85,7 +85,7 @@ class Weixin extends Fater{
             $open_info = array(
                 'open_id' => $user_info['openid'],
                 'open_name' =>$this->filterEmoji($user_info['nickname']),
-                'open_face' => $user_info['headimgurl']
+                'open_face' => $user_info['headimgurl'],
             );
             session('member_id', $member_id);
         }

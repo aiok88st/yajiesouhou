@@ -21,8 +21,8 @@ class Distributor extends Model
 
     //修改密码
     public function change($data){
-        $user['pwd'] = md5($data['password']);
-        $re=db('distributor')->where('id',$data['id'])->update($user);
+        $data['pwd'] = md5($data['password']);
+        $re=db('distributor')->where('id',$data['id'])->update($data);
         if($re !== false){
             return 1;//修改成功
         }else{

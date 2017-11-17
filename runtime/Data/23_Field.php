@@ -78,11 +78,11 @@ return array (
     'status' => 1,
     'issystem' => 0,
   ),
-  'selid' => 
+  'catid' => 
   array (
-    'id' => 269,
+    'id' => 270,
     'moduleid' => 23,
-    'field' => 'selid',
+    'field' => 'catid',
     'name' => '分类',
     'tips' => '',
     'required' => 1,
@@ -90,17 +90,9 @@ return array (
     'maxlength' => 0,
     'pattern' => 'defaul',
     'errormsg' => '',
-    'class' => 'selid',
-    'type' => 'select',
-    'setup' => 'array (
-  \'options\' => \'教学视频|1
-视频小知识|2\',
-  \'multiple\' => \'0\',
-  \'fieldtype\' => \'varchar\',
-  \'numbertype\' => \'1\',
-  \'size\' => \'\',
-  \'default\' => \'\',
-)',
+    'class' => 'catid',
+    'type' => 'catid',
+    'setup' => '',
     'ispost' => 0,
     'unpostgroup' => '',
     'listorder' => 0,

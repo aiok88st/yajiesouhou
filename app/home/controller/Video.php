@@ -104,7 +104,7 @@ class Video extends Fater
             Cookie::set('history',$rows,time()+3600*24*30,'/');
         }else{
             if($key != ''){
-                $data = array($key);
+                $data[] = $key;
             }
             Cookie::set('history',$data,time()+3600*24*30,'/');
         }

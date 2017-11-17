@@ -36,4 +36,25 @@ class Train extends Common
         return $this->fetch();
     }
 
+    //收藏
+    public function collet(){
+        $uid = session('sid');
+        $tid = input('tid');
+        $arr = db('collect')->where('uid',$uid)->where('tid',$tid)->find();
+        if($arr){
+            return ['code' => 0, 'msg' => '您已收藏!'];
+        }else{
+            $data = [
+               'uid'=>$uid,
+               'tid'=>$tid,
+            ];
+            $re = db('collect')->insert($data);
+            if($re){
+                return ['code' => 1, 'msg' => '收藏成功!'];
+            }else{
+                return ['code' => 0, 'msg' => '收藏失败!'];
+            }
+        }
+    }
+
 }

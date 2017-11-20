@@ -20,6 +20,7 @@ return [
     'username'        => 'root',
     // 密码
     'password'        => 'root',//hengdikejimysql
+
     // 端口
     'hostport'        => '3306',
     // 连接dsn

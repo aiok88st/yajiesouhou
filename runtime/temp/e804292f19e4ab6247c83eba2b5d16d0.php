@@ -1,15 +1,31 @@
-{include file="common/head"/}
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/index/index.html";i:1511144562;s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/common/head.html";i:1511141992;s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/common/foot.html";i:1511141992;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><?php echo config('sys_name'); ?>后台管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="__STATIC__/plugins/layui/css/layui.css?v=1" media="all" />
+    <link rel="stylesheet" href="__ADMIN__/css/global.css?v=1" media="all">
+    <link rel="stylesheet" href="__STATIC__/common/css/font.css" media="all">
+</head>
+<body class="skin-0">
 <script>
     var ADMIN = '__ADMIN__';
-    var navs = {$menus};
+    var navs = <?php echo $menus; ?>;
 
 </script>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
         <div class="layui-main">
             <div class="admin-login-box">
-                <a class="logo" style="left: 0;" href="{:url('admin/index/index')}">
-                    <span style="font-size: 22px;">{:config('sys_name')}后台</span>
+                <a class="logo" style="left: 0;" href="<?php echo url('admin/index/index'); ?>">
+                    <span style="font-size: 22px;"><?php echo config('sys_name'); ?>后台</span>
                 </a>
                 <div class="admin-side-toggle fs1">
                     <span class="icon icon-menu"></span>
@@ -21,7 +37,7 @@
 
             <ul class="layui-nav admin-header-item" lay-filter="side-top-right">
                 <li class="layui-nav-item" id="cache">
-                    <a href="javascript:;">{:lang('clearCache')}</a>
+                    <a href="javascript:;"><?php echo lang('clearCache'); ?></a>
                 </li>
 <!--               -->
                 <li class="layui-nav-item">
@@ -31,21 +47,21 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;" class="admin-header-user">
 
-                        <span>{:session('username')}</span>
+                        <span><?php echo session('username'); ?></span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="{:url('index/logout')}"><i class="fa fa-sign-out" aria-hidden="true"></i>{:lang('logout')}</a>
+                            <a href="<?php echo url('index/logout'); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i><?php echo lang('logout'); ?></a>
                         </dd>
                     </dl>
                 </li>
             </ul>
             <ul class="layui-nav admin-header-item-mobile">
                 <li class="layui-nav-item">
-                    <a href="{:url('home/index/index')}" target="_blank">{:lang('home')}</a>
+                    <a href="<?php echo url('home/index/index'); ?>" target="_blank"><?php echo lang('home'); ?></a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="{:url('index/logout')}"><i class="fa fa-sign-out" aria-hidden="true"></i> {:lang('logout')}</a>
+                    <a href="<?php echo url('index/logout'); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> <?php echo lang('logout'); ?></a>
                 </li>
             </ul>
         </div>
@@ -63,7 +79,7 @@
             </ul>
             <div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="{:url('main')}"></iframe>
+                    <iframe src="<?php echo url('main'); ?>"></iframe>
                 </div>
             </div>
         </div>
@@ -80,7 +96,9 @@
         <i class="layui-icon">&#xe602;</i>
     </div>
     <div class="site-mobile-shade"></div>
-    {include file="common/foot"/}
+    <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+
+
     <script src="__ADMIN__/js/index.js"></script>
     <script>
         localStorage.skin='';
@@ -88,7 +106,7 @@
             var $ = layui.jquery, layer = layui.layer;
             $('#cache').click(function () {
                 layer.confirm('确认要清除缓存？', {icon: 3}, function (data) {
-                    $.post('{:url("clear")}', {}, function (data) {
+                    $.post('<?php echo url("clear"); ?>', {}, function (data) {
                         layer.msg(data.info, {icon: 6}, function (index) {
                             layer.close(index);
                             window.location.href = data.url;

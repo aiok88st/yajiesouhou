@@ -1,6 +1,6 @@
 {include file="common/header"/}
     <!-- 顶部开始 -->
-    <div class="container">
+    <div class="container" style="background-color: #75097a;">
         <div class="logo"><a href="./index.html">客户中心</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
@@ -11,7 +11,7 @@
           <li class="layui-nav-item">
             <a href="javascript:;">{:session('uname')}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a href="{:url('index/logout')}">退出</a></dd>
+              <dd><a  href="{:url('index/logout')}">退出</a></dd>
             </dl>
           </li>
         </ul>

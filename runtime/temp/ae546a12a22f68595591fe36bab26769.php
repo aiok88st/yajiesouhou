@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:64:"/Users/Web/archie/yajiesouhou/app/client/view/product/index.html";i:1511159952;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -10,28 +11,28 @@
 <body>
 <div>
     <ul>
-        <volist name="list" id="v">
+        <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
 
             <li>
-                <div><{$v['model']['model']}></div>
+                <div><?php echo $v['model']['model']; ?></div>
                 <div>
-                    <img src="<{$v['model']['img']}>" width="70" alt="">
+                    <img src="<?php echo $v['model']['img']; ?>" width="70" alt="">
                 </div>
-                <if condition="$v['status'] eq 0">
-                    <a href="<{:url('product/repair',['id'=>$v['id']])}>">申请维修</a>
-                <elseif condition="$v['status'] eq 1"/>
+                <?php if($v['status'] == 0): ?>
+                    <a href="<?php echo url('product/repair',['id'=>$v['id']]); ?>">申请维修</a>
+                <?php elseif($v['status'] == 1): ?>
                     <a href="">已申请维修</a>
-                <else />
+                <?php else: ?>
                     <span>不在维修范围内</span>
-                </if>
+                <?php endif; ?>
             </li>
-        </volist>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
 
     </ul>
 </div>
 <div>
     <div>
-        <input type="hidden" name="token" value="<{$token}>">
+        <input type="hidden" name="token" value="{$token}">
         <input type="text" name="code" id="code">
         <button onclick="add()">提交</button>
     </div>
@@ -39,7 +40,7 @@
 <script type="text/javascript">
 
     function add(){
-        var url="<{:url('Product/add')}>";
+        var url="<?php echo url('Product/add'); ?>";
         var token=$('[name="token"]').val();
         var code=$('#code').val();
         $.ajax({
@@ -67,7 +68,7 @@
         })
     }
     function get_token(){
-        var url="<{:url('fater/get_token')}>";
+        var url="<?php echo url('fater/get_token'); ?>";
         $.ajax({
             type:'GET',
             url:url,

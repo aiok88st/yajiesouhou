@@ -561,3 +561,9 @@ html .skin-2 .layui-nav .layui-nav-item .layui-nav-child{background-color: #01AA
 .contentList{
     width: 84%;
 }
+.show-table .layui-input-inline{
+    width: 400px;
+}
+.hide{
+    display: none;
+}

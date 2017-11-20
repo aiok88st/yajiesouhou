@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:63:"/Users/Web/archie/yajiesouhou/app/client/view/client/index.html";i:1511142942;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -19,7 +20,7 @@
                 </ul>
             </li>
             <li>
-                <a href="<{:url('product/index')}>">我的产品</a>
+                <a href="<?php echo url('product/index'); ?>">我的产品</a>
             </li>
 
         </ul>

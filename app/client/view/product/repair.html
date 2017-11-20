@@ -13,7 +13,7 @@
 </div>
 <div>
     <div class="form">
-        <form action="{:url('order/add')}">
+        <form action="<{:url('order/add')}>">
             <input type="hidden" name="token" value="<{$token}>">
             <input type="hidden" name="pro_id" value="<{$data['id']}>">
             <select name="type" id="">

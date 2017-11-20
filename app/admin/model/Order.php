@@ -42,6 +42,43 @@ class Order extends Model
         }
        return serialize($data);
     }
+    public function getProIdAttr($value)
+    {
+        $pro=Product::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$pro['model']['model'],
+            'img'=>$pro['model']['img']
+        ];
+    }
+    public function getTypeAttr($value){
+        $attr=[
+            1=>'快递到维修点',
+            2=>'上门服务'
+        ];
+        return $attr[$value];
+    }
+    public function getProvinceAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+    public function getCityAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+    public function getZoneAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
     public function add($param){
         try{
             //先去查询是否已经申请过

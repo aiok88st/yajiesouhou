@@ -97,8 +97,21 @@ class Weixin extends Controller
                 'open_name' =>$this->filterEmoji($user_info['nickname']),
                 'open_face' => $user_info['headimgurl']
             );
+            $client->save(
+                [
+                    'open_id' => $user_info['openid'],
+                    'open_name' =>$this->filterEmoji($user_info['nickname']),
+                    'open_face' => $user_info['headimgurl']
+                ]
+            );
+            $open_info = array(
+                'user_id'=>$client->id,
+                'open_id' => $user_info['openid'],
+                'open_name' =>$this->filterEmoji($user_info['nickname']),
+                'open_face' => $user_info['headimgurl']
+            );
             session('user',$open_info);
-            $this->redirect('login/index');
+            $this->redirect('client/index');
         }
     }
     public function filterEmoji($str)

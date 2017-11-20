@@ -775,6 +775,18 @@ function FormatMoney($money){
         return $money;
     }
 }
+//通用返回
+function rejson($code,$msg,$token=false,$url=false){
+    $arr=[
+        'code'=>$code,
+        'msg'=>$msg,
+        'token'=>$token?request()->token():false,
+        'url'=>$url?$url:false
+    ];
+    return json($arr);
+}
+
+
 
 
 

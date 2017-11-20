@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:49:"D:\WWW\yajiesouhou/app/user\view\login\index.html";i:1510726526;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,7 +62,7 @@
             //监听提交
             form.on('submit(login)', function(data){
                 loading =layer.load(1, {shade: [0.1,'#fff'] });//0.1透明度的白色背景
-                $.post('{:url("user/login/index")}',data.field,function(res){
+                $.post('<?php echo url("user/login/index"); ?>',data.field,function(res){
                     layer.close(loading);
                     if(res.code == 1){
                         layer.msg(res.msg, {icon: 1, time: 1000}, function(){

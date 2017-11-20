@@ -2,7 +2,24 @@
 {include file="common/header"/}
 <div class="x-body">
     <form class="layui-form" method="post">
-
+        <div class="layui-form-item">
+            <label for="L_nikename" class="layui-form-label">
+                <span class="x-red">*</span>用户名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_nikename" name="nikename" value="{$nikename}" required="" lay-verify="nikename"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_tel" class="layui-form-label">
+                <span class="x-red">*</span>电话
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_tel" name="tel" value="{$tel}" required="" lay-verify="tel"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label for="L_pass" class="layui-form-label">
                 <span class="x-red">*</span>密码
@@ -39,7 +56,12 @@
 
         //自定义验证规则
         form.verify({
-
+            nikename: function(value){
+                if($('#L_nikename').val()==''){
+                    return '用户名不能为空';
+                }
+            },
+            tel: [/^1[34578]{1}[0-9]{9}$/, '手机号码格式不正确'],
             pass: [/(.+){6,15}$/, '密码必须6到15位']
             ,repass: function(value){
                 if($('#L_pass').val()!=$('#L_repass').val()){

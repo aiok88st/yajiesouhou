@@ -139,6 +139,7 @@
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 100;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -251,5 +252,23 @@
     line-height: 0.7rem;
     text-align: center;
     border-radius: 5px; }
+
+.pHead {
+  font-size: 0.32rem;
+  height: 0.8rem;
+  text-align: center;
+  color: #020202;
+  background: #fdfdfd;
+  border-bottom: 1px solid #e2e2e2; }
+  .pHead a {
+    position: absolute;
+    left: 0%;
+    height: 0.32rem;
+    padding: 0.24rem 4%; }
+    .pHead a img {
+      width: auto;
+      height: 0.32rem; }
+  .pHead p {
+    line-height: 0.8rem; }
 
 /*# sourceMappingURL=public.css.map */

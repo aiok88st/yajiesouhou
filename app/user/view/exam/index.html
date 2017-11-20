@@ -33,7 +33,11 @@
                 {if condition="$vo['score'] eq '您还没有答题'"}
                 <button class="layui-btn" data-type="reload" onclick="jin('{$vo.id}')">点击进入考试</button>
                 {else/}
-                <button class="layui-btn" data-type="reload" onclick="jin('{$vo.id}')">点击查看试卷</button>
+                    {if condition="$vo.status eq 1"}
+                    <button class="layui-btn" data-type="reload" onclick="getDetail('{$vo.id}')">点击查看试卷</button>
+                    {else/}
+                    <button class="layui-btn" data-type="reload" onclick="jin('{$vo.id}')">重新考试</button>
+                    {/if}
                 {/if}
             </td>
         </tr>
@@ -47,6 +51,9 @@
 <script type="text/javascript">
     function jin(id){
         window.location.href="{:url('Exam/test')}?id="+id;
+    }
+    function getDetail(id){
+        window.location.href="{:url('Exam/getDetail')}?id="+id;
     }
 </script>
 

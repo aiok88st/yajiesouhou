@@ -48,6 +48,12 @@
             <input type="text" id="title" name="title" {if condition="$info['id'] neq ''"}value="{$info['title']}"{/if} required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" style="width: 650px;">
         </div>
     </div>
+    <div class="layui-form-item" style="margin-left: 50px">
+        <label class="layui-form-label">副标题</label>
+        <div class="layui-input-block">
+            <input type="text" id="f_title" name="f_title" {if condition="$info['id'] neq ''"}value="{$info['f_title']}"{/if} required  lay-verify="required" placeholder="请输入副标题" autocomplete="off" class="layui-input" style="width: 650px;">
+        </div>
+    </div>
     <div class="all_660" style="margin-left: 50px">
         <div id="content" class="yd_box" style="margin-left: 110px;margin-top: 20px;width: 650px"></div>
         <div class="but" style="padding-top: 20px">
@@ -185,11 +191,12 @@
             layer.load(1);
         });
         var titles = $('#title').val();
+        var f_title = $('#f_title').val();
         var content = getTest();
         $.ajax({
             url:"{:url('add')}",
             type:'post',
-            data:{"title":titles,"content":content},
+            data:{"title":titles,"content":content,"f_title":f_title},
             success:function(res){
                 layer.closeAll();
                 if (res.code > 0) {

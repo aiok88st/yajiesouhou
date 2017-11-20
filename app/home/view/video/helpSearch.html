@@ -33,7 +33,7 @@
 			<div class="videoOut">
 
                 <template v-for="(key,item) in searchResult">
-				<div class="videoIn">
+				<div class="videoIn" onclick="getDetail('{{item.id}}')">
                     <div class="videoShow" style="height: 3.56rem;overflow: hidden;">
                         <template v-if='item.thumb'>
                         <img src="__PUBLIC__{{item.thumb}}" style="position:relative"/>
@@ -116,6 +116,9 @@
             });
         }
     });
+    function getDetail(id){
+        window.location.href="{:url('Video/details')}?id="+id;
+    }
 </script>
 <script type="text/javascript" src="__HOME__/js/public.js" ></script>
 

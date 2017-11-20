@@ -14,8 +14,8 @@ class Fater extends Controller{
         define('WX_APPSECRET', $this->appsecret);
         $member_id=session('member_id');
         //定义用户常量
-        define('UID', 1);//用户ID
-//        define('UID', $member_id);//用户ID
+//        define('UID', 1);//用户ID
+        define('UID', $member_id);//用户ID
     }
 
     //base64上传

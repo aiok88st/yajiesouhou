@@ -1,0 +1,66 @@
+{include file="common/header"/}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">培训管理</a>
+        <a href="">收藏夹</a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so">
+            <input type="text" name="key"  placeholder="请输入关键字" autocomplete="off" class="layui-input">
+            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+    <table class="layui-table" lay-skin="line" style="border: none;">
+
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+            <td width="100px">
+                <div style="overflow: hidden;width: 200px;height: 100px">
+                    <img src="__PUBLIC__{$vo.thumb}" style="width: 100%;height: 100%;"/>
+                </div>
+            </td>
+            <td>
+                <ul>
+                    <li>{$vo.title}</li>
+                    <li>{$vo.f_title}</li>
+                    <li>{$vo.createtime|date="Y-m-d",###}</li>
+                </ul>
+            </td>
+            <td>
+                <a href="{:url('Collect/detail')}?id={$vo.id}"><button class="layui-btn" data-type="reload">查看详情</button></a>
+                <a href="javascript:;" onclick="coll('{$vo.id}')"><button class="layui-btn" data-type="reload">取消收藏</button></a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page">
+        {$page}
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    function coll(id){
+        $.ajax({
+            url:"{:url('Collect/clearCollect')}?tid="+id,
+            type:"post",
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg, {icon: 1, time: 1000});
+                    location.reload();
+                }else{
+                    layer.msg(re.msg, {icon: 2, anim: 6, time: 1000});
+                }
+            }
+        });
+    }
+</script>
+
+

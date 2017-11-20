@@ -5,10 +5,10 @@ class Weixin extends Fater{
     public function index() {
         $locaithon=$_SERVER["HTTP_REFERER"];
         session('locaithon',$locaithon);
-        if (UID != 0) {
-            $this->redirect('home/index/index');
-        }
-        $redirect_uri = urlencode('http://toupiao.snimay.com/index.php/index/Weixin/oauth');
+//        if (UID != 0) {
+//            $this->redirect('home/index/index');
+//        }
+        $redirect_uri = urlencode('http://archie.hengdikeji.com/yajie/index.php/home/Weixin/oauth');
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->appid.'&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_userinfo&state=state#wechat_redirect';
         header('location:'.$url);
     }
@@ -42,9 +42,9 @@ class Weixin extends Fater{
         return $user_info;
     }
     public function oauth() {
-        if (UID != 0) {
-            $this->redirect('home/index/index');
-        }
+//        if (UID != 0) {
+//            $this->redirect('home/index/index');
+//        }
         $token = $this->access_token();
         $user_info = (array)$this->snsapi_userinfo($token);
         if(!$user_info['openid']){
@@ -77,19 +77,20 @@ class Weixin extends Fater{
                 'open_name' =>$this->filterEmoji($user_info['nickname']),
                 'open_face' => $user_info['headimgurl'],
                 'addtime'=>time(),
-                'ip'=>get_client_ip()
+                'ip'=>get_client_ip(),
+                'did'=>''
             );
             $member_open->insert($data);
             $member_id=$member_open->getLastInsID();
             $open_info = array(
                 'open_id' => $user_info['openid'],
                 'open_name' =>$this->filterEmoji($user_info['nickname']),
-                'open_face' => $user_info['headimgurl']
+                'open_face' => $user_info['headimgurl'],
             );
             session('member_id', $member_id);
         }
         session('open',$open_info);
-        $this->redirect('home/index/index');
+        $this->redirect('home/User/index');
     }
     public function filterEmoji($str)
     {

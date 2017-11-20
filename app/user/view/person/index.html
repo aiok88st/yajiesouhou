@@ -12,14 +12,15 @@
         <tbody>
             <tr>
                 <td style="width: 100px">
-                    <img src="__STATIC__/common/images/personHead.png" alt=""/>
+                    <img src="{$open_face}" alt=""/>
                 </td>
                 <td colspan="3">
                     <ul>
-                        <li style="font-size: 18px;line-height: 40px;">用户名：{$user.nikename} </li>
-                        <li style="line-height: 40px;">账号：{$user.username} </li>
+                        <li style="font-size: 18px;line-height: 20px;">用户名：{$user.nikename} </li>
+                        <li style="line-height: 20px;">电话：{$user.tel} </li>
+                        <li style="line-height: 20px;">账号：{$user.username} </li>
                         <li>
-                            <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('修改密码','{:url('edit')}',600,300)">修改密码</button>
+                            <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('编辑信息','{:url('edit')}?nikename={$user.nikename}&tel={$user.tel}',600,400)">编辑信息</button>
                         </li>
                     </ul>
                 </td>

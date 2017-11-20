@@ -21,6 +21,8 @@ define('DATA_PATH',  __DIR__.'/runtime/Data/');
 
 //插件目录
 define('PLUGIN_PATH', __DIR__ . '/plugins/');
+//阿里大于目录
+define('ALIDAYU_PATH', __DIR__ . '/aliyun/');
 
 // 加载框架引导文件
 require __DIR__ . '/think/start.php';

@@ -1,0 +1,46 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>视频</title>
+<link rel="stylesheet" href="__HOME__/css/details.css" />
+<script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js"></script>
+{/block}
+{block name="main"}
+
+<!--导航栏-->
+<div id = "home">
+    <div class="pHead">
+        <a href="teachSearch.html" class="back backP"><img src="__HOME__/img/back.png"/></a>
+        <p>视频详情</p>
+    </div>
+    <div class="main">
+        <div class="videoBox">
+            <ul>
+                <li>
+                    <iframe frameborder="0" src="{$data.link}" allowfullscreen></iframe>
+                </li>
+                <li>
+                    <p>{$data.title}</p>
+                </li>
+                <li>
+                    <p>{$data.createtime|date="Y-m-d",###}</p>
+                    <p>{$data.hits}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            {$data.content}
+        </div>
+    </div>
+    <div style="height: 0.8rem;"></div>
+
+</div>
+
+{/block}
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/public.js" ></script>
+<script type="text/javascript" src="__HOME__/js/details.js?v=1" ></script>
+{/block}
+
+
+

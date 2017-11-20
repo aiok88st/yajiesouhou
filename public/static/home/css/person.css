@@ -1,0 +1,382 @@
+body {
+  background-color: #f6f4f8; }
+
+#person .head {
+  width: 100%;
+  height: 2.0rem;
+  background: url(../img/jHead.jpg) no-repeat;
+  background-size: cover;
+  position: relative; }
+  #person .head .headPic {
+    width: 1.0rem;
+    height: 1.0rem;
+    margin-top: 0.5rem;
+    margin-left: 6%;
+    border-radius: 50%;
+    background: url(../img/person.png) no-repeat;
+    background-size: cover;
+    overflow: hidden; }
+    #person .head .headPic img {
+      width: 100%; }
+  #person .head .infor {
+    width: 4.5rem;
+    height: 1.0rem;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    line-height: 0.35rem;
+    text-indent: 0.2rem; }
+    #person .head .infor ul li:nth-child(1) p {
+      margin-top: 0.15rem;
+      font-size: 0.28rem;
+      color: white; }
+    #person .head .infor ul li:nth-child(2) p {
+      font-size: 0.24rem;
+      color: #fffeff; }
+#person .myOrder {
+  margin-top: 0.2rem;
+  width: 100%;
+  background-color: white; }
+  #person .myOrder .moreOrder {
+    width: 93.33%;
+    margin: 0 auto;
+    height: 0.8rem;
+    position: relative; }
+    #person .myOrder .moreOrder a {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      display: block;
+      font-size: 0.28rem;
+      line-height: 0.8rem;
+      color: #0b1b27;
+      background: url(../img/progress.png) no-repeat left center;
+      background-size: auto 0.28rem;
+      text-indent: 0.45rem;
+      border-bottom: 1px solid #e2e2e2;
+      font-weight: bold; }
+    #person .myOrder .moreOrder p {
+      font-size: 0.24rem;
+      line-height: 0.8rem;
+      position: absolute;
+      top: 0;
+      right: 0%;
+      color: #999999;
+      width: 1.21rem;
+      background: url(../img/moreOrder.png) no-repeat right center;
+      background-size: auto 0.22rem; }
+#person .bottomChoice .moreOrder:nth-child(1) a {
+  background-image: url(../img/seting.png); }
+#person .bottomChoice .moreOrder:nth-child(2) a {
+  background-image: url(../img/about.png); }
+#person .orderBox {
+  width: 93.33%;
+  margin: 0 auto; }
+  #person .orderBox .orders {
+    width: 20%;
+    height: 1.8rem; }
+    #person .orderBox .orders a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: -webkit-flex;
+      -webkit-align-items: center;
+      -webkit-justify-content: center;
+      -webkit-flex-direction: column;
+      position: relative; }
+      #person .orderBox .orders a img {
+        height: 0.4rem;
+        margin: 0 auto; }
+      #person .orderBox .orders a p {
+        font-size: 0.24rem;
+        color: #666666;
+        text-align: center;
+        line-height: 0.4rem;
+        margin-top: 0.1rem; }
+      #person .orderBox .orders a span {
+        position: absolute;
+        right: 0.2rem;
+        top: 0.32rem;
+        border: 1.5px solid #e35a54;
+        border-radius: 50%;
+        font-size: 0.24rem;
+        width: 0.35rem;
+        height: 0.35rem;
+        text-align: center;
+        line-height: 0.35rem;
+        color: #e35a54;
+        background-color: white;
+        transform: scale(0.75); }
+#person .twoChoice {
+  background-color: white; }
+  #person .twoChoice > div {
+    width: 50%; }
+    #person .twoChoice > div a {
+      width: 100%;
+      height: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: -webkit-flex;
+      -webkit-align-items: center;
+      -webkit-justify-content: center;
+      -webkit-flex-direction: column;
+      position: relative; }
+      #person .twoChoice > div a p:nth-child(1) {
+        font-size: 0.3rem;
+        color: #333333;
+        text-align: center;
+        font-weight: bold;
+        margin-top: -0.05rem; }
+      #person .twoChoice > div a p:nth-child(2) {
+        font-size: 0.3rem;
+        color: #333333;
+        font-size: 0.24rem;
+        text-align: center; }
+      #person .twoChoice > div a span {
+        position: absolute;
+        top: 0.1rem;
+        left: -0.5px;
+        height: 1.0rem;
+        border-right: 1px solid #e5e5e5; }
+
+#personInfor {
+  background-color: #f6f4f8;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 6; }
+  #personInfor .message ul li:nth-child(1) > div {
+    height: 1.6rem; }
+    #personInfor .message ul li:nth-child(1) > div a {
+      line-height: 1.6rem; }
+    #personInfor .message ul li:nth-child(1) > div .hBox {
+      width: 1.0rem;
+      height: 1.0rem;
+      border-radius: 50%;
+      top: 0.3rem;
+      right: 0rem;
+      position: absolute;
+      overflow: hidden; }
+      #personInfor .message ul li:nth-child(1) > div .hBox img {
+        width: 100%; }
+    #personInfor .message ul li:nth-child(1) > div > img {
+      top: 0.68rem; }
+  #personInfor .message ul li:last-child div a {
+    border: 0px; }
+  #personInfor .message .accountBox {
+    margin-top: 0.2rem;
+    background-color: white; }
+    #personInfor .message .accountBox a {
+      border: 0; }
+  #personInfor .exit button {
+    height: 0.8rem;
+    font-size: 0.28rem;
+    width: 100%;
+    color: #020202;
+    background-color: white;
+    display: block;
+    margin-top: 0.2rem; }
+
+.message {
+  width: 100%;
+  margin-top: 0.2rem; }
+  .message ul {
+    width: 100%;
+    background-color: white; }
+  .message ul li > div,
+  .message .account {
+    width: 92%;
+    margin: 0 auto;
+    height: 0.8rem;
+    position: relative; }
+    .message ul li > div a,
+    .message .account a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      font-size: 0.28rem;
+      color: #020202;
+      line-height: 0.8rem;
+      border-bottom: 1px solid #e2e2e2;
+      width: 100%;
+      z-index: 100; }
+    .message ul li > div p,
+    .message .account p {
+      position: absolute;
+      right: 0.3rem;
+      top: 0;
+      line-height: 0.8rem;
+      font-size: 0.26rem;
+      color: #999999; }
+    .message ul li > div > img,
+    .message .account > img {
+      position: absolute;
+      height: 0.24rem;
+      top: 0.28rem;
+      right: 0; }
+  .message ul li:last-child div a {
+    border: 0px; }
+
+#about {
+  background-color: #f6f4f8;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  overflow: auto; }
+  #about .main {
+    width: 93.33%;
+    margin: 0 auto; }
+    #about .main ul li:nth-child(1) {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #dcdcdc; }
+      #about .main ul li:nth-child(1) img {
+        width: 62.43%;
+        margin: 0 auto; }
+    #about .main ul li {
+      border-bottom: 1px solid #dcdcdc;
+      padding-bottom: 0.4rem; }
+      #about .main ul li p {
+        width: 92%;
+        margin: 0 auto;
+        font-size: 0.28rem; }
+      #about .main ul li p:nth-child(1) {
+        line-height: 0.8rem;
+        padding-top: 0.2rem; }
+      #about .main ul li p:nth-child(2) {
+        line-height: 0.5rem;
+        text-indent: 0.56rem; }
+    #about .main ul li:last-child {
+      border-bottom: 0px solid #dcdcdc; }
+    #about .main .smBox > .floatl {
+      width: 42%;
+      margin: 4%;
+      height: 4.48rem;
+      overflow: hidden;
+      box-shadow: 0px 0px  2px 2px #bbbbbb; }
+      #about .main .smBox > .floatl img {
+        width: 100%; }
+
+.exchangeBox {
+  background-color: #f4f4f4;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 6; }
+  .exchangeBox .exInput {
+    width: 100%;
+    background-color: white;
+    height: 0.8rem;
+    margin-top: 0.2rem; }
+    .exchangeBox .exInput input {
+      display: block;
+      width: 92%;
+      margin: 0 auto;
+      line-height: 0.8rem;
+      color: #333333;
+      font-size: 0.28rem;
+      border: 0; }
+  .exchangeBox .exBtn {
+    margin-top: 0.4rem; }
+    .exchangeBox .exBtn button {
+      display: block;
+      width: 92%;
+      margin: 0 auto;
+      height: 0.8rem;
+      font-size: 0.28rem;
+      color: white;
+      background-color: #76017a; }
+
+#exchangePassword {
+  left: 100%; }
+  #exchangePassword .exInput {
+    height: 1.6rem;
+    border-bottom: 1px solid white; }
+    #exchangePassword .exInput ul li {
+      position: relative; }
+      #exchangePassword .exInput ul li p {
+        position: absolute;
+        top: 0;
+        left: 4%;
+        font-size: 0.28rem;
+        line-height: 0.8rem; }
+      #exchangePassword .exInput ul li a {
+        position: absolute;
+        top: 0.28rem;
+        right: 4%;
+        width: 0.24rem;
+        height: 0.24rem;
+        display: none; }
+        #exchangePassword .exInput ul li a img {
+          width: 100%; }
+    #exchangePassword .exInput ul li:nth-child(1) input {
+      border-bottom: 1px solid #e2e2e2; }
+    #exchangePassword .exInput ul li input {
+      text-indent: 1.0rem; }
+    #exchangePassword .exInput ul li input::-ms-input-placeholder {
+      color: #999999; }
+    #exchangePassword .exInput ul li input::-moz-placeholder {
+      color: #999999; }
+    #exchangePassword .exInput ul li input::-webkit-input-placeholder {
+      color: #999999; }
+  #exchangePassword .exPassword1 ul li:nth-child(2) input {
+    width: 62%;
+    margin-left: 4%; }
+  #exchangePassword .exPassword1 ul li:nth-child(2) button {
+    font-size: 0.28rem;
+    color: #76007a;
+    display: block;
+    line-height: 0.8rem;
+    position: absolute;
+    top: 0;
+    right: 4%;
+    background-color: white; }
+  #exchangePassword .exPassword2 ul li input {
+    text-indent: 1.3rem; }
+  #exchangePassword .showAndMethod {
+    position: relative;
+    height: 0.6rem; }
+    #exchangePassword .showAndMethod p {
+      width: 92%;
+      margin: 0 auto;
+      font-size: 0.28rem;
+      line-height: 0.6rem;
+      color: #999999;
+      text-indent: 0.5rem; }
+    #exchangePassword .showAndMethod a:nth-child(2) {
+      display: block;
+      font-size: 0.28rem;
+      color: #76007a;
+      line-height: 0.6rem;
+      position: absolute;
+      top: 0;
+      right: 4%; }
+    #exchangePassword .showAndMethod a:nth-child(3), #exchangePassword .showAndMethod a:nth-child(4) {
+      display: block;
+      width: 0.36rem;
+      height: 0.36rem;
+      border-radius: 50%;
+      background-color: #999999;
+      line-height: 0.6rem;
+      position: absolute;
+      top: 0.12rem;
+      left: 4%; }
+      #exchangePassword .showAndMethod a:nth-child(3) img, #exchangePassword .showAndMethod a:nth-child(4) img {
+        margin: 16%;
+        width: 68%; }
+
+/*# sourceMappingURL=person.css.map */

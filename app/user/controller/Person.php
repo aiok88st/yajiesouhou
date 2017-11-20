@@ -21,17 +21,28 @@ class Person extends Common
             ->where($map)
            ->select();
         $user = db('distributor')->where('id',$id)->find();
+        $open = db('member_open')->where('did',$id)->find();
+        if($open){
+            $open_face = $open['open_face'];
+        }else{
+            $open_face = "__STATIC__/common/images/personHead.png";
+        }
         $this->assign('list',$list);
         $this->assign('user',$user);
+        $this->assign('open_face',$open_face);
         return $this->fetch();
     }
 
     //修改密码
     public function edit(){
+        $nikename = input('nikename');
+        $tel = input('tel');
         if(request()->isPost()) {
             $admin = new Distributor();
             $data = input('post.');
             $result = $this->validate($data, [
+                'nikename|姓名'  => ['require'],
+                'tel|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
                 'password|密码'  => ['require','max:15','min:6','confirm'],
             ]);
             if(true !== $result){
@@ -40,6 +51,8 @@ class Person extends Common
             }
             $user = [
                 'id'=>session('sid'),
+                'nikename'=>$data['nikename'],
+                'tel'=>$data['tel'],
                 'password'=>$data['password']
             ];
             $num = $admin->change($user);
@@ -49,6 +62,8 @@ class Person extends Common
                 return json(array('code' => 0, 'msg' => '修改失败!'));
             }
         }
+        $this->assign('nikename',$nikename);
+        $this->assign('tel',$tel);
         return $this->fetch();
     }
 

@@ -133,6 +133,9 @@ class EmptyController extends Common{
             return $this->fetch('networks/edit');
         }
         if($controllerName == 'Tvd'){
+            $catids = getTree2('category',26,1,$info['catid']);
+            $this->assign('catids',$catids);
+
             $test = db('test')->select();
             $this->assign('test',$test);
             return $this->fetch('tvd/add');
@@ -203,7 +206,7 @@ class EmptyController extends Common{
             }elseif($controllerName=='Enproduct'){
                 $result['url'] = url("admin/enproduct/index",array('catid'=>$data['catid']));
             }else{
-                $result['url'] = url("admin/".$controllerName."/index",array('catid'=>$data['catid']));
+                $result['url'] = url("admin/".$controllerName."/index");
             }
             $result['msg'] = '修改成功!';
             $result['code'] = 1;
@@ -289,6 +292,9 @@ class EmptyController extends Common{
             return $this->fetch('networks/add');
         }
         if($controllerName == 'Tvd'){
+            $catids = getTree2('category',26,1,0);
+            $this->assign('catids',$catids);
+
             $test = db('test')->select();
             $this->assign('test',$test);
             return $this->fetch('tvd/add');

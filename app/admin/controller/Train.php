@@ -70,4 +70,16 @@ class Train extends Common
         $result['url'] = url('index');
         return $result;
     }
+
+    //重考
+    public function remoe(){
+        $id = input('id');
+        $data['status']=2;
+        $utest = db('utest')->where('id',$id)->update($data);
+        if($utest !== false){
+            return $result = ['code' => 1, 'msg' => '设置成功!'];
+        }else{
+            return $result = ['code' => 0, 'msg' => '设置失败!'];
+        }
+    }
 }

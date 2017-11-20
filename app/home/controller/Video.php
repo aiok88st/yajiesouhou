@@ -104,7 +104,7 @@ class Video extends Fater
             Cookie::set('history',$rows,time()+3600*24*30,'/');
         }else{
             if($key != ''){
-                $data = array($key);
+                $data[] = $key;
             }
             Cookie::set('history',$data,time()+3600*24*30,'/');
         }
@@ -113,5 +113,19 @@ class Video extends Fater
     public function clear(){
         Cookie::clear('history');
         return $this->fetch('helpHistory');
+    }
+
+    //详情页
+    public function details(){
+        $id = input('id');
+        $data = db('video')->where('id',$id)->find();
+        //浏览量自增
+        $hits=[
+            'hits'=>$data['hits']+1,
+        ];
+        $res = db('video')->where('id',$id)->update($hits);
+        $data['hits'] = FormatMoney($data['hits']);
+        $this->assign('data',$data);
+        return $this->fetch();
     }
 }

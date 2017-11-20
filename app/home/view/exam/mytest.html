@@ -1,0 +1,92 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>我的测试</title>
+<link rel="stylesheet" href="__HOME__/css/mytest.css" />
+{/block}
+{block name="main"}
+		<div id="order">
+			<div class="pHead">
+				<a href="{:url('user/index')}" class="back backP"><img src="__HOME__/img/back.png"/></a>
+				<p>我的测试</p>
+			</div>
+
+            <template v-if='searchResult.length>0'>
+			<div class="testBox">
+                <template v-for="(key,item) in searchResult">
+				<div class="test" onclick="toResult('{{item.id}}')">
+					<ul>
+						<li>
+							<p>{{item.title}}</p>
+							<span>{{item.score}}</span>
+							<span>分</span>
+						</li>
+						<li>
+							<p>{{item.f_title}}</p>
+							<p>时间：{{item.addtime}}</p>
+						</li>
+					</ul>
+				</div>
+                </template>
+			</div>
+            </template>
+            <template v-else>
+			<!--没有搜索结果-->
+			<div class="noResult">
+				<ul>
+					<li>
+						<img src="__HOME__/img/noResult.png" />
+					</li>
+					<li>
+						<p style="margin-bottom: 0;">您没有完成测试的试题</p>
+					</li>
+					<li>
+						<a href="{:url('Teach/index')}" >马上测试</a>
+					</li>
+				</ul>			
+			</div>
+            </template>
+		</div>
+
+{/block}
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript">
+    var data={
+        searchResult:[]
+    };
+    var all = new Vue({
+        el:'#vueMain',
+        data:data,
+        created:function(){
+            var $this=this;
+            $this.searchResult=[];
+            layui.use('flow', function(){
+                var flow = layui.flow;
+                flow.load({
+                    elem: '#order'
+                    ,done: function(page, next){
+                        var lis = [];
+                        AjaxL('{:url("Exam/index")}','GET',{"page":page},function(res){
+                            list=res.list;
+                            if(list.length<=0){
+                                $('.layui-flow-more').hide();
+                                $('.noResult').show();
+                            }else{
+                                $('.layui-flow-more').show();
+                                $('.noResult').hide();
+                            }
+                            for (x in list){
+                                $this.searchResult.push(list[x]);
+                            }
+                            next('', page <= res.last_page);
+                        });
+                    }
+                });
+            });
+        }
+    });
+    function toResult(id){
+        window.location.href="{:url('Exam/detail')}?id="+id;
+    }
+</script>
+{/block}

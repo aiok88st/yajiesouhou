@@ -1,0 +1,76 @@
+@charset "UTF-8";
+body {
+  background-color: #f6f4f8; }
+
+.testBox {
+  width: 100%;
+  margin-top: 0.2rem; }
+  .testBox .test {
+    width: 93.33%;
+    padding: 0 3.335%;
+    margin-bottom: 0.2rem;
+    background-color: white; }
+    .testBox .test ul li:nth-child(1) {
+      height: 1.48rem;
+      border-bottom: 1px solid #e5e5e5;
+      position: relative; }
+      .testBox .test ul li:nth-child(1) p {
+        width: 75%;
+        margin-left: 1%;
+        font-size: 0.28rem;
+        line-height: 0.45rem;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        /** 对象作为伸缩盒子模型显示 **/
+        -webkit-box-orient: vertical;
+        /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+        -webkit-line-clamp: 2;
+        /** 显示的行数 **/
+        overflow: hidden;
+        /** 隐藏超出的内容 **/
+        padding: 0.3rem 0;
+        color: #333333; }
+      .testBox .test ul li:nth-child(1) span:nth-child(2) {
+        color: #dc1727;
+        font-size: 0.6rem;
+        position: absolute;
+        right: 0.32rem;
+        top: 0.40rem; }
+      .testBox .test ul li:nth-child(1) span:nth-child(3) {
+        color: #dc1727;
+        font-size: 0.28rem;
+        position: absolute;
+        right: 0rem;
+        top: 0.72rem;
+        color: #333333; }
+    .testBox .test ul li:nth-child(2) {
+      position: relative;
+      line-height: 0.8rem; }
+      .testBox .test ul li:nth-child(2) p:nth-child(1) {
+        font-size: 0.28rem;
+        color: #6e0a95; }
+      .testBox .test ul li:nth-child(2) p:nth-child(2) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 0.26rem;
+        color: #999999; }
+
+.noResult {
+  width: 100%; }
+  .noResult ul {
+    width: 100%; }
+    .noResult ul li a {
+      width: 64% !important;
+      font-size: 0.28rem;
+      border: 1px solid #dcdcdc;
+      width: 90%;
+      background-color: white;
+      color: #1b1a20; }
+
+.noResult img {
+  width: 30%;
+  margin: 0 auto; }
+
+/*# sourceMappingURL=mytest.css.map */

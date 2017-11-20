@@ -19,7 +19,11 @@ return [
     // 用户名
     'username'        => 'root',
     // 密码
+<<<<<<< HEAD
     'password'        => 'root',//hengdikejimysql
+=======
+    'password'        => 'hengdikejimysql',//hengdikejimysql
+>>>>>>> 37e31b809ebdb440aef54570d17cd008f1a42ba7
     // 端口
     'hostport'        => '3306',
     // 连接dsn

@@ -445,6 +445,7 @@ class EmptyController extends Common{
 
     //省市区三级联动
     public function getAddrs(){
+
         $list = getLocation('region',input('pid'),input('type'));
         echo json_encode($list);
     }

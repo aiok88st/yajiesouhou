@@ -12,7 +12,9 @@ class Common extends Controller
         $moduleid,$adminRules,$HrefId;
     public function _initialize()
     {
-
+        if(!file_exists("runtime/session")){
+            mkdir("runtime/session/",0777,true);
+        }
         //判断管理员是否登录
         if (!session('aid')) {
             $this->redirect('login/index');

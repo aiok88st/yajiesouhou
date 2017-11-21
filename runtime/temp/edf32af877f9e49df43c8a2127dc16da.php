@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"/Users/Web/archie/yajiesouhou/app/admin/view/index/main.html";i:1511141992;s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/common/head.html";i:1511141992;s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/common/foot.html";i:1511141992;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"/Users/Web/archie/yajiesouhou/app/admin/view/index/main.html";i:1511141992;s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/common/head.html";i:1511141992;s:61:"/Users/Web/archie/yajiesouhou/app/admin/view/common/foot.html";i:1511179449;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,6 +74,7 @@
     </div>
 </div>
 <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
 
 
 <script>

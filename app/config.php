@@ -219,7 +219,7 @@ return [
         // 是否自动开启 SESSION
         'auto_start'     => true,
         'expire'=>86400,
-        'path'=>'./runtime/session'
+        'path'=>'./session'
     ],
 
     // +----------------------------------------------------------------------

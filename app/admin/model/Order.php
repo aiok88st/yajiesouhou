@@ -12,7 +12,7 @@ class Order extends Model
     protected $table = 'clt_order';
     protected $field = [
         'client_id','pro_id','type','name','phone','province','city','zone','addra','msg',
-        'status'
+        'status','audit','user_id'
     ];
     protected $veri=[
         'client_id|用户ID'   => 'require',
@@ -56,7 +56,7 @@ class Order extends Model
             1=>'快递到维修点',
             2=>'上门服务'
         ];
-        return $attr[$value];
+        return ['id'=>$value,'name'=>$attr[$value]];
     }
     public function getProvinceAttr($value){
         $p=Region::get($value);
@@ -72,6 +72,7 @@ class Order extends Model
             'name'=>$p['name']
         ];
     }
+
     public function getZoneAttr($value){
         $p=Region::get($value);
         return [
@@ -79,21 +80,27 @@ class Order extends Model
             'name'=>$p['name']
         ];
     }
-    public function add($param){
-        try{
-            //先去查询是否已经申请过
-            $pro=$this->where('pro_id',$param['pro_id'])->count();
-            if($pro>=1) return rejson(0,'请不要重复申请',false);
-
-            $result=$this->allowField(true)->validate($this->veri)->save($param);
-            if(false === $result){
-                // 验证失败 输出错误信息
-                return rejson(0,$this->getError(),true);
-            }
-
-            return rejson(0,'申请成功，请耐心等待审核',true);
-        }catch (Exception $e){
-            return rejson(0,$e->getMessage(),true);
-        }
+    public function getUserIdAttr($value){
+        $dis=Network::get($value);
+        return [
+            'shopame'=>$dis['title'],
+            'dis'=>$dis['did'],
+        ];
     }
+    public function getStatusAttr($value){
+        $status=[
+            '-1'=>'审核不通过',
+            '0'=>'审核中',
+            '1'=>'待维修',
+            '2'=>'维修中',
+            '3'=>'已完成',
+            '4'=>'已完成',
+            '5'=>'已取消',
+        ];
+        return [
+            'id'=>$value,
+            'name'=>$status[$value]
+        ];
+    }
+
 }

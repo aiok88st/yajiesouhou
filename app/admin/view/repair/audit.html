@@ -12,6 +12,12 @@
         <div class="layui-inline">
             <input class="layui-input" name="phone" id="phone" placeholder="电话">
         </div>
+        <div class="layui-inline">
+            <select name="status" id="status">
+                <option value="0">待审核</option>
+                <option value="-1">不通过</option>
+            </select>
+        </div>
         <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
         <a href="javascript:;" onclick="window.location.reload()" class="layui-btn">显示全部</a>
         <button type="button" class="layui-btn layui-btn-danger" id="delAll">批量删除</button>
@@ -20,12 +26,9 @@
     <table class="layui-table" id="list" lay-filter="list"></table>
 </div>
 {include file="common/foot"/}
-<script type="text/html" id="title">
-    <span style="{{d.title_style}}">{{d.title}}</span>
-    {{# if(d.thumb){ }}<img src="__ADMIN__/images/image.gif" onmouseover="layer.tips('<img src=__PUBLIC__/{{d.thumb}}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">{{# } }}
-</script>
+
 <script type="text/html" id="action">
-    <a href="{:url('repair/show')}?id={{d.id}}" class="layui-btn layui-btn-mini">查看详情</a>
+    <a href="{:url('repair/show')}?id={{d.id}}" class="layui-btn layui-btn-mini show">查看详情</a>
     <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
 </script>
 <script>
@@ -42,8 +45,9 @@
                 {checkbox: true, fixed: true},
                 {field: 'id', title: '{:lang("id")}', width: 80, fixed: true},
                 {field: 'pro_id', title: '产品', width: 200,templet:"#pro_id"},
-                {field: 'name', title: '姓名', width: 200},
+                {field: 'name', title: '姓名', width: 120},
                 {field: 'phone', title: '电话', width: 200},
+                {field: 'status', title: '状态', width: 100,templet:"#status"},
                 {field: 'add_time', title: '申请时间', width: 180},
                 {width: 160, align: 'center', toolbar: '#action',title:'操作'}
             ]],
@@ -53,9 +57,10 @@
         $('#search').on('click', function () {
             var name = $('#name').val();
             var phone = $('#phone').val();
+            var status = $('#status').val();
 
             tableIn.reload({
-                where: {name: name,phone:phone}
+                where: {name: name,phone:phone,status:status}
             });
         });
 
@@ -107,8 +112,12 @@
                 });
             });
         })
+
     });
 </script>
 <script type="text/html" id="pro_id">
     {{d.pro_id.name}}
+</script>
+<script type="text/html" id="status">
+    {{d.status.name}}
 </script>

@@ -1,0 +1,25 @@
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>跟进中的门店</legend>
+</fieldset>
+<table class="layui-table" style="width:700px;" lay-skin="nob">
+    <colgroup>
+        <col width="50">
+        <col width="200">
+        <col>
+    </colgroup>
+    <tbody>
+        <tr>
+            <td>门店</td>
+            <td>
+                {$data['user_id']['shopame']}
+            </td>
+        </tr>
+        <tr>
+            <td>所属经销商</td>
+            <td>
+                {$data['user_id']['dis']['name']}
+            </td>
+        </tr>
+
+    </tbody>
+</table>

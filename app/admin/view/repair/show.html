@@ -1,169 +1,132 @@
 {include file="common/head"/}
+
 <div class="admin-main layui-anim layui-anim-upbit">
-    <fieldset class="layui-elem-field layui-field-title">
-        <legend>申请{:lang('show')}</legend>
-    </fieldset>
-    <table class="layui-table" style="width:700px;" lay-skin="nob">
-        <colgroup>
-            <col width="50">
-            <col width="200">
-            <col>
-        </colgroup>
-        <tbody>
-            <tr>
-                <td>产品</td>
-                <td>
-                    {$data['pro_id']['name']}
-                </td>
-            </tr>
-            <tr>
-                <td>申请类型</td>
-                <td>
-                    {$data['type']}
-                </td>
-            </tr>
-            <tr>
-                <td>姓名</td>
-                <td>{$data['name']}</td>
-            </tr>
-            <tr>
-                <td>电话</td>
-                <td>{$data['phone']}</td>
-            </tr>
-            <tr>
-                <td>地区</td>
-                <td>
-                    {$data['province']['name']}-{$data['city']['name']}-{$data['zone']['name']}
-                </td>
-            </tr>
-            <tr>
-                <td>详细地址</td>
-                <td>
-                    {$data['addra']}
-                </td>
-            </tr>
-            <tr>
-                <td>问题描述</td>
-                <td>
-                    {$data['msg']}
-                </td>
-            </tr>
-            {if condition="$data['images']"}
-            <tr>
-                <td>图片描述</td>
-                <td>
-                    {volist name="$data['images']" id="v"}
-                    <img src="{$v}" width="100" alt="" onclick="show_img('{$v}')">
-                    {/volist}
-                </td>
-            </tr>
-            {/if}
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>操作日志</li>
 
-        </tbody>
-    </table>
-    <fieldset class="layui-elem-field layui-field-title">
-        <legend>操作</legend>
-    </fieldset>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>申请{:lang('show')}</legend>
+                </fieldset>
+                <table class="layui-table" style="width:700px;" lay-skin="nob">
+                    <colgroup>
+                        <col width="50">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td>状态</td>
+                        <td>
+                            <span style="color: red">{$data['status']['name']}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>产品</td>
+                        <td>
+                            {$data['pro_id']['name']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>申请类型</td>
+                        <td>
+                            {$data['type']['name']}
+                            {if condition="($data['status']['id'] eq 1) and ($data['type']['id']  eq 1) "}
+                            &nbsp;&nbsp;
+                                <a _href="" class="layui-btn layui-btn-mini">查看物流</a>
+                            {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td>{$data['name']}</td>
+                    </tr>
+                    <tr>
+                        <td>电话</td>
+                        <td>{$data['phone']}</td>
+                    </tr>
+                    <tr>
+                        <td>地区</td>
+                        <td>
+                            {$data['province']['name']}-{$data['city']['name']}-{$data['zone']['name']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>详细地址</td>
+                        <td>
+                            {$data['addra']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>问题描述</td>
+                        <td>
+                            {$data['msg']}
+                        </td>
+                    </tr>
+                    {if condition="$data['images']"}
+                    <tr>
+                        <td>图片描述</td>
+                        <td>
+                            {volist name="$data['images']" id="v"}
+                            <img src="{$v}" width="100" alt="" onclick="show_img('{$v}')">
+                            {/volist}
+                        </td>
+                    </tr>
+                    {/if}
 
-    <form class="layui-form layui-form-pane" action="">
-        <div class="layui-form-item">
-            <label class="layui-form-label">审核状态</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" lay-filter="radio" value="1" title="通过" checked>
-                <input type="radio" name="sex" lay-filter="radio" value="-1" title="不通过">
+                    </tbody>
+                </table>
+                {if condition="in_array($data['status']['id'],[0,-1])"}
+                {include file="repair/form"/}
+                {else /}
+                {include file="repair/desc"/}
+                {/if}
+            </div>
+            <div class="layui-tab-item">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="400">
+                        <col width="100">
+                        <col width="100">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>操作内容</th>
+                            <th>操作人</th>
+                            <th>操作时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="log_list" id="v"}
+                        <tr>
+                            <th>{$v['content']}</th>
+                            <th>{$v['admin_id']}</th>
+                            <th>{$v['add_time']}</th>
+                        </tr>
+                        {/volist}
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="layui-form-item hide audit layui-form-text">
-            <label class="layui-form-label">不通过原因</label>
-            <div class="layui-input-block">
-                <textarea name="audit" placeholder="请输入内容" class="layui-textarea"></textarea>
-            </div>
-            <div class="layui-form-mid layui-word-aux">200字以内</div>
-        </div>
-        <div class="layui-form-item user_id">
-            <label class="layui-form-label">跟进门店</label>
-            <div class="layui-input-inline">
-                <input type="hidden" name="user_id" value="">
-                &nbsp;&nbsp;
-                <div class="layui-btn layui-btn-primary" onclick="select_user()">
-                    <i class="layui-icon">&#xe61f;</i>
-                    点击选择
-                </div>
-            </div>
+    </div>
 
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-            </div>
-        </div>
-    </form>
 </div>
 {include file="common/foot"/}
-
 <div id="tong" class="hide">
     <img src="images/tong.jpg">
 </div>
-<div id="select_user" class="hide">
-    <div class="demoTable">
-        <div class="layui-inline">
-            <input class="layui-input" name="name" id="name" placeholder="姓名">
-
-        </div>
-        <div class="layui-inline">
-            <input class="layui-input" name="phone" id="phone" placeholder="电话">
-        </div>
-        <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
-        <a href="javascript:;" onclick="window.location.reload()" class="layui-btn">显示全部</a>
-        <div style="clear: both;"></div>
-    </div>
-    <table class="layui-table" id="list" lay-filter="list"></table>
-</div>
+{if condition="in_array($data['status']['id'],[0,-1])"}
+{include file="repair/script"/}
+{else /}
 <script type="text/javascript">
-
-    layui.use(['form','layer','table'], function(){
+    layui.use(['layer','element'], function(){
         $ = layui.jquery;
-        var form = layui.form
-            ,layer = layui.layer;
-        var table = layui.table;
-        //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
-            return false;
-        });
-
-        form.on('radio(radio)', function(data){
-            var v=data.value;
-            if(v==-1){
-                $('.audit').show();
-                $('.user_id').hide();
-                $('.user_id').find('input').attr('value','');
-            }else{
-                $('.audit').hide();
-                $('.user_id').show();
-                $('.audit').find('textarea').attr('value','');
-            }
-        });
-
-        var tableIn = table.render({
-            id: 'content',
-            elem: '#list',
-            url: '{:url("repair/getList")}',
-            method: 'get',
-            page: true,
-            cols: [[
-                {checkbox: true, fixed: true},
-                {field: 'id', title: '{:lang("id")}', width: 80, fixed: true},
-                {field: 'pro_id', title: '产品', width: 200,templet:"#pro_id"},
-                {field: 'name', title: '姓名', width: 200},
-                {field: 'phone', title: '电话', width: 200},
-                {field: 'add_time', title: '申请时间', width: 180},
-                {width: 160, align: 'center', toolbar: '#action',title:'操作'}
-            ]],
-            limit: 10
-        });
-    });
+        var element = layui.element;
+    })
     function show_img(img) {
         $('#ton').children('img').attr('src',img);
         layer.open({
@@ -176,13 +139,5 @@
             content: $('#tong')
         });
     }
-    function select_user(){
-        layer.open({
-            type: 1,
-            title: '选择跟进的门店',
-            area: '516px',
-            shadeClose: true,
-            content: $('#select_user') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
-        });
-    }
 </script>
+{/if}

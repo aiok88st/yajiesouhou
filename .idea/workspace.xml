@@ -2,65 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aded391-4f5b-4218-a8c4-b557270af692" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/model/OrderLog.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/view/repair/desc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/view/repair/form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/view/repair/script.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/cache/70/7e501cf4e2613d81ae5ee2670dba30.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/log/201711/15.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/log/201711/16.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/log/201711/17.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/session/sess_52d801555fedf7405e82823366bd1b24" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/session/sess_886f0e8aa52007c2fc7884c440e0653c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/05ecd222070295234bb0ac94e6af8aa9.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/1457979725157bb4608ab8c1b359cb8e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/1c95b8aa67715c2183f3862eca74413e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/249033775bc48cde70f240f59cedc58c.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/349d629dccac52876819282a6c597861.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/38da3945ac7272cbd53d4f47092f38cd.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/391b5cb9024766959f21180ecae7767d.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/458a65e0c5258339bbf09202e44eec45.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/512a946343095272c37987d1f4536c36.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/5683397ecd25171fbb5459dd40e07a9c.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/6abd8a990598cfabb12810d081070093.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/77549a195bca434bacf258e12188d8c7.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/7be7969f76a4d8d8eba427677c30957c.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/809ab718358fa3ec66da7f0d5dd2a76d.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/a00788e08c25d5b68914b35cfbb2b4bd.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/ae546a12a22f68595591fe36bab26769.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/c94dbd7819c113f5fb1527d4f9b61ef5.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/cc2b06deeb954442a3cd74b4c4fedf65.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/dfe0813b64a3cd09e074baf30cefdf62.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/ebfc36025b27de97c21921c270ea3b83.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/f01b92d87664fbeb8262f7cf420d65a1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/fa408c6c9475c055a7d6a0b527be0684.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/fd36567295bd76de289ec64312fca650.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/ffdbb26bd4712e80c8e57b6d99edef05.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/controller/Common.php" afterPath="$PROJECT_DIR$/app/admin/controller/Common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/controller/EmptyController.php" afterPath="$PROJECT_DIR$/app/admin/controller/EmptyController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/controller/Repair.php" afterPath="$PROJECT_DIR$/app/admin/controller/Repair.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/model/Network.php" afterPath="$PROJECT_DIR$/app/admin/model/Network.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/model/Order.php" afterPath="$PROJECT_DIR$/app/admin/model/Order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/view/common/foot.html" afterPath="$PROJECT_DIR$/app/admin/view/common/foot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/view/repair/audit.html" afterPath="$PROJECT_DIR$/app/admin/view/repair/audit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/view/repair/index.html" afterPath="$PROJECT_DIR$/app/admin/view/repair/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/view/repair/show.html" afterPath="$PROJECT_DIR$/app/admin/view/repair/show.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.php" afterPath="$PROJECT_DIR$/app/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/admin/js/common.js" afterPath="$PROJECT_DIR$/public/static/admin/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/17_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/17_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/19_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/19_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/1_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/1_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/21_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/21_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/23_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/23_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/3_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/3_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/4_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/4_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/5_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/5_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/Data/6_Field.php" afterPath="$PROJECT_DIR$/runtime/Data/6_Field.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/log/201711/20.log" afterPath="$PROJECT_DIR$/runtime/log/201711/20.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/temp/6fc248fab281309141e8d108cd7b5ead.php" afterPath="$PROJECT_DIR$/runtime/temp/6fc248fab281309141e8d108cd7b5ead.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/temp/e804292f19e4ab6247c83eba2b5d16d0.php" afterPath="$PROJECT_DIR$/runtime/temp/e804292f19e4ab6247c83eba2b5d16d0.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/temp/edf32af877f9e49df43c8a2127dc16da.php" afterPath="$PROJECT_DIR$/runtime/temp/edf32af877f9e49df43c8a2127dc16da.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,18 +27,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/admin/view/repair/show.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/admin/view/repair/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
-              <folding>
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#1475#1481#0#HTML" expanded="true" />
-                <element signature="e#1481#1487#0#HTML" expanded="true" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -169,16 +105,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="audit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/view/repair/audit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="122" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -232,12 +158,12 @@
         <option value="$PROJECT_DIR$/app/admin/model/OrderLog.php" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/audit.html" />
         <option value="$PROJECT_DIR$/app/admin/controller/Repair.php" />
-        <option value="$PROJECT_DIR$/app/admin/view/repair/index.html" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/form.html" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/script.html" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/desc.html" />
         <option value="$PROJECT_DIR$/app/admin/model/Order.php" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/show.html" />
+        <option value="$PROJECT_DIR$/app/admin/view/repair/index.html" />
       </list>
     </option>
   </component>
@@ -479,12 +405,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511142512545</updated>
-      <workItem from="1511142514460" duration="31287000" />
+      <workItem from="1511142514460" duration="31690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31287000" />
+    <option name="totallyTimeSpent" value="31690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="789" extended-state="6" />
@@ -866,22 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/view/repair/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="124" column="9" lean-forward="false" selection-start-line="124" selection-start-column="9" selection-end-line="124" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/controller/Repair.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/view/repair/form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="611">
@@ -940,7 +850,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/view/repair/show.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="570">
           <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
           <folding>
             <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -949,6 +859,22 @@
             <element signature="e#1481#1487#0#HTML" expanded="true" />
             <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/controller/Repair.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/view/repair/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>

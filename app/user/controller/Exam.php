@@ -21,19 +21,14 @@ class Exam extends Common
         if($name){
             $where['title'] = array('like', "%$name%");
         }
-        $data = Db::name('test')->where($where)->field('id,title,createtime')->order("createtime desc")->paginate(12);
+        $data=Db::table(config('database.prefix').'utest')->alias('a')
+            ->join(config('database.prefix').'test ag','a.tid = ag.id','left')
+            ->field('a.*,ag.title,ag.id as testid')
+            ->where($where)
+            ->order("addtime desc")
+            ->paginate(12);
         $page = $data->render();//获取分页
         $list = $data->all();//获取数组;
-        $utest = db('utest');
-        foreach($list as $k=>$v){
-            $score = $utest->where('uid',session('sid'))->where('tid',$v['id'])->find();
-            if($score){
-                $list[$k]['score'] = $score['score'];
-            }else{
-                $list[$k]['score'] = "您还没有答题";
-            }
-            $list[$k]['status'] = $score['status'];
-        }
         $this->assign('list',$list);
         $this->assign('page',$page);
         return $this->fetch();
@@ -41,21 +36,15 @@ class Exam extends Common
 
     public function test(){
         $id = input('id');
-        $utest = db('utest')->where('uid',session('sid'))->where('tid',$id)->find();
-        if(!$utest){
-            $where['id']=['=',$id];
-            $test=$this->getListOne($where);
-            $this->assign('test',$test);
-            return $this->fetch();
-        }else{
-            $utest['content']=json_decode($utest['content'],true);
-            $this->assign('test',$utest);
-            return $this->fetch('edit');
-        }
+        $where['id']=['=',$id];
+        $test=$this->getListOne($where);
+        $this->assign('test',$test);
+        return $this->fetch();
     }
+
     public function getDetail(){
         $id = input('id');
-        $utest = db('utest')->where('uid',session('sid'))->where('tid',$id)->find();
+        $utest = db('utest')->where('uid',session('sid'))->where('id',$id)->find();
         $utest['content']=json_decode($utest['content'],true);
         $utest['answer']=json_decode($utest['answer'],true);
         foreach($utest['answer'] as $k=>$v){
@@ -121,6 +110,16 @@ class Exam extends Common
             return ['code' => 1, 'msg' => '提交成功!', 'url' => url('index')];
         }else{
             return ['code' => 0, 'msg' => '提交失败!'];
+        }
+    }
+
+    public function getTest(){
+        $id = input('id');
+        $utest = db('utest')->where('uid',session('sid'))->where('tid',$id)->order("addtime desc")->find();
+        if($utest && $utest['status']==1){
+            $this->redirect(url('Exam/getDetail',array('id'=>$utest['id'])));
+        }else{
+            $this->redirect(url('Exam/test',array('id'=>$utest['tid'])));
         }
     }
 

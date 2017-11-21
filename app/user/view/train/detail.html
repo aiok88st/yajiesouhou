@@ -28,11 +28,9 @@
                 </td>
             </tr>
             <tr>
-                <td><button onclick="collet('{$data.id}')" class="layui-btn" data-type="reload">收藏</button></td>
-            </tr>
-            <tr>
                 <td>
-                    <a href="{:url('Exam/test')}?id={$data.tid}"><button class="layui-btn" data-type="reload">答题</button></a>
+                    <button onclick="collet('{$data.id}')" class="layui-btn" data-type="reload">收藏</button>
+                    <a href="{:url('Exam/getTest')}?id={$data.tid}"><button class="layui-btn" data-type="reload">答题</button></a>
                     <a href="{$data.weblink}" target="_blank"><button class="layui-btn" data-type="reload">下载资料</button></a>
                 </td>
             </tr>

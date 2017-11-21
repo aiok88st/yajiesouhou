@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:48:"F:\wamp\www\yajie/app/user\view\login\index.html";i:1510709199;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:48:"F:\wamp\www\yajie/app/user\view\login\index.html";i:1511183062;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,22 +14,22 @@
     <script src="__USER__/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="__USER__/js/xadmin.js"></script>
     <style type="text/css">
-    .login{
-        position: absolute;
-        top: 100px;
-        right: 200px;
-        width: 360px;
-    }
+        .login{
+            position: absolute;
+            top: 100px;
+            right: 200px;
+            width: 360px;
+        }
     </style>
 
 </head>
-<body style="position: relative;">
+<body>
     <div style="height: 10px;"></div>
-    <div style="margin-left: 30px;height: 70px;">
-        <img src="__ADMIN__/images/logo.jpg" alt="" style="height: 100%;" />
+    <div style="margin-left: 30px;">
+        <img src="__ADMIN__/images/logo.jpg" alt="" style="width: 350px;" />
     </div>
     <div style="margin-top: 10px">
-        <img src="__ADMIN__/images/bgimg.jpg" alt="" style="width: 100%;height: 800px;" />
+        <img src="__ADMIN__/images/bgimg.jpg" alt="" style="width: 100%;height: 700px;" />
     </div>
     <div class="login">
         <div class="message">雅洁客户登录</div>
@@ -44,7 +44,7 @@
         </form>
     </div>
     <div style="height: 70px;text-align: center;line-height: 70px;">
-        <p>雅洁五金，Copyright ©2017 雅洁五金</p>
+        <p>Copyright ©2017 雅洁五金</p>
     </div>
 
     <script>
@@ -69,10 +69,10 @@
             });
         });
 
-        
+
     </script>
 
-    
+
     <!-- 底部结束 -->
     <script>
     //百度统计可去掉
@@ -80,7 +80,7 @@
     (function() {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
     </script>

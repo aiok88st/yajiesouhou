@@ -31,6 +31,8 @@ class Article extends Fater
             $data = $this->getList($where);
             return $data;
         }
+        $system = $this->getSystem();
+        $this->assign('system',$system);
         return $this->fetch();
     }
 

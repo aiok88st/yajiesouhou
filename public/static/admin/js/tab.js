@@ -127,7 +127,7 @@ layui.define(['element', 'common'], function (exports) {
                 if (data.icon.indexOf('fa-') !== -1) {
                     title += '<i class="fa ' + data.icon + '" aria-hidden="true"></i>';
                 } else {
-                    title += '<i class="layui-icon">' + data.icon + '</i>';
+                    //title += '<i class="layui-icon">' + data.icon + '</i>';
                 }
             }
             title += '<cite>' + data.title + '</cite>';

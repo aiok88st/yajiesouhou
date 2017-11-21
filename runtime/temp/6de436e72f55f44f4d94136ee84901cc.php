@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:48:"F:\wamp\www\yajie/app/user\view\index\index.html";i:1510627423;s:50:"F:\wamp\www\yajie/app/user\view\common\header.html";i:1510569153;s:48:"F:\wamp\www\yajie/app/user\view\common\left.html";i:1510802663;s:50:"F:\wamp\www\yajie/app/user\view\common\footer.html";i:1510571549;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:48:"F:\wamp\www\yajie/app/user\view\index\index.html";i:1510627423;s:50:"F:\wamp\www\yajie/app/user\view\common\header.html";i:1511150016;s:48:"F:\wamp\www\yajie/app/user\view\common\left.html";i:1510802663;s:50:"F:\wamp\www\yajie/app/user\view\common\footer.html";i:1510571549;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>

@@ -152,11 +152,11 @@
                             $latlng=explode(',',$vo['location']);
                         {/php}
                         <div class="swiper-slide items" date-lat="{$latlng[0]}" date-lng="{$latlng[1]}">
-                            <div class="addressBox">
+                            <div class="addressBox" style="width: 90%;height: 2.2rem;">
                                 <div class="addressShow">
                                     <ul>
                                         <li>
-                                            <p>{$vo.title}</p>
+                                            <p style="margin-bottom: 0.18rem;">{$vo.title}</p>
                                         </li>
                                         <li>
                                             <p style="float: left;">{$vo.addr}</p>
@@ -178,8 +178,8 @@
                         </div>
                        {/volist}
                     </div>
-                    <div class="swiper-button-prev" style="background-image: url(__HOME__/img/back.png);left: 1%;"></div>
-                    <div class="swiper-button-next" style="background-image: url(__HOME__/img/back.png);transform: rotate(180deg);right: 1%;"></div>
+                    <div class="swiper-button-prev" style="background-image: url(__HOME__/img/back.png);left: 1%;width: 10px;height: 18px;margin-top: -9px;background-size: 10px 18px;"></div>
+                    <div class="swiper-button-next" style="background-image: url(__HOME__/img/back.png);transform: rotate(180deg);right: 1%;width: 10px;height: 18px;margin-top: -9px;background-size: 10px 18px;"></div>
                 </div>
 
                 {/empty}

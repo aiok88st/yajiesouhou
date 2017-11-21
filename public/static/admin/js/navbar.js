@@ -242,7 +242,7 @@ layui.define(['element', 'common'], function (exports) {
                     //    ulHtml += '<i class="layui-icon" data-icon="' + data[i].icon + '">' + data[i].icon + '</i>';
                     //}
                 }
-                ulHtml += '<cite>' + data[i].title + '</cite>'
+                ulHtml += '<cite>' + data[i].title + '</cite>';
                 ulHtml += '</a>';
             }
             ulHtml += '</li>';

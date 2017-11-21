@@ -8,17 +8,32 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
+    {empty name="list"}
+    <div class="noResult" style="width: 300px;margin: 0 auto;margin-top: 100px;">
+        <ul style="text-align: center;">
+            <li>
+                <img src="__HOME__/img/noResult.png" />
+            </li>
+            <li style="line-height: 20px;">
+                <p style="margin-bottom: 0;">您没有完成测试的试题</p>
+            </li>
+            <li style="line-height: 20px;margin: 0 auto">
+                <a href="{:url('Train/tvdList')}" ><button>马上测试</button></a>
+            </li>
+        </ul>
+    </div>
+    {else /}
+    <div class="layui-row" >
         <form class="layui-form layui-col-md12 x-so">
-            <input type="text" name="key"  placeholder="请输入关键字" autocomplete="off" class="layui-input">
+            <input type="text" name="key"  placeholder="请输入标题" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
-    <table class="layui-table">
+    <table class="layui-table" >
         <thead>
         <tr>
             <th>标题</th>
-            <th>发布时间</th>
+            <th>提交时间</th>
             <th>得分</th>
             <th></th>
         </tr>
@@ -27,18 +42,14 @@
         {volist name="list" id="vo"}
         <tr>
             <td>{$vo.title}</td>
-            <td>{$vo.createtime|date="Y-m-d",###}</td>
+            <td>{$vo.addtime|date="Y-m-d",###}</td>
             <td>{$vo.score}</td>
             <td>
-                {if condition="$vo['score'] eq '您还没有答题'"}
-                <button class="layui-btn" data-type="reload" onclick="jin('{$vo.id}')">点击进入考试</button>
-                {else/}
                     {if condition="$vo.status eq 1"}
                     <button class="layui-btn" data-type="reload" onclick="getDetail('{$vo.id}')">点击查看试卷</button>
                     {else/}
-                    <button class="layui-btn" data-type="reload" onclick="jin('{$vo.id}')">重新考试</button>
+                    <button class="layui-btn" data-type="reload" onclick="jin('{$vo.tid}')">重新考试</button>
                     {/if}
-                {/if}
             </td>
         </tr>
         {/volist}
@@ -47,6 +58,7 @@
     <div class="page">
         {$page}
     </div>
+    {/empty}
 </div>
 <script type="text/javascript">
     function jin(id){

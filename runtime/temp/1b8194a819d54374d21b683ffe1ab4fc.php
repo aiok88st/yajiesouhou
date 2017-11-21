@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:54:"F:\wamp\www\yajie/app/home\view\teach\teachSearch.html";i:1510910758;s:50:"F:\wamp\www\yajie/app/home\view\common\header.html";i:1510391119;s:50:"F:\wamp\www\yajie/app/home\view\common\footer.html";i:1510391232;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:54:"F:\wamp\www\yajie/app/home\view\teach\teachSearch.html";i:1511147251;s:50:"F:\wamp\www\yajie/app/home\view\common\header.html";i:1511147190;s:50:"F:\wamp\www\yajie/app/home\view\common\footer.html";i:1510391232;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="__HOME__/js/rem.js" ></script>
     <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+    <script type="text/javascript" src="__HOME__/js/public.js?v=1" ></script>
     <script type="text/javascript">
         AjaxL=function(url,type,data,call){
             $.ajax({
@@ -137,7 +138,7 @@
 		<!--导航栏-->
 		<div id = "home">
 			<div class="pHead">
-				<a href="<?php echo url('user/index'); ?>" class="back backP"><img src="__HOME__/img/back.png"/></a>
+				<a class="back backP"><img src="__HOME__/img/back.png"/></a>
 				<p>培训视频</p>
 			</div>
 			<div class="search">

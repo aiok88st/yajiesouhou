@@ -13,7 +13,7 @@ class Train extends Common
         }
         $list = Db::table(config('database.prefix') . 'utest')->alias('a')
             ->join(config('database.prefix') . 'distributor at', 'a.uid = at.id', 'left')
-            ->field('a.*,at.username')
+            ->field('a.*,at.nikename')
             ->where($map)
             ->order('addtime desc')
             ->paginate(array('list_rows'=>$pageSize,'page'=>$page))

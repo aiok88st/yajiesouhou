@@ -1,11 +1,11 @@
 {include file="common/head"/}
 <div class="admin-main layui-anim layui-anim-upbit">
     <fieldset class="layui-elem-field layui-field-title">
-        <legend>{:lang('list')}</legend>
+        <legend>意见反馈{:lang('list')}</legend>
     </fieldset>
     <div class="demoTable">
         <div class="layui-inline">
-            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}关键字">
+            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}姓名/电话">
         </div>
         <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
         <a href="{:url('index',['catid'=>input('catid')])}" class="layui-btn">显示全部</a>

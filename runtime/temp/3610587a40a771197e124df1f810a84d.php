@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"F:\wamp\www\yajie/app/admin\view\content\videoList.html";i:1509962322;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1507509539;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"F:\wamp\www\yajie/app/admin\view\content\videoList.html";i:1511170759;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1507509539;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +21,7 @@
     </fieldset>
     <div class="demoTable">
         <div class="layui-inline">
-            <input class="layui-input" name="key" id="key" placeholder="<?php echo lang('pleaseEnter'); ?>关键字">
+            <input class="layui-input" name="key" id="key" placeholder="<?php echo lang('pleaseEnter'); ?>标题">
         </div>
         <button class="layui-btn" id="search" data-type="reload"><?php echo lang('search'); ?></button>
         <a href="<?php echo url('index',['catid'=>input('catid')]); ?>" class="layui-btn">显示全部</a>

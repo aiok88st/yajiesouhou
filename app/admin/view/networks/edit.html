@@ -47,7 +47,6 @@
             <label class="layui-form-label">门店地址</label>
             <div class="">
                 <select name="province" onchange="loadRegion('province',2,'city','{:url('getAddrs')}','')" id="province" lay-ignore style="width: 8%;height: 36px;float: left;margin-right: 10px;border-color: #D2D2D2!important;">
-                    <!--<option selected>{$info.province}</option>-->
                     {volist name="province" id="vo"}
                     <option {if condition="$info['province'] eq $vo['id']"}selected="selected"{/if} value="{$vo.id}" >{$vo.name}</option>
                     {/volist}

@@ -47,7 +47,11 @@ class EmptyController extends Common{
                 }
             }
             if(!empty($keyword) ){
-                $map['title']=array('like','%'.$keyword.'%');
+                if($modelname == 'article'){
+                    $map['title|keywords']=array('like','%'.$keyword.'%');
+                }else{
+                    $map['title']=array('like','%'.$keyword.'%');
+                }
             }
             $prefix=config('database.prefix');
             $Fields=Db::getFields($prefix.$modelname);
@@ -61,6 +65,21 @@ class EmptyController extends Common{
             }
 
             if($modelname == 'network'){
+                $province=input('post.province');
+                $city=input('post.city');
+                $area=input('post.area');
+                if(!empty($keyword) ){
+                    $map['title']=array('like','%'.$keyword.'%');
+                }
+                if(!empty($province) ){
+                    $map['province']=array('=',$province);
+                }
+                if(!empty($city) ){
+                    $map['city']=array('=',$city);
+                }
+                if(!empty($area) ){
+                    $map['area']=array('=',$area);
+                }
                 $order = "listorder asc";
                 $list = $this->getNetwork($map,$order,$pageSize,$page);
             }else{
@@ -90,6 +109,10 @@ class EmptyController extends Common{
             if($modelname == 'video'){
                 $catList = getTree2('category',1,1,0);
                 $this->assign('catList',$catList);
+            }
+            if($modelname == 'network'){
+                $prov = db('region')->where('pid',1)->select();
+                $this->assign('province',$prov);
             }
             $module = db('module');
             $tem = $module->where('name',$modelname)->field('template')->find();
@@ -363,10 +386,8 @@ class EmptyController extends Common{
 
             if($controllerName=='Page'){
                 $result['url'] = url("admin/category/index");
-            }elseif($controllerName=='Article'){
-                $result['url'] = url("admin/Article/index",array('catid'=>$data['catid']));
-            }elseif($controllerName=='Enarticle' && $lang == 2){
-                $result['url'] = url("admin/articles/lists2",array('catid'=>$data['catid']));
+            }elseif($controllerName=='Article') {
+                $result['url'] = url("admin/Article/index", array('catid' => $data['catid']));
             }elseif($controllerName=='Product'){
                 $result['url'] = url("admin/product/index",array('catid'=>$data['catid']));
             }else{

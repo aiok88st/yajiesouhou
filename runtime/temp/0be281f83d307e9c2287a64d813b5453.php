@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:50:"F:\wamp\www\yajie/app/user\view\collect\index.html";i:1510804777;s:50:"F:\wamp\www\yajie/app/user\view\common\header.html";i:1510569153;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:50:"F:\wamp\www\yajie/app/user\view\collect\index.html";i:1511174425;s:50:"F:\wamp\www\yajie/app/user\view\common\header.html";i:1511150016;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,7 +31,7 @@
 <div class="x-body">
     <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so">
-            <input type="text" name="key"  placeholder="请输入关键字" autocomplete="off" class="layui-input">
+            <input type="text" name="key"  placeholder="请输入标题/关键字" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>

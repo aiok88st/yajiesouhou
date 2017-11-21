@@ -27,17 +27,17 @@ class Category extends Common
                 } else {
                     $r['str_manage'] = '';
                 }
-                $r['str_manage'] .= '<a class="blue" title="添加子栏目" href="' . url('Category/add', array('parentid' => $r['id'],'lang'=>$r['lang'])) . '"> <i class="icon icon-plus"></i></a> | <a class="green" href="' . url('Category/edit', array('id' => $r['id'],'lang'=>$r['lang'])) . '" title="修改"><i class="icon icon-pencil2"></i></a> | <a class="red" href="javascript:del(\'' . $r['id'] . '\')" title="删除"><i class="icon icon-bin"></i></a> ';
+                $r['str_manage'] .= '<a class="blue" title="添加子栏目" href="' . url('Category/add', array('parentid' => $r['id'],'lang'=>$r['lang'])) . '"> 添加</a> | <a class="green" href="' . url('Category/edit', array('id' => $r['id'],'lang'=>$r['lang'])) . '" title="修改">修改</a> | <a class="red" href="javascript:del(\'' . $r['id'] . '\')" title="删除">删除</a> ';
 
-                $r['modulename'] = $this->module[$r['moduleid']]['title'];
+//                $r['modulename'] = $this->module[$r['moduleid']]['title'];
 
-                $r['dis'] = $r['ismenu'] == 1 ? '<font color="green">显示</font>' : '<font color="red">不显示</font>';
+//                $r['dis'] = $r['ismenu'] == 1 ? '<font color="green">显示</font>' : '<font color="red">不显示</font>';
                 $array[] = $r;
             }
 
             $str = "<tr><td class='visible-lg visible-md'>\$id</td>";
-            $str .= "<td class='text-left'>\$spacer<span class='green'>\$catname</span>&nbsp;</td>";//   __ROOT__/cltphp5.2/admin/$module/$action/$files/$id.html
-            $str .= "<td class='visible-lg visible-md'>\$modulename</td><td class='visible-lg visible-md'>\$dis</td>";
+            $str .= "<td class='text-left'>\$spacer<span class='green'>\$catname</span>&nbsp;</td>";
+//            $str .= "<td class='visible-lg visible-md'>\$modulename</td><td class='visible-lg visible-md'>\$dis</td>";
             $str .= "<td><input type='text' size='10' data-id='\$id' value='\$listorder' class='layui-input list_order'></td><td>\$str_manage</td></tr>";
             $tree = new Tree ($array);
             $tree->icon = array('&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;&nbsp;');
@@ -51,7 +51,7 @@ class Category extends Common
             $lang = $value['lang'];
         }
         $this->assign('lang',$lang);
-        $this->assign('title','栏目列表');
+        $this->assign('title','分类列表');
         return $this->fetch();
     }
 

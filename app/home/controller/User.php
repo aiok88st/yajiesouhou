@@ -15,6 +15,8 @@ class User extends Fater
 
     public function index(){
         $data = db('member_open')->where('id',UID)->field('did,open_face,open_name')->find();
+        $system = $this->getSystem();
+        $this->assign('system',$system);
         if($data['did'] == ''){
             $this->redirect(url('home/Login/index'));
         }else{

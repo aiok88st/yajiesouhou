@@ -42,12 +42,12 @@ class Exam extends Fater
         $id = input('id');
         $where['id']=['=',$id];
         $utest = db('utest')->where('uid',session('did'))->where('tid',$id)->find();
-        if(!$utest){
+        if($utest && $utest['status']==1){
+            $this->redirect(url('home/Exam/detail',array('id'=>$utest['id'])));
+        }else{
             $test=$this->getListOne($where);
             $this->assign('test',$test);
             return $this->fetch('exam');
-        }else{
-            $this->redirect(url('home/Exam/detail',array('id'=>$utest['id'])));
         }
     }
 
@@ -140,77 +140,9 @@ class Exam extends Fater
             return $this->fetch('result');
         }else{
             $this->assign('test',$utest);
-            return $this->fetch('edit');
+            return $this->fetch('exam');
         }
     }
 
-    public function edit(Request $request){
-        $tests = $request->param();
-        $where['id']=['=',$tests['tid']];
-        $test=$this->getListOne($where);
-        $tcontent = $test['content'];
-        $standard=[];
-        foreach($tcontent as $key=>$val){
-            $answer=[];
-            foreach($val['input'] as $k=>$v){
-                if($v['answer']==1){
-                    array_push($answer,$v['val']);
-                }
-            }
-            $standard[$key]['score']=$val['score'];
-            $standard[$key]['answer']=$answer;
-        }
-        $standard2=[];
-        foreach($tests['content'] as $key=>$val){
-            $answer=[];
-            foreach($val['input'] as $k=>$v){
-                if($v['answer']==1){
-                    array_push($answer,$v['val']);
-                }
-            }
-            $standard2[$key]['score']=$val['score'];
-            $standard2[$key]['answer']=$answer;
-        }
-        $score=0;
-        foreach($standard2 as $key=>$value){
-            if(empty($value['answer'])){
-                $blood[$key]=false;
-                continue;
-            }
-            if(empty(array_diff($value['answer'],$standard[$key]['answer']))){
-                $score +=$value['score'];
-                $blood[$key]=true;
-            }else{
-                $blood[$key]=false;
-            }
-        }
-        $list = [
-            'score'=>$score,
-            'title'=>$tests['title'],
-            'f_title'=>$tests['f_title'],
-            'content'=>json_encode($tests['content']),
-            'answer'=>json_encode($blood),
-            'status'=>1
-        ];
-        $res = db('utest')->where('id',$tests['id'])->update($list);
 
-        $count_num=count($blood);
-        $num = 0;
-        foreach($blood as $k=>$v){
-            if($v == true){
-                $num++;
-            }
-        }
-        $lists = [
-            'score'=>$score,
-            'true'=>$num,
-            'false'=>$count_num-$num,
-            'id'=>$tests['id']
-        ];
-        if($res !== false){
-            return ['code' => 1, 'msg' => '提交成功!','lists'=>$lists];
-        }else{
-            return ['code' => 0, 'msg' => '提交失败!'];
-        }
-    }
 }

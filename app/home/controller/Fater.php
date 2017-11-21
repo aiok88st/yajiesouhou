@@ -14,8 +14,8 @@ class Fater extends Controller{
         define('WX_APPSECRET', $this->appsecret);
         $member_id=session('member_id');
         //定义用户常量
-//        define('UID', 1);//用户ID
-        define('UID', $member_id);//用户ID
+        define('UID', 1);//用户ID
+//        define('UID', $member_id);//用户ID
     }
 
     //base64上传
@@ -64,6 +64,11 @@ class Fater extends Controller{
             ->order($order)
             ->select();
         return $list;
+    }
+
+    public function getSystem(){
+        $system = db('system')->where('id',1)->find();
+        return $system;
     }
 
 }

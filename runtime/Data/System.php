@@ -1,20 +1,8 @@
 <?php
 return array (
   'id' => 1,
-  'name' => '雅洁五金',
-  'url' => 'http://www.youfuduo.com',
-  'title' => '雅洁五金',
-  'key' => '雅洁五金',
-  'des' => '雅洁五金',
-  'bah' => '2017 Meizu Telecom Equipment Co., Ltd. All rights reserved.     粤ICP备13003602号 合字B2-20170010 营业执照 法律声明  粤公网安备 44049102496009 号   ',
-  'copyright' => '2017',
-  'ads' => '广东省广州市海珠区琶洲商业广场11栋',
-  'tel' => '1372839487654',
-  'youbian' => '10000',
-  'logo' => '/uploads/20170929/92b7d59a87a7cd26c9d9c2a3fd5b671b.png',
-  'fax' => '000-6686688',
-  'wxpic' => '/uploads/20170929/5d9a5e1c4ce03d4d6540f02ab8fb36d2.png',
-  'email' => 'suixing@163.com',
-  'phone' => '400-888-888',
+  'tel' => '10086',
+  'guangyu' => '<p><span style="color: rgb(34, 34, 34); font-family: Consolas, &quot;Lucida Console&quot;, &quot;Courier New&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">广东雅洁五金有限公司，始创于1990年，坐落风景秀丽、经济发达的珠江三角洲腹心——佛山市南海区大沥长虹岭工业园，占地面积达200亩。主要生产建筑门锁、五金、门用五金和家具五金四大类产品，涵盖插芯门锁、玻璃门锁、智能门锁、铜锁、工程用锁、卫浴挂件、卫生间附件、门用功能五金、玻璃五金、闭门器、地弹簧、工程配套五金、家具锁、小拉手、滑轨和抽屉、铰链及连接件等共 2000多个品种，150多种专利产品。</span></p>',
+  'agree' => '<p><span style="color: rgb(34, 34, 34); font-family: Consolas, &quot;Lucida Console&quot;, &quot;Courier New&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">广东雅洁五金有限公司，始创于1990年，坐落风景秀丽、经济发达的珠江三角洲腹心——佛山市南海区大沥长虹岭工业园，占地面积达200亩。主要生产建筑门锁、五金、门用五金和家具五金四大类产品，涵盖插芯门锁、玻璃门锁、智能门锁、铜锁、工程用锁、卫浴挂件、卫生间附件、门用功能五金、玻璃五金、闭门器、地弹簧、工程配套五金、家具锁、小拉手、滑轨和抽屉、铰链及连接件等共 2000多个品种，150多种专利产品。</span></p>',
 );
 ?>

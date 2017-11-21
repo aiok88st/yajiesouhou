@@ -12,8 +12,9 @@ class Order extends Model
     protected $table = 'clt_order';
     protected $field = [
         'client_id','pro_id','type','name','phone','province','city','zone','addra','msg',
-        'status'
+        'status','add_time'
     ];
+    protected $insert=['add_time'];
     protected $veri=[
         'client_id|用户ID'   => 'require',
         'pro_id|产品ID'   => 'require',
@@ -26,6 +27,9 @@ class Order extends Model
         'addra|详细地址'=>'require|max:255',
         'msg|问题描述'=>'require|min:10',
     ];
+    public function setAddTimeAttr(){
+        return date('Y-m-d H:i:s');
+    }
     public function setImagesAttr($value)
     {
         $data=[];

@@ -5,6 +5,87 @@
 <link rel="stylesheet" href="__HOME__/css/publicSI.css" />
 <link rel="stylesheet" href="__HOME__/css/problemFirst.css" />
 <link rel="stylesheet" href="__HOME__/css/help.css" />
+<style>
+    .videoIn {
+        margin-bottom: 0rem;
+        margin-top: 0.2rem;
+    }
+    .videoIn .bottomTitle p:nth-child(1){
+        color: #641d90;
+        width: 50%;
+    }
+    .videoIn .bottomTitle p:nth-child(3){
+        position: absolute;
+        top: 0;
+        right: 25%;
+        background: url(__HOME__/img/time.png) no-repeat left center;
+        background-size: auto 0.24rem;
+        text-indent: 0.34rem;
+        padding: 0;
+    }
+    .videoIn .bottomTitle p:nth-child(2){
+        background-image: url(__HOME__/img/eyes.png);
+        background-size: auto 0.23rem;
+    }
+    /*一级*/
+    .clist{
+        width: 100%;
+        height: 0.8rem;
+        background-color: white;
+        overflow: hidden;
+        border-top: 1px solid #e5e5e5;
+    }
+    .clist ul li{
+        float: left;
+        font-size: 0.28rem;
+        line-height: 0.8rem;
+        text-align: center;
+        position: relative;
+    }
+    .clist ul li span{
+        position: absolute;
+        background-color: #6e0a95;
+        width: 0.56rem;
+        height: 3px;
+        bottom:0 ;
+        left: 50%;
+        margin-left: -0.28rem;
+        display: none;
+    }
+    .clist ul .at{
+        color: #6e0a95;
+    }
+    .clist ul .at span{
+        display: block;
+    }
+    .clistIn{
+        overflow-x: scroll;
+    }
+</style>
+<script>
+    $(function(){
+        $('.clistIn ul li').on('click',function(){
+            $(this).addClass('at');
+            $(this).siblings('li').removeClass('at');
+        });
+    });
+    $(function(){
+        //一级标题数目
+        var clist = {$count_num};
+        switch(clist){
+            case 1:
+                $(".clist ul li").width($(window).width());
+                break;
+            case 2:
+                $(".clist ul li").width($(window).width()/2);
+                break;
+            default:
+                $(".clistIn ul").width($(window).width()/3*clist);
+                $(".clist ul li").width($(window).width()/3);
+                break;
+        }
+    });
+</script>
 {/block}
 {block name="main"}
 		<!--导航栏-->
@@ -26,34 +107,44 @@
 			<div class="search">
 				<a href="{:url('Video/helpHistory')}">输入产品型号</a>
 			</div>
-			<div class="videoContent">
-				<div class="vType">
-					<div class="vTypeIn">
-						<ul>
-                            {volist name="cate" id="vo" key="k"}
-							<li>
-								<a onclick="change('{$vo.id}')" href="javascript:;" {if condition="$catid eq $vo['id']"}class="aActive"{/if}>{$vo.catname}</a>
-							</li>
-							{/volist}
-						</ul>
-						<span></span>
-						<div class="clearl"></div>
+
+            <div class="clist">
+                <div class="clistIn">
+                    <ul>
+                        {volist name="catids" id="vo" key="k"}
+                        {php}
+                        $data = explode('-',$vo);
+                        {/php}
+                        <li v-on:click="changeCatid('{$data[1]}')" {if condition="$k eq 1"}class="at" {/if} >{$data[0]}<span></span></li>
+                        {/volist}
+                    </ul>
+                    <div class="clearl"></div>
+                </div>
+            </div>
+            <template v-if='searchResult.length>0'>
+
+				<div class="videoOut" id="proListRow">
+                    <template v-for="(key,item) in searchResult">
+					<div class="videoIn" onclick="getDetail('{{item.id}}')">
+						<div class="videoShow" style="height: 3.56rem;overflow: hidden;">
+							<img src="__PUBLIC__{{item.thumb}}" style="position:relative"/>
+							<div class="videoBox">
+								<a href='###'><img src="__HOME__/img/play.png"/></a>
+							</div>
+						</div>
+						<div class="topTitle">
+							<p>{{item.title}}</p>
+						</div>
+						<div class="bottomTitle">
+							<p>{{item.f_title}}</p>
+							<p>{{item.hits}}</p>
+						</div>
 					</div>
+                    </template>
+
 				</div>
-				<div class="hotVideo">
-					<img src="__HOME__/img/up.png" />
-					<a href="###" isOpen='true'>热门教程</a>
-					<div class="classifyBox">
-						<ul id="childen">
-                            {volist name="childen" id="vv"}
-							<li class="classify">
-								<a isOpen='true' href="{:url('video/search')}?catid={$vv.id}">{$vv.catname}</a>
-							</li>
-							{/volist}
-						</ul>
-					</div>	
-				</div>
-                {empty name="video"}
+            </template>
+            <template v-else>
                 <div class="noResult" style="">
                     <ul>
                         <li>
@@ -64,84 +155,100 @@
                         </li>
                     </ul>
                 </div>
-                {else/}
-				<div class="videoOut" id="proListRow">
-                    {volist name="video" id="vc"}
-					<div class="videoIn" onclick="getDetail('{$vc.id}')">
-						<div class="videoShow" style="height: 3.56rem;overflow: hidden;">
-							<img src="__PUBLIC__{$vc.thumb}" style="position:relative"/>
-							<div class="videoBox">
-								<a href='###'><img src="__HOME__/img/play.png"/></a>
-							</div>
-						</div>
-						<div class="topTitle">
-							<p>{$vc.title}</p>
-						</div>
-						<div class="bottomTitle">
-							<p>{$vc.f_title}</p>
-							<p>{$vc.hits}</p>
-						</div>
-					</div>
-                    {/volist}
-
-				</div>
-				{/empty}
+            </template>
 			</div>
-			<div class="bottomText">
-				<p>ARCHIE 雅洁五金</p>
-				<p>www.archie.com</p>
-			</div>
+			<!--<div class="bottomText">-->
+				<!--<p>ARCHIE 雅洁五金</p>-->
+				<!--<p>www.archie.com</p>-->
+			<!--</div>-->
 		</div>
 {/block}
 
 {block name="footer"}
 {include file="common/footer" /}
 <script type="text/javascript">
-    function change(id){
-        $.ajax({
-            url:"{:url('Video/cats')}?catid="+id,
-            type:"GET",
-            dataType:"json",
-            success:function(re){
-                console.log(re);
-                var ch = "";
-                var html="";
-                var list=re.video;
-                var childens = re.childen;
-                if(childens.length>=1){
-                    for(item in childens){
-                        ch +='<li class="classify">';
-                        ch +='<a isOpen="true" href="{:url("video/search")}?catid='+childens[item].id+'">'+childens[item].catname+'</a>';
-                        ch +='</li>';
+    var data={
+        searchResult:[],
+    };
+    var all = new Vue({
+        el:'#vueMain',
+        data:data,
+        created:function(){
+            var $this=this;
+            $this.searchResult=[];
+            layui.use('flow', function(){
+                var flow = layui.flow;
+                flow.load({
+                    elem: '#home'
+                    ,done: function(page, next){
+                        var lis = [];
+                        $this.AjaxL('{:url("Video/index")}','GET',{"page":page,"catid":3},function(res){
+                            list=res.list;
+                            if(list.length<=0){
+                                $('.layui-flow-more').hide();
+                                $('.noResult').show();
+                            }else{
+                                $('.layui-flow-more').show();
+                                $('.noResult').hide();
+                            }
+                            for (x in list){
+                                $this.searchResult.push(list[x]);
+                            }
+                            next('', page <= res.last_page);
+                        });
                     }
-                }
-                $('#childen').html(ch);
-                if(list.length>=1){
-                    for(item in list){
-                        html +='<div class="videoIn" onclick="getDetail('+list[item].id+')">';
-                        html +='<div class="videoShow" style="height: 3.56rem;overflow: hidden;">';
-                        html +='<img src="__PUBLIC__'+list[item].thumb+'" style="position:relative"/>';
-                        html +='<div class="videoBox">';
-                        html +='<a href="###"><img src="__HOME__/img/play.png"/></a>';
-                        html +='</div> </div>';
-                        html +='<div class="topTitle">';
-                        html +='<p>'+list[item].title+'</p>';
-                        html +='</div>';
-                        html +='<div class="bottomTitle">';
-                        html +='<p>'+list[item].f_title+'</p>';
-                        html +='<p>'+list[item].hits+'</p>';
-                        html +='</div></div>';
+                });
+            });
+        },
+        methods: {
+            AjaxL: function (url, type, data, call) {
+                var $this = this;
+                $.ajax({
+                    type: type,
+                    url: url,
+                    data: data,
+                    dataType: 'JSON',
+                    success: function (res) {
+                        call(res);
+                        if (res.url) {
+                            window.location.href = res.url;
+                        }
+                    },
+                    error: function (XMLHttpRequest) {
+                        console.log(1111);
                     }
-                }else{
-                    html +='<div class="noResult" style=""><ul>';
-                    html +='<li><img src="__HOME__/img/noResult.png" /></li>';
-                    html +='<li><p style="margin-bottom: 0;">该分类下暂无热门视频</p></li>';
-                    html +='</ul></div>';
-                }
-                $('#proListRow').html(html);
+                })
+            },
+            changeCatid:function(catid){
+                var $this=this;
+                $this.searchResult=[];
+                layui.use('flow', function(){
+                    var flow = layui.flow;
+                    flow.load({
+                        elem: '#home'
+                        ,done: function(page, next){
+                            var lis = [];
+                            $this.AjaxL('{:url("Video/index")}','GET',{"page":page,"catid":catid},function(res){
+                                list=res.list;
+                                if(list.length<=0){
+                                    $('.layui-flow-more').hide();
+                                    $('.noResult').show();
+                                }else{
+                                    $('.layui-flow-more').show();
+                                    $('.noResult').hide();
+                                }
+                                for (x in list){
+                                    $this.searchResult.push(list[x]);
+                                }
+                                next('', page <= res.last_page);
+                            });
+                        }
+                    });
+                });
             }
-        });
-    }
+        }
+    });
+
 	function getDetail(id){
 		window.location.href="{:url('Video/details')}?id="+id;
 	}

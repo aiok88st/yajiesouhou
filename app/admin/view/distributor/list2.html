@@ -26,9 +26,9 @@
 <script type="text/html" id="open">
 
     {{# if(d.is_open==1){ }}
-    <a class="layui-btn layui-btn-warm layui-btn-mini" lay-event="open">{:lang('enabled')}</a>
+    <a class="layui-btn layui-btn-warm layui-btn-mini" lay-event="open">已启用</a>
     {{# }else{  }}
-    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="open">{:lang('disabled')}</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="open">审核中</a>
     {{# } }}
 
 </script>
@@ -92,11 +92,11 @@
                     if (res.status==1) {
                         if (res.open == 1) {
                             obj.update({
-                                is_open: '<a class="layui-btn layui-btn-warm layui-btn-mini" lay-event="open">{:lang("enabled")}</a>'
+                                is_open: '<a class="layui-btn layui-btn-warm layui-btn-mini" lay-event="open">已启用</a>'
                             });
                         } else {
                             obj.update({
-                                is_open: '<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="open">{:lang("disabled")}</a>'
+                                is_open: '<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="open">审核中</a>'
                             });
                         }
                     }else{

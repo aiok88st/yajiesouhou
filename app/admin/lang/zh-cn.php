@@ -71,7 +71,7 @@ return [
     'time'=>'时间',
     'title'=>'标题',
 
-
+    'show'=>'详情',
     'Super administrator cannot be deleted'=>'超级管理员不可删除！',
     'Are you sure you want to delete it'=>'你确定要删除吗？'
 

@@ -4,21 +4,19 @@
         <legend>{$title}</legend>
     </fieldset>
     <blockquote class="layui-elem-quote">
-        <a href="{:url('add',['lang'=>$lang])}" class="layui-btn layui-btn-small">{:lang('add')}分类</a>
+        <a href="{:url('add',['c'=>$c])}" class="layui-btn layui-btn-small">{:lang('add')}分类</a>
     </blockquote>
     <table lay-filter="list">
         <thead>
         <tr>
             <th lay-data="{field:'id', width:60,fixed: true}">编号</th>
             <th lay-data="{field:'catname', width:300}">分类名称<span id="cateNameMsg"></span></th>
-            <!--<th lay-data="{field:'moduleid', width:120}">所属模型</th>-->
-            <!--<th lay-data="{field:'ismenu', align:'center',width:80}">导航</th>-->
             <th lay-data="{field:'listorder',align:'center',width:120}">{:lang('order')}</th>
             <th lay-data="{field:'action',width:150, align:'right'}">操作</th>
         </tr>
         </thead>
         <tbody id="con">
-        {$categorys}
+        {$data}
         </tbody>
         <tfoot>
     </table>

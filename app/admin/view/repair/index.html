@@ -1,0 +1,125 @@
+{include file="common/head"/}
+<div class="admin-main layui-anim layui-anim-upbit">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>{:lang('list')}</legend>
+    </fieldset>
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            {volist name="status_name" id="v"}
+            <li  onclick="window.location.href='{:url('repair/index',['status'=>$v['id']])}'"
+                    {if condition="$v['id'] eq $status"}class="layui-this"{/if}>
+                {$v['name']}
+            </li>
+            {/volist}
+
+        </ul>
+    </div>
+
+    <div class="demoTable">
+        <div class="layui-inline">
+            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}关键字">
+        </div>
+        <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
+        <a href="javascript:;" onclick="window.location.reload()" class="layui-btn">显示全部</a>
+        <button type="button" class="layui-btn layui-btn-danger" id="delAll">批量删除</button>
+        <div style="clear: both;"></div>
+    </div>
+    <table class="layui-table" id="list" lay-filter="list"></table>
+</div>
+{include file="common/foot"/}
+<script type="text/html" id="action">
+    <a href="{:url('repair/show')}?id={{d.id}}" class="layui-btn layui-btn-mini show">查看详情</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['table','element'], function() {
+        var table = layui.table, $ = layui.jquery;
+        var element = layui.element;
+        var tableIn = table.render({
+            id: 'content',
+            elem: '#list',
+            url: '{:url("repair/getList")}',
+            method: 'get',
+            page: true,
+            where:{status:'{$status}'},
+            cols: [[
+                {checkbox: true, fixed: true},
+                {field: 'id', title: '{:lang("id")}', width: 80, fixed: true},
+                {field: 'pro_id', title: '产品', width: 200,templet:"#pro_id"},
+                {field: 'name', title: '姓名', width: 120},
+                {field: 'phone', title: '电话', width: 200},
+                {field: 'status', title: '状态', width: 100,templet:"#status"},
+                {field: 'add_time', title: '申请时间', width: 180},
+                {width: 160, align: 'center', toolbar: '#action',title:'操作'}
+            ]],
+            limit: 10
+        });
+        //搜索
+        $('#search').on('click', function () {
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var status = $('#status').val();
+
+            tableIn.reload({
+                where: {name: name,phone:phone,status:status}
+            });
+        });
+
+        table.on('tool(list)', function(obj) {
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('您确定要删除该内容吗？', function(index){
+                    var loading = layer.load(1, {shade: [0.1, '#fff']});
+                    $.post("{:url('repair/dele')}",{ids:data.id},function(res){
+                        layer.close(loading);
+                        if(res.code===1){
+                            var name = $('#name').val();
+                            var phone = $('#phone').val();
+                            layer.msg(data.msg, {time: 1000, icon: 1});
+                            tableIn.reload({where:{
+                                name:name,
+                                phone:phone
+                            }});
+                        }else{
+                            layer.msg('操作失败！',{time:1000,icon:2});
+                        }
+                    });
+                    layer.close(index);
+                });
+            }
+        });
+        $('#delAll').click(function(){
+            layer.confirm('确认要删除选中的内容吗？', {icon: 3}, function(index) {
+                layer.close(index);
+                var checkStatus = table.checkStatus('content'); //content即为参数id设定的值
+                var ids = [];
+                $(checkStatus.data).each(function (i, o) {
+                    ids.push(o.id);
+                });
+                var loading = layer.load(1, {shade: [0.1, '#fff']});
+                $.post("{:url('repair/dele')}", {ids: ids}, function (data) {
+                    layer.close(loading);
+                    if (data.code === 1) {
+                        var name = $('#name').val();
+                        var phone = $('#phone').val();
+                        layer.msg(data.msg, {time: 1000, icon: 1});
+                        tableIn.reload({where:{
+                            name:name,
+                            phone:phone
+                        }});
+                    } else {
+                        layer.msg(data.msg, {time: 1000, icon: 2});
+                    }
+                });
+            });
+        })
+
+
+    });
+</script>
+<script type="text/html" id="pro_id">
+    {{d.pro_id.name}}
+</script>
+<script type="text/html" id="status">
+    {{d.status.name}}
+</script>

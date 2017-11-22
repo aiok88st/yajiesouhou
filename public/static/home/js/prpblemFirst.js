@@ -10,6 +10,5 @@ $(function(){
 			$(this).find('img').removeClass('imgR');
 			$(this).next('ul').stop().slideUp();
 		}
-		
 	});
 });

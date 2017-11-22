@@ -30,16 +30,17 @@ class Video extends Fater
     }
 
     public function index(){
-        $childen = db('category')->where('parentid',3)->field('id,parentid,catname')->select();
-        $video = db('video')->where('catid',3)->where('tag',4)->order('hits desc')->limit(6)->select();
-        $cate = db('category')->where('parentid',1)->field('id,parentid,catname')->select();
-        foreach($video as $k=>$v){
-            $video[$k]['hits'] = FormatMoney($v['hits']);
+        $catid = input('catid')?input('catid'):3;
+        $catids=explode(',',rtrim(getTreeNum('category',1),','));
+        if(request()->isAjax()){
+            $where['catid'] = ['=',$catid];
+            $list = $this->getList($where);
+            return $list;
         }
-        $this->assign('video',$video);
-        $this->assign('childen',$childen);
-        $this->assign('cate',$cate);
-        $this->assign('catid',3);
+        $count_num = count($catids);
+        $this->assign('catids',$catids);
+        $this->assign('count_num',$count_num);
+        $this->assign('catid',$catid);
         return $this->fetch('help');
     }
 

@@ -1,0 +1,68 @@
+#person .myOrder .moreOrder a {
+  background-image: url(../img/progressing.png); }
+
+#person .bottomChoice .moreOrder:nth-child(1) a {
+  background-image: url(../img/produce.png);
+  border: 0; }
+
+#person .bottomChoice1 .moreOrder:nth-child(1) a {
+  background-image: url(../img/about.png);
+  border: 0; }
+
+#exchangePhone .exInput ul li:nth-child(1) input {
+  border-bottom: 1px solid #f0f0f0; }
+
+#exchangePhone .exInput {
+  height: 1.62rem; }
+
+#exchangePhone .exInput ul li:nth-child(2) input {
+  width: 60%;
+  margin-left: 4%; }
+
+#exchangePhone .exInput ul li:nth-child(2) {
+  position: relative; }
+  #exchangePhone .exInput ul li:nth-child(2) button {
+    width: 2.0rem;
+    font-size: 0.28rem;
+    height: 0.8rem;
+    background-color: white;
+    display: block;
+    position: absolute;
+    right: 4%;
+    top: 0;
+    color: #6c1876; }
+
+#exchangeAddress .exInput {
+  height: 2.42rem; }
+  #exchangeAddress .exInput ul li:nth-child(1) {
+    position: relative; }
+    #exchangeAddress .exInput ul li:nth-child(1) input {
+      text-indent: 22%;
+      border-bottom: 1px solid #f0f0f0;
+      background: url(../img/eAddress.png) no-repeat 95% center;
+      background-size: auto 0.34rem; }
+    #exchangeAddress .exInput ul li:nth-child(1) p {
+      font-size: 0.28rem;
+      line-height: 0.8rem;
+      position: absolute;
+      left: 4%;
+      top: 0;
+      color: #020202;
+      height: 0.8rem; }
+  #exchangeAddress .exInput ul li:nth-child(2) p {
+    width: 20%;
+    float: left;
+    line-height: 0.8rem;
+    height: 0.8rem;
+    font-size: 0.28rem;
+    margin-left: 4%; }
+  #exchangeAddress .exInput ul li:nth-child(2) textarea {
+    width: 70%;
+    float: left;
+    height: 1.2rem;
+    line-height: 0.4rem;
+    border: 0;
+    font-size: 0.28rem;
+    margin-top: 0.2rem; }
+
+/*# sourceMappingURL=rPerson.css.map */

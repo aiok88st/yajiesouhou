@@ -107,6 +107,8 @@ class Article extends Fater
             $data=$this->getList($where);
             return $data;
         }
+        $cat = input('cat');
+        $this->assign('cat',$cat);
         $catname = input('catname');
         $this->assign('catid',$catid);
         $this->assign('catname',$catname);
@@ -129,7 +131,8 @@ class Article extends Fater
                     'username|姓名' => 'require|max:25',
                     'phone|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
                     'catid|类型' => 'require',
-                    'content|问题描述' => 'require|min:10,max:255',
+                    'content|问题描述' => 'require|min:10',
+                    'model|产品型号' => 'require',
                     'img|图片' => 'require',
                 ]);
             if (true !== $result) {

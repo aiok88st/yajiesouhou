@@ -29,6 +29,7 @@ class Images extends Common
     public function update(){
         $id = input('id');
         $img = input('img');
+        $data['model']=input('model');
         $product = db('product_img')->where('id',$id)->find();
         if($img != ''){
             $data['img']=$img;

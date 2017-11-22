@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:48:"F:\wamp\www\yajie/app/admin\view\index\main.html";i:1507509540;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1507509539;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:48:"F:\wamp\www\yajie/app/admin\view\index\main.html";i:1507509540;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1511332713;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +74,27 @@
     </div>
 </div>
 <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
 
+<div id="pop" class="hide" style="display: none">
+    <img src=""/>
+</div>
+<script type="text/javascript">
+    $('img').bind('click',function(){
+        var src=$(this).attr('src');
+        $('#pop').find('img').attr('src',src);
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '716px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#pop')
+        });
+    })
+</script>
 
 <script>
     layui.use('table', function() {

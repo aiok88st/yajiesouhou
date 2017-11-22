@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="__ADMIN__/qu/css/wenjuan_ht.css">
     <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
     <script src="https://cdn.bootcss.com/layer/3.0.3/layer.min.js"></script>
-    <script src="__ADMIN__/qu/js/index.js?v=1"></script>
+    <script src="__ADMIN__/qu/js/index.js?v=2"></script>
     <style>
         #addquerstions{
             width: 30%;
@@ -49,9 +49,22 @@
         </div>
     </div>
     <div class="layui-form-item" style="margin-left: 50px">
-        <label class="layui-form-label">副标题</label>
+        <label class="layui-form-label">期数</label>
         <div class="layui-input-block">
-            <input type="text" id="f_title" name="f_title" {if condition="$info['id'] neq ''"}value="{$info['f_title']}"{/if} required  lay-verify="required" placeholder="请输入副标题" autocomplete="off" class="layui-input" style="width: 650px;">
+            <input type="text" id="f_title" name="f_title" {if condition="$info['id'] neq ''"}value="{$info['f_title']}"{/if} required  lay-verify="required" placeholder="请输入期数" autocomplete="off" class="layui-input" style="width: 650px;">
+        </div>
+    </div>
+    <div class="layui-form-item" style="margin-left: 50px">
+        <label class="layui-form-label">答案</label>
+        <input type="hidden" name="answer" id="logo" value="{$info.answer}">
+        <div class="layui-input-block">
+            <div class="layui-upload">
+                <button type="button" class="layui-btn layui-btn-primary" id="logoBtn"><i class="icon icon-upload3"></i>点击上传</button>
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img" id="cltLogo">
+                    <p id="demoText"></p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="all_660" style="margin-left: 50px">
@@ -184,6 +197,38 @@
     {else /}
     var urls= "{:url('edit')}";
     {/if}
+
+    layui.use(['form', 'layer','upload'], function () {
+        var form = layui.form,layer = layui.layer,upload = layui.upload,$ = layui.jquery;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#logoBtn'
+            ,url: '{:url("UpFiles/upload")}'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#cltLogo').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //上传成功
+                if(res.code>0){
+                    $('#logo').val(res.url);
+                }else{
+                    //如果上传失败
+                    return layer.msg('上传失败');
+                }
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
 
     function smit(){
         layui.use('layer', function(){

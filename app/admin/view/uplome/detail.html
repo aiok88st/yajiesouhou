@@ -23,6 +23,10 @@
             <td>{$list.catname}</td>
         </tr>
         <tr>
+            <th>产品型号</th>
+            <td>{$list.model}</td>
+        </tr>
+        <tr>
             <th>提交时间</th>
             <td>{$list['addtime']|date="Y-m-d",###}</td>
         </tr>
@@ -44,6 +48,6 @@
     <div class="layui-input-block" style="margin-top: 20px;width: 60%;text-align: center">
         <a href="{:url('index')}" class="layui-btn layui-btn-primary">{:lang('back')}</a>
     </div>
-
+    {include file="common/foot"/}
 </body>
 </html>

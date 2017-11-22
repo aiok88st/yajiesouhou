@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="__HOME__/css/exam.css" />
 {/block}
 {block name="main"}
-		<div id="exam">
+		<div id="exam" style="overflow: hidden;">
 			<div class="pHead">
 				<a class="back backP"><img src="__HOME__/img/back.png"/></a>
 				<p>开始测试</p>
@@ -101,7 +101,6 @@
 {/block}
 {block name="footer"}
 {include file="common/footer" /}
-<script type="text/javascript" src="__HOME__/js/public.js?v=1" ></script>
 <script type="text/javascript">
 	layui.use('layer', function(){
         var layer = layui.layer;
@@ -120,7 +119,7 @@
                 success:function(res){
                     layer.closeAll();
                     if (res.code > 0) {
-                        layer.msg(res.msg, {time: 1800, icon: 1}, function () {
+                        layer.msg(res.msg, {time: 1800}, function () {
                             $('.problemBox').hide();
                             $('.st').hide();
                             $('.result').show();
@@ -130,7 +129,7 @@
                             $('.toResult').attr('href',"{:url('Exam/detail')}?id="+res.lists.id);
                         });
                     } else {
-                        layer.msg(res.msg, {time: 1800, icon: 2});
+                        layer.msg(res.msg, {time: 1800});
                     }
                 }
             });

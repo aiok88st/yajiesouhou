@@ -1,0 +1,94 @@
+
+{extend name="common/header" /}
+{block name="headers"}
+<title>维修订单</title>
+<link rel="stylesheet" href="__HOME__/css/indexOrOrder.css" />
+<link rel="stylesheet" href="__HOME__/css/order.css" />
+{/block}
+{block name="main"}
+
+<div id="order">
+    <div class="pHead">
+        <a  class="back backP"><img src="__HOME__/img/back.png"/></a>
+        <p>我的订单</p>
+    </div>
+    <div class="choice">
+        <ul>
+            <li>
+                <a href="###" class="aActive">全部</a>
+            </li>
+            <li>
+                <a href="###">未维修</a>
+            </li>
+            <li>
+                <a href="###">待维修</a>
+            </li>
+            <li>
+                <a href="###">已完成</a>
+            </li>
+            <li>
+                <a href="###">已取消</a>
+            </li>
+            <li>
+                <a href="###">已关闭</a>
+            </li>
+        </ul>
+        <div class="clearl"></div>
+    </div>
+    <div class="customer">
+        <div class="customerBox">
+            <ul>
+                <li>
+                    <a href="###">订单号：12356511111111111</a>
+                    <p>待维修</p>
+                </li>
+                <li>
+                    <div class="floatl">
+                        <img src="__HOME__/img/thing.jpg" />
+                    </div>
+                    <div class="floatl">
+                        <p>雅洁智能门锁雅洁智能门锁</p>
+                        <p>销售网点：雅洁五金旗舰店</p>
+                        <p>产品型号：283764</p>
+                    </div>
+                    <div class="clearl"></div>
+                </li>
+                <li>
+                    <p>2017-3-10</p>
+                    <a href="customer.html?v=1">查看详情</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--没有搜索结果-->
+    <div class="noResult" style="display: none;">
+        <ul>
+            <li>
+                <img src="__HOME__/img/noResult.png" />
+            </li>
+            <li>
+                <p style="margin-bottom: 0;">没有找到相关结果，换个词试试吧</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script>
+    $(function(){
+        //选择类型
+        $('.choice ul li').on('click',function(){
+            $(this).find('a').addClass('aActive');
+            $(this).siblings('li').find('a').removeClass('aActive');
+        });
+        //设置没有相关结果
+        setTimeout(function(){
+            $('.noResult').height($(window).height()-$('.pHead').height()-$('.choice').height());
+        },200);
+    });
+</script>
+{/block}
+

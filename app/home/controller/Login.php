@@ -33,7 +33,6 @@ class Login extends Fater
         $response = \SmsDemo::sendSms($signName, $templateCode, $phone, $templateParam, $outId);
         $codeArr = ['pcode'=>$phonecode,'time'=>$makeTime];
         session('codeArr',$codeArr);
-        var_dump($response);
         if($response->Code == 'OK'){
             return json(['code' => 1, 'msg' => '短信发送成功!']);
         }else{
@@ -45,18 +44,14 @@ class Login extends Fater
         if (request()->isPost()) {
             $data = input('post.');
             $result = $this->validate($data, [
-                'tel|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
-                'code|验证码'=>['require']
+                'username|账号' => ['require'],
+                'password|密码'=>['require']
             ]);
             if(true !== $result){
                 // 验证失败 输出错误信息
                 return json(['code'=>0, 'msg'=>$result,]);
             }
-            $codeArr=session('codeArr');
-            if($data['code'] == '' || $data['code'] != $codeArr['pcode']) {
-                return json(['code' => 0, 'msg' => '验证码不正确，请重新输入!']);
-            }
-            $user=db('distributor')->where('tel',$data['tel'])->where('is_open',1)->find();
+            $user=db('distributor')->where('username',$data['username'])->where('pwd',md5($data['password']))->where('is_open',1)->find();
             if($user){
                 $d = ['did'=>$user['id']];
                 $data = db('member_open')->where('id',UID)->update($d);

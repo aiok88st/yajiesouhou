@@ -1,0 +1,143 @@
+{include file="common/head"/}
+
+<div class="admin-main layui-anim layui-anim-upbit">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>操作日志</li>
+
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>申请{:lang('show')}</legend>
+                </fieldset>
+                <table class="layui-table" style="width:700px;" lay-skin="nob">
+                    <colgroup>
+                        <col width="50">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td>状态</td>
+                        <td>
+                            <span style="color: red">{$data['status']['name']}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>产品</td>
+                        <td>
+                            {$data['pro_id']['name']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>申请类型</td>
+                        <td>
+                            {$data['type']['name']}
+                            {if condition="($data['status']['id'] eq 1) and ($data['type']['id']  eq 1) "}
+                            &nbsp;&nbsp;
+                                <a _href="" class="layui-btn layui-btn-mini">查看物流</a>
+                            {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td>{$data['name']}</td>
+                    </tr>
+                    <tr>
+                        <td>电话</td>
+                        <td>{$data['phone']}</td>
+                    </tr>
+                    <tr>
+                        <td>地区</td>
+                        <td>
+                            {$data['province']['name']}-{$data['city']['name']}-{$data['zone']['name']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>详细地址</td>
+                        <td>
+                            {$data['addra']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>问题描述</td>
+                        <td>
+                            {$data['msg']}
+                        </td>
+                    </tr>
+                    {if condition="$data['images']"}
+                    <tr>
+                        <td>图片描述</td>
+                        <td>
+                            {volist name="$data['images']" id="v"}
+                            <img src="{$v}" width="100" alt="" onclick="show_img('{$v}')">
+                            {/volist}
+                        </td>
+                    </tr>
+                    {/if}
+
+                    </tbody>
+                </table>
+                {if condition="in_array($data['status']['id'],[0,-1])"}
+                {include file="repair/form"/}
+                {else /}
+                {include file="repair/desc"/}
+                {/if}
+            </div>
+            <div class="layui-tab-item">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="400">
+                        <col width="100">
+                        <col width="100">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>操作内容</th>
+                            <th>操作人</th>
+                            <th>操作时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="log_list" id="v"}
+                        <tr>
+                            <th>{$v['content']}</th>
+                            <th>{$v['admin_id']}</th>
+                            <th>{$v['add_time']}</th>
+                        </tr>
+                        {/volist}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{include file="common/foot"/}
+<div id="tong" class="hide">
+    <img src="images/tong.jpg">
+</div>
+{if condition="in_array($data['status']['id'],[0,-1])"}
+{include file="repair/script"/}
+{else /}
+<script type="text/javascript">
+    layui.use(['layer','element'], function(){
+        $ = layui.jquery;
+        var element = layui.element;
+    })
+    function show_img(img) {
+        $('#ton').children('img').attr('src',img);
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '516px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#tong')
+        });
+    }
+</script>
+{/if}

@@ -9,7 +9,7 @@
 		<div id = "home">
 			<div id="head">
 				<div class="hleft floatl">
-					<a class="back" ></a>
+					<a class="back" href="###"></a>
 				</div>
 				<div class="hmiddle floatl">
 					<p>全部问题</p>
@@ -23,16 +23,16 @@
 			<div class="null"></div>
 			<div class="classifyBox">
 				<ul>
-                    {volist name="cate" id="vo"}
-					<li class="classify" >
+                    {volist name="cate" id="vo" key="k"}
+					<li class="classify {if condition="$k eq 1"}first{/if}" >
 						<a isOpen='true' href="javascript:;">{$vo.catname}<img src="__HOME__/img/down.png"></a>
 						<ul>
 							<li>
-								<a href="{:url('article/problemSecond')}?catid={$vo.id}&catname=全部">全部<span></span></a>
+								<a href="{:url('article/problemSecond')}?catid={$vo.id}&cat={$vo.catname}&catname=全部">全部<span></span></a>
 							</li>
                             {volist name="vo['childen']" id="vv"}
 							<li>
-								<a href="{:url('article/problemSecond')}?catid={$vv.id}&catname={$vv.catname}">{$vv.catname}<span></span></a>
+								<a href="{:url('article/problemSecond')}?catid={$vv.id}&cat={$vo.catname}&catname={$vv.catname}">{$vv.catname}<span></span></a>
 							</li>
 							{/volist}
 						</ul>
@@ -50,6 +50,12 @@
 
 {block name="footer"}
 {include file="common/footer" /}
-<script type="text/javascript" src="__HOME__/js/public.js" ></script>
 <script type="text/javascript" src="__HOME__/js/prpblemFirst.js" ></script>
+<script type="text/javascript">
+    $(function(){
+        $('.first a').attr('isOpen',false);
+        $('.first a').find('img').addClass('imgR');
+        $('.first a').next('ul').stop().slideDown();
+    })
+</script>
 {/block}

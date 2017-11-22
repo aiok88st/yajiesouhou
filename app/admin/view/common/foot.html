@@ -1,2 +1,22 @@
 <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
 
+<div id="pop" class="hide" style="display: none">
+    <img src=""/>
+</div>
+<script type="text/javascript">
+    $('img').bind('click',function(){
+        var src=$(this).attr('src');
+        $('#pop').find('img').attr('src',src);
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '716px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#pop')
+        });
+    })
+</script>

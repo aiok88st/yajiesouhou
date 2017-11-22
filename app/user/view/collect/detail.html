@@ -12,27 +12,41 @@
     <table class="layui-table" lay-skin="line" style="border: none;">
         <tbody>
         <tr>
+            <td><b><span style="font-size: 18px">{$data.title}</span></b></td>
+        </tr>
+        <tr>
             <td>
                 <iframe frameborder="0" width="640" height="498" src="{$data.link}" allowfullscreen></iframe>
             </td>
         </tr>
         <tr>
             <td>
-                <ul>
-                    <li>{$data.title}</li>
-                    <li>{$data.f_title}</li>
-                    <li>{$data.createtime|date="Y-m-d",###}</li>
-                    <li>浏览量：{$data.hits}</li>
-                    <li>资料提取码：{$data.webnum}</li>
-                </ul>
+                <p style="width: 640px">{$data.content}</p>
             </td>
+        </tr>
+        <tr>
+            <td>
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>更多操作</legend>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td>资料提取码：{$data.webnum}</td>
         </tr>
         <tr>
             <td>
                 <a href="{:url('Exam/getTest')}?id={$data.tid}"><button class="layui-btn" data-type="reload">答题</button></a>
                 <a href="{$data.weblink}" target="_blank"><button class="layui-btn" data-type="reload">下载资料</button></a>
+                <a href="javascript:;" onclick="goback()" class="layui-btn layui-btn-primary">返回</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+<script type="text/javascript">
+
+    function goback(){
+        window.history.go(-1);
+    }
+</script>

@@ -329,10 +329,10 @@ $(document).ready(function(e) {
 							//遍历题目项目的文字
 							var bjjs_bj = 0;
 
-							if(!$('[name="answer"]').is(':checked')){
-								alert('请选择一个选项作为答案');
-								return false;
-							}
+							//if(!$('[name="answer"]').is(':checked')){
+							//	alert('请选择一个选项作为答案');
+							//	return false;
+							//}
 
 							jcxxxx.children(".title_itram").children(".kzjxx_iteam").each(function() {
 								//题目选项

@@ -1,7 +1,38 @@
 {extend name="common/header" /}
 {block name="headers"}
-<title>登录</title>
 <link rel="stylesheet" href="__HOME__/css/login.css" />
+<style>
+    #login{
+        background-image: url(__HOME__/img/lback.png)!important;
+    }
+    #login ul li:nth-child(1) img{
+        width: 80%;
+    }
+    #login ul li input{
+
+        border: 0;
+        color: #333333;
+        background: url(__HOME__/img/ph.png) no-repeat 0.4rem center;
+        background-size:  auto 0.32rem;
+        text-indent: 0.8rem;
+        background-color: white;
+    }
+    #login ul li input::-moz-placeholder{
+        color: rgba(51,51,51,0.2);
+    }
+    #login ul li input::-webkit-input-placeholder{
+        color: rgba(51,51,51,0.2);
+    }
+    #login ul li input::-ms-input-placeholder{
+        color: rgba(51,51,51,0.2);
+    }
+    #login ul li:nth-child(5) button{
+        color: white;
+        background-color: #481c76;
+    }
+</style>
+<title>登录</title>
+
 {/block}
 {block name="main"}
 		<div id="login">
@@ -10,68 +41,75 @@
 					<img src="__HOME__/img/LoginLogo.png"/>
 				</li>
 				<li>
-					<input  type="text" id="phone" name="phone" placeholder="手机号码"/>
+					<input  type="text" name="username" id="username" placeholder="登录账号"/>
 				</li>
 				<li>
-					<input  type="text" id="code" name="code" placeholder="动态密码" maxlength="8"/>
-					<button id="getCode" onclick="getvcode()">获取动态密码</button>
+					<input  type="password" name="password" id="password" placeholder="登录密码" maxlength="8" style="background-image: url(__HOME__/img/pwd.png);"/>
+					<!--<button id="getCode">获取动态密码</button>-->
 				</li>
 				<li>
-					<div class="checkBox floatl">
-						<img src="__HOME__/img/yes.png" />
-						<input type="checkbox" checked="checked" name="yes"/>
+					<!--<div class="checkBox floatl">
+						<img src="img/yes.png" style="opacity: 0;"/>
+						<input type="checkbox" name="yes"/>
 					</div>
 					<div class="floatl read">
 						<a href="###">同意雅洁协议</a>
 					</div>
-					<div class="clearl"></div>
+					<div class="clearl"></div>-->
 				</li>
 				<li>
 					<button onclick="subit()">登录</button>
 				</li>
 			</ul>
 		</div>
-		<div id="content">
-			
+		<div id="content" style="display: none;">
+			<div class="mainContent">
+				<div class="name">
+					<p>雅洁相关协议</p>
+				</div>
+				<div class="contents">
+					<ul>
+						<li>
+							<p>雅洁五金服务条款确认</p>
+							<p>雅洁五金集团，任何单位和个人非经本公司授权不得以本公司及其所有的网站名义进行商业或非商业活动。卓创资讯提供的服务将严格按照本公司及本网发布的服务条款和操作规则执行。用户必须确认所有服务条款并完成注册程序，才能成为卓创资讯的正式用户。</p>
+						</li>
+						<li>
+							<p>卓创资讯版权声明</p>
+							<p>雅洁五金的所有内容，包括但不限于文字报导、图片、声音、录像、图表、标志、标识、广告、商标、商号、域名、软件、程序、版面设计、专栏目录与名称、内容分类标准以及为注册用户提供的任何或所有信息，均受《中华人民共和国著</p>
+						</li>
+					</ul>
+				</div>
+				<div class="accept">
+					<button>同意协议</button>
+				</div>
+			</div>
+			<div class="closeAll">
+				<img src="__HOME__/img/closeall.png" />
+			</div>
 		</div>
 {/block}
 
 {block name="footer"}
 {include file="common/footer" /}
-<script type="text/javascript" src="__HOME__/js/login.js" ></script>
+<script type="text/javascript" src="__HOME__/js/rLogin.js" ></script>
 <script type="text/javascript">
     layui.use('layer', function(){
         var layer = layui.layer;
     });
-	//获取验证码
-	function getvcode(){
-		var phone = $("#phone").val();
-        $.get("{:url('Login/getCode')}?phone="+phone,function(re){
-			if(re.code == 1){
-				layer.msg("短信发送成功");
-			}else{
-				layer.msg("短信发送失败");
-			}
-		});
-	}
+
     function subit(){
-        var check=$('.checkBox').find('input');
-        if(!check.is(":checked")){
-            layer.msg('是否同意雅洁协议');
-            return false;
-        }
-        var phone = $("#phone").val();
-        var code = $("#code").val();
+        var username = $("#username").val();
+        var password = $("#password").val();
         $.ajax({
             url:"{:url('Login/index')}",
             type:"post",
-            data:{"tel":phone,"code":code},
+            data:{"username":username,"password":password},
             success:function(re){
                 if(re.code===1){
-                    layer.msg(re.msg,{time:1000,icon:1});
+                    layer.msg(re.msg,{time:1000});
                     location.href = re.url;
                 }else{
-                    layer.msg(re.msg,{time:1000,icon:2});
+                    layer.msg(re.msg,{time:1000});
                 }
             }
         });
@@ -79,3 +117,4 @@
 </script>
 
 {/block}
+

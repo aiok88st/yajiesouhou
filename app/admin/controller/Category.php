@@ -18,82 +18,44 @@ class Category extends Common
         $this->dao = db('category');
 
     }
+
+    function getTrees($pid=0,$num=1,$c){
+        $list=$this->dao->where("parentid=$pid")->select();
+        $tree='';
+        $strGang=str_repeat('&nbsp;&nbsp;', $num-1);
+        $num++;
+        foreach ($list as $key=>$v){
+            $tree.="<tr><td class='visible-lg visible-md'>{$v['id']}</td><td class='text-left'>{$strGang}<span class='green'>{$v['catname']}</span>&nbsp;</td><td><input type='text' size='10' data-id='{$v['id']}' value='{$v['listorder']}' class='layui-input list_order'></td><td><a class='blue' title='添加子栏目' href='" . url('Category/add', array('parentid' => $v['id'],'c'=>$c)) . "'> 添加</a> | <a class='green' href='" . url('Category/edit', array('id' => $v['id'],'c'=>$c)) . "' title='修改'>修改</a> | <a class='red' href='javascript:del('" . $v['id'] . "')' title='删除'>删除</a></td></tr>";
+            //找第一级的子分类
+            $optionSon=$this->getTrees($v['id'],$num,$c);
+            $tree.=$optionSon;
+        }
+        return $tree;
+    }
+
     public function index()
     {
-        if ($this->categorys) {
-            foreach ($this->categorys as $r) {
-                if ($r['module'] == 'page') {
-                    $r['str_manage'] = '<a class="orange" href="' . url('page/edit', array('id' => $r['id'])) . '" title="修改内容"><i class="icon icon-file-text2"></i></a> | ';
-                } else {
-                    $r['str_manage'] = '';
-                }
-                $r['str_manage'] .= '<a class="blue" title="添加子栏目" href="' . url('Category/add', array('parentid' => $r['id'],'lang'=>$r['lang'])) . '"> 添加</a> | <a class="green" href="' . url('Category/edit', array('id' => $r['id'],'lang'=>$r['lang'])) . '" title="修改">修改</a> | <a class="red" href="javascript:del(\'' . $r['id'] . '\')" title="删除">删除</a> ';
-
-//                $r['modulename'] = $this->module[$r['moduleid']]['title'];
-
-//                $r['dis'] = $r['ismenu'] == 1 ? '<font color="green">显示</font>' : '<font color="red">不显示</font>';
-                $array[] = $r;
-            }
-
-            $str = "<tr><td class='visible-lg visible-md'>\$id</td>";
-            $str .= "<td class='text-left'>\$spacer<span class='green'>\$catname</span>&nbsp;</td>";
-//            $str .= "<td class='visible-lg visible-md'>\$modulename</td><td class='visible-lg visible-md'>\$dis</td>";
-            $str .= "<td><input type='text' size='10' data-id='\$id' value='\$listorder' class='layui-input list_order'></td><td>\$str_manage</td></tr>";
-            $tree = new Tree ($array);
-            $tree->icon = array('&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;&nbsp;');
-            $tree->nbsp = '&nbsp;&nbsp;&nbsp;';
-            $categorys = $tree->get_tree(0, $str);
-
-            $this->assign('categorys', $categorys);
+        $c = input('c');
+        if($c==1){
+            $data = $this->getTrees(1,1,1);
+        }elseif($c==2){
+            $data = $this->getTrees(4,1,2);
+        }else{
+            $data = $this->getTrees(26,1,3);
         }
-        $cat = $this->categorys;
-        foreach ($cat as $key => $value) {
-            $lang = $value['lang'];
+        if ($data) {
+            $this->assign('c', $c);
+            $this->assign('data', $data);
         }
-        $this->assign('lang',$lang);
         $this->assign('title','分类列表');
         return $this->fetch();
     }
 
-    public function index2()
-    {
-        if ($this->categorys2) {
-            foreach ($this->categorys2 as $r) {
-                if ($r['module'] == 'page') {
-                    $r['str_manage'] = '<a class="orange" href="' . url('page/edit', array('id' => $r['id'])) . '" title="修改内容"><i class="icon icon-file-text2"></i></a> | ';
-                } else {
-                    $r['str_manage'] = '';
-                }
-                $r['str_manage'] .= '<a class="blue" title="添加子栏目" href="' . url('Category/add', array('parentid' => $r['id'],'lang'=>$r['lang'])) . '"> <i class="icon icon-plus"></i></a> | <a class="green" href="' . url('Category/edit', array('id' => $r['id'],'lang'=>$r['lang'])) . '" title="修改"><i class="icon icon-pencil2"></i></a> | <a class="red" href="javascript:del(\'' . $r['id'] . '\')" title="删除"><i class="icon icon-bin"></i></a> ';
 
-                $r['modulename'] = $this->module[$r['moduleid']]['title'];
-
-                $r['dis'] = $r['ismenu'] == 1 ? '<font color="green">显示</font>' : '<font color="red">不显示</font>';
-                $array[] = $r;
-            }
-
-            $str = "<tr><td class='visible-lg visible-md'>\$id</td>";
-            $str .= "<td class='text-left'>\$spacer<span class='green'>\$catname</span>&nbsp;</td>";//   __ROOT__/cltphp5.2/admin/$module/$action/$files/$id.html
-            $str .= "<td class='visible-lg visible-md'>\$modulename</td><td class='visible-lg visible-md'>\$dis</td>";
-            $str .= "<td><input type='text' size='10' data-id='\$id' value='\$listorder' class='layui-input list_order'></td><td>\$str_manage</td></tr>";
-            $tree = new Tree ($array);
-            $tree->icon = array('&nbsp;&nbsp;&nbsp;│  ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
-            $tree->nbsp = '&nbsp;&nbsp;&nbsp;';
-            $categorys = $tree->get_tree(0, $str);
-
-            $this->assign('categorys', $categorys);
-        }
-        $cat = $this->categorys2;
-        foreach ($cat as $key => $value) {
-            $lang = $value['lang'];
-        }
-        $this->assign('lang',$lang);
-        $this->assign('title','栏目列表');
-        return $this->fetch('index');
-    }
 
     public function add(){
         $parentid =	input('param.parentid');
+        $c = input('param.c');
         $lang = input('param.lang');
         //模型列表
         $module = db('module')->where('status',1)->field('id,title,name')->select();
@@ -126,6 +88,7 @@ class Category extends Common
         $this->assign('rlist',$usergroup);
         $this->assign('title','添加栏目');
         $this->assign('lang',input('lang'));
+        $this->assign('c',$c);
         return $this->fetch();
     }
     public function insert(){
@@ -161,11 +124,13 @@ class Category extends Common
             savecache('Category');
             $result['msg'] = '栏目添加成功!';
             cache('cate', NULL);
-            $lang = input('lang');
-            if($lang == 1){
-                $result['url'] = url('index');
-            }elseif($lang == 2){
-                $result['url'] = url('index2');
+            $c = input('c');
+            if($c == 1){
+                $result['url'] = url('index',['c'=>1]);
+            }elseif($c == 2){
+                $result['url'] = url('index',['c'=>2]);
+            }elseif($c == 3){
+                $result['url'] = url('index',['c'=>3]);
             }
             $result['code'] = 1;
             return $result;
@@ -178,6 +143,7 @@ class Category extends Common
 
     public function edit(){
         $id = input('id');
+        $c = input('c');
         $cat = $this->dao->where("id",$id)->find();
         if($cat['lang'] == 1){
             $this->assign('module',$this->categorys[$id]['moduleid']);
@@ -201,32 +167,11 @@ class Category extends Common
             $this->assign('categorys', $categorys);
             $this->assign('record', $record);
 
-        }elseif ($cat['lang'] == 2) {
-            $this->assign('module',$this->categorys2[$id]['moduleid']);
-            $module = db('module')->field('id,title,name')->select();
-            $this->assign('modulelist',$module);
-
-            $record = $this->categorys2[$id];
-            $record['imgUrl'] = imgUrl($record['image']);
-            $record['readgroup'] = explode(',',$record['readgroup']);
-            $parentid = intval($record['parentid']);
-            $result = $this->categorys2;
-            foreach($result as $r) {
-                if($r['type']==1) continue;
-                $r['selected'] = $r['id'] == $parentid ? 'selected' : '';
-                $array[] = $r;
-            }
-            $str  = "<option value='\$id' \$selected>\$spacer \$catname</option>";
-            $tree = new Tree ($array);
-            $categorys = $tree->get_tree(0, $str,$parentid);
-            $this->assign('categorys', $categorys);
-            $this->assign('record', $record);
         }
-
         $usergroup=db('auth_group')->select();
         $this->assign('rlist',$usergroup);
         $this->assign('title','编辑栏目');
-        $this->assign('lang',$cat['lang']);
+        $this->assign('c',$c);
         //模版
         $templates= template_file();
         $this->assign ( 'templates',$templates );
@@ -234,6 +179,14 @@ class Category extends Common
     }
     public function catUpdate(){
         $data = input('post.');
+        $c = input('c');
+        if($c==1){
+            $url = url('index',['c'=>1]);
+        }elseif($c==2){
+            $url = url('index',['c'=>2]);
+        }elseif($c==3){
+            $url = url('index',['c'=>3]);
+        }
         $cat = $this->dao->where("id",$data['id'])->find();
         if($data['image'] == ""){
             $data['image'] = $cat['image'];
@@ -261,7 +214,7 @@ class Category extends Common
             savecache('Category');
             $result['msg'] = '栏目修改成功!';
             cache('cate', NULL);
-            $result['url'] = url('index');
+            $result['url'] = $url;
             $result['code'] = 1;
             return $result;
         } else {

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:49:"F:\wamp\www\yajie/app/admin\view\index\index.html";i:1511177861;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1507509539;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:49:"F:\wamp\www\yajie/app/admin\view\index\index.html";i:1511226926;s:49:"F:\wamp\www\yajie/app/admin\view\common\head.html";i:1510307286;s:49:"F:\wamp\www\yajie/app/admin\view\common\foot.html";i:1511332713;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,21 +39,14 @@
                 <li class="layui-nav-item" id="cache">
                     <a href="javascript:;"><?php echo lang('clearCache'); ?></a>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="<?php echo url('home/index/index'); ?>" target="_blank"><?php echo lang('home'); ?></a>
-                </li>
+<!--               -->
                 <li class="layui-nav-item">
                     <i class="fa fa-clone" aria-hidden="true" data-icon="fa-clone"></i>
-                    <!--<a class="name" href="javascript:;">主题</a>-->
-                    <!--<dl class="layui-nav-child">-->
-                        <!--<dd data-skin="0"><a href="javascript:;">默认</a></dd>-->
-                        <!--<dd data-skin="1"><a href="javascript:;">纯白</a></dd>-->
-                        <!--<dd data-skin="2"><a href="javascript:;">蓝白</a></dd>-->
-                    <!--</dl>-->
+
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;" class="admin-header-user">
-                        <img src="__ADMIN__/images/0.jpg" class="layui-nav-img" />
+
                         <span><?php echo session('username'); ?></span>
                     </a>
                     <dl class="layui-nav-child">
@@ -104,7 +97,27 @@
     </div>
     <div class="site-mobile-shade"></div>
     <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
 
+<div id="pop" class="hide" style="display: none">
+    <img src=""/>
+</div>
+<script type="text/javascript">
+    $('img').bind('click',function(){
+        var src=$(this).attr('src');
+        $('#pop').find('img').attr('src',src);
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '716px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#pop')
+        });
+    })
+</script>
 
     <script src="__ADMIN__/js/index.js"></script>
     <script>

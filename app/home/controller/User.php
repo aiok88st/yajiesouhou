@@ -23,6 +23,8 @@ class User extends Fater
             $utest_num = db('utest')->where('uid',$data['did'])->count();
             $collect_num = db('collect')->where('uid',$data['did'])->count();
             $user=db('distributor')->where('id',$data['did'])->where('is_open',1)->find();
+            $order = $this->orderList();
+            $this->assign('order',$order);
             $this->assign('user',$user);
             $this->assign('open',$data);
             $this->assign('utest_num',$utest_num);
@@ -31,10 +33,37 @@ class User extends Fater
             return $this->fetch('person');
         }
     }
+
+    public function orderList(){
+        $order = db('order');
+        $num0 = $order->where('user_id',session('did'))->where('status',0)->count();
+        $num1 = $order->where('user_id',session('did'))->where('status',1)->count();
+        $num2 = $order->where('user_id',session('did'))->where('status',2)->count();
+        $num3 = $order->where('user_id',session('did'))->where('status',3)->count();
+        $num4 = $order->where('user_id',session('did'))->where('status',4)->count();
+        $num5 = $order->where('user_id',session('did'))->where('status',5)->count();
+        $orders = [
+            'num0'=>$num0,
+            'num1'=>$num1,
+            'num2'=>$num2,
+            'num3'=>$num3,
+            'num4'=>$num4,
+            'num5'=>$num5,
+        ];
+        return $orders;
+    }
     //修改姓名和手机
     public function change(){
-        $type = input('type');
-        $content = input('content');
+        $data = input('post.');
+        $result = $this->validate($data, [
+            'content|修改内容'  => ['require'],
+        ]);
+        if(true !== $result){
+            // 验证失败 输出错误信息
+            return json(['code'=>0, 'msg'=>$result,]);
+        }
+        $type = $data['type'];
+        $content = $data['content'];
         $dist = db('distributor');
         if($type == 1){
             $data = ['nikename'=>$content];

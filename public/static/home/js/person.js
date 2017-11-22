@@ -1,6 +1,6 @@
 $(function(){
 	//查看个人信息
-	$('.setting').on('click',function(){
+	$('.head').on('click',function(){
 		$('#personInfor').show().stop().animate({left:'0%'});
 	});
 	//返回主页

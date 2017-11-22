@@ -260,10 +260,14 @@ $(document).ready(function(e) {
                     num+=1;
                     if(title == 0 || title == 2){
                         zjxx_html +='<input name="answer" type="radio" value="'+num+'" class="dxk">';
-                        zjxx_html +='<input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">  <a href="javascript:void(0);" class="del_xm">删除</a>';
+                        zjxx_html +='<input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">';
+                        zjxx_html +='<button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传<input type="file" name="file"  class="file_upload" ></button>';
+                        zjxx_html +='<a href="javascript:void(0);" class="del_xm">删除</a>';
                     }else if(title == 1){
                         zjxx_html +='<input name="answer" type="checkbox" value="'+num+'" class="dxk">';
-                        zjxx_html +='<input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项"> <a href="javascript:void(0);" class="del_xm">删除</a>';
+                        zjxx_html +='<input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">';
+                        zjxx_html +='<button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传<input type="file" name="file"  class="file_upload" ></button>';
+                        zjxx_html +=' <a href="javascript:void(0);" class="del_xm">删除</a>';
                     }else{
                         zjxx_html = $(this).prev(".title_itram").children(".kzjxx_iteam").html();
                     }
@@ -329,10 +333,10 @@ $(document).ready(function(e) {
 							//遍历题目项目的文字
 							var bjjs_bj = 0;
 
-							//if(!$('[name="answer"]').is(':checked')){
-							//	alert('请选择一个选项作为答案');
-							//	return false;
-							//}
+							if(!$('[name="answer"]').is(':checked')){
+								alert('请选择一个选项作为答案');
+								return false;
+							}
 
 							jcxxxx.children(".title_itram").children(".kzjxx_iteam").each(function() {
 								//题目选项

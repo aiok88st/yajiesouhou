@@ -2,11 +2,13 @@
 <head>
     <meta charset="utf-8">
     <title>雅洁后台</title>
-    <link rel="stylesheet" href="__STATIC__/plugins/layui/css/layui.css?v=1" media="all" />
     <link rel="stylesheet" type="text/css" href="__ADMIN__/qu/css/wenjuan_ht.css">
+    <link rel="stylesheet" href="__STATIC__/plugins/layui/css/layui.css?v=2" media="all" />
     <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
     <script src="https://cdn.bootcss.com/layer/3.0.3/layer.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
     <script src="__ADMIN__/qu/js/index.js?v=2"></script>
+
     <style>
         #addquerstions{
             width: 30%;
@@ -35,6 +37,23 @@
             padding-left: 8px;
             padding-top: 5px;
         }
+        .layui-btn{
+            margin-left: 10px;
+            height: 33px;
+            line-height: 33px;
+        }
+        .layui-upload-file{
+            clear: both;
+        }
+        .file_upload{
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity:0;
+            z-index: 100;
+            width:100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -45,30 +64,18 @@
     <div class="layui-form-item" style="margin-left: 50px">
         <label class="layui-form-label">标题</label>
         <div class="layui-input-block">
-            <input type="text" id="title" name="title" {if condition="$info['id'] neq ''"}value="{$info['title']}"{/if} required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" style="width: 650px;">
+            <input type="text" id="title" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" style="width: 650px;">
         </div>
     </div>
     <div class="layui-form-item" style="margin-left: 50px">
         <label class="layui-form-label">期数</label>
         <div class="layui-input-block">
-            <input type="text" id="f_title" name="f_title" {if condition="$info['id'] neq ''"}value="{$info['f_title']}"{/if} required  lay-verify="required" placeholder="请输入期数" autocomplete="off" class="layui-input" style="width: 650px;">
+            <input type="text" id="f_title" name="f_title"  required  lay-verify="required" placeholder="请输入期数" autocomplete="off" class="layui-input" style="width: 650px;">
         </div>
     </div>
-    <div class="layui-form-item" style="margin-left: 50px">
-        <label class="layui-form-label">答案</label>
-        <input type="hidden" name="answer" id="logo" value="{$info.answer}">
-        <div class="layui-input-block">
-            <div class="layui-upload">
-                <button type="button" class="layui-btn layui-btn-primary" id="logoBtn"><i class="icon icon-upload3"></i>点击上传</button>
-                <div class="layui-upload-list">
-                    <img class="layui-upload-img" id="cltLogo">
-                    <p id="demoText"></p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="all_660" style="margin-left: 50px">
-        <div id="content" class="yd_box" style="margin-left: 110px;margin-top: 20px;width: 650px"></div>
+        <div id="content" class="yd_box" style="margin-left: 110px;margin-top: 20px;width: 700px"></div>
         <div class="but" style="padding-top: 20px">
             <label class="layui-form-label">请选择题型</label>
             <select id="addquerstions" class="addquerstions" name="type">
@@ -76,7 +83,6 @@
                 <option value="0">单选</option>
                 <option value="1">多选</option>
                 <option value="2">判断</option>
-                <!--<option value="3">填空</option>-->
             </select>
             <button class="btu" id="addClick" >添加题目</button>
         </div>
@@ -91,9 +97,12 @@
                         <div class="kzjxx_iteam">
                             <input name="answer" type="radio" value="1" class="dxk">
                             <input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">
-                            <label>
-                                <!--<input name="" type="checkbox" value="" class="fxk"> <span>可填空</span>-->
-                            </label> <a href="javascript:void(0);" class="del_xm">删除</a>
+
+                            <button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传
+                                <input type="file" name="file"  class="file_upload" >
+                            </button>
+
+                            <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
                     </div>
                     <a href="javascript:void(0)" class="zjxx">增加选项</a>
@@ -117,9 +126,11 @@
                         <div class="kzjxx_iteam">
                             <input name="answer" type="checkbox" value="1" class="dxk">
                             <input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">
-                            <label>
-                                <!--<input name="" type="checkbox" value="" class="fxk"> <span>可填空</span></label>-->
-                                <a href="javascript:void(0);" class="del_xm">删除</a>
+                            <button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传
+                                <input type="file" name="file"  class="file_upload" >
+                            </button>
+
+                            <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
                     </div>
                     <a href="javascript:void(0)" class="zjxx">增加选项</a>
@@ -143,9 +154,10 @@
                         <div class="kzjxx_iteam">
                             <input name="answer" type="radio" value="1" class="dxk">
                             <input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">
-                            <label>
-                                <!--<input name="" type="checkbox" value="" class="fxk"> <span>可填空</span>-->
-                            </label> <a href="javascript:void(0);" class="del_xm">删除</a>
+                            <button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传
+                                <input type="file" name="file"  class="file_upload" >
+                            </button>
+                            <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
                     </div>
                     <a href="javascript:void(0)" class="zjxx">增加选项</a>
@@ -189,46 +201,36 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
 <script type="text/javascript" src="__STATIC__/common/js/common.js"></script>
 <script type="text/javascript">
-    {if condition="ACTION_NAME=='add'"}
-    var urls= "{:url('add')}";
-    {else /}
-    var urls= "{:url('edit')}";
-    {/if}
-
-    layui.use(['form', 'layer','upload'], function () {
-        var form = layui.form,layer = layui.layer,upload = layui.upload,$ = layui.jquery;
-        //普通图片上传
-        var uploadInst = upload.render({
-            elem: '#logoBtn'
-            ,url: '{:url("UpFiles/upload")}'
-            ,before: function(obj){
-                //预读本地文件示例，不支持ie8
-                obj.preview(function(index, file, result){
-                    $('#cltLogo').attr('src', result); //图片链接（base64）
-                });
-            }
-            ,done: function(res){
-                //上传成功
-                if(res.code>0){
-                    $('#logo').val(res.url);
-                }else{
-                    //如果上传失败
-                    return layer.msg('上传失败');
+    function uploads(box,cal){
+        layui.use('upload', function(){
+            var upload = layui.upload;
+            var uploadInst = upload.render({
+                elem: box //绑定元素
+                ,accept:"images"
+                ,exts: 'jpg|png|gif'
+                ,url: "{:url('UpFiles/upload')}" //上传接口
+                ,before:function(){
+                    index=layer.load(1);
                 }
-            }
-            ,error: function(){
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function(){
-                    uploadInst.upload();
-                });
-            }
+                ,done: function(res){
+                    layer.closeAll();
+                    if(res.code == 1){
+                        cal(res);
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                }
+                ,error: function(){
+                    layer.closeAll();
+                }
+            });
         });
-    });
+    }
+
+    
+
 
     function smit(){
         layui.use('layer', function(){

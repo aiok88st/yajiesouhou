@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aded391-4f5b-4218-a8c4-b557270af692" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
@@ -120,6 +121,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/temp/dd21b7157d7e4e5b7f13f8659576e8e6.php" afterPath="$PROJECT_DIR$/runtime/temp/dd21b7157d7e4e5b7f13f8659576e8e6.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/temp/e804292f19e4ab6247c83eba2b5d16d0.php" afterPath="$PROJECT_DIR$/runtime/temp/e804292f19e4ab6247c83eba2b5d16d0.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runtime/temp/ed031671bc0b908375c12ef334faebc6.php" afterPath="$PROJECT_DIR$/runtime/temp/ed031671bc0b908375c12ef334faebc6.php" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/client/model/Order.php" afterPath="$PROJECT_DIR$/app/client/model/Order.php" />
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -138,7 +142,22 @@
     <favorites_list name="yajiesouhou" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+=======
+    <leaf>
+      <file leaf-file-name="Order.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/client/model/Order.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -165,7 +184,11 @@
         <option value="$PROJECT_DIR$/app/client/controller/Fater.php" />
         <option value="$PROJECT_DIR$/app/common.php" />
         <option value="$PROJECT_DIR$/app/common/upload/Upload.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/client/model/Order.php" />
+=======
+        <option value="$PROJECT_DIR$/app/database.php" />
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
         <option value="$PROJECT_DIR$/app/admin/view/index/index.html" />
         <option value="$PROJECT_DIR$/app/admin/model/Client.php" />
         <option value="$PROJECT_DIR$/app/admin/model/ProductImg.php" />
@@ -196,9 +219,13 @@
         <option value="$PROJECT_DIR$/app/admin/model/Order.php" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/show.html" />
         <option value="$PROJECT_DIR$/app/admin/view/repair/index.html" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/database.php" />
         <option value="$PROJECT_DIR$/app/user/view/login/index.html" />
         <option value="$PROJECT_DIR$/app/admin/view/login/index.html" />
+=======
+        <option value="$PROJECT_DIR$/app/client/model/Order.php" />
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
       </list>
     </option>
   </component>
@@ -286,6 +313,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -336,6 +364,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="login" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+=======
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -352,8 +384,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+=======
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -378,6 +415,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="yajiesouhou" />
@@ -404,6 +442,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+=======
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -454,12 +494,12 @@
       <created>1511142512545</created>
       <option name="number" value="Default" />
       <updated>1511142512545</updated>
-      <workItem from="1511142514460" duration="31690000" />
+      <workItem from="1511142514460" duration="33914000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31690000" />
+    <option name="totallyTimeSpent" value="33914000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="89" y="8" width="1701" height="1007" extended-state="1" />
@@ -669,6 +709,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/client/model/Order.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -676,6 +717,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
     <entry file="file://$PROJECT_DIR$/public/static/admin/css/global.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -827,12 +870,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/view/repair/show.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config.php">
+=======
+        <state relative-caret-position="570">
+          <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#1475#1481#0#HTML" expanded="false" />
+            <element signature="e#1481#1487#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/view/repair/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/controller/Repair.php">
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7023661">
           <caret line="221" column="23" selection-start-line="221" selection-start-column="17" selection-end-line="221" selection-end-column="23" />
@@ -840,8 +906,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/view/repair/index.html">
+    <entry file="file://$PROJECT_DIR$/app/client/model/Order.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.032412965">
           <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding />
@@ -852,6 +919,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.032412965">
           <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+=======
+        <state relative-caret-position="368">
+          <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+>>>>>>> 5e9a9e2e1aaf70086aa25587b7c1551faaee39e2
           <folding />
         </state>
       </provider>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-21 10:30:32
+Date: 2017-11-23 08:47:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -227,11 +227,11 @@ INSERT INTO `clt_auth_rule` VALUES ('261', 'Wechat/delMenu', '操作-删除', '1
 INSERT INTO `clt_auth_rule` VALUES ('280', 'Network/index', '售后网点列表', '1', '1', '0', '', '', '279', '50', '1509177239', null, '0');
 INSERT INTO `clt_auth_rule` VALUES ('303', 'repair/audit', '待审核申请', '1', '1', '0', '', '', '294', '0', '1511149024', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('281', 'Video', '视频管理', '1', '1', '0', 'icon-video-camera', '', '0', '3', '1509181080', null, '1');
-INSERT INTO `clt_auth_rule` VALUES ('282', 'Category/index', '视频分类', '1', '1', '0', '', '', '281', '3', '1509181201', null, '1');
+INSERT INTO `clt_auth_rule` VALUES ('282', 'Category/index?c=1', '视频分类', '1', '1', '0', '', '', '281', '3', '1509181201', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('283', 'Video/index', '管理视频', '1', '1', '0', '', '', '281', '2', '1509181245', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('284', 'Article', '文章管理', '1', '1', '0', 'icon-list2', '', '0', '4', '1509433389', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('285', 'Article/index', '管理文章', '1', '1', '0', '', '', '284', '2', '1509433478', null, '1');
-INSERT INTO `clt_auth_rule` VALUES ('286', 'Category/index', '文章分类', '1', '1', '0', '', '', '284', '3', '1509434477', null, '1');
+INSERT INTO `clt_auth_rule` VALUES ('286', 'Category/index?c=2', '文章分类', '1', '1', '0', '', '', '284', '3', '1509434477', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('287', 'Distributor', '客户管理', '1', '1', '0', 'icon-user', '', '0', '1', '1509517389', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('288', 'Distributor/lists', '经销商管理', '1', '1', '0', '', '', '287', '1', '1509517483', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('289', 'Distributor/list2', '分销商管理', '1', '1', '0', '', '', '287', '2', '1509517542', null, '1');
@@ -245,7 +245,7 @@ INSERT INTO `clt_auth_rule` VALUES ('297', 'tvd/index', '培训资料管理', '1
 INSERT INTO `clt_auth_rule` VALUES ('298', 'test/index', '试题管理', '1', '1', '0', '', '', '296', '2', '1510037424', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('299', 'Train/index', '答卷管理', '1', '1', '0', '', '', '296', '3', '1510037489', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('300', 'Uplome/index', '意见反馈管理', '1', '1', '0', '', '', '294', '2', '1510227354', null, '1');
-INSERT INTO `clt_auth_rule` VALUES ('301', 'Category/index', '资料分类', '1', '1', '0', '', '', '296', '0', '1510825104', null, '1');
+INSERT INTO `clt_auth_rule` VALUES ('301', 'Category/index?c=3', '资料分类', '1', '1', '0', '', '', '296', '0', '1510825104', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('304', 'System/system', '系统设置', '1', '1', '1', '', '', '15', '50', '1511229428', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('305', '/yajie/admin/Images/index', '图片管理', '1', '1', '0', 'icon-images', '', '0', '8', '1511229562', null, '1');
 
@@ -312,8 +312,8 @@ INSERT INTO `clt_category` VALUES ('22', '智能门锁', 'z1', 'video_type/v2/',
 INSERT INTO `clt_category` VALUES ('23', '机械门锁', 'z2', 'video_type/v2/', '8', '19', 'video', '0,1,8', '23', '0', '机械门锁', '机械门锁', '机械门锁', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('24', '指纹锁', 'z3', 'video_type/v2/', '8', '19', 'video', '0,1,8', '24', '0', '指纹锁', '指纹锁', '指纹锁', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('25', '其他', 'z4', 'video_type/v2/', '8', '19', 'video', '0,1,8', '25', '0', '其他', '其他', '其他', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
-INSERT INTO `clt_category` VALUES ('26', '培训视频资料分类', 'p1', '', '0', '23', 'tvd', '0', '26,27,28', '0', '培训视频资料分类', '培训视频资料分类', '培训视频资料分类', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
-INSERT INTO `clt_category` VALUES ('27', '教学视频', 'p2', 'p1/', '26', '23', 'tvd', '0,26', '27', '0', '教学视频', '教学视频', '教学视频', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
+INSERT INTO `clt_category` VALUES ('26', '培训视频资料分类', 'p1', '', '0', '23', 'tvd', '0', '26,27,29,28', '0', '培训视频资料分类', '培训视频资料分类', '培训视频资料分类', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
+INSERT INTO `clt_category` VALUES ('27', '教学视频', 'p2', 'p1/', '26', '23', 'tvd', '0,26', '27,29', '0', '教学视频', '教学视频', '教学视频', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('28', '视频小知识', 'p3', 'p1/', '26', '23', 'tvd', '0,26', '28', '0', '视频小知识', '视频小知识', '视频小知识', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 INSERT INTO `clt_category` VALUES ('29', '教学视频1', 'j1', 'p1/p2/', '27', '23', 'tvd', '0,26,27', '29', '0', '教学视频1', '教学视频1', '教学视频1', '0', '0', '1', '0', '', '0', '', '', '', '0', '1,2', '0', '1');
 
@@ -339,7 +339,7 @@ CREATE TABLE `clt_client` (
 -- ----------------------------
 -- Records of clt_client
 -- ----------------------------
-INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://img3.imgtn.bdimg.com/it/u=3797592229,3840448992&fm=27&gp=0.jpg', '18857115777', null, null, null, null, null, '2017-11-19 11:28:58');
+INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://img3.imgtn.bdimg.com/it/u=3797592229,3840448992&fm=27&gp=0.jpg', '13556071153', '小王', null, null, null, null, '2017-11-19 11:28:58');
 
 -- ----------------------------
 -- Table structure for clt_collect
@@ -427,7 +427,7 @@ CREATE TABLE `clt_distributor` (
 -- Records of clt_distributor
 -- ----------------------------
 INSERT INTO `clt_distributor` VALUES ('5', 'root', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509527565', '1', '4', '15173301601', '小李');
-INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '13556071153', '王先生');
+INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '13556071153', '老王');
 INSERT INTO `clt_distributor` VALUES ('6', 'root01', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510646065', '0', '4', '15173301603', '小张');
 INSERT INTO `clt_distributor` VALUES ('7', 'admin00', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510712653', '0', '0', '15173301603', '张三');
 
@@ -695,12 +695,12 @@ CREATE TABLE `clt_order` (
   `u_logistics_number` char(100) DEFAULT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_order
 -- ----------------------------
-INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '1', '', null, null, '9', null, null, '2017-11-20 09:44:14');
+INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '1', '', null, null, '4', null, null, '2017-11-20 09:44:14');
 
 -- ----------------------------
 -- Table structure for clt_order_log
@@ -4423,8 +4423,8 @@ CREATE TABLE `clt_tvd` (
 -- ----------------------------
 -- Records of clt_tvd
 -- ----------------------------
-INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171116/9a5ad67f95b0af4584099e8166795362.jpg', '109', '0', '1', 'admin', '1', '1510124882', '1510909886', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '刮风', '/uploads/20171116/s_9a5ad67f95b0af4584099e8166795362.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '27', '/uploads/20171117/e22879b375ae19bbe9ce7937c9b9ebf6.jpg');
-INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '53', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
+INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171116/9a5ad67f95b0af4584099e8166795362.jpg', '113', '0', '1', 'admin', '1', '1510124882', '1510909886', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_9a5ad67f95b0af4584099e8166795362.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '27', '/uploads/20171117/e22879b375ae19bbe9ce7937c9b9ebf6.jpg');
+INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '78', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
 
 -- ----------------------------
 -- Table structure for clt_uplome
@@ -4438,16 +4438,17 @@ CREATE TABLE `clt_uplome` (
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `addtime` int(11) NOT NULL,
   `catid` int(11) NOT NULL,
+  `model` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_uplome
 -- ----------------------------
-INSERT INTO `clt_uplome` VALUES ('2', '小李', '15111111111', '家经济是否似懂非懂是买了多少就', '/uploads/20171109/5520201711091919376039.jpg;/uploads/20171109/7640201711091919374334.jpg;', '1510225637', '7');
-INSERT INTO `clt_uplome` VALUES ('3', '小李', '13522222222', '阿双方；萨克佛萨芬见到你SVN点时空概念', '/uploads/20171109/5520201711091919376039.jpg;/uploads/20171109/7640201711091919374334.jpg;', '1510226188', '9');
-INSERT INTO `clt_uplome` VALUES ('4', '小李', '13522222222', '阿双方；萨克佛萨芬见到你SVN点时空概念', '/uploads/20171109/5520201711091919376039.jpg;/uploads/20171109/7640201711091919374334.jpg;', '1510226377', '9');
-INSERT INTO `clt_uplome` VALUES ('5', '小王', '13533333333', '撒发生更多更多发挥烦得很烦得很人根据图如若', '/uploads/20171109/8023201711091925177646.jpg;/uploads/20171109/3010201711091925179638.jpg;', '1510226717', '10');
+INSERT INTO `clt_uplome` VALUES ('2', '小李', '15111111111', '家经济是否似懂非懂是买了多少就', '/uploads/20171109/5520201711091919376039.jpg;/uploads/20171109/7640201711091919374334.jpg;', '1510225637', '7', 'AJ1021-03A-KJ');
+INSERT INTO `clt_uplome` VALUES ('3', '小李', '13522222222', '阿双方；萨克佛萨芬见到你SVN点时空概念', '/uploads/20171109/5520201711091919376039.jpg;/uploads/20171109/7640201711091919374334.jpg;', '1510226188', '9', 'AJ1021-03A-KJ');
+INSERT INTO `clt_uplome` VALUES ('4', '小李', '13522222222', '阿双方；萨克佛萨芬见到你SVN点时空概念', '/uploads/20171109/5520201711091919376039.jpg;/uploads/20171109/7640201711091919374334.jpg;', '1510226377', '9', 'AJ1021-03A-KJ');
+INSERT INTO `clt_uplome` VALUES ('5', '小王', '13533333333', '撒发生更多更多发挥烦得很烦得很人根据图如若', '/uploads/20171109/8023201711091925177646.jpg;/uploads/20171109/3010201711091925179638.jpg;', '1510226717', '10', 'AJ1021-03A-KJ');
 
 -- ----------------------------
 -- Table structure for clt_users
@@ -4533,5 +4534,5 @@ CREATE TABLE `clt_video` (
 -- ----------------------------
 -- Records of clt_video
 -- ----------------------------
-INSERT INTO `clt_video` VALUES ('1', '3', '1', 'admin', '智能指纹锁AJD012213-123', 'color:;font-weight:normal;', '/uploads/20171114/b3bbea1b1e1b60363d943fb55df2087f.jpg', '', '', '', '0', '1', '1', '580002', '1509326032', '1510625531', '4', '智能指纹锁AJD012213-123', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');
+INSERT INTO `clt_video` VALUES ('1', '3', '1', 'admin', '智能指纹锁AJD012213-123', 'color:;font-weight:normal;', '/uploads/20171114/b3bbea1b1e1b60363d943fb55df2087f.jpg', '', '', '', '0', '1', '1', '580003', '1509326032', '1510625531', '4', '智能指纹锁AJD012213-123', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');
 INSERT INTO `clt_video` VALUES ('2', '22', '1', 'admin', '智能指纹锁AJD012213-1222', 'color:;font-weight:normal;', '/uploads/20171114/61a4feffc27aef9a24c8321c895a972c.jpg', '', '', '', '0', '1', '0', '12', '1510380807', '1510625494', '1', '智能指纹锁AJD012213-1222', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '');

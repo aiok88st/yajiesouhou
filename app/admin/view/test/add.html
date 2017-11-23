@@ -7,7 +7,7 @@
     <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
     <script src="https://cdn.bootcss.com/layer/3.0.3/layer.min.js"></script>
     <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
-    <script src="__ADMIN__/qu/js/index.js?v=2"></script>
+    <script src="__ADMIN__/qu/js/index.js?v=3"></script>
 
     <style>
         #addquerstions{
@@ -42,17 +42,14 @@
             height: 33px;
             line-height: 33px;
         }
-        .layui-upload-file{
-            clear: both;
+        .kzjxx_iteam{
+            height:50px;
         }
-        .file_upload{
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity:0;
-            z-index: 100;
-            width:100%;
-            height: 100%;
+        .img_webk{
+            height: 33px;
+            width: 85px;
+            margin-left: 10px;
+            border: none;
         }
     </style>
 </head>
@@ -73,7 +70,6 @@
             <input type="text" id="f_title" name="f_title"  required  lay-verify="required" placeholder="请输入期数" autocomplete="off" class="layui-input" style="width: 650px;">
         </div>
     </div>
-
     <div class="all_660" style="margin-left: 50px">
         <div id="content" class="yd_box" style="margin-left: 110px;margin-top: 20px;width: 700px"></div>
         <div class="but" style="padding-top: 20px">
@@ -97,9 +93,9 @@
                         <div class="kzjxx_iteam">
                             <input name="answer" type="radio" value="1" class="dxk">
                             <input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">
+                            <img src="" class="input_wenbk img_webk file_upload" style="display: none">
+                            <button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传
 
-                            <button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传
-                                <input type="file" name="file"  class="file_upload" >
                             </button>
 
                             <a href="javascript:void(0);" class="del_xm">删除</a>
@@ -126,8 +122,9 @@
                         <div class="kzjxx_iteam">
                             <input name="answer" type="checkbox" value="1" class="dxk">
                             <input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">
-                            <button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传
-                                <input type="file" name="file"  class="file_upload" >
+                            <img src="" class="input_wenbk img_webk file_upload" style="display: none">
+                            <button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传
+
                             </button>
 
                             <a href="javascript:void(0);" class="del_xm">删除</a>
@@ -154,8 +151,8 @@
                         <div class="kzjxx_iteam">
                             <input name="answer" type="radio" value="1" class="dxk">
                             <input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">
-                            <button type="button" style="position: relative;" class="layui-btn layui-btn-primary"><i class="icon icon-upload3"></i>点击上传
-                                <input type="file" name="file"  class="file_upload" >
+                            <img src="" class="input_wenbk img_webk file_upload" style="display: none">
+                            <button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传
                             </button>
                             <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
@@ -198,38 +195,41 @@
         <button class="btu" onclick="smit()">提交</button>
         <a href="{:url('index')}" class="layui-btn layui-btn-primary">{:lang('back')}</a>
     </div>
+    <form action="" enctype="multipart/form-data" style="display: none">
+        <input type="file" name="file"  id="img_upload" >
+    </form>
 </div>
 </body>
 </html>
 <script type="text/javascript" src="__STATIC__/common/js/common.js"></script>
 <script type="text/javascript">
-    function uploads(box,cal){
-        layui.use('upload', function(){
-            var upload = layui.upload;
-            var uploadInst = upload.render({
-                elem: box //绑定元素
-                ,accept:"images"
-                ,exts: 'jpg|png|gif'
-                ,url: "{:url('UpFiles/upload')}" //上传接口
-                ,before:function(){
-                    index=layer.load(1);
-                }
+
+    $('body').on('click','.file_upload',function(){
+        $('#img_upload').trigger('click');
+        $_this=$(this);
+        layui.use([ 'layer','upload'], function () {
+            var upload = layui.upload,$ = layui.jquery;
+            upload.render({
+                elem: '#img_upload'
+                ,url: '{:url("UpFiles/upload")}'
+                ,accept: 'images' //普通文件
+                ,exts: 'jpg|png|gif' //只允许上传压缩文件
                 ,done: function(res){
-                    layer.closeAll();
-                    if(res.code == 1){
-                        cal(res);
+                    if(res.code==1){
+                        $_this.hide();
+                        $_this.siblings(".img_webk").show();
+                        $_this.siblings(".img_webk").attr('src',"__PUBLIC__"+res.url);
                     }else{
-                        layer.msg(res.msg);
+                        layer.msg(res.msg,{icon: 2, time: 1000});
                     }
-                }
-                ,error: function(){
-                    layer.closeAll();
                 }
             });
         });
-    }
 
-    
+    });
+
+
+
 
 
     function smit(){

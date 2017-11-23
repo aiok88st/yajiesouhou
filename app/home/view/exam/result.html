@@ -2,6 +2,11 @@
 {block name="headers"}
 <title>测试结果</title>
 <link rel="stylesheet" href="__HOME__/css/exam.css" />
+<style>
+    .choice li{
+        line-height: 50px;
+    }
+</style>
 {/block}
 {block name="main"}
 		<div id="exam" style="overflow: hidden;">
@@ -68,7 +73,7 @@
                                                      <input name="a{$k}0" type="radio" {if condition="$vv.answer eq 1"}checked="checked"{/if} value="{$vv.val}">
                                                      <i></i>
                                             {/if}
-                                            <span>{$vv.val}</span>
+                                                    <span>{php}$p=strrchr($vv['val'],'.');{/php}{if condition="$p eq '.png' || $p eq '.jpg' || $p eq '.jpeg' || $p eq '.gif'"}<img src="__PUBLIC__{$vv.val}" >{else/}{$vv.val}{/if}</span>
                                             </label>
                                         </li>
                                         {/volist}

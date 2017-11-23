@@ -14,7 +14,7 @@ class Test extends Common
             $pageSize =input('limit')?input('limit'):config('pageSize');
             $map = '';
             if ($key) {
-                $map['title'] = array('like', "%" . $key . "%");
+                $map['title|f_title'] = array('like', "%" . $key . "%");
             }
             $list = db('test')
                 ->where($map)
@@ -23,12 +23,19 @@ class Test extends Common
                 ->toArray();
             $lists = $list['data'];
             foreach ($lists as $k=>$v ){
+
+                $lists[$k]['pnum'] = db('utest')->where('tid',$v['id'])->group('uid')->count();
+                $lists[$k]['pass'] = db('utest')->where('tid',$v['id'])->where('score','>=','60')->group('uid')->count();
+                $lists[$k]['fail'] = db('utest')->where('tid',$v['id'])->where('score','<','60')->group('uid')->count();
+
                 $lists[$k]['createtime'] = date('Y-m-d H:i:s',$v['createtime']);
             }
+
             return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $lists, 'rel' => 1,'count'=>$list['total']];
         }
         return $this->fetch();
     }
+
 
     public function add(Request $request)
     {

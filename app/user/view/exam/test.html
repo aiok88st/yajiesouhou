@@ -39,6 +39,9 @@
             padding-left: 8px;
             padding-top: 5px;
         }
+        .wjdc_list li{
+            line-height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -92,7 +95,7 @@
                             {else/}
                             <input name="a{$k}0" type="radio" value="{$vv.val}">
                             {/if}
-                            <span>{$vv.val}</span>
+                            <span>{php}$p=strrchr($vv['val'],'.');{/php}{if condition="$p eq '.png' || $p eq '.jpg' || $p eq '.jpeg' || $p eq '.gif'"}<img src="__PUBLIC__{$vv.val}" >{else/}{$vv.val}{/if}</span>
                         </label>
                     </li>
                     {/volist}

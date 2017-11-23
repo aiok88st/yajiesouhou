@@ -10,7 +10,7 @@
             <input class="layui-input" name="phone" id="phone" placeholder="电话">
         </div>
         <div class="layui-inline">
-            <select name="province" id="province">
+            <select name="province" id="province" style="height: 37px;border: 1px solid #e6e6e6;">
                 <option value="">--选择省份--</option>
                 {volist name="$p" id="v"}
                 <option value="{$v['id']}" {if condition="$v['id'] eq $data['province']['id']"}selected{/if} >{$v['name']}</option>
@@ -19,7 +19,7 @@
             </select>
         </div>
         <div class="layui-inline">
-            <select name="city" id="city">
+            <select name="city" id="city" style="height: 37px;border: 1px solid #e6e6e6;">
                 <option value="">--选择市--</option>
                 {volist name="$c" id="v"}
                 <option value="{$v['id']}" {if condition="$v['id'] eq $data['city']['id']"} selected {/if} >{$v['name']}</option>
@@ -27,7 +27,7 @@
             </select>
         </div>
         <div class="layui-inline">
-            <select name="area" id="areas">
+            <select name="area" id="areas" style="height: 37px;border: 1px solid #e6e6e6;">
                 <option value="">--选择区/县--</option>
                 {volist name="$a" id="v"}
                 <option value="{$v['id']}" {if condition="$v['id'] eq $data['zone']['id']"} selected {/if} >{$v['name']}</option>

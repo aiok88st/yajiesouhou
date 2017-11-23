@@ -41,7 +41,7 @@ class Exam extends Fater
     public function test(){
         $id = input('id');
         $where['id']=['=',$id];
-        $utest = db('utest')->where('uid',session('did'))->where('tid',$id)->find();
+        $utest = db('utest')->where('uid',session('did'))->where('tid',$id)->order("addtime desc")->find();
         if($utest && $utest['status']==1){
             $this->redirect(url('home/Exam/detail',array('id'=>$utest['id'])));
         }else{
@@ -69,6 +69,7 @@ class Exam extends Fater
             $standard[$key]['score']=$val['score'];
             $standard[$key]['answer']=$answer;
         }
+
         $standard2=[];
         foreach($tests['content'] as $key=>$val){
             $answer=[];
@@ -139,8 +140,7 @@ class Exam extends Fater
             $this->assign('test',$utest);
             return $this->fetch('result');
         }else{
-            $this->assign('test',$utest);
-            return $this->fetch('exam');
+            $this->redirect(url('Exam/test',array('id'=>$utest['tid'])));
         }
     }
 

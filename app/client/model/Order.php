@@ -46,6 +46,19 @@ class Order extends Model
         }
        return serialize($data);
     }
+
+
+    public function setUserIdAttr($value){
+        $network = new Network();
+        $id = $network->where('tel',$value)->value('id');
+        if($id){
+            return $id;
+        }else{
+            return '';
+        }
+    }
+
+
     public function add($param){
         try{
             //先去查询是否已经申请过

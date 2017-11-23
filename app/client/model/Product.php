@@ -56,6 +56,7 @@ class Product extends Model
             return rejson(0,$e->getMessage(),true);
         }
     }
+
     public function get_pro($param){
         //查询产品
         $url="http://mobile.archie.com.cn/Interface/getPrdtBarcode?MODEL_VIP_CODE=".$param['code'];
@@ -97,7 +98,54 @@ class Product extends Model
             'sample'=>$produce['sample'],
             'status'=>$status
         ];
-
         return $this->add($data);
     }
+
+    public function get_pro_zd($param){
+        //查询产品
+        try{
+            $url="http://mobile.archie.com.cn/Interface/getPrdtBarcode?CUST_TEL=".$param;
+            $res=get_curl_contents($url);
+            $res_data=json_decode($res,true);
+
+            foreach($res_data['result'] as $k=>$v){
+                $pro=$this::get(['model_vip_code'=>$v['MODEL_VIP_CODE']]);
+                if($pro){
+                    continue;
+                }
+                //查询是否在保修期内
+                $url="http://drp.archiehardware.com/Interface/getRepairDate?MODEL_VIP_CODE=".$v['MODEL_VIP_CODE'];
+                $res=get_curl_contents($url);
+                $res_datas=json_decode($res,true);
+
+                $barcode=$res_datas['result'][0];
+                $status=0;
+                if(strtotime($barcode['REPAIR_DATE'])<time())$status=-1;
+                $data=[
+                    'client_id'=>UID,
+                    'model_vip_code'=>$v['MODEL_VIP_CODE'],
+                    'model'=>$v['MODEL'],
+                    'barcode'=>$v['BARCODE'],
+                    'sale_date'=>$v['SALE_DATE'],
+                    'sale_oulets'=>$v['SALE_OULETS'],
+                    'cust_tel'=>$v['CUST_TEL'],
+                    'cust_name'=>$v['CUST_NAME'],
+                    'cust_addr'=>$v['CUST_ADDR'],
+                    'province'=>$v['PROVINCE'],
+                    'city'=>$v['CITY'],
+                    'zone'=>$v['ZONE'],
+                    'mater'=>$v['MATER'],
+                    'direct'=>$v['DIRECT'],
+                    'setup_op'=>$v['SETUP_OP'],
+                    'stick'=>$v['stick'],
+                    'sample'=>$v['sample'],
+                    'status'=>$status
+                ];
+                $this->add($data);
+            }
+        }catch(Exception $e){
+
+        }
+    }
+
 }

@@ -24,20 +24,23 @@ class Repair extends Common{
             'status_name'=>$status_name
         ]);
     }
+
     public function audit(Request $request){  //待审核列表
         $status=$request->param('status','0');
-
         return view('',[
             'status'=>$status
         ]);
     }
+
     public function getList(Request $request,Order $order){  //获取数据列表
         $status=$request->param('status');
         $name=$request->param('name','');
         $phone=$request->param('phone','');
         $where=[
-            'status'=>['IN',$status]
+            'status'=>['IN',$status],
+            'user_id'=>($status==0 || $status==-1)? null:['>','0']
         ];
+
         if(!empty($name))$where['name']=['LIKE',"%{$name}%"];
         if(!empty($phone))$where['phone']=['LIKE',"%{$phone}%"];
         $page =input('page')?input('page'):1;
@@ -47,8 +50,8 @@ class Repair extends Common{
             ->paginate(['list_rows'=>$pageSize,'page'=>$page])
             ->toArray();
         return $result = ['code'=>0,'msg'=>'获取成功!','data'=>$list['data'],'count'=>$list['total'],'rel'=>1];
-
     }
+
     public function show(Request $request,Order $order,Region $region,OrderLog $log){  //订单详情
         $id=$request->param()['id'];
         $data=$order::get($id);

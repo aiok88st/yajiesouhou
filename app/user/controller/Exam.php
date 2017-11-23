@@ -19,7 +19,7 @@ class Exam extends Common
         $name = input('key');
         $where = array();
         if($name){
-            $where['title'] = array('like', "%$name%");
+            $where['title|f_title'] = array('like', "%$name%");
         }
         $data=Db::table(config('database.prefix').'utest')->alias('a')
             ->join(config('database.prefix').'test ag','a.tid = ag.id','left')
@@ -119,7 +119,7 @@ class Exam extends Common
         if($utest && $utest['status']==1){
             $this->redirect(url('Exam/getDetail',array('id'=>$utest['id'])));
         }else{
-            $this->redirect(url('Exam/test',array('id'=>$utest['tid'])));
+            $this->redirect(url('Exam/test',array('id'=>$id)));
         }
     }
 

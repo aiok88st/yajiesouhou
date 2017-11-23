@@ -16,9 +16,12 @@ class Order extends Fater
             abort(505,'请先绑定手机号码');
         }
     }
+
     public function add(Request $request,OrderModel $order){
         $param=$request->param();
         $param['client_id']=UID;
+        $param['user_id']=$param['phone'];
+
         return $order->add($param);
     }
 }

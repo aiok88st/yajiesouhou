@@ -5,7 +5,7 @@
     </fieldset>
     <div class="demoTable">
         <div class="layui-inline">
-            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}标题">
+            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}标题/期数">
         </div>
         <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
         <a href="{:url('index',['catid'=>input('catid')])}" class="layui-btn">显示全部</a>
@@ -39,7 +39,11 @@
             cols: [[
                 {checkbox: true, fixed: true},
                 {field: 'id', title: '{:lang("id")}', width: 80, fixed: true},
-                {field: 'title', title: '{:lang("title")}', width: 400},
+                {field: 'title', title: '{:lang("title")}', width: 300},
+                {field: 'f_title', title: '期数', width: 100},
+                {field: 'pnum', title: '考试人数', width: 100},
+                {field: 'pass', title: '及格人数', width: 100},
+                {field: 'fail', title: '不及格人数', width: 100},
                 {field: 'createtime', title: '{:lang("add")}{:lang("time")}', width: 180},
                 {width: 160, align: 'center', toolbar: '#action',title:'操作'}
             ]],

@@ -51,6 +51,9 @@
             margin-left: 10px;
             border: none;
         }
+        .wjdc_list li{
+            line-height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -97,7 +100,7 @@
                             <button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传
 
                             </button>
-
+                            <input type="hidden" name="upload_name" value="" class="upload_names">
                             <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
                     </div>
@@ -126,7 +129,7 @@
                             <button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传
 
                             </button>
-
+                            <input type="hidden" name="upload_name" value="1" class="upload_names">
                             <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
                     </div>
@@ -154,6 +157,7 @@
                             <img src="" class="input_wenbk img_webk file_upload" style="display: none">
                             <button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传
                             </button>
+                            <input type="hidden" name="upload_name" value="" class="upload_names">
                             <a href="javascript:void(0);" class="del_xm">删除</a>
                         </div>
                     </div>
@@ -199,6 +203,7 @@
         <input type="file" name="file"  id="img_upload" >
     </form>
 </div>
+{include file="common/foot"/}
 </body>
 </html>
 <script type="text/javascript" src="__STATIC__/common/js/common.js"></script>
@@ -219,6 +224,7 @@
                         $_this.hide();
                         $_this.siblings(".img_webk").show();
                         $_this.siblings(".img_webk").attr('src',"__PUBLIC__"+res.url);
+                        $_this.siblings(".upload_names").attr('value',res.url);
                     }else{
                         layer.msg(res.msg,{icon: 2, time: 1000});
                     }
@@ -227,10 +233,6 @@
         });
 
     });
-
-
-
-
 
     function smit(){
         layui.use('layer', function(){

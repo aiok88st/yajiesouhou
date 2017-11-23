@@ -24,7 +24,7 @@ class UpFiles extends Common
             $image = \think\Image::open(ROOT_PATH . 'public/uploads/'. $path);
             $image->thumb(150, 150)->save(ROOT_PATH . 'public'.$imagename);
             $result['thumb_s'] = $imagename;
-
+//            $result['filename'] = $info->getFilename();
             $result['url'] = '/uploads/'. $path;
             return $result;
         }else{

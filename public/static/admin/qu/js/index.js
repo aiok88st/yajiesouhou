@@ -193,15 +193,19 @@ $(document).ready(function(e) {
 
                             //-------------------------------------------------------------------------------
                             var img_val = $(this).find("span").find('img').attr('src');
-                            if(img_val){
-                                $('.layui-btn').hide();
-                                $('.img_webk').show();
-                            };
+                            var img_name = $(this).find(".upload_names").val();
 							if(input.is(":checked")){
 								dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find('[name="answer"]').attr('checked',true);
 							}
+
+							if(img_val){
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".layui-btn").hide();
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".img_webk").show();
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".img_webk").attr('src',img_val);
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".upload_names").attr('value',img_name);
+							}
 							dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".input_wenbk").val(texte_val);
-                            dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".img_webk").attr('src',img_val);
+
 							bjjs++
 
 						});
@@ -233,11 +237,17 @@ $(document).ready(function(e) {
 							}
 							//题目选项
 							var texte_val = $(this).find("span").text();
-
+                            var img_val = $(this).find("span").find('img').attr('src');
+                            var img_name = $(this).find(".upload_names").val();
 							if(input.is(":checked")){
 								dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find('[name="answer"]').attr('checked',true);
 							}
-
+                            if(img_val){
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".layui-btn").hide();
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".img_webk").show();
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".img_webk").attr('src',img_val);
+                                dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".upload_names").attr('value',img_name);
+                            }
 							dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(bjjs - 1).find(".input_wenbk").val(texte_val);
 							bjjs++
 
@@ -270,12 +280,14 @@ $(document).ready(function(e) {
                         zjxx_html +='<input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">';
                         zjxx_html +='<img src="" class="input_wenbk img_webk file_upload" style="display: none">';
                         zjxx_html +='<button type="button"  class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传</button>';
+                        zjxx_html +='<input type="hidden" name="upload_name" value="1" class="upload_names">';
                         zjxx_html +='<a href="javascript:void(0);" class="del_xm">删除</a>';
                     }else if(title == 1){
                         zjxx_html +='<input name="answer" type="checkbox" value="'+num+'" class="dxk">';
                         zjxx_html +='<input name="optiond" type="text" class="input_wenbk" value="" placeholder="选项">';
                         zjxx_html +='<img src="" class="input_wenbk img_webk file_upload" style="display: none">';
                         zjxx_html +='<button type="button" class="layui-btn layui-btn-primary file_upload"><i class="icon icon-upload3"></i>点击上传</button>';
+                        zjxx_html +='<input type="hidden" name="upload_name" value="1" class="upload_names">';
                         zjxx_html +=' <a href="javascript:void(0);" class="del_xm">删除</a>';
                     }else{
                         zjxx_html = $(this).prev(".title_itram").children(".kzjxx_iteam").html();
@@ -351,7 +363,7 @@ $(document).ready(function(e) {
 								//题目选项
 								var texte_val_bj = $(this).find(".input_wenbk").val(); //获取填写信息
                                 var imge_val_bj = $(this).find(".img_webk").attr('src'); //获取图片信息
-
+                                var imge_val_name = $(this).find(".upload_names").val();
 								var dxk_val_bj = $(this).find(".dxk"); //获取填写信息
 
 								var inputType = 'radio';
@@ -363,9 +375,9 @@ $(document).ready(function(e) {
 								var name="a"+querstionType+q;
                                 if(imge_val_bj){
                                     if(dxk_val_bj.is(':checked')){
-                                        var li = '<li class="input"><label><input name="'+name+'" type="' + inputType + '" checked value="'+imge_val_bj+'"><span><img src="' + imge_val_bj + '"></span></label></li>';
+                                        var li = '<li class="input"><label><input name="'+name+'" type="' + inputType + '" checked value="'+imge_val_name+'"><span><img src="' + imge_val_bj + '"></span></label></li>';
                                     }else{
-                                        var li = '<li class="input"><label><input name="'+name+'" type="' + inputType + '"  value="'+imge_val_bj+'"><span><img src="' + imge_val_bj + '"></span></label></li>';
+                                        var li = '<li class="input"><label><input name="'+name+'" type="' + inputType + '"  value="'+imge_val_name+'"><span><img src="' + imge_val_bj + '"></span></label></li>';
                                     }
                                 }else{
                                     if(dxk_val_bj.is(':checked')){

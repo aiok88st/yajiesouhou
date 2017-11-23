@@ -49,6 +49,8 @@ class EmptyController extends Common{
             if(!empty($keyword) ){
                 if($modelname == 'article'){
                     $map['title|keywords']=array('like','%'.$keyword.'%');
+                }elseif($modelname == 'tvd'){
+                    $map['title|keywords|date_num']=array('like','%'.$keyword.'%');
                 }else{
                     $map['title']=array('like','%'.$keyword.'%');
                 }
@@ -114,6 +116,10 @@ class EmptyController extends Common{
                 $prov = db('region')->where('pid',1)->select();
                 $this->assign('province',$prov);
             }
+            if($modelname == 'tvd'){
+                return $this->fetch('tvdList');
+            }
+
             $module = db('module');
             $tem = $module->where('name',$modelname)->field('template')->find();
             return $this->fetch("{$tem['template']}");
@@ -172,6 +178,7 @@ class EmptyController extends Common{
         $model = $this->dao;
         $fields = $this->fields;
         $data = $this->checkfield($fields,input('post.'));
+
 
         if($data['code']=="0"){
             $result['msg'] = $data['msg'];
@@ -331,6 +338,14 @@ class EmptyController extends Common{
         $model = $this->dao;
         $fields = $this->fields;
         $data = $this->checkfield($fields,input('post.'));
+
+        if($controllerName=='Network'){
+            $tel = $model->where('tel',$data['tel'])->value('tel');
+            if($tel){
+                return ['msg'=>'该号码已经存在','code'=>0];
+            }
+        }
+
         if(isset($data['code']) && $data['code']==0){
             return $data;
         }

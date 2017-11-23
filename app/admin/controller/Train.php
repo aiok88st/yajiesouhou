@@ -9,7 +9,7 @@ class Train extends Common
     public function getList($key,$page,$pageSize){
         $map = '';
         if ($key) {
-            $map['username|title'] = array('like', "%" . $key . "%");
+            $map['username|title|f_title'] = array('like', "%" . $key . "%");
         }
         $list = Db::table(config('database.prefix') . 'utest')->alias('a')
             ->join(config('database.prefix') . 'distributor at', 'a.uid = at.id', 'left')

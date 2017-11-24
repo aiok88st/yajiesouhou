@@ -41,4 +41,13 @@ class Fater extends Controller
         return rejson(1,'获取成功',true);
     }
 
+    public function messge(){
+        $data = [
+            'msg'=>'请先绑定手机！',
+            'url'=>url('Client/index')
+        ];
+        $this->assign('data',$data);
+        return $this->fetch('common/404');
+    }
+
 }

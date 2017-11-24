@@ -1,0 +1,48 @@
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>操作</legend>
+</fieldset>
+
+<form class="layui-form layui-form-pane">
+    <input type="hidden" name="id" value="{$data['id']}">
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核状态</label>
+        <div class="layui-input-block">
+            <input type="radio" name="status" lay-filter="radio" value="1" title="通过" checked>
+            <input type="radio" name="status" lay-filter="radio" value="-1" title="不通过">
+        </div>
+    </div>
+    <div class="layui-form-item hide audit layui-form-text">
+        <label class="layui-form-label">不通过原因</label>
+        <div class="layui-input-block">
+            <textarea name="audit" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+        <div class="layui-form-mid layui-word-aux">200字以内</div>
+    </div>
+    <div class="layui-form-item user_id">
+        <label class="layui-form-label">跟进门店</label>
+        <div class="layui-input-inline">
+            <input type="hidden" name="user_id" id="user_id" value="">
+            <input type="text" name="shopname" id="shopname"
+                   placeholder="未选择" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <div class="layui-btn layui-btn-primary" onclick="select_user()">
+                <i class="layui-icon">&#xe61f;</i>
+                点击选择
+            </div>
+        </div>
+
+
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-inline">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            {if condition="in_array($data['status'],[0,-1])"}
+            <a href="{:url('repair/audit')}"  class="layui-btn layui-btn-primary">返回</a>
+            {else /}
+            <a href="{:url('repair/index')}"  class="layui-btn layui-btn-primary">返回</a>
+            {/if}
+
+        </div>
+    </div>
+</form>

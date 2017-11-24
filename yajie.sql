@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-23 18:54:47
+Date: 2017-11-24 18:59:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -339,7 +339,7 @@ CREATE TABLE `clt_client` (
 -- ----------------------------
 -- Records of clt_client
 -- ----------------------------
-INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://img3.imgtn.bdimg.com/it/u=3797592229,3840448992&fm=27&gp=0.jpg', '13923211553', '小王', null, null, null, null, '2017-11-19 11:28:58');
+INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://img3.imgtn.bdimg.com/it/u=3797592229,3840448992&fm=27&gp=0.jpg', '', '小王', null, null, null, null, '2017-11-19 11:28:58');
 
 -- ----------------------------
 -- Table structure for clt_collect
@@ -700,7 +700,7 @@ CREATE TABLE `clt_order` (
 -- ----------------------------
 -- Records of clt_order
 -- ----------------------------
-INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '1', '', null, null, '2', null, null, '2017-11-20 09:44:14');
+INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '3', '', null, null, '2', '圆通', '123456', '2017-11-20 09:44:14');
 
 -- ----------------------------
 -- Table structure for clt_order_log
@@ -714,7 +714,7 @@ CREATE TABLE `clt_order_log` (
   `content` varchar(255) NOT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_order_log
@@ -727,6 +727,17 @@ INSERT INTO `clt_order_log` VALUES ('00000000005', '6', '1', '1', '审核通过'
 INSERT INTO `clt_order_log` VALUES ('00000000006', '6', '1', '1', '审核通过', '2017-11-20 20:57:19');
 INSERT INTO `clt_order_log` VALUES ('00000000007', '6', '1', '1', '审核通过', '2017-11-23 18:27:06');
 INSERT INTO `clt_order_log` VALUES ('00000000008', '6', '1', '1', '审核通过', '2017-11-23 18:34:31');
+INSERT INTO `clt_order_log` VALUES ('00000000009', '6', '1', '1', '审核不通过，原因：单身狗打电话放大号法定和放大号法定和放大号法定三国杀的身高多少规定相比出现吧', '2017-11-24 10:59:24');
+INSERT INTO `clt_order_log` VALUES ('00000000010', '6', '2', '1', '审核不通过，原因：电话防火防盗火热任何地方涣发大号刮风加工费加号太过分vcfngv', '2017-11-24 11:11:09');
+INSERT INTO `clt_order_log` VALUES ('00000000011', '6', '2', '4', '审核不通过，原因：发动机刮风加工费结果反馈', '2017-11-24 11:13:12');
+INSERT INTO `clt_order_log` VALUES ('00000000012', '6', '2', '4', '审核通过', '2017-11-24 11:15:24');
+INSERT INTO `clt_order_log` VALUES ('00000000013', '6', '2', '4', '审核通过', '2017-11-24 11:47:38');
+INSERT INTO `clt_order_log` VALUES ('00000000018', '6', '2', '4', '维修完成', '2017-11-24 14:44:29');
+INSERT INTO `clt_order_log` VALUES ('00000000019', '6', '2', '4', '维修完成', '2017-11-24 14:46:11');
+INSERT INTO `clt_order_log` VALUES ('00000000020', '6', '2', '4', '维修完成', '2017-11-24 14:58:35');
+INSERT INTO `clt_order_log` VALUES ('00000000021', '6', '2', '4', '维修完成', '2017-11-24 14:59:29');
+INSERT INTO `clt_order_log` VALUES ('00000000022', '6', '2', '4', '维修完成', '2017-11-24 15:00:15');
+INSERT INTO `clt_order_log` VALUES ('00000000023', '6', '2', '4', '维修完成', '2017-11-24 15:01:57');
 
 -- ----------------------------
 -- Table structure for clt_page

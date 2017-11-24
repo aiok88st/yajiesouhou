@@ -1,4 +1,4 @@
-{include file="common/head"/}
+{include file="common/header"/}
 
 <div class="admin-main layui-anim layui-anim-upbit">
     <div class="layui-tab">
@@ -10,7 +10,7 @@
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <fieldset class="layui-elem-field layui-field-title">
-                    <legend>申请{:lang('show')}</legend>
+                    <legend>申请售后详情</legend>
                 </fieldset>
                 <table class="layui-table" style="width:700px;" lay-skin="nob">
                     <colgroup>
@@ -37,7 +37,7 @@
                             {$data['type']['name']}
                             {if condition="($data['status']['id'] eq 1 || $data['status']['id'] eq 3) and ($data['type']['id']  eq 1) "}
                             &nbsp;&nbsp;
-                            <a _href="javascript:;" onclick="x_admin_show('查看物流信息','{:url('express')}?id={$data.id}&status={$data.status.id}',800,400)" class="layui-btn layui-btn-mini" >查看物流</a>
+                                <a _href="javascript:;" onclick="x_admin_show('查看物流信息','{:url('express')}?id={$data.id}&status={$data.status.id}',800,400)" class="layui-btn layui-btn-mini" >查看物流</a>
                             {/if}
                         </td>
                     </tr>
@@ -115,7 +115,7 @@
     </div>
 
 </div>
-{include file="common/foot"/}
+
 <div id="tong" class="hide">
     <img src="images/tong.jpg">
 </div>

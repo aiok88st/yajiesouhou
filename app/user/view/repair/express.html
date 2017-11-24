@@ -1,0 +1,39 @@
+
+{include file="common/header"/}
+<div class="x-body">
+    <form class="layui-form" method="post">
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                <span class="x-red">*</span>物流公司
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_username" name="u_logistics" required="" lay-verify="username"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                <span class="x-red">*</span>物流单号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_nikename" name="u_logistics_number" required="" lay-verify="nikename"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <input type="hidden" name="id" value="{$id}">
+            <label for="L_nikename" class="layui-form-label">
+            </label>
+            <input value="确认" class="layui-btn" lay-submit lay-filter="add" type="submit">
+        </div>
+    </form>
+</div>
+<script>
+
+</script>
+<script>var _hmt = _hmt || []; (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script>

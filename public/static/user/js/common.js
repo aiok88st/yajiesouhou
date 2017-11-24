@@ -1,30 +1,3 @@
-/** common.js By Beginner Emain:zheng_jinfan@126.com HomePage:http://www.zhengjinfan.cn */
-layui.define(['layer'], function(exports) {
-	"use strict";
-
-	var $ = layui.jquery, layer = layui.layer;
-	var common = {
-		/**
-		 * 抛出一个异常错误信息
-		 * @param {String} msg
-		 */
-		throwError: function(msg) {
-			throw new Error(msg);
-			return;
-		},
-		/**
-		 * 弹出一个错误提示
-		 * @param {String} msg
-		 */
-		msgError: function(msg) {
-			layer.msg(msg, {
-				icon: 5
-			});
-			return;
-		}
-	};
-	exports('common', common);
-});
 /*通用ajax*/
 function AjaxP(url,method,data,callback){
     var load = layer.load(2, {time: 10*1000});
@@ -62,29 +35,3 @@ function AjaxP(url,method,data,callback){
         }
     });
 }
-
-function x_admin_show(title,url,w,h){
-    if (title == null || title == '') {
-        title=false;
-    };
-    if (url == null || url == '') {
-        url="404.html";
-    };
-    if (w == null || w == '') {
-        w=($(window).width()*0.9);
-    };
-    if (h == null || h == '') {
-        h=($(window).height() - 50);
-    };
-    layer.open({
-        type: 2,
-        area: [w+'px', h +'px'],
-        fix: false, //不固定
-        maxmin: true,
-        shadeClose: true,
-        shade:0.4,
-        title: title,
-        content: url
-    });
-}
-

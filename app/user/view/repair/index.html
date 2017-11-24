@@ -1,22 +1,33 @@
 {include file="common/header"/}
+<style>
+    .layui-tab-title .layui-this {
+        color: #000;
+
+    }
+</style>
 <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">订单管理</a>
-        <a href="">待审核申请</a>
+        <a href="">报修申请管理</a>
       </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
+
 <div class="x-body">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            {volist name="status_name" id="v"}
+            <li  onclick="window.location.href='{:url('repair/index',['status'=>$v['id']])}'"
+                 {if condition="$v['id'] eq $status"}class="layui-this"{/if}>
+            {$v['name']}
+            </li>
+            {/volist}
+        </ul>
+    </div>
     <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so">
             <input type="text" name="key"  placeholder="请输入姓名/电话" autocomplete="off" class="layui-input">
-            <div class="layui-inline">
-                <select name="status" id="status" style="height: 38px;border: 1px solid #e6e6e6;">
-                    <option value="0">待审核</option>
-                    <option value="-1">不通过</option>
-                </select>
-            </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
@@ -69,11 +80,3 @@
         });
     }
 </script>
-
-
-
-
-
-
-
-

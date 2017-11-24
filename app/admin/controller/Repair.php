@@ -16,8 +16,6 @@ class Repair extends Common{
             ['id'=>1,'name'=>'待维修'],
             ['id'=>2,'name'=>'维修中'],
             ['id'=>3,'name'=>'已完成'],
-            ['id'=>4,'name'=>'已关闭'],
-            ['id'=>5,'name'=>'已取消'],
         ];
         return view('',[
             'status'=>$status,
@@ -141,5 +139,10 @@ class Repair extends Common{
             return rejson(0,$e->getMessage());
         }
     }
+
+    //查看物流
+    public function express(Request $request){
+        $param=$request->param();
+        var_dump($param);
+    }
 }
-?>

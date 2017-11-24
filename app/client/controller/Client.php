@@ -14,23 +14,31 @@ class Client extends Fater   //客户首页
         }
     }
 
+
     public function index(){  //首页用来展示个人信息
         $client = db('client')->where('id',1)->find();
         $list = $this->get_region();
-        $this->assign('list',json_encode($list));
+        $this->assign('list',$list);
         $this->assign('client',$client);
         return view();
     }
 
     public function get_region(){  //三级分类
-        $list = getLocation('region',1,1);
-        foreach($list as $k=>$v){
-            $list[$k]['city'] = getLocation('region',$v['id'],2);
-            foreach($list[$k]['city'] as $key=>$val){
-                $list[$k]['city'][$key]['area'] = getLocation('region',$val['id'],3);
+        if(is_file('region.json')){
+            $region= file_get_contents('region.json');
+            return $region;
+        }else{
+            $list = getLocation('region',1,1);
+            foreach($list as $k=>$v){
+                $list[$k]['city'] = getLocation('region',$v['id'],2);
+                foreach($list[$k]['city'] as $key=>$val){
+                    $list[$k]['city'][$key]['area'] = getLocation('region',$val['id'],3);
+                }
             }
+            $region = json_encode($list);
+            file_put_contents('region.json',$region);
+            return $region;
         }
-        return $list;
     }
 
     public function edit_name(){
@@ -105,5 +113,18 @@ class Client extends Fater   //客户首页
         }else{
             return json(['code' => 0, 'msg' => '修改失败!']);
         }
+    }
+
+    public function edit_addr(){
+        $data = input('post.');
+        $result = $this->validate($data, [
+            'J_Address|地区'  => 'require',
+            'addr|详细地址'  => 'require',
+        ]);
+        if(true !== $result){
+            // 验证失败 输出错误信息
+            return json(['code'=>0, 'msg'=>$result,]);
+        }
+        var_dump($data);
     }
 }

@@ -1,0 +1,63 @@
+
+{extend name="common/header" /}
+{block name="headers"}
+<title>跳转提示</title>
+<link rel="stylesheet" href="http://www.jq22.com/demo/jquery-tsk20150817/msgbox.css" />
+<link rel="stylesheet" href="http://www.jq22.com/demo/jquery-SweetAlert20151027/sweetalert.css" />
+{/block}
+{block name="main"}
+<div id="person">
+    <div>
+        <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="false" data-animation="pop" data-timer="null" style="display: block; margin-top: -176px;">
+            <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+                <span class="sa-body pulseWarningIns"></span>
+                <span class="sa-dot pulseWarningIns"></span>
+            </div>
+            <div class="sa-icon sa-info" style="display: none;">
+                <span class="sa-body"></span>
+                <span class="sa-dot"></span>
+            </div>
+            <div class="sa-icon sa-info" style="display: none;"></div>
+            <div class="sa-icon sa-custom" style="display: none; width: 80px; height: 80px; background-image: url(http://www.jq22.com/demo/jquery-SweetAlert20151027/images/thumbs-up.jpg);"></div>
+            <p style="font-size: 20px;color: #000;margin-bottom: 5px">{$data.msg}</p>
+            <p style="display: block;font-size: 14px">正在跳转，等待时间： <b id="wait">3</b>s</p>
+            <fieldset>
+                <input type="text" tabindex="3" placeholder="">
+                <div class="sa-input-error"></div>
+            </fieldset>
+
+            <div class="sa-button-container">
+                <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">取消</button>
+                <input type="hidden" id="href" value="{$data.url}">
+                <a href="javascript:;"> <button onclick="goPage()" class="confirm" tabindex="1" style="display: inline-block; box-shadow: rgba(174, 222, 244, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset; background-color: #481c76;">立即跳转</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+
+<script type="text/javascript">
+
+    (function(){
+        var wait = document.getElementById('wait'),
+        href = document.getElementById('href').value;
+        var interval = setInterval(function(){
+            var time = --wait.innerHTML;
+            if(time <= 0) {
+                window.location.href = href;
+                clearInterval(interval);
+            };
+        }, 1000);
+    })();
+    function goPage(){
+        var url = $("#href").val();
+        window.location.href = url;
+    }
+</script>
+{/block}
+
+

@@ -58,11 +58,11 @@ $(function(){
 		$('#exchangeAddress').show().stop().animate({left:'0%'});
 	});
 	//保存地址信息
-	$('.keepAddress').bind('click',function(){
-		$('#exchangeAddress').stop().animate({left:'100%',},function(){
-			$(this).hide();
-		});
-	});
+	//$('.keepAddress').bind('click',function(){
+	//	$('#exchangeAddress').stop().animate({left:'100%',},function(){
+	//		$(this).hide();
+	//	});
+	//});
 	//发送验证码
 	$('.send').bind('click',function(){
 		$(this).attr('disabled','disabled');

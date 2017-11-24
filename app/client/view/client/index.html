@@ -217,7 +217,7 @@
             </li>
             <li>
                 <p>详细地址</p>
-                <textarea placeholder="街道门牌信息"></textarea>
+                <textarea id="addr" placeholder="街道门牌信息"></textarea>
             </li>
         </ul>
     </div>
@@ -291,6 +291,23 @@
         })
     });
 
+    //修改地址
+    $('.keepAddress').bind('click',function(){
+        var J_Address = $('#J_Address').val();
+        var addr = $("#addr").val();
+        edit_info("{:url('client/edit_addr')}",{"J_Address":J_Address,"addr":addr},function(res){
+            if(res.code == 1){
+                layer.msg(res.msg,{time:1000});
+                $('#ph').text(res.list);
+                $('#exchangeAddress').stop().animate({left:'100%',},function(){
+                    $(this).hide();
+                });
+            }else{
+                layer.msg(res.msg,{time:1000});
+            }
+        })
+    });
+
     ! function() {
         var citys = [];
         for(var i=0;i<data.length;i++){
@@ -340,7 +357,7 @@
             $target.citySelect('open');
         });
         $target.on('done.ydui.cityselect', function (ret) {
-            $(this).val(ret.provance+' '+ret.pid + ' ' + ret.city + ' '+ret.cid + '  ' + ret.area+' '+ret.aid +' ');
+            $(this).val(ret.provance+' ' + ret.city + ' ' + ret.area+' ');
         });
     }();
 

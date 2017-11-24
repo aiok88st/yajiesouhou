@@ -1,0 +1,174 @@
+
+<div id="select_user" class="hide" style="padding: 10px;background-color: #fff">
+
+    <div class="demoTable">
+        <div class="layui-inline">
+            <input class="layui-input" name="name" id="name" placeholder="姓名">
+
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input" name="phone" id="phone" placeholder="电话">
+        </div>
+        <div class="layui-inline">
+            <select name="province" id="province" style="height: 37px;border: 1px solid #e6e6e6;">
+                <option value="">--选择省份--</option>
+                {volist name="$p" id="v"}
+                <option value="{$v['id']}" {if condition="$v['id'] eq $data['province']['id']"}selected{/if} >{$v['name']}</option>
+                {/volist}
+
+            </select>
+        </div>
+        <div class="layui-inline">
+            <select name="city" id="city" style="height: 37px;border: 1px solid #e6e6e6;">
+                <option value="">--选择市--</option>
+                {volist name="$c" id="v"}
+                <option value="{$v['id']}" {if condition="$v['id'] eq $data['city']['id']"} selected {/if} >{$v['name']}</option>
+                {/volist}
+            </select>
+        </div>
+        <div class="layui-inline">
+            <select name="area" id="areas" style="height: 37px;border: 1px solid #e6e6e6;">
+                <option value="">--选择区/县--</option>
+                {volist name="$a" id="v"}
+                <option value="{$v['id']}" {if condition="$v['id'] eq $data['zone']['id']"} selected {/if} >{$v['name']}</option>
+                {/volist}
+            </select>
+        </div>
+        <button class="layui-btn" id="search" data-type="reload">搜索</button>
+        <div style="clear: both;"></div>
+    </div>
+    <table class="layui-table" id="list" lay-filter="list"></table>
+
+</div>
+<script type="text/javascript">
+
+    layui.use(['form','layer','table','element'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
+        var table = layui.table;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            var url="{:url('repair/edit')}";
+            AjaxP(url,"POST",data.field,function(res){
+                if(res.code==1){
+
+                    layer.msg(res.msg,{icon:6,time:1000},function(){
+                        window.location.reload();
+                    });
+                }else{
+                    layer.msg(res.msg, {icon: 5 ,time:1000});
+                }
+            });
+            return false;
+        });
+
+        form.on('radio(radio)', function(data){
+            var v=data.value;
+            if(v==-1){
+                $('.audit').show();
+                $('.user_id').hide();
+                $('.user_id').find('input').attr('value','');
+                $('#shopname').html('');
+            }else{
+                $('.audit').hide();
+                $('.user_id').show();
+                $('.audit').find('textarea').attr('value','');
+            }
+        });
+        var province=$('#province').val();
+        var city=$('#city').val();
+        var areas=$('#areas').val();
+        var tableIn = table.render({
+            id: 'content',
+            elem: '#list',
+            url: '{:url("repair/didList")}',
+            method: 'get',
+            page: true,
+            where:{
+                province:province,
+                city:city,
+                area:areas
+            },
+            cols: [[
+                {checkbox: true, fixed: true},
+                {field: 'id', title: '{:lang("id")}', width: 80},
+                {field: 'title', title: '门店名称', width: 200},
+                {field: 'area', title: '地区', width: 200,templet:"#area"},
+                {field: 'addr', title: '详细地址', width: 200},
+                {field: 'did', title: '所属经销商', width: 100,templet:"#did"},
+                {width: 100, align: 'center', toolbar: '#action',title:'操作'}
+            ]],
+            limit: 10
+        });
+
+        $('#province').change(function(){
+            var url="{:url('repair/get_region')}";
+
+            $.get(url,{pid:$(this).val()},function(res){
+                var html ='';
+                for(item in res){
+                    html +='<option value="'+res[item].id+'">'+res[item].name+'</option>';
+                }
+                $('#city').html(html);
+                areas_fun(res[0].id);
+            })
+        });
+        $('#city').change(function(){
+            areas_fun($(this).val());
+        });
+        $('#search').on('click', function () {
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var province=$('#province').val();
+            var city=$('#city').val();
+            var areas=$('#areas').val();
+            tableIn.reload({
+                where: {
+                    title: name,tel:phone,
+                    province:province,
+                    city:city,
+                    area:areas
+                }
+            });
+        });
+
+    });
+    function areas_fun(pid){
+        var url="{:url('repair/get_region')}";
+
+        $.get(url,{pid:pid},function(res){
+            var html ='';
+            for(item in res){
+                html +='<option value="'+res[item].id+'">'+res[item].name+'</option>';
+            }
+            $('#areas').html(html);
+        })
+    }
+
+    var open_user;
+    function select_user(){
+        open_user=layer.open({
+            type: 1,
+            title: '选择跟进的门店',
+            area: '90%',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#select_user') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+        });
+    }
+    function user_click(id,name){
+        $('#shopname').val(name);
+        $('#user_id').attr('value',id);
+        layer.closeAll();
+    }
+</script>
+<script type="text/html" id="area">
+    {{d.province.name}}-{{d.city.name}}-{{d.area.name}}
+</script>
+<script type="text/html" id="did">
+    {{d.did.name}}
+</script>
+<script type="text/html" id="action">
+    <a href="javascript:;" onclick="user_click('{{d.id}}','{{d.title}}')" class="layui-btn layui-btn-mini">选择</a>
+</script>

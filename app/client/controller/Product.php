@@ -12,7 +12,7 @@ class Product extends Fater
         parent::_initialize();
         $client=Client::get(UID);
         if(!$client->phone){
-            $this->error(505,'请先绑定手机号码');
+            $this->redirect(url('Fater/messge'));
         }
         $product = new ProductModel();
         $product->get_pro_zd($client->phone);

@@ -466,3 +466,7 @@ table th, table td {
 	}
 }
 
+.hide {
+	display: none;
+}
+

@@ -1,0 +1,54 @@
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>跟进中的门店</legend>
+</fieldset>
+<table class="layui-table" style="width:700px;" lay-skin="nob">
+    <colgroup>
+        <col width="50">
+        <col width="200">
+        <col>
+    </colgroup>
+    <tbody>
+        <tr>
+            <td>门店</td>
+            <td>
+                {$data['user_id']['shopame']}
+            </td>
+        </tr>
+        <tr>
+            <td>所属经销商</td>
+            <td>
+                {$data['user_id']['dis']['name']}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div>
+    {if condition="$data.status eq 1"}
+    <button class="layui-btn" data-type="reload" onclick="">去维修</button>
+    {elseif condition="$data.status eq 2"}
+    <button class="layui-btn" data-type="reload" {if condition="$data.type.id eq 1"} onclick="x_admin_show('填写物流信息','{:url('add')}?id={$data.id}',500,300)" {else/}onclick="edit_status('{$data.id}')"{/if} >维修完成</button>
+    {else/}
+    <span></span>
+    {/if}
+    <a href="javascript:;" onclick="goback()" class="layui-btn layui-btn-primary">返回</a>
+</div>
+<script type="text/javascript">
+    function edit_status(id){
+        $.ajax({
+            url:"{:url('repair/edit_status')}?id="+id,
+            type:"post",
+            success:function(res){
+                if(res.code == 1){
+                    layer.msg(res.msg, {icon: 6,time: 3000});
+                    location.reload();
+                }else{
+                    layer.msg(res.msg, {icon: 2, anim: 6, time: 1000});
+                }
+            }
+        })
+    }
+    function goback(){
+        window.history.go(-1);
+    }
+</script>

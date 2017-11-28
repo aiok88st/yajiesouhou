@@ -37,7 +37,7 @@
                             {$data['type']['name']}
                             {if condition="($data['status']['id'] eq 1 || $data['status']['id'] eq 3) and ($data['type']['id']  eq 1) "}
                             &nbsp;&nbsp;
-                                <a _href="javascript:;" onclick="x_admin_show('查看物流信息','{:url('express')}?id={$data.id}&status={$data.status.id}',800,400)" class="layui-btn layui-btn-mini" >查看物流</a>
+                                <a _href="javascript:;" onclick="x_admin_show('查看物流信息','{:url('express')}?id={$data.id}&status={$data.status.id}',800,500)" class="layui-btn layui-btn-mini" >查看物流</a>
                             {/if}
                         </td>
                     </tr>
@@ -80,6 +80,7 @@
 
                     </tbody>
                 </table>
+
                 {if condition="in_array($data['status']['id'],[0,-1])"}
                 {include file="repair/form"/}
                 {else /}

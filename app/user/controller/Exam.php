@@ -21,6 +21,7 @@ class Exam extends Common
         if($name){
             $where['title|f_title'] = array('like', "%$name%");
         }
+        $where['uid'] = ['=',session('sid')];
         $data=Db::table(config('database.prefix').'utest')->alias('a')
             ->join(config('database.prefix').'test ag','a.tid = ag.id','left')
             ->field('a.*,ag.title,ag.id as testid')

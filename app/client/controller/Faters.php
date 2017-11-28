@@ -6,12 +6,12 @@ use think\Controller;
 use think\Request;
 use app\client\model\Client;
 use think\Session;
-class Fater extends Controller
+class Faters extends Controller
 {
     public function _initialize()
     {
         $member_id=session('user')['user_id'];
-        define('UID',1);
+        define('UID', 1);//用户ID
         if(!UID){
             $this->redirect('weixin/index');
         }
@@ -48,6 +48,11 @@ class Fater extends Controller
         ];
         $this->assign('data',$data);
         return $this->fetch('common/404');
+    }
+
+    public function getSystem(){
+        $data = db('system')->where('id',1)->find();
+        return $data;
     }
 
 }

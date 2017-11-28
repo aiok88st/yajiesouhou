@@ -19,12 +19,12 @@ class UpFiles extends Common
             $path=str_replace('\\','/',$info->getSaveName());
 
             //生产缩略图
-            $toDay=date('Ymd');
-            $imagename = '/uploads/'.$toDay.'/s_' . $info->getFilename();
-            $image = \think\Image::open(ROOT_PATH . 'public/uploads/'. $path);
-            $image->thumb(150, 150)->save(ROOT_PATH . 'public'.$imagename);
-            $result['thumb_s'] = $imagename;
-//            $result['filename'] = $info->getFilename();
+//            $toDay=date('Ymd');
+//            $imagename = '/uploads/'.$toDay.'/s_' . $info->getFilename();
+//            $image = \think\Image::open(ROOT_PATH . 'public/uploads/'. $path);
+//            $image->thumb(150, 150)->save(ROOT_PATH . 'public'.$imagename);
+//            $result['thumb_s'] = $imagename;
+
             $result['url'] = '/uploads/'. $path;
             return $result;
         }else{

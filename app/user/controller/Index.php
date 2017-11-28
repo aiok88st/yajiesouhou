@@ -39,5 +39,5 @@ class Index extends Common
         $this->redirect('user/login/index');
     }
 
-    
+
 }

@@ -1,0 +1,74 @@
+{include file="common/header"/}
+<style>
+    .layui-tab-title .layui-this {
+        color: #000;
+
+    }
+</style>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">门店管理</a>
+        <a href="">我的门店</a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+<div class="x-body">
+
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so">
+            <input type="text" name="key"  placeholder="请输入门店名/电话" autocomplete="off" class="layui-input">
+            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+    <xblock>
+        <a href="{:url('Network/add')}"><button class="layui-btn" onclick=""><i class="layui-icon"></i>添加</button></a>
+    </xblock>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>门店名</th>
+            <th>门店电话</th>
+            <th>地址</th>
+            <th>添加时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+            <td>{$vo.title}</td>
+            <td>{$vo.tel}</td>
+            <td>{$vo.province.name}{$vo.city.name}{$vo.area.name}{$vo.addr}</td>
+            <td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+            <td>
+                <a href="{:url('network/edit')}?id={$vo.id}" class="layui-btn layui-btn-mini show">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del" onclick="del('{$vo.id}')">删除</a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page">
+        {$page}
+    </div>
+</div>
+<script type="text/javascript">
+    function del(id){
+        layer.confirm('确认要删除吗？',function(index){
+            $.ajax({
+                url:"{:url('network/listDel')}?id="+id,
+                type:'post',
+                success:function(re){
+                    if(re.code == 1){
+                        layer.msg(re.msg, {icon: 1, time: 1000});
+                        location.reload();
+                    }else{
+                        layer.msg(re.msg, {icon: 2, anim: 6, time: 1000});
+                    }
+                }
+            })
+        });
+    }
+</script>

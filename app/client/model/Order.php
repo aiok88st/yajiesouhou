@@ -47,6 +47,30 @@ class Order extends Model
        return serialize($data);
     }
 
+    public function setProvinceAttr($value)
+    {
+        $name=str_replace('省','',$value);
+        $pid=(new Region)->where('name','LIKE',"%{$name}%")->value('id');
+        return $pid;
+    }
+    public function setCityAttr($value)
+    {
+        $name=str_replace(['市','自治区'],'',$value);
+        $pid=(new Region)
+            ->where('pid',$this->province)
+            ->where('name','LIKE',"%{$name}%")
+            ->value('id');
+        return $pid;
+    }
+    public function setZoneAttr($value)
+    {
+        $name=str_replace(['县','区'],'',$value);
+        $pid=(new Region)
+            ->where('pid',$this->city)
+            ->where('name','LIKE',"%{$name}%")
+            ->value('id');
+        return $pid;
+    }
 
     public function setUserIdAttr($value){
         $network = new Network();
@@ -56,6 +80,12 @@ class Order extends Model
         }else{
             return '';
         }
+    }
+
+    //改变产品表状态
+    public function changeS($cid){
+        $ps['status']=1;
+        $pid=(new Product)->where('id',$cid)->update($ps);
     }
 
 
@@ -70,8 +100,23 @@ class Order extends Model
                 // 验证失败 输出错误信息
                 return rejson(0,$this->getError(),true);
             }
+            $this->changeS($param['pro_id']);
+            return rejson(1,'申请成功，请耐心等待审核',true);
+        }catch (Exception $e){
+            return rejson(0,$e->getMessage(),true);
+        }
+    }
 
-            return rejson(0,'申请成功，请耐心等待审核',true);
+    public function edit($param){
+        try{
+
+            $result=$this->allowField(true)->validate($this->veri)->update($param);
+            if(false === $result){
+                // 验证失败 输出错误信息
+                return rejson(0,$this->getError(),true);
+            }
+
+            return rejson(1,'申请成功，请耐心等待审核',true);
         }catch (Exception $e){
             return rejson(0,$e->getMessage(),true);
         }

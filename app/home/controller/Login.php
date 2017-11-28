@@ -3,6 +3,7 @@ namespace app\home\controller;
 use think\Controller;
 use think\Request;
 use think\Db;
+use app\home\model\Distributor;
 class Login extends Fater
 {
     public function _initialize(){
@@ -41,26 +42,29 @@ class Login extends Fater
     }
 
     public function index(){
-        if (request()->isPost()) {
-            $data = input('post.');
-            $result = $this->validate($data, [
-                'username|账号' => ['require'],
-                'password|密码'=>['require']
-            ]);
-            if(true !== $result){
-                // 验证失败 输出错误信息
-                return json(['code'=>0, 'msg'=>$result,]);
-            }
-            $user=db('distributor')->where('username',$data['username'])->where('pwd',md5($data['password']))->where('is_open',1)->find();
-            if($user){
-                $d = ['did'=>$user['id']];
-                $data = db('member_open')->where('id',UID)->update($d);
-                return json(['code' => 1, 'msg' => '登录成功!','url'=>url('home/User/index')]);
-            }else{
-                return json(['code' => 0, 'msg' => '登录失败!']);
-            }
-        }
         return $this->fetch('login');
+    }
+
+    public function check(){
+        $data = input('post.');
+        $result = $this->validate($data, [
+            'username|账号' => ['require'],
+            'password|密码'=>['require']
+        ]);
+        if(true !== $result){
+            // 验证失败 输出错误信息
+            return json(['code'=>0, 'msg'=>$result,]);
+        }
+
+        $admin = new Distributor();
+        $res=$admin->login($data);
+        if($res['num'] == 1){
+            $did['did']=$res['id'];
+            db('member_open')->where('id',UID)->update($did);
+            return json(['code' => 1, 'msg' => '登录成功!', 'url' => url('home/User/index')]);
+        }else {
+            return json(array('code' => 0, 'msg' => '用户名或密码错误!'));
+        }
     }
 
     public function logout(){

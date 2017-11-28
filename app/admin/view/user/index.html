@@ -1,11 +1,19 @@
 {include file="common/head"/}
+<style>
+    .layui-table-cell{
+        height:auto;
+    }
+    .layui-table img{
+        max-width:100%;
+    }
+</style>
 <div class="admin-main layui-anim layui-anim-upbit">
     <fieldset class="layui-elem-field layui-field-title">
         <legend>{:lang('list')}</legend>
     </fieldset>
     <div class="demoTable">
         <div class="layui-inline">
-            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}关键字">
+            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}姓名/电话">
         </div>
         <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
         <a href="{:url('index',['catid'=>input('catid')])}" class="layui-btn">显示全部</a>
@@ -15,15 +23,13 @@
     <table class="layui-table" id="list" lay-filter="list"></table>
 </div>
 {include file="common/foot"/}
-<script type="text/html" id="order">
-    <input name="{{d.id}}" data-id="{{d.id}}" class="list_order layui-input" value=" {{d.listorder}}" size="10"/>
+<script type="text/html" id="open_face">
+    {{# if(d.open_face){ }}<img src="{{d.open_face}}" >{{# } }}
 </script>
-<script type="text/html" id="title">
-    <span style="{{d.title_style}}">{{d.title}}</span>
-    {{# if(d.thumb){ }}<img src="__ADMIN__/images/image.gif" onmouseover="layer.tips('<img src=__PUBLIC__/{{d.thumb}}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">{{# } }}
+<script type="text/html" id="province">
+    {{# if(d.province.name){ }}{{d.province.name}}{{d.city.name}}{{d.area.name}}{{d.zone}}{{# } }}
 </script>
 <script type="text/html" id="action">
-    <a href="{:url('edit')}?id={{d.id}}&catid={{d.catid}}" class="layui-btn layui-btn-mini">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
 </script>
 <script>
@@ -37,12 +43,13 @@
             method: 'post',
             page: true,
             cols: [[
-                {checkbox: true, fixed: true},
-                {field: 'id', title: '{:lang("id")}', width: 80, fixed: true},
-                {field: 'title', title: '姓名', width: 400, templet: '#title'},
-                {field: 'hits',  title: '电话', width: 80},
-                //{field: 'price',  title: '价格', width: 80},
-                {field: 'createtime', title: '{:lang("add")}{:lang("time")}', width: 180},
+                {checkbox: true},
+                {field: 'id', title: '{:lang("id")}', width: 80},
+                {field: 'open_face', title: '头像', width: 200,templet: '#open_face'},
+                {field: 'name', title: '姓名', width: 200},
+                {field: 'phone', title: '电话', width: 200},
+                {field: 'province', title: '地址', width: 400,templet: '#province'},
+                {field: 'add_time', title: '{:lang("add")}{:lang("time")}', width: 180},
                 {width: 160, align: 'center', toolbar: '#action',title:'操作'}
             ]],
             limit: 10
@@ -55,24 +62,10 @@
                 return;
             }
             tableIn.reload({
-                where: {key: key,catid:'{:input("catid")}'}
+                where: {key: key}
             });
         });
-        $('body').on('blur','.list_order',function() {
-            var id = $(this).attr('data-id');
-            var listorder = $(this).val();
-            var loading = layer.load(1, {shade: [0.1, '#fff']});
-            $.post('{:url("listorder")}',{id:id,listorder:listorder,catid:'{:input("catid")}'},function(res){
-                layer.close(loading);
-                if(res.code === 1){
-                    layer.msg(res.msg, {time: 1000, icon: 1}, function () {
-                        location.href = res.url;
-                    });
-                }else{
-                    layer.msg(res.msg,{time:1000,icon:2});
-                }
-            })
-        });
+
         table.on('tool(list)', function(obj) {
             var data = obj.data;
             if(obj.event === 'del'){

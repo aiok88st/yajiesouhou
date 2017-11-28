@@ -44,7 +44,7 @@
 					<input  type="text" name="username" id="username" placeholder="登录账号"/>
 				</li>
 				<li>
-					<input  type="password" name="password" id="password" placeholder="登录密码" maxlength="8" style="background-image: url(__HOME__/img/pwd.png);"/>
+					<input  type="password" name="password" id="password" placeholder="登录密码"  style="background-image: url(__HOME__/img/pwd.png);"/>
 					<!--<button id="getCode">获取动态密码</button>-->
 				</li>
 				<li>
@@ -101,7 +101,7 @@
         var username = $("#username").val();
         var password = $("#password").val();
         $.ajax({
-            url:"{:url('Login/index')}",
+            url:"{:url('Login/check')}",
             type:"post",
             data:{"username":username,"password":password},
             success:function(re){

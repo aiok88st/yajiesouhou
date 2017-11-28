@@ -203,9 +203,26 @@
         <input type="file" name="file"  id="img_upload" >
     </form>
 </div>
-{include file="common/foot"/}
 </body>
 </html>
+<div id="pop" class="hide" style="display: none">
+    <img src=""/>
+</div>
+<script type="text/javascript">
+    $('img').bind('click',function(){
+        var src=$(this).attr('src');
+        $('#pop').find('img').attr('src',src);
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '600px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#pop')
+        });
+    })
+</script>
 <script type="text/javascript" src="__STATIC__/common/js/common.js"></script>
 <script type="text/javascript">
 

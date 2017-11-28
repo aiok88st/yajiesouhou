@@ -37,7 +37,7 @@
     <div class="layui-form-item">
         <div class="layui-input-inline">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-            {if condition="in_array($data['status'],[0,-1])"}
+            {if condition="in_array($data['status']['id'],[0,-1])"}
             <a href="{:url('repair/audit')}"  class="layui-btn layui-btn-primary">返回</a>
             {else /}
             <a href="{:url('repair/index')}"  class="layui-btn layui-btn-primary">返回</a>

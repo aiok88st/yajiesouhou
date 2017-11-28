@@ -43,7 +43,6 @@ class Person extends Common
             $result = $this->validate($data, [
                 'nikename|姓名'  => ['require'],
                 'tel|手机号码' => ['require', "regex:/^1[34578]{1}[0-9]{9}$/"],
-                'password|密码'  => ['require','max:15','min:6','confirm'],
             ]);
             if(true !== $result){
                 // 验证失败 输出错误信息
@@ -53,9 +52,8 @@ class Person extends Common
                 'id'=>session('sid'),
                 'nikename'=>$data['nikename'],
                 'tel'=>$data['tel'],
-                'password'=>$data['password']
             ];
-            $num = $admin->change($user);
+            $num = $admin->update($user);
             if($num == 1){
                 return json(['code' => 1, 'msg' => '修改成功!']);
             }else {

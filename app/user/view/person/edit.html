@@ -20,29 +20,9 @@
                        autocomplete="off" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
-            <label for="L_pass" class="layui-form-label">
-                <span class="x-red">*</span>密码
-            </label>
-            <div class="layui-input-inline">
-                <input type="password" id="L_pass" name="password" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid layui-word-aux">
-                6到15个字符
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="L_repass" class="layui-form-label">
-                <span class="x-red">*</span>确认密码
-            </label>
-            <div class="layui-input-inline">
-                <input type="password" id="L_repass" name="password_confirm" required="" lay-verify="repass"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="L_repass" class="layui-form-label">
+            <label for="L_tel" class="layui-form-label">
             </label>
             <input value="确认" class="layui-btn" lay-submit lay-filter="edit" type="submit">
         </div>
@@ -62,12 +42,6 @@
                 }
             },
             tel: [/^1[34578]{1}[0-9]{9}$/, '手机号码格式不正确'],
-            pass: [/(.+){6,15}$/, '密码必须6到15位']
-            ,repass: function(value){
-                if($('#L_pass').val()!=$('#L_repass').val()){
-                    return '两次密码不一致';
-                }
-            }
         });
 
         //监听提交

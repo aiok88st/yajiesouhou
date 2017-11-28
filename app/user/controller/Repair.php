@@ -9,6 +9,7 @@ use app\user\model\Network;
 use app\user\model\Region;
 use app\user\model\OrderLog;
 use app\user\model\Distributor;
+use app\user\model\Club;
 class Repair extends Common
 {
     public function _initialize()
@@ -26,16 +27,14 @@ class Repair extends Common
         $status=$request->param('status',1);
         $key=$request->param('key','');
         foreach($netid as $k=>$v){
-            $where=[
-                'status'=>['IN',$status],
-                'user_id'=>['IN',$v],
-            ];
-
-            if(!empty($key))$where['name|phone']=['LIKE',"%{$key}%"];
-            $data=$order->where($where)
-                ->order('id desc')
-                ->paginate(12);
+            $uid[] = $v['id'];
         }
+        $where['status'] = ['IN',$status];
+        $where['user_id'] = ['IN',$uid];
+        if(!empty($key))$where['name|phone']=['LIKE',"%{$key}%"];
+        $data=$order->where($where)
+            ->order('id desc')
+            ->paginate(12);
         $page = $data->render();//获取分页
         $list = $data->all();//获取数组;
         $this->assign('list',$list);
@@ -51,16 +50,14 @@ class Repair extends Common
         $status=$request->param('status',0);
         $key=$request->param('key','');
         foreach($netid as $k=>$v){
-            $where=[
-                'status'=>['IN',$status],
-                'user_id'=>['IN',$v],
-            ];
-
-            if(!empty($key))$where['name|phone']=['LIKE',"%{$key}%"];
-            $data=$order->where($where)
-                ->order('id desc')
-                ->paginate(12);
+            $uid[] = $v['id'];
         }
+        $where['status'] = ['IN',$status];
+        $where['user_id'] = ['IN',$uid];
+        if(!empty($key))$where['name|phone']=['LIKE',"%{$key}%"];
+        $data=$order->where($where)
+            ->order('id desc')
+            ->paginate(12);
         $page = $data->render();//获取分页
         $list = $data->all();//获取数组;
         $this->assign('list',$list);
@@ -125,6 +122,8 @@ class Repair extends Common
     public function edit(Request $request,Order $order,OrderLog $log){ //修改订单状态
         try{
             $param=$request->param();
+            $data=$order::get($param['id']);
+            if(!$data)  return rejson(0,'数据错误');
             switch ($param['status']){
                 case -1:
                     if(empty($param['audit'])) return rejson(0,'请填写审核不通过的原因');
@@ -133,12 +132,12 @@ class Repair extends Common
                 case 1:
                     if(empty($param['user_id'])) return rejson(0,'请选择跟进门店');
                     $content="审核通过";
+                    $client_id = $data->client_id;
+                    $this->addClub($param['user_id'],$client_id);
                     break;
                 default:
                     break;
             }
-            $data=$order::get($param['id']);
-            if(!$data)  return rejson(0,'数据错误');
 
             $data->status=$param['status'];
             $data->audit=$param['audit'];
@@ -159,6 +158,18 @@ class Repair extends Common
         }catch (Exception $e){
             return rejson(0,$e->getMessage());
         }
+    }
+
+    public function addClub($did,$client_id){
+        $network=new Network();
+        $net = $network::get($did);
+        $d= $net->did;
+        $club = [
+            'client_id'=>$client_id,
+            'did'=>$d['id']
+        ];
+        $c=new Club();
+        $c->add($club);
     }
 
 
@@ -218,9 +229,30 @@ class Repair extends Common
     }
 
     //查看物流
-    public function express(Request $request){
+    public function express(Request $request,Order $order){
         $param=$request->param();
-        var_dump($param);
+        $data=$order::get($param['id']);
+        if($param['status']==3){
+            $name=$data->u_logistics;
+            $num=$data->u_logistics_number;
+        }else{
+            $name=$data->c_logistics;
+            $num=$data->c_logistics_number;
+        }
+
+        $where['name'] = array('like', "%$name%");
+        $code = db('express')->where($where)->field('code')->find();
+
+        $express=new \org\Express;
+        $result=$express->getOrderTracesByJson($code['code'], $num);
+        $result=json_decode($result,true);
+
+        $Traces= '[{"AcceptTime": "2014/06/25 08:05:37", "AcceptStation": "正在派件..(派件人:邓裕富,电话:18718866310)[深圳 市]", "Remark": null}, {"AcceptTime": "2014/06/25 04:01:28", "AcceptStation": "快件在 深圳集散中心 ,准备送往下一站 深圳 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 01:41:06", "AcceptStation": "快件在 深圳集散中心 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/24 20:18:58", "AcceptStation": "已收件[深圳市]", "Remark": null}, {"AcceptTime": "2014/06/24 20:55:28", "AcceptStation": "快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 10:23:03", "AcceptStation": "派件已签收[深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 10:23:03", "AcceptStation": "签收人是：已签收[深圳市]", "Remark": null}]';
+        $Traces=json_decode($Traces,true);
+        $Traces=array_reverse($Traces, true);
+//        $Traces=array_reverse($result['Traces'], true);
+        $this->assign('Traces',$Traces);
+        return $this->fetch();
     }
 
 

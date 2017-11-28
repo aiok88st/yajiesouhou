@@ -8,6 +8,21 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
+    {empty name="list"}
+    <div class="noResult" style="width: 300px;margin: 0 auto;margin-top: 100px;">
+        <ul style="text-align: center;">
+            <li>
+                <img src="__HOME__/img/noResult.png" />
+            </li>
+            <li style="line-height: 20px;">
+                <p style="margin-bottom: 0;">您没有收藏的视频</p>
+            </li>
+            <li style="line-height: 20px;margin: 0 auto">
+                <a href="{:url('Train/tvdList')}" ><button class="layui-btn">马上去收藏</button></a>
+            </li>
+        </ul>
+    </div>
+    {else /}
     <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so">
             <input type="text" name="key"  placeholder="请输入标题/关键字" autocomplete="off" class="layui-input">
@@ -42,6 +57,7 @@
     <div class="page">
         {$page}
     </div>
+    {/empty}
 </div>
 <script type="text/javascript">
     layui.use('layer', function(){

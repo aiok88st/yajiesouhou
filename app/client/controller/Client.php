@@ -2,25 +2,44 @@
 
 namespace app\client\controller;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use think\Controller;
 use think\Request;
+use app\client\controller\Faters;
 use app\client\model\Client as ClientModel;
-class Client extends Fater   //客户首页
+class Client extends Faters   //客户首页
 {
     public function _initialize()
     {
         if(!UID){
             $this->redirect('weixin/index');
         }
+        define('UID',1);
     }
 
-
-    public function index(){  //首页用来展示个人信息
-        $client = db('client')->where('id',1)->find();
+    public function index(ClientModel $client){  //首页用来展示个人信息
+        $data=$client::get(UID);
         $list = $this->get_region();
+        $orders = $this->gerOrderNum();
+        $system = $this->getSystem();
+        $this->assign('system',$system);
         $this->assign('list',$list);
-        $this->assign('client',$client);
+        $this->assign('orders',$orders);
+        $this->assign('client',$data);
         return view();
+    }
+
+    public function gerOrderNum(){
+        $order = db('order');
+        $num1 = $order->where('client_id',UID)->where('status',1)->count();
+        $num2 = $order->where('client_id',UID)->where('status',2)->count();
+        $num3 = $order->where('client_id',UID)->where('status',3)->count();
+        $orders = [
+            'num1'=>$num1,
+            'num2'=>$num2,
+            'num3'=>$num3,
+        ];
+        return $orders;
     }
 
     public function get_region(){  //三级分类
@@ -51,8 +70,8 @@ class Client extends Fater   //客户首页
             return json(['code'=>0, 'msg'=>$result,]);
         }
         $c = ['name'=>$data['name']];
-        $re = db('client')->where('id',1)->update($c);
-        $user = db('client')->where('id',1)->field('name')->find();
+        $re = db('client')->where('id',UID)->update($c);
+        $user = db('client')->where('id',UID)->field('name')->find();
         $list = $user['name'];
         if($re !== false){
             return json(['code' => 1, 'msg' => '修改成功!','list'=>$list]);
@@ -105,8 +124,8 @@ class Client extends Fater   //客户首页
         }
 
         $c = ['phone'=>$data['phone']];
-        $re = db('client')->where('id',1)->update($c);
-        $user = db('client')->where('id',1)->field('phone')->find();
+        $re = db('client')->where('id',UID)->update($c);
+        $user = db('client')->where('id',UID)->field('phone')->find();
         $list = $user['phone'];
         if($re !== false){
             return json(['code' => 1, 'msg' => '修改成功!','list'=>$list]);
@@ -115,7 +134,7 @@ class Client extends Fater   //客户首页
         }
     }
 
-    public function edit_addr(){
+    public function editA(ClientModel $client){
         $data = input('post.');
         $result = $this->validate($data, [
             'J_Address|地区'  => 'require',
@@ -125,6 +144,20 @@ class Client extends Fater   //客户首页
             // 验证失败 输出错误信息
             return json(['code'=>0, 'msg'=>$result,]);
         }
-        var_dump($data);
+        $list = explode(' ',$data['J_Address']);
+        $arr = [
+            'id'=>UID,
+            'province'=>$list[0],
+            'city'=>$list[1],
+            'area'=>$list[2],
+        ];
+        $re = $client->allowField(true)->update($arr);
+        $zone=['zone'=>$data['addr']];
+        $client->where('id',UID)->update($zone);
+        if($re !== false){
+            return json(['code' => 1, 'msg' => '修改成功!']);
+        }else{
+            return json(['code' => 0, 'msg' => '修改失败!']);
+        }
     }
 }

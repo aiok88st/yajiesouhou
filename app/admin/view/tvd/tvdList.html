@@ -16,9 +16,9 @@
     <table class="layui-table" id="list" lay-filter="list"></table>
 </div>
 {include file="common/foot"/}
-<script type="text/html" id="order">
-    <input name="{{d.id}}" data-id="{{d.id}}" class="list_order layui-input" value=" {{d.listorder}}" size="10"/>
-</script>
+<!--<script type="text/html" id="order">-->
+    <!--<input name="{{d.id}}" data-id="{{d.id}}" class="list_order layui-input" value=" {{d.listorder}}" size="10"/>-->
+<!--</script>-->
 <script type="text/html" id="title">
     <span style="{{d.title_style}}">{{d.title}}</span>
     {{# if(d.thumb){ }}<img src="__ADMIN__/images/image.gif" onmouseover="layer.tips('<img src=__PUBLIC__/{{d.thumb}}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">{{# } }}
@@ -44,7 +44,6 @@
                 {field: 'date_num',  title: '期数', width: 100},
                 {field: 'hits',  title: '{:lang("hit")}', width: 80},
                 {field: 'createtime', title: '{:lang("add")}{:lang("time")}', width: 180},
-                {field: 'listorder', align: 'center', title: '{:lang("order")}', width: 120, templet: '#order'},
                 {width: 160, align: 'center', toolbar: '#action',title:'操作'}
             ]],
             limit: 10
@@ -60,21 +59,21 @@
                 where: {key: key,catid:'{:input("catid")}'}
             });
         });
-        $('body').on('blur','.list_order',function() {
-            var id = $(this).attr('data-id');
-            var listorder = $(this).val();
-            var loading = layer.load(1, {shade: [0.1, '#fff']});
-            $.post('{:url("listorder")}',{id:id,listorder:listorder,catid:'{:input("catid")}'},function(res){
-                layer.close(loading);
-                if(res.code === 1){
-                    layer.msg(res.msg, {time: 1000, icon: 1}, function () {
-                        location.href = res.url;
-                    });
-                }else{
-                    layer.msg(res.msg,{time:1000,icon:2});
-                }
-            })
-        });
+//        $('body').on('blur','.list_order',function() {
+//            var id = $(this).attr('data-id');
+//            var listorder = $(this).val();
+//            var loading = layer.load(1, {shade: [0.1, '#fff']});
+//            $.post('{:url("listorder")}',{id:id,listorder:listorder,catid:'{:input("catid")}'},function(res){
+//                layer.close(loading);
+//                if(res.code === 1){
+//                    layer.msg(res.msg, {time: 1000, icon: 1}, function () {
+//                        location.href = res.url;
+//                    });
+//                }else{
+//                    layer.msg(res.msg,{time:1000,icon:2});
+//                }
+//            })
+//        });
         table.on('tool(list)', function(obj) {
             var data = obj.data;
             if(obj.event === 'del'){

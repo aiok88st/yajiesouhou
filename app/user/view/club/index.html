@@ -1,0 +1,71 @@
+{include file="common/header"/}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">会员管理</a>
+        <a href="">我的会员</a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <div class="layui-row" >
+        <form class="layui-form layui-col-md12 x-so">
+            <input type="text" name="key"  placeholder="请输入姓名/电话" autocomplete="off" class="layui-input">
+            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+    <table class="layui-table" >
+        <thead>
+        <tr>
+            <th>头像</th>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>地址</th>
+            <th>添加时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+            <td><img src="{$vo.open_face}"/> </td>
+            <td>{$vo.name}</td>
+            <td>{$vo.phone}</td>
+            <td>{$vo.province.name}{$vo.city.name}{$vo.area.name}{$vo.zone}</td>
+            <td>{$vo.add_time}</td>
+            <td>
+                <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del" onclick="del('{$vo.id}')">删除</a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page">
+        {$page}
+    </div>
+</div>
+<script type="text/javascript">
+    function del(id){
+        layer.confirm('确认要删除吗？',function(index){
+            $.ajax({
+                url:"{:url('Club/listDel')}?id="+id,
+                type:'post',
+                success:function(re){
+                    if(re.code == 1){
+                        layer.msg(re.msg, {icon: 1, time: 1000});
+                        location.reload();
+                    }else{
+                        layer.msg(re.msg, {icon: 2, anim: 6, time: 1000});
+                    }
+                }
+            })
+        });
+    }
+</script>
+
+
+
+
+
+
+

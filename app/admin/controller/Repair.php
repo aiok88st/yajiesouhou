@@ -8,6 +8,7 @@ use app\admin\model\Order;
 use app\admin\model\Network;
 use app\admin\model\Region;
 use app\admin\model\OrderLog;
+use app\admin\model\Club;
 class Repair extends Common{
     public function index(Request $request){  //订单列表
         $status=$request->param('status',1);
@@ -34,6 +35,7 @@ class Repair extends Common{
         $status=$request->param('status');
         $name=$request->param('name','');
         $phone=$request->param('phone','');
+        $key=$request->param('key','');
         $where=[
             'status'=>['IN',$status],
             'user_id'=>($status==0 || $status==-1)? null:['>','0']
@@ -41,6 +43,7 @@ class Repair extends Common{
 
         if(!empty($name))$where['name']=['LIKE',"%{$name}%"];
         if(!empty($phone))$where['phone']=['LIKE',"%{$phone}%"];
+        if(!empty($key))$where['name|phone']=['LIKE',"%{$key}%"];
         $page =input('page')?input('page'):1;
         $pageSize =input('limit')?input('limit'):config('pageSize');
         $list=$order->where($where)
@@ -108,6 +111,9 @@ class Repair extends Common{
     public function edit(Request $request,Order $order,OrderLog $log){ //修改订单状态
         try{
             $param=$request->param();
+            $data=$order::get($param['id']);
+            if(!$data)  return rejson(0,'数据错误');
+
             switch ($param['status']){
                 case -1:
                     if(empty($param['audit'])) return rejson(0,'请填写审核不通过的原因');
@@ -116,12 +122,12 @@ class Repair extends Common{
                 case 1:
                     if(empty($param['user_id'])) return rejson(0,'请选择跟进门店');
                     $content="审核通过";
+                    $client_id = $data->client_id;
+                    $this->addClub($param['user_id'],$client_id);
                     break;
                 default:
                     break;
             }
-            $data=$order::get($param['id']);
-            if(!$data)  return rejson(0,'数据错误');
 
             $data->status=$param['status'];
             $data->audit=$param['audit'];
@@ -140,9 +146,38 @@ class Repair extends Common{
         }
     }
 
+    public function addClub($did,$client_id){
+        $network=new Network();
+        $net = $network::get($did);
+        $d= $net->did;
+        $club = [
+            'client_id'=>$client_id,
+            'did'=>$d['id']
+        ];
+        $c=new Club();
+        $c->add($club);
+    }
+
     //查看物流
-    public function express(Request $request){
+    public function express(Request $request,Order $order){
         $param=$request->param();
-        var_dump($param);
+        $data=$order::get($param['id']);
+        if($param['status']==3){
+            $name=$data->u_logistics;
+            $num=$data->u_logistics_number;
+        }else{
+            $name=$data->c_logistics;
+            $num=$data->c_logistics_number;
+        }
+
+        $where['name'] = array('like', "%$name%");
+        $code = db('express')->where($where)->field('code')->find();
+
+        $express=new \org\Express;
+        $result=$express->getOrderTracesByJson($code['code'], $num);
+        $result=json_decode($result,true);
+        $Traces=array_reverse($result['Traces'], true);
+        $this->assign('Traces',$Traces);
+        return $this->fetch();
     }
 }

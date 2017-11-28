@@ -17,7 +17,7 @@
 
     <div class="demoTable">
         <div class="layui-inline">
-            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}关键字">
+            <input class="layui-input" name="key" id="key" placeholder="{:lang('pleaseEnter')}姓名/电话">
         </div>
         <button class="layui-btn" id="search" data-type="reload">{:lang('search')}</button>
         <a href="javascript:;" onclick="window.location.reload()" class="layui-btn">显示全部</a>
@@ -56,12 +56,9 @@
         });
         //搜索
         $('#search').on('click', function () {
-            var name = $('#name').val();
-            var phone = $('#phone').val();
-            var status = $('#status').val();
-
+            var key = $('#key').val();
             tableIn.reload({
-                where: {name: name,phone:phone,status:status}
+                where: {key: key}
             });
         });
 

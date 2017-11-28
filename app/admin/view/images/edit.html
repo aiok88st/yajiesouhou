@@ -12,7 +12,13 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">图片</label>
+            <label class="layui-form-label">产品名称</label>
+            <div class="layui-input-4">
+                <input type="text" name="name" value="{$img['name']}" lay-verify="required" placeholder="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">产品图片</label>
             <input type="hidden" name="img" id="logo" value="{$img.img}">
             <div class="layui-input-block">
                 <div class="layui-upload">
@@ -87,5 +93,3 @@
 
 
 </script>
-</body>
-</html>

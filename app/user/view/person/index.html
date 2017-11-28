@@ -17,16 +17,22 @@
                 <td colspan="3">
                     <ul>
                         <li style="font-size: 18px;line-height: 20px;">用户名：{$user.nikename} </li>
-                        <li style="line-height: 20px;">电话：{$user.tel} </li>
+                        {php}
+                        $phone=substr_replace($user['tel'],'****',3,4);
+                        {/php}
+                        <li style="line-height: 20px;">电话：{$phone} </li>
                         <li style="line-height: 20px;">账号：{$user.username} </li>
                         <li>
-                            <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('编辑信息','{:url('edit')}?nikename={$user.nikename}&tel={$user.tel}',600,400)">编辑信息</button>
+                            <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('编辑信息','{:url('edit')}?nikename={$user.nikename}&tel={$user.tel}',500,300)">编辑信息</button>
                         </li>
                     </ul>
                 </td>
             </tr>
         </tbody>
     </table>
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>我的门店</legend>
+    </fieldset>
     <table class="layui-table" lay-skin="line" lay-size="lg" style="border: none;">
         <tbody>
             <tr>
@@ -41,7 +47,7 @@
                 <td>{$vo.tel}</td>
                 <td>{$vo.province}{$vo.city}{$vo.area}{$vo.addr}</td>
                 <td>
-                    <button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('编辑','{:url('editTitle')}?id={$vo.id}&title={$vo.title}&tel={$vo.tel}',600,300)">编辑</button>
+                    <!--<button style="height: 25px;line-height: 25px;width: 65px;padding: 0;" class="layui-btn" onclick="x_admin_show('编辑','{:url('editTitle')}?id={$vo.id}&title={$vo.title}&tel={$vo.tel}',600,300)">编辑</button>-->
                 </td>
             </tr>
             {/volist}

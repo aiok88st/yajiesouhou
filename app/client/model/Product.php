@@ -42,9 +42,35 @@ class Product extends Model
     public function getModelAttr($value)
     {
         $img=(new ProductImg)->where('model',$value)->value('img');
+        $name=(new ProductImg)->where('model',$value)->value('name');
         return [
             'model'=>$value,
-            'img'=>$img
+            'img'=>$img,
+            'name'=>$name
+        ];
+    }
+
+
+    public function getProvinceAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+    public function getCityAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+
+    public function getZoneAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
         ];
     }
 
@@ -70,7 +96,7 @@ class Product extends Model
         $pro=$this::get(['model_vip_code'=>$param['code']]);
         if($pro) return rejson(0,'请不要重复添加同一件产品',true);
         //查询是否在保修期内
-        $url="http://drp.archiehardware.com/Interface/getRepairDate?MODEL_VIP_CODE=".$param['code'];
+        $url="http://mobile.archie.com.cn/Interface/getRepairDate?sid=".$produce['sid']."&MODEL_VIP_CODE=".$param['code'];
         $res=get_curl_contents($url);
         $res_data=json_decode($res,true);
         if($res_data['state']!='true')return rejson(0,$res_data['msg'],true);
@@ -96,6 +122,9 @@ class Product extends Model
             'setup_op'=>$produce['SETUP_OP'],
             'stick'=>$produce['stick'],
             'sample'=>$produce['sample'],
+            'sid'=>$produce['sid'],
+            'phone'=>$produce['phone'],
+            'phone2'=>$produce['phone2'],
             'status'=>$status
         ];
         return $this->add($data);
@@ -114,7 +143,7 @@ class Product extends Model
                     continue;
                 }
                 //查询是否在保修期内
-                $url="http://drp.archiehardware.com/Interface/getRepairDate?MODEL_VIP_CODE=".$v['MODEL_VIP_CODE'];
+                $url="http://mobile.archie.com.cn/Interface/getRepairDate?sid=".$v['sid']."&MODEL_VIP_CODE=".$v['MODEL_VIP_CODE'];
                 $res=get_curl_contents($url);
                 $res_datas=json_decode($res,true);
 
@@ -139,6 +168,9 @@ class Product extends Model
                     'setup_op'=>$v['SETUP_OP'],
                     'stick'=>$v['stick'],
                     'sample'=>$v['sample'],
+                    'sid'=>$v['sid'],
+                    'phone'=>$v['phone'],
+                    'phone2'=>$v['phone2'],
                     'status'=>$status
                 ];
                 $this->add($data);

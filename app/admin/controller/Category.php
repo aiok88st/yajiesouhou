@@ -64,22 +64,28 @@ class Category extends Common
         //父级模型ID
         $vo['moduleid'] =$this->categorys[$parentid]['moduleid'];
         $this->assign('module', $vo);
-
+        $data='';
         //栏目选择列表
-        if($lang == 1){
-            foreach($this->categorys as $r) {
-                $array[] = $r;
-            }
-        }elseif($lang == 2){
-            foreach($this->categorys2 as $r) {
-                $array[] = $r;
-            }
+        if($c==1){
+            $data .="<option value='1'>视频分类</option>";
+            $data .= getTree2('category',1,$num=1);
+        }elseif($c==2){
+            $data .="<option value='4'>文章分类</option>";
+            $data .= getTree2('category',4,$num=1);
+        }else{
+            $data .="<option value='26'>培训视频资料分类</option>";
+            $data .= getTree2('category',26,$num=1);
         }
 
-        $str  = "<option value='\$id' \$selected>\$spacer \$catname</option>";
-        $tree = new Tree ($array);
-        $categorys = $tree->get_tree(0, $str,$parentid);
-        $this->assign('categorys', $categorys);
+//        if($lang == 1){
+//            foreach($this->categorys as $r) {
+//                $array[] = $r;
+//            }
+//        }
+//        $str  = "<option value='\$id' \$selected>\$spacer \$catname</option>";
+//        $tree = new Tree ($array);
+//        $categorys = $tree->get_tree(0, $str,$parentid);
+        $this->assign('categorys', $data);
         //模版
         $templates= template_file();
         $this->assign ( 'templates',$templates );

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-24 18:59:20
+Date: 2017-11-28 18:52:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -233,8 +233,8 @@ INSERT INTO `clt_auth_rule` VALUES ('284', 'Article', '文章管理', '1', '1', 
 INSERT INTO `clt_auth_rule` VALUES ('285', 'Article/index', '管理文章', '1', '1', '0', '', '', '284', '2', '1509433478', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('286', 'Category/index?c=2', '文章分类', '1', '1', '0', '', '', '284', '3', '1509434477', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('287', 'Distributor', '客户管理', '1', '1', '0', 'icon-user', '', '0', '1', '1509517389', null, '1');
-INSERT INTO `clt_auth_rule` VALUES ('288', 'Distributor/lists', '经销商管理', '1', '1', '0', '', '', '287', '1', '1509517483', null, '1');
-INSERT INTO `clt_auth_rule` VALUES ('289', 'Distributor/list2', '分销商管理', '1', '1', '0', '', '', '287', '2', '1509517542', null, '1');
+INSERT INTO `clt_auth_rule` VALUES ('288', 'Distributor/lists', '经销商管理', '1', '1', '0', '', '', '287', '1', '1509517483', null, '0');
+INSERT INTO `clt_auth_rule` VALUES ('289', 'Distributor/list2', '分销商管理', '1', '1', '0', '', '', '287', '2', '1509517542', null, '0');
 INSERT INTO `clt_auth_rule` VALUES ('290', 'Network/index', '售后网点管理', '1', '1', '0', '', '', '287', '3', '1509685276', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('291', 'Article/add', '添加文章', '1', '1', '0', '', '', '284', '1', '1509765867', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('292', 'Video/add', '添加视频', '1', '1', '0', '', '', '281', '1', '1509848466', null, '1');
@@ -246,7 +246,7 @@ INSERT INTO `clt_auth_rule` VALUES ('298', 'test/index', '试题管理', '1', '1
 INSERT INTO `clt_auth_rule` VALUES ('299', 'Train/index', '答卷管理', '1', '1', '0', '', '', '296', '3', '1510037489', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('300', 'Uplome/index', '意见反馈管理', '1', '1', '0', '', '', '294', '2', '1510227354', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('301', 'Category/index?c=3', '资料分类', '1', '1', '0', '', '', '296', '0', '1510825104', null, '1');
-INSERT INTO `clt_auth_rule` VALUES ('304', 'System/system', '系统设置', '1', '1', '1', '', '', '15', '50', '1511229428', null, '1');
+INSERT INTO `clt_auth_rule` VALUES ('304', 'System/system', '系统设置', '1', '1', '0', '', '', '15', '50', '1511229428', null, '1');
 INSERT INTO `clt_auth_rule` VALUES ('305', '/yajie/admin/Images/index', '图片管理', '1', '1', '0', 'icon-images', '', '0', '8', '1511229562', null, '1');
 
 -- ----------------------------
@@ -283,7 +283,7 @@ CREATE TABLE `clt_category` (
   PRIMARY KEY (`id`),
   KEY `parentid` (`parentid`),
   KEY `listorder` (`listorder`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_category
@@ -329,7 +329,7 @@ CREATE TABLE `clt_client` (
   `phone` char(11) NOT NULL,
   `name` char(100) CHARACTER SET utf8 DEFAULT NULL,
   `province` int(11) DEFAULT NULL,
-  `zone` int(11) DEFAULT NULL,
+  `zone` varchar(255) DEFAULT '',
   `city` int(11) DEFAULT NULL,
   `area` int(11) DEFAULT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -339,7 +339,24 @@ CREATE TABLE `clt_client` (
 -- ----------------------------
 -- Records of clt_client
 -- ----------------------------
-INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://img3.imgtn.bdimg.com/it/u=3797592229,3840448992&fm=27&gp=0.jpg', '', '小王', null, null, null, null, '2017-11-19 11:28:58');
+INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', '13736004209', '小王', '6', '石牌桥', '76', '693', '2017-11-19 11:28:58');
+
+-- ----------------------------
+-- Table structure for clt_club
+-- ----------------------------
+DROP TABLE IF EXISTS `clt_club`;
+CREATE TABLE `clt_club` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `client_id` int(11) NOT NULL,
+  `did` int(11) NOT NULL,
+  `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of clt_club
+-- ----------------------------
+INSERT INTO `clt_club` VALUES ('1', '1', '10', '2017-11-28 17:14:29');
 
 -- ----------------------------
 -- Table structure for clt_collect
@@ -413,15 +430,15 @@ DROP TABLE IF EXISTS `clt_distributor`;
 CREATE TABLE `clt_distributor` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pwd` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pwd` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `add_time` int(11) DEFAULT NULL,
-  `is_open` tinyint(255) DEFAULT '0' COMMENT '审核状态',
+  `is_open` tinyint(255) DEFAULT '1' COMMENT '审核状态',
   `pid` tinyint(4) NOT NULL DEFAULT '0' COMMENT '父级经销商',
   `tel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `nikename` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '姓名',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of clt_distributor
@@ -430,6 +447,159 @@ INSERT INTO `clt_distributor` VALUES ('5', 'root', 'e10adc3949ba59abbe56e057f20f
 INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1509524586', '1', '0', '13556071153', '老王');
 INSERT INTO `clt_distributor` VALUES ('6', 'root01', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510646065', '0', '4', '15173301603', '小张');
 INSERT INTO `clt_distributor` VALUES ('7', 'admin00', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510712653', '0', '0', '15173301603', '张三');
+INSERT INTO `clt_distributor` VALUES ('8', 'A017', null, '127.0.0.1', '1510712653', '1', '0', null, '');
+INSERT INTO `clt_distributor` VALUES ('10', 'A01705', null, '127.0.0.1', '1511832806', '1', '8', '15173301602', '小王');
+
+-- ----------------------------
+-- Table structure for clt_express
+-- ----------------------------
+DROP TABLE IF EXISTS `clt_express`;
+CREATE TABLE `clt_express` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=137 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of clt_express
+-- ----------------------------
+INSERT INTO `clt_express` VALUES ('1', '安捷快递', 'AJ');
+INSERT INTO `clt_express` VALUES ('2', '亚马逊物流', 'AMAZON');
+INSERT INTO `clt_express` VALUES ('3', '澳门邮政', 'AOMENYZ');
+INSERT INTO `clt_express` VALUES ('4', '安能物流', 'ANE');
+INSERT INTO `clt_express` VALUES ('5', '安信达快递', 'AXD');
+INSERT INTO `clt_express` VALUES ('6', '澳邮专线', 'AYCA');
+INSERT INTO `clt_express` VALUES ('7', '八达通', 'BDT');
+INSERT INTO `clt_express` VALUES ('8', '百福东方', 'BFDF');
+INSERT INTO `clt_express` VALUES ('9', '贝海国际', 'BHGJ');
+INSERT INTO `clt_express` VALUES ('10', '北青小红帽', 'BQXHM');
+INSERT INTO `clt_express` VALUES ('11', '百世快递', 'HTKY');
+INSERT INTO `clt_express` VALUES ('12', '八方安运', 'BFAY');
+INSERT INTO `clt_express` VALUES ('13', '百世快运', 'BTWL');
+INSERT INTO `clt_express` VALUES ('14', 'CCES快递', 'CCES');
+INSERT INTO `clt_express` VALUES ('15', '程光', 'CG');
+INSERT INTO `clt_express` VALUES ('16', '城市100', 'CITY100');
+INSERT INTO `clt_express` VALUES ('17', '城际快递', 'CJKD');
+INSERT INTO `clt_express` VALUES ('18', 'CNPEX中邮快递', 'CNPEX');
+INSERT INTO `clt_express` VALUES ('19', 'COE东方快递', 'COE');
+INSERT INTO `clt_express` VALUES ('20', '长沙创一', 'CSCY');
+INSERT INTO `clt_express` VALUES ('21', '成都善途速运', 'CDSTKY');
+INSERT INTO `clt_express` VALUES ('22', '联合运通', 'CTG');
+INSERT INTO `clt_express` VALUES ('23', 'CBO钏博物流', 'CBO');
+INSERT INTO `clt_express` VALUES ('24', '德邦', 'DBL');
+INSERT INTO `clt_express` VALUES ('25', 'D速物流', 'DSWL');
+INSERT INTO `clt_express` VALUES ('26', '到了港', 'DLG');
+INSERT INTO `clt_express` VALUES ('27', '递四方速递', 'D4PX');
+INSERT INTO `clt_express` VALUES ('28', '大田物流', 'DTWL');
+INSERT INTO `clt_express` VALUES ('29', '德坤', 'DEKUN');
+INSERT INTO `clt_express` VALUES ('30', 'EWE', 'EWE');
+INSERT INTO `clt_express` VALUES ('31', 'EMS', 'EMS');
+INSERT INTO `clt_express` VALUES ('32', '快捷快递', 'FAST');
+INSERT INTO `clt_express` VALUES ('33', 'FEDEX联邦(国内件)', 'FEDEX');
+INSERT INTO `clt_express` VALUES ('34', '疯狂快递', 'CRAZY');
+INSERT INTO `clt_express` VALUES ('35', '飞康达', 'FKD');
+INSERT INTO `clt_express` VALUES ('36', '富腾达', 'FTD');
+INSERT INTO `clt_express` VALUES ('37', '冠达', 'GD');
+INSERT INTO `clt_express` VALUES ('38', '广东邮政', 'GDEMS');
+INSERT INTO `clt_express` VALUES ('39', '共速达', 'GSD');
+INSERT INTO `clt_express` VALUES ('40', '国通快递', 'GTO');
+INSERT INTO `clt_express` VALUES ('41', '广通', 'GTONG');
+INSERT INTO `clt_express` VALUES ('42', '高铁速递', 'GTSD');
+INSERT INTO `clt_express` VALUES ('43', '汇丰物流', 'HFWL');
+INSERT INTO `clt_express` VALUES ('44', '黑狗冷链', 'HGLL');
+INSERT INTO `clt_express` VALUES ('45', '天天快递', 'HHTT');
+INSERT INTO `clt_express` VALUES ('46', '恒路物流', 'HLWL');
+INSERT INTO `clt_express` VALUES ('47', '天地华宇', 'HOAU');
+INSERT INTO `clt_express` VALUES ('48', '鸿桥供应链', 'HOTSCM');
+INSERT INTO `clt_express` VALUES ('49', '海派通物流公司', 'HPTEX');
+INSERT INTO `clt_express` VALUES ('50', '华强物流', 'hq568');
+INSERT INTO `clt_express` VALUES ('51', '环球速运', 'HQSY');
+INSERT INTO `clt_express` VALUES ('52', '华夏龙物流', 'HXLWL');
+INSERT INTO `clt_express` VALUES ('53', '豪翔物流', 'HXWL');
+INSERT INTO `clt_express` VALUES ('54', '好来运快递', 'HYLSD');
+INSERT INTO `clt_express` VALUES ('55', '捷安达', 'JAD');
+INSERT INTO `clt_express` VALUES ('56', '京东物流', 'JD');
+INSERT INTO `clt_express` VALUES ('57', '京广速递', 'JGSD');
+INSERT INTO `clt_express` VALUES ('58', '九曳供应链', 'JIUYE');
+INSERT INTO `clt_express` VALUES ('59', '佳吉快运', 'JJKY');
+INSERT INTO `clt_express` VALUES ('60', '嘉里物流', 'JLDT');
+INSERT INTO `clt_express` VALUES ('61', '捷特快递', 'JTKD');
+INSERT INTO `clt_express` VALUES ('62', '急先达', 'JXD');
+INSERT INTO `clt_express` VALUES ('63', '晋越快递', 'JYKD');
+INSERT INTO `clt_express` VALUES ('64', '加运美', 'JYM');
+INSERT INTO `clt_express` VALUES ('65', '景光物流', 'JGWL');
+INSERT INTO `clt_express` VALUES ('66', '佳怡物流', 'JYWL');
+INSERT INTO `clt_express` VALUES ('67', '跨越速运', 'KYSY');
+INSERT INTO `clt_express` VALUES ('68', '龙邦快递', 'LB');
+INSERT INTO `clt_express` VALUES ('69', '联昊通速递', 'LHT');
+INSERT INTO `clt_express` VALUES ('70', '民邦快递', 'MB');
+INSERT INTO `clt_express` VALUES ('71', '民航快递', 'MHKD');
+INSERT INTO `clt_express` VALUES ('72', '美快', 'MK');
+INSERT INTO `clt_express` VALUES ('73', '门对门快递', 'MDM');
+INSERT INTO `clt_express` VALUES ('74', '明亮物流', 'MLWL');
+INSERT INTO `clt_express` VALUES ('75', '南方', 'NF');
+INSERT INTO `clt_express` VALUES ('76', '能达速递', 'NEDA');
+INSERT INTO `clt_express` VALUES ('77', '平安达腾飞快递', 'PADTF');
+INSERT INTO `clt_express` VALUES ('78', '泛捷快递', 'PANEX');
+INSERT INTO `clt_express` VALUES ('79', '品骏', 'PJ');
+INSERT INTO `clt_express` VALUES ('80', 'PCA Express', 'PCA');
+INSERT INTO `clt_express` VALUES ('81', '全晨快递', 'QCKD');
+INSERT INTO `clt_express` VALUES ('82', '全峰快递', 'QFKD');
+INSERT INTO `clt_express` VALUES ('83', '全日通快递', 'QRT');
+INSERT INTO `clt_express` VALUES ('84', '全信通', 'QXT');
+INSERT INTO `clt_express` VALUES ('85', '瑞丰速递', 'RFEX');
+INSERT INTO `clt_express` VALUES ('86', '如风达', 'RFD');
+INSERT INTO `clt_express` VALUES ('87', '瑞丰速递', 'RFEX');
+INSERT INTO `clt_express` VALUES ('88', '赛澳递', 'SAD');
+INSERT INTO `clt_express` VALUES ('89', '圣安物流', 'SAWL');
+INSERT INTO `clt_express` VALUES ('90', '申通快递', 'STO');
+INSERT INTO `clt_express` VALUES ('91', '盛邦物流', 'SBWL');
+INSERT INTO `clt_express` VALUES ('92', '上大物流', 'SDWL');
+INSERT INTO `clt_express` VALUES ('93', '顺丰速运', 'SF');
+INSERT INTO `clt_express` VALUES ('94', '盛丰物流', 'SFWL');
+INSERT INTO `clt_express` VALUES ('95', '盛辉物流', 'SHWL');
+INSERT INTO `clt_express` VALUES ('96', '速通物流', 'ST');
+INSERT INTO `clt_express` VALUES ('97', '速腾快递', 'STWL');
+INSERT INTO `clt_express` VALUES ('98', '速必达物流', 'SUBIDA');
+INSERT INTO `clt_express` VALUES ('99', '速递e站', 'SDEZ');
+INSERT INTO `clt_express` VALUES ('100', '速呈宅配', 'SCZPDS');
+INSERT INTO `clt_express` VALUES ('101', '速尔快递', 'SURE');
+INSERT INTO `clt_express` VALUES ('102', '台湾邮政', 'TAIWANYZ');
+INSERT INTO `clt_express` VALUES ('103', '全一快递', 'UAPEX');
+INSERT INTO `clt_express` VALUES ('104', 'UEQ Express', 'UEQ');
+INSERT INTO `clt_express` VALUES ('105', '优速快递', 'UC');
+INSERT INTO `clt_express` VALUES ('106', '万家康', 'WJK');
+INSERT INTO `clt_express` VALUES ('107', '万家物流', 'WJWL');
+INSERT INTO `clt_express` VALUES ('108', '万象物流', 'WXWL');
+INSERT INTO `clt_express` VALUES ('109', '新邦物流', 'XBWL');
+INSERT INTO `clt_express` VALUES ('110', '迅驰物流', 'XCWL');
+INSERT INTO `clt_express` VALUES ('111', '信丰快递', 'XFEX');
+INSERT INTO `clt_express` VALUES ('112', '希优特', 'XYT');
+INSERT INTO `clt_express` VALUES ('113', '新杰物流', 'XJ');
+INSERT INTO `clt_express` VALUES ('114', '源安达快递', 'YADEX');
+INSERT INTO `clt_express` VALUES ('115', '远成物流', 'YCWL');
+INSERT INTO `clt_express` VALUES ('116', '韵达速递', 'YD');
+INSERT INTO `clt_express` VALUES ('117', '义达国际物流', 'YDH');
+INSERT INTO `clt_express` VALUES ('118', '易达通', 'YDT');
+INSERT INTO `clt_express` VALUES ('119', '越丰物流', 'YFEX');
+INSERT INTO `clt_express` VALUES ('120', '原飞航物流', 'YFHEX');
+INSERT INTO `clt_express` VALUES ('121', '亚风快递', 'YFSD');
+INSERT INTO `clt_express` VALUES ('122', '运通快递', 'YTKD');
+INSERT INTO `clt_express` VALUES ('123', '圆通速递', 'YTO');
+INSERT INTO `clt_express` VALUES ('124', '亿翔快递', 'YXKD');
+INSERT INTO `clt_express` VALUES ('125', '运东西', 'YUNDX');
+INSERT INTO `clt_express` VALUES ('126', '邮政快递包裹', 'YZPY');
+INSERT INTO `clt_express` VALUES ('127', '驭丰速运', 'YFSUYUN');
+INSERT INTO `clt_express` VALUES ('128', '增益快递', 'ZENY');
+INSERT INTO `clt_express` VALUES ('129', '汇强快递', 'ZHQKD');
+INSERT INTO `clt_express` VALUES ('130', '宅急送', 'ZJS');
+INSERT INTO `clt_express` VALUES ('131', '众通快递', 'ZTE');
+INSERT INTO `clt_express` VALUES ('132', '中铁快运', 'ZTKY');
+INSERT INTO `clt_express` VALUES ('133', '中通快递', 'ZTO');
+INSERT INTO `clt_express` VALUES ('134', '中铁物流', 'ZTWL');
+INSERT INTO `clt_express` VALUES ('135', '中邮物流', 'ZYWL');
+INSERT INTO `clt_express` VALUES ('136', '郑州速捷', 'SJ');
 
 -- ----------------------------
 -- Table structure for clt_field
@@ -595,7 +765,7 @@ CREATE TABLE `clt_member_open` (
 -- ----------------------------
 -- Records of clt_member_open
 -- ----------------------------
-INSERT INTO `clt_member_open` VALUES ('1', 'ソ江南Ⅲ', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', 'oqL9H1ZMbgwwfJvBoCT6giSHho4g', '1507803479', '14.17.37.72', '4');
+INSERT INTO `clt_member_open` VALUES ('1', 'ソ江南Ⅲ', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', 'oqL9H1ZMbgwwfJvBoCT6giSHho4g', '1507803479', '14.17.37.72', '10');
 
 -- ----------------------------
 -- Table structure for clt_module
@@ -655,19 +825,20 @@ CREATE TABLE `clt_network` (
   `location` varchar(255) NOT NULL DEFAULT '',
   `did` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of clt_network
 -- ----------------------------
-INSERT INTO `clt_network` VALUES ('1', '天河01', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '1', '1509177315', '1511425852', '0', '', '体育西路', '10086', '6', '76', '693', '23.13069130573897,113.32110330462456', '4');
-INSERT INTO `clt_network` VALUES ('2', '天河南00', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '2', '1509422517', '1509763567', '0', '', '天河南地铁站', '10086', '6', '76', '693', '23.13261, 113.3253', '4');
+INSERT INTO `clt_network` VALUES ('1', '天河01', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '1', '1509177315', '1511425852', '0', '', '体育西路', '13736004209', '6', '76', '693', '23.13069130573897,113.32110330462456', '10');
+INSERT INTO `clt_network` VALUES ('2', '天河南00', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '2', '1509422517', '1511580367', '0', '', '天河南地铁站', '15173301605', '6', '76', '693', '23.13261, 113.3253', '10');
 INSERT INTO `clt_network` VALUES ('4', '琶洲新村', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '3', '1509438853', '1509763628', '0', '', '琶洲新村', '10086', '6', '76', '696', '23.10041, 113.38181', '5');
 INSERT INTO `clt_network` VALUES ('5', '哈哈00', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '4', '1509442056', '1509611473', '0', '', '琶洲', '10086', '6', '76', '696', '23.10022, 113.37645', '5');
 INSERT INTO `clt_network` VALUES ('6', '天河', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '5', '1509540805', '1509611378', '0', '', '石牌桥', '10086', '6', '76', '693', '23.133004398711822,113.3327127990924', '5');
 INSERT INTO `clt_network` VALUES ('7', '天河', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '6', '1509605982', '1509610989', '0', '', '岗顶', '10086', '6', '76', '693', '23.133912084907994,113.3389784393512', '5');
 INSERT INTO `clt_network` VALUES ('8', '华师', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '7', '1509611284', '0', '0', '', '华师', '10086', '6', '76', '693', '23.140147329564478,113.34567323313422', '5');
 INSERT INTO `clt_network` VALUES ('9', '太古汇', 'color:#222;font-weight:normal;', '', '1', '1', 'admin', '8', '1509761358', '0', '0', '', '太古汇', '10086', '6', '76', '693', '23.13382, 113.33231', '5');
+INSERT INTO `clt_network` VALUES ('10', '石牌桥店', '', '', '1', '0', '', '9', '1511578615', '1511580279', '0', '', '石牌桥', '15173301605', '6', '76', '693', '23.1335, 113.3355', '10');
 
 -- ----------------------------
 -- Table structure for clt_order
@@ -695,12 +866,13 @@ CREATE TABLE `clt_order` (
   `u_logistics_number` char(100) DEFAULT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_order
 -- ----------------------------
-INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '3', '', null, null, '2', '圆通', '123456', '2017-11-20 09:44:14');
+INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '3', '', null, null, '2', '顺丰', '118461988807', '2017-11-20 09:44:14');
+INSERT INTO `clt_order` VALUES ('00000000007', '1', '5', '1', '王燕萍', '13736004209', '31', '388', '3280', '春江花城', '简介简介军军军军军军军军军军军军军军军军', null, '1', '', '圆通', '123456', '2', '', '', '2017-11-27 16:52:04');
 
 -- ----------------------------
 -- Table structure for clt_order_log
@@ -714,7 +886,7 @@ CREATE TABLE `clt_order_log` (
   `content` varchar(255) NOT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_order_log
@@ -738,6 +910,8 @@ INSERT INTO `clt_order_log` VALUES ('00000000020', '6', '2', '4', '维修完成'
 INSERT INTO `clt_order_log` VALUES ('00000000021', '6', '2', '4', '维修完成', '2017-11-24 14:59:29');
 INSERT INTO `clt_order_log` VALUES ('00000000022', '6', '2', '4', '维修完成', '2017-11-24 15:00:15');
 INSERT INTO `clt_order_log` VALUES ('00000000023', '6', '2', '4', '维修完成', '2017-11-24 15:01:57');
+INSERT INTO `clt_order_log` VALUES ('00000000024', '7', '2', '10', '审核通过', '2017-11-28 17:14:29');
+INSERT INTO `clt_order_log` VALUES ('00000000025', '7', '2', '10', '审核通过', '2017-11-28 17:15:34');
 
 -- ----------------------------
 -- Table structure for clt_page
@@ -839,14 +1013,18 @@ CREATE TABLE `clt_product` (
   `sample` char(5) DEFAULT NULL COMMENT '样品锁？布尔值',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:未申请报修，1:已申请报修，-1:不在保修期内',
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sid` varchar(255) NOT NULL DEFAULT '' COMMENT '客户编号',
+  `phone` varchar(255) DEFAULT NULL COMMENT '店长电话1',
+  `phone2` varchar(255) DEFAULT NULL COMMENT '店长电话2',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_product
 -- ----------------------------
-INSERT INTO `clt_product` VALUES ('00000000002', '1', '174FD893', 'AJ1021-03A-KJ', '99646343', '2017-11-20 09:44:14', '雅洁', '18857115777', '陈姐', '赞成良渚8-1', '31', '383', '3236', '木门', '左内开', '龙', '', '', '1', '2017-11-19 15:17:37');
-INSERT INTO `clt_product` VALUES ('00000000004', '1', '9C543D96', 'J1021-03', '30256781', '2013-09-24 00:00:00', '雅洁总公司', '13923211553', '潘院长', '季华七路二号怡翠玫瑰园六座1603房', '6', '80', '746', '木门', '左内开', '陈赵国', '', '', '-1', '2017-11-23 15:46:46');
+INSERT INTO `clt_product` VALUES ('00000000002', '1', '174FD893', 'AJ1021-03A-KJ', '99646343', '2017-11-20 09:44:14', '雅洁', '18857115777', '陈姐', '赞成良渚8-1', '31', '383', '3236', '木门', '左内开', '龙', '', '', '1', '2017-11-19 15:17:37', '', null, null);
+INSERT INTO `clt_product` VALUES ('00000000004', '1', '9C543D96', 'AJ1021-03A-KJ0', '30256781', '2017-11-27 16:29:58', '雅洁总公司', '13923211553', '潘院长', '季华七路二号怡翠玫瑰园六座1603房', '6', '80', '746', '木门', '左内开', '陈赵国', '', '', '0', '2017-11-23 15:46:46', '', null, null);
+INSERT INTO `clt_product` VALUES ('00000000005', '1', '00BBD4CB', 'J1021-03', '23273216', '2017-11-27 16:30:01', '宁波新铭佳', '13736004209', '王燕萍', '春江花城', '31', '388', '3280', '钢门', '左外开', '张礼涛', '', '', '0', '2017-11-27 15:06:23', 'A015', '0574-87891219', '13906683996');
 
 -- ----------------------------
 -- Table structure for clt_product_img
@@ -857,13 +1035,16 @@ CREATE TABLE `clt_product_img` (
   `model` char(100) CHARACTER SET utf8 NOT NULL,
   `img` varchar(255) NOT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_product_img
 -- ----------------------------
-INSERT INTO `clt_product_img` VALUES ('00000000001', 'AJ1021-03A-KJ', '/uploads/20171120/5cc8e3501696cb582df5a0306e34711c.jpg', '2017-11-19 11:53:34');
+INSERT INTO `clt_product_img` VALUES ('00000000001', 'AJ1021-03A-KJ', '/uploads/20171120/5cc8e3501696cb582df5a0306e34711c.jpg', '2017-11-19 11:53:34', '雅洁智能门锁');
+INSERT INTO `clt_product_img` VALUES ('00000000002', 'AJ1021-03A-KJ0', '/uploads/20171125/f0d5a5e628939aa8cdc5c3e8c13b3daf.jpg', '2017-11-25 09:44:36', '雅洁智能门锁');
+INSERT INTO `clt_product_img` VALUES ('00000000003', 'J1021-03', '/uploads/20171127/84f263113963f9a822ca3ec529277975.jpg', '2017-11-27 15:12:47', '雅洁智能门锁');
 
 -- ----------------------------
 -- Table structure for clt_region
@@ -4380,7 +4561,7 @@ CREATE TABLE `clt_system` (
 -- ----------------------------
 -- Records of clt_system
 -- ----------------------------
-INSERT INTO `clt_system` VALUES ('1', '10086', '<p><span style=\"color: rgb(34, 34, 34); font-family: Consolas, &quot;Lucida Console&quot;, &quot;Courier New&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">广东雅洁五金有限公司，始创于1990年，坐落风景秀丽、经济发达的珠江三角洲腹心——佛山市南海区大沥长虹岭工业园，占地面积达200亩。主要生产建筑门锁、五金、门用五金和家具五金四大类产品，涵盖插芯门锁、玻璃门锁、智能门锁、铜锁、工程用锁、卫浴挂件、卫生间附件、门用功能五金、玻璃五金、闭门器、地弹簧、工程配套五金、家具锁、小拉手、滑轨和抽屉、铰链及连接件等共 2000多个品种，150多种专利产品。</span></p>', '<p><span style=\"color: rgb(34, 34, 34); font-family: Consolas, &quot;Lucida Console&quot;, &quot;Courier New&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">广东雅洁五金有限公司，始创于1990年，坐落风景秀丽、经济发达的珠江三角洲腹心——佛山市南海区大沥长虹岭工业园，占地面积达200亩。主要生产建筑门锁、五金、门用五金和家具五金四大类产品，涵盖插芯门锁、玻璃门锁、智能门锁、铜锁、工程用锁、卫浴挂件、卫生间附件、门用功能五金、玻璃五金、闭门器、地弹簧、工程配套五金、家具锁、小拉手、滑轨和抽屉、铰链及连接件等共 2000多个品种，150多种专利产品。</span></p>');
+INSERT INTO `clt_system` VALUES ('1', '10086', '<p>1.超出保修期的雅洁智能门锁产品；<br/></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>2.无有效保修凭证的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>3.保修凭证上的雅洁智能门锁产品型号或编号与实物不相符合的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>4.原厂雅洁门锁产品序列号及保修标签损坏，无法识别出厂日期的硕雅洁能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>5.擅自涂改保修凭证，序列号及标签的智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>6.未按产品使用说明安装或使用而造成损坏的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>7.未经允许的硬件改动造成损坏的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>8.由于人为外力而导致的雅洁智能门锁产品损坏；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>9.因不可抗力（地震，火灾，水灾，战争等灾害）造成损坏的雅洁智能门锁产品。</p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p>', '<p><span style=\"color: rgb(34, 34, 34); font-family: Consolas, \">广东雅洁五金有限公司，始创于1990年，坐落风景秀丽、经济发达的珠江三角洲腹心——佛山市南海区大沥长虹岭工业园，占地面积达200亩。主要生产建筑门锁、五金、门用五金和家具五金四大类产品，涵盖插芯门锁、玻璃门锁、智能门锁、铜锁、工程用锁、卫浴挂件、卫生间附件、门用功能五金、玻璃五金、闭门器、地弹簧、工程配套五金、家具锁、小拉手、滑轨和抽屉、铰链及连接件等共 2000多个品种，150多种专利产品。</span></p>');
 
 -- ----------------------------
 -- Table structure for clt_test
@@ -4439,7 +4620,7 @@ CREATE TABLE `clt_tvd` (
 -- Records of clt_tvd
 -- ----------------------------
 INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171116/9a5ad67f95b0af4584099e8166795362.jpg', '113', '0', '1', 'admin', '0', '1510124882', '1510909886', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_9a5ad67f95b0af4584099e8166795362.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '0', '/uploads/20171117/e22879b375ae19bbe9ce7937c9b9ebf6.jpg');
-INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '82', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
+INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '83', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
 INSERT INTO `clt_tvd` VALUES ('3', '雅洁培训视频3', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '20', '0', '0', 'admin', '0', '1510125795', '0', '0', '', '雅洁培训视频2-3', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '13', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第三期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
 
 -- ----------------------------

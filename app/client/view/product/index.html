@@ -1,45 +1,207 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>产品页欢迎您</title>
-
+    <title>首页</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" href="__STATIC__/plugins/layui/css/layui.css?v=1" media="all" />
+    <link rel="stylesheet" href="__HOME__/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="__HOME__/css/public.css"/>
+    <link rel="stylesheet" href="__HOME__/css/rProduce.css" />
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/rem.js" ></script>
+    <script src="https://cdn.bootcss.com/touchjs/0.2.14/touch.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+    <script type="text/javascript" src="__HOME__/js/public.js?v=1" ></script>
+    <style>
+        .floatl{
+            margin-left: 5px;
+        }
+        #produce .repairOne a{
+            width: 1.9rem;
+        }
+    </style>
+    <script type="text/javascript">
+        AjaxL=function(url,type,data,call){
+            $.ajax({
+                type:type,
+                url:url,
+                data:data,
+                dataType:'JSON',
+                success:function(res){
+                    call(res);
+
+                    if(res.url){
+                        window.location.href=res.url;
+                    }
+                },
+                error:function(XMLHttpRequest){
+                }
+            })
+        }
+    </script>
 </head>
-<body>
-<div>
-    <ul>
-        <volist name="list" id="v">
+<body id="vueMain">
+<div class="detl"></div>
+<div id="produce">
+    <div class="pHead">
+        <a class="back"><img src="__HOME__/img/back.png"/></a>
+        <p>我的产品</p>
+    </div>
 
-            <li>
-                <div><{$v['model']['model']}></div>
-                <div>
-                    <img src="<{$v['model']['img']}>" width="70" alt="">
+    <template v-if='searchResult.length>0'>
+    <div class="produces">
+
+        <template v-for="(key,item) in searchResult">
+        <div class="myProduce">
+            <div class="produceBox">
+                <div class="floatl">
+                    <template v-if='item.model.img'>
+                        <img src="__PUBLIC__/{{item.model.img}}" />
+                    </template>
+                    <template v-else>
+                    <img src="__HOME__/img/thing.jpg" />
+                    </template>
                 </div>
-                <if condition="$v['status'] eq 0">
-                    <a href="<{:url('product/repair',['id'=>$v['id']])}>">申请维修</a>
-                <elseif condition="$v['status'] eq 1"/>
-                    <a href="">已申请维修</a>
-                <else />
-                    <span>不在维修范围内</span>
-                </if>
+                <div class="floatl">
+                    <p>{{item.model.name}}</p>
+                    <p>{{item.model_vip_code}}</p>
+                    <p>购买日期：{{item.sale_date}}</p>
+                </div>
+                <div class="delete centerCenter" onclick="del('{{item.id}}')">
+                    <p>删</p>
+                    <p>除</p>
+                </div>
+                <div class="clearl"></div>
+                <div class="pTouch"></div>
+            </div>
+            <div class="repairOne">
+                <template v-if='item.status == 0'>
+                    <a href="{:url('product/repair')}?id={{item.id}}">申请维修</a>
+                </template>
+                <template v-if='item.status == 1'>
+                    <a href="javascript:;">已申请维修</a>
+                </template>
+                <template v-if='item.status == -1'>
+                    <a href="javascript:;">不在维修范围内</a>
+                </template>
+            </div>
+        </div>
+        </template>
+        <div class="myOrder bottomChoice">
+            <div class="moreOrder">
+                <p>&nbsp;</p>
+                <a href="javascript:;" class="addNew" onclick="adds()">添加产品</a>
+            </div>
+        </div>
+    </div>
+    </template>
+    <template v-else>
+        <div class="noResult">
+            <ul>
+                <li>
+                    <img src="__HOME__/img/noProduce.png" />
+                </li>
+                <li>
+                    <p>您还没有相关产品</p>
+                </li>
+                <li>
+                    <a href="###" class="add">添加产品</a>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <div class="addProduce" style="display: none;">
+        <ul>
+            <li>
+                <input type="hidden" name="token" value="{$token}">
+                <input type="search" id="code" placeholder="请输入产品ID"/>
+                <p>产品ID</p>
             </li>
-        </volist>
-
-    </ul>
-</div>
-<div>
-    <div>
-        <input type="hidden" name="token" value="<{$token}>">
-        <input type="text" name="code" id="code">
-        <button onclick="add()">提交</button>
+            <li>
+                <button class="addId" onclick="addProduct()">添加</button>
+            </li>
+        </ul>
     </div>
 </div>
+<script type="text/javascript" src="https://static.runoob.com/assets/vue/1.0.11/vue.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/rProduce.js" ></script>
+<div class="delete"></div>
 <script type="text/javascript">
+    $('.detl').remove();
+</script>
+</body>
+</html>
+<script type="text/javascript">
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    var data={
+        searchResult:[],
+    };
+    var all = new Vue({
+        el:'#vueMain',
+        data:data,
+        created:function(){
+            var $this=this;
+            $this.searchResult=[];
+            layui.use('flow', function(){
+                var flow = layui.flow;
+                flow.load({
+                    elem: '#produce'
+                    ,done: function(page, next){
+                        var lis = [];
+                        AjaxL('{:url("product/index")}','GET',{"page":page},function(res){
+                            list=res.list;
+                            if(list.length<=0){
+                                $('.layui-flow-more').hide();
+                                $('.noResult').show();
+                            }else{
+                                $('.layui-flow-more').show();
+                                $('.noResult').hide();
+                            }
+                            for (x in list){
+                                $this.searchResult.push(list[x]);
+                            }
+                            next('', page <= res.last_page);
+                        });
+                    }
+                });
+            });
+        }
+    });
 
-    function add(){
-        var url="<{:url('Product/add')}>";
+    function del(id){
+        var token=$('[name="token"]').val();
+        popw("温馨提示","确认要删除吗？",2,function(){
+            $.ajax({
+                url:"{:url('product/del')}",
+                type:"post",
+                data:{
+                    "__token__":token,
+                    "id":id
+                },
+                success:function(res){
+                    if(res.code == 1){
+                        layer.msg(res.msg,{time:1000});
+                        location.reload();
+                    }else{
+                        layer.msg(res.msg,{time:1000});
+                    }
+                }
+            });
+        });
+    }
+    function adds(){
+        $('.produces').hide();
+        $('.addProduce').show();
+    }
+
+    function addProduct(){
+        var url="{:url('Product/add')}";
         var token=$('[name="token"]').val();
         var code=$('#code').val();
         $.ajax({
@@ -52,9 +214,10 @@
             dataType:'JSON',
             success:function(res){
                 $('[name="token"]').attr('value',res.token);
-                alert(res.msg);
+                layer.msg(res.msg);
                 if(res.code==1){
-                    window.location.reload();
+                    $('.produces').show();
+                    $('.addProduce').hide();
                 }
             },
             error:function(xml,XMLHttpRequest, textStatus, errorThrown){
@@ -67,7 +230,7 @@
         })
     }
     function get_token(){
-        var url="<{:url('fater/get_token')}>";
+        var url="{:url('faters/get_token')}";
         $.ajax({
             type:'GET',
             url:url,
@@ -81,6 +244,5 @@
             }
         })
     }
+
 </script>
-</body>
-</html>

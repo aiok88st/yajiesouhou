@@ -10,12 +10,16 @@ $(function(){
 		});
 	});
 	//查看关于
-	$('.about').on('click',function(){
-		$('#about').show().stop().animate({left:'0%'});
+	$('.rHelp').on('click',function(){
+		$('#help').show().stop().animate({left:'0%'});
+		$('#help .pHead').show().stop().animate({left:'0%'});
 	});
 	//返回主页
-	$('.backPerson1').bind('click',function(){
-		$('#about').stop().animate({left:'100%',},function(){
+	$('.backRepair').bind('click',function(){
+		$('#help').stop().animate({left:'100%',},function(){
+			$(this).hide();
+		});
+		$('#help .pHead').stop().animate({left:'100%',},function(){
 			$(this).hide();
 		});
 	});
@@ -81,5 +85,26 @@ $(function(){
 				$('.send').text(count+'s后重新发送');	
 			}
 		},1000);
+	});
+	//图片放大
+	$('.showPic').bind('click',function(){
+		$('#imgBig img').attr('src',$(this).attr('src'));
+		$('#imgBig').fadeIn();
+	});
+	$('#imgBig').bind('click',function(){
+		$(this).fadeOut();
+	});
+	//收费和申请
+	$('.pay').bind('click',function(){
+		$(this).addClass('aChioce');
+		$('.apply').removeClass('aChioce');
+		$('.helpMainCentent').hide();
+		$('.money').show();
+	});
+	$('.apply').bind('click',function(){
+		$(this).addClass('aChioce');
+		$('.pay').removeClass('aChioce');
+		$('.helpMainCentent').show();
+		$('.money').hide();
 	});
 });

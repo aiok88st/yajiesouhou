@@ -35,20 +35,20 @@ class User extends Fater
     }
 
     public function orderList(){
+        $nid = db('network')->where('did',session('did'))->field('id')->select();
         $order = db('order');
-        $num0 = $order->where('user_id',session('did'))->where('status',0)->count();
-        $num1 = $order->where('user_id',session('did'))->where('status',1)->count();
-        $num2 = $order->where('user_id',session('did'))->where('status',2)->count();
-        $num3 = $order->where('user_id',session('did'))->where('status',3)->count();
-        $num4 = $order->where('user_id',session('did'))->where('status',4)->count();
-        $num5 = $order->where('user_id',session('did'))->where('status',5)->count();
+        $num1=0;
+        $num2=0;
+        $num3=0;
+        foreach($nid as $k=>$v){
+            $num1 += $order->where('user_id',$v['id'])->where('status',1)->count();
+            $num2 += $order->where('user_id',$v['id'])->where('status',2)->count();
+            $num3 += $order->where('user_id',$v['id'])->where('status',3)->count();
+        }
         $orders = [
-            'num0'=>$num0,
             'num1'=>$num1,
             'num2'=>$num2,
             'num3'=>$num3,
-            'num4'=>$num4,
-            'num5'=>$num5,
         ];
         return $orders;
     }

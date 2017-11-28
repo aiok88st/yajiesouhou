@@ -8,14 +8,41 @@ class Images extends Common
 {
     public function index() {
         if (request()->isPost()){
+            $key = input('key');
+            if ($key) {
+                $map['model'] = array('like', "%" . $key . "%");
+            }
             $page =input('page')?input('page'):1;
             $pageSize =input('limit')?input('limit'):config('pageSize');
             $list = db('product_img')
+                ->where($map)
                 ->order('add_time desc')
                 ->paginate(array('list_rows'=>$pageSize,'page'=>$page))
                 ->toArray();
             $lists = $list['data'];
             return $result = ['code' => 0, 'msg' => '获取成功!', 'data' => $lists, 'rel' => 1,'count'=>$list['total']];
+        }
+        return $this->fetch();
+    }
+    public function add(){
+        if (request()->isPost()){
+            $data = input('post.');
+            $result = $this->validate($data, [
+                'model|产品型号'  => ['require'],
+                'name|产品名称'  => ['require'],
+                'img|产品图片'  => ['require'],
+            ]);
+            if(true !== $result){
+                // 验证失败 输出错误信息
+                return json(['code'=>0, 'msg'=>$result,]);
+            }
+            $data['add_time']=date('Y-m-d H:i:s',time());
+            $re = db('product_img')->insert($data);
+            if($re){
+                return ['code' => 1, 'msg' => '添加成功!', 'url' => url('index')];
+            }else{
+                return ['code' => 0, 'msg' => '添加失败!'];
+            }
         }
         return $this->fetch();
     }
@@ -27,16 +54,25 @@ class Images extends Common
     }
 
     public function update(){
-        $id = input('id');
-        $img = input('img');
-        $data['model']=input('model');
-        $product = db('product_img')->where('id',$id)->find();
-        if($img != ''){
-            $data['img']=$img;
-        }else{
-            $data['img']=$product['img'];
+        $data = input('post.');
+        $result = $this->validate($data, [
+            'model|产品型号'  => ['require'],
+            'name|产品名称'  => ['require'],
+            'img|产品图片'  => ['require'],
+        ]);
+        if(true !== $result){
+            // 验证失败 输出错误信息
+            return json(['code'=>0, 'msg'=>$result,]);
         }
-        $re = db('product_img')->where('id',$id)->update($data);
+        $product = db('product_img')->where('id',$data['id'])->find();
+        if($data['img'] != ''){
+            $arr['img']=$data['img'];
+        }else{
+            $arr['img']=$product['img'];
+        }
+        $arr['name']=$data['name'];
+        $arr['model']=$data['model'];
+        $re = db('product_img')->where('id',$data['id'])->update($arr);
         if($re!==false){
             return ['code' => 1, 'msg' => '修改成功!', 'url' => url('index')];
         }else{

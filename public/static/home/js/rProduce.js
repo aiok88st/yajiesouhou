@@ -33,4 +33,18 @@ $(function(){
     //	$('.produces').show();
 		//$('.addProduce').hide();
     //});
+    $('.bp').bind('click',function(){
+        $('#produce').stop().animate({'left':'100%'},500);
+    });
+	////选择类型
+	//$('.type select').change(function(){
+	//	$(this).prev('span').html($(this).children('option:selected').text());
+	//});
+	//$('.quick').bind('click',function(){
+     //   alert(111);
+	//	$('#quickRepair').stop().animate({'left':'0%'},500);
+	//});
+	$('#quickRepair .backPerson').bind('click',function(){
+		$('#quickRepair').stop().animate({'left':'100%'},500);
+	});
 });

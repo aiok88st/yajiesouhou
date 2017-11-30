@@ -11,10 +11,10 @@ class Client extends Faters   //客户首页
 {
     public function _initialize()
     {
+        parent::_initialize();
         if(!UID){
             $this->redirect('weixin/index');
         }
-        define('UID',1);
     }
 
     public function index(ClientModel $client){  //首页用来展示个人信息
@@ -83,9 +83,9 @@ class Client extends Faters   //客户首页
     public function getCode(){
         $phone = input('phone');
         require_once ALIDAYU_PATH . '/api_demo/SmsDemo.php';
-        $signName = "恒帝科技";
+        $signName = "雅洁";
         //模板
-        $templateCode = "SMS_89745011";
+        $templateCode = "SMS_114380178";
         //生成随机的六位数的字符串
         $phonecode = rand(100000,999999);
         //session存储字符串和生成的时间

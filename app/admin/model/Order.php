@@ -26,22 +26,7 @@ class Order extends Model
         'addra|详细地址'=>'require|max:255',
         'msg|问题描述'=>'require|min:10',
     ];
-    public function setImagesAttr($value)
-    {
-        $data=[];
-        $Upload=new Upload;
-        if(!empty($value)){
-            foreach ($value as $key=>$v){
-                if(!strstr($v,'upload')){
-                    $imglink=$Upload->base2img($v);
-                    array_push($data,$imglink);
-                }else{
-                    array_push($data,$v);
-                }
-            }
-        }
-       return serialize($data);
-    }
+
     public function getProIdAttr($value)
     {
         $pro=Product::get($value);

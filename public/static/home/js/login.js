@@ -27,7 +27,18 @@ $(function(){
 		}
 	});
 	//打开雅洁协议
-	$('.read a').on('click',function(){
-		$('#content').animate({top:'0%',height:'100%',left:'0%',width:'100%'},500);
+	$('.agree').on('click',function(){
+		$('#content').show().stop().animate({top:'0%',height:'100%'},500);
+	});
+	$('#content .closeAll').on('click',function(){
+		$('#content').stop().animate({top:'50%',height:'0%'},500,function(){
+			$(this).hide();
+		});
+	});
+	$('#content .accept').on('click',function(){
+		$('#content').stop().animate({top:'50%',height:'0%'},500,function(){
+			$(this).hide();
+		});
+		$('.cb input').attr('checked','checked');
 	});
 });

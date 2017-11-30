@@ -2,10 +2,14 @@
 
 namespace app\client\controller;
 
-use think\Controller;
+use think\Db;
+use think\Exception;
 use think\Request;
+use think\Controller;
 use app\client\model\Order as OrderModel;
 use app\client\model\Client;
+use app\client\model\Network;
+use app\common\upload\Upload;
 class Order extends Faters
 {
     public function _initialize()
@@ -17,11 +21,161 @@ class Order extends Faters
         }
     }
 
+    public function index(Request $request,OrderModel $order){
+        $status=$request->param('status',0);
+        $status_name=[
+            ['id'=>0,'name'=>'全部'],
+            ['id'=>1,'name'=>'待维修'],
+            ['id'=>2,'name'=>'维修中'],
+            ['id'=>3,'name'=>'已完成'],
+        ];
+
+        if(request()->isAjax()){
+            if($status == 0){
+                $where['status'] = ['>=',-1];
+            }elseif($status == 1){
+                $where['status'] = ['IN',[0,1]];
+            }else{
+                $where['status'] = ['=',$status];
+            }
+            $data=$order->where('client_id',UID)->where($where)->order("id desc")->paginate(10)->toArray();
+            $arr = [
+                'list'=> $data['data'],
+                'current_page'=>$data['current_page'],
+                'last_page'=>$data['last_page'],
+            ];
+            return $arr;
+        }
+        $this->assign('status',$status);
+        $this->assign('status_name',$status_name);
+        return $this->fetch();
+    }
+
+    public function getList(Request $request,OrderModel $order){
+        $status=$request->param('status');
+        if($status == 0){
+            $where['status'] = ['>=',-1];
+        }elseif($status == 1){
+            $where['status'] = ['IN',[0,1]];
+        }else{
+            $where['status'] = ['=',$status];
+        }
+        $data=$order->where('client_id',UID)->where($where)->order("id desc")->paginate(10)->toArray();
+        $arr = [
+            'list'=> $data['data'],
+            'current_page'=>$data['current_page'],
+            'last_page'=>$data['last_page'],
+        ];
+        return $arr;
+    }
+
     public function add(Request $request,OrderModel $order){
         $param=$request->param();
         $param['client_id']=UID;
         $param['status']=0;
         $param['user_id']=$param['phone'];
+        $p = explode(' ',$param['J_Address']);
+        $param['province'] = $p[0];
+        $param['city'] = $p[1];
+        $param['zone'] = $p[2];
         return $order->add($param);
     }
+
+    public function detail(Request $request,OrderModel $order,Network $network){
+        $id=$request->param()['id'];
+        $data=$order::get($id);
+        if(!$data)$this->error('您查询的数据不存在');
+        $uid = db('order')->where('id',$id)->field('user_id,images,type')->find();
+        if($uid['images'])  $img=unserialize($uid['images']);
+
+        $net=$network::get($uid['user_id']);
+        $p=$net->province;
+        $c=$net->city;
+        $a=$net->area;
+
+        return view('',[
+            'token'=>$request->token(),
+            'data'=>$data,
+            'net'=>$net,
+            'p'=>$p,
+            'c'=>$c,
+            'a'=>$a,
+            'img'=>$img,
+            'type'=>$uid['type'],
+        ]);
+    }
+
+    public function del(Request $request,OrderModel $order){
+        try{
+            $ids=$request->param()['id'];
+            $re=db('order')->where('id',$ids)->delete();
+            if($re){
+                return ['code' => 1, 'msg' => '取消成功!','url'=>url('order/index')];
+            }else{
+                return ['code' => 0, 'msg' => '取消失败!'];
+            }
+
+        }catch (Exception $e){
+            return ['code' => 0, 'msg' => $e->getMessage()];
+        }
+    }
+
+    public function edits(Request $request,OrderModel $order){
+        $param=$request->param();
+        if(empty($param['msg'])){
+            return rejson(0,'问题描述不能为空',true);
+        }
+        $data=[];
+        $Upload=new Upload;
+        if(!empty($param['images'])){
+            foreach ($param['images'] as $key=>$v){
+                if(!strstr($v,'upload')){
+                    $imglink=$Upload->base2img($v);
+                    array_push($data,$imglink);
+                }else{
+                    array_push($data,$v);
+                }
+            }
+            $arr['images'] = serialize($data);
+        }
+        $arr = [
+            'id'=>$param['id'],
+            'msg'=>$param['msg'],
+            'status'=>0,
+        ];
+        $result=db('order')->update($arr);
+        if(false !== $result){
+            return rejson(1,'修改成功',true,url('client/Order/detail',array('id'=>$param['id'])));
+        }else{
+            // 验证失败 输出错误信息
+            return rejson(0,'修改失败',true);
+        }
+    }
+
+    public function addexp(Request $request,OrderModel $order){
+        $param=$request->param();
+        $result = $this->validate($param, [
+            'c_logistics|物流公司'  => ['require'],
+            'c_logistics_number|物流单号'  => ['require'],
+        ]);
+        if(true !== $result){
+            // 验证失败 输出错误信息
+            return json(['code'=>0, 'msg'=>$result,]);
+        }
+        $data=$order::get($param['id']);
+        if(!$data)  return rejson(0,'数据错误');
+        $order_data=[
+            'id'=>$param['id'],
+            'c_logistics'=>$param['c_logistics'],
+            'c_logistics_number'=>$param['c_logistics_number'],
+        ];
+        $re = db('order')->update($order_data);
+        if(false !== $re){
+            return rejson(1,'添加成功',true,url('client/Order/detail',array('id'=>$param['id'])));
+        }else{
+            // 验证失败 输出错误信息
+            return rejson(0,'添加失败',true);
+        }
+    }
+
 }

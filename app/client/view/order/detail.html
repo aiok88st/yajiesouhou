@@ -1,0 +1,341 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>订单详情</title>
+<link rel="stylesheet" href="__HOME__/css/indexOrOrder.css" />
+<link rel="stylesheet" href="__HOME__/css/order.css" />
+<link rel="stylesheet" href="__HOME__/css/rDetails.css" />
+<script type="text/javascript" src="__HOME__/js/photoClip/jquery-2.1.1.min.js" type="text/javascript"></script>
+<style>
+    #orderDetails .addr ul li:nth-child(2) {
+        width: 92%;
+        margin: 0 auto;
+        color: #666666;
+        padding: 0.2rem 0;
+        background-size: auto 0.5rem; }
+</style>
+{/block}
+{block name="main"}
+<div id="orderDetails">
+    <div class="pHead">
+        <a class="backP" href="{:url('order/index')}"><img src="__HOME__/img/back.png"/></a>
+        <p>订单详情</p>
+    </div>
+    <div class="rOrderBox">
+        <div class="code">
+            <ul>
+                <li>
+                    <p>订单编号：{$data.id}</p>
+                </li>
+                <li>
+                    <p>订单状态：{$data['status']['name']}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="myProduce">
+            <div class="produceBox">
+                <div class="floatl">
+                    <img src="__PUBLIC__{$data.pro_id.img}" />
+                </div>
+                <div class="floatl">
+                    <p>{$data.pro_id.title}</p>
+                    <p>{$data.pro_id.name}</p>
+                    <p>购买日期：{$data.pro_id.sale_date}</p>
+                </div>
+                <div class="clearl"></div>
+            </div>
+        </div>
+        {if condition="$data['status']['id'] eq -1"}
+        <div class="address addr">
+            <ul>
+                <li>
+                    <p>商家已拒绝申请，原因如下：</p>
+                </li>
+                <ul>
+                    <li>
+                        <p>{$data.audit}</p>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        {elseif condition="$data['status']['id'] eq 0"}
+        <div class="address addr">
+            <ul>
+                <li>
+                    <p>正在审核中，请耐心等待</p>
+                </li>
+            </ul>
+        </div>
+        {else/}
+        <div class="address">
+            <ul>
+                <li>
+                    {if condition="$type eq 1"}
+                    <p>商家已同意申请，请尽早退货</p>
+                    <button id="write">填写物流</button>
+                    {else/}
+                    <p>商家已同意申请，会尽快派人上门维修</p>
+                    {/if}
+                </li>
+
+                <li>
+                    <div class="person">
+                        <p class="p1">收货人：{$net.title}</p>
+                        <span>{$net.tel}</span>
+                    </div>
+                    <div class="citys">
+                        <p>{$p.name}{$c.name}{$a.name}{$net.addr}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        {/if}
+        <div class="deci">
+            <ul>
+                <li>
+                    <p>故障描述</p>
+                </li>
+                <li>
+                    <p>{$data.msg}</p>
+                </li>
+                {if condition="$img neq ''"}
+                <li>
+                    <div class="rOut">
+                        {volist name="$img" id="v"}
+                        <div class="rImg floatl">
+                            <img src="__PUBLIC__{$v}" />
+                        </div>
+                        {/volist}
+
+                        <div class="clearl"></div>
+                    </div>
+                </li>
+                {/if}
+            </ul>
+        </div>
+        <div class="server">
+            <div class="title">
+                <p>服务单信息</p>
+            </div>
+            <ul>
+                <li>
+                    <span>维修方式：</span>
+                    {if condition="$type eq 1"}
+                    <p class="p1">快递至维修点  </p>
+                    {else/}
+                    <p class="p1">上门服务  </p>
+                    {/if}
+
+                </li>
+                <li>
+                    <span>联系人：</span>
+                    <p class="p1">{$data['name']}</p>
+                </li>
+                <li>
+                    <span>联系电话：</span>
+                    <p class="p1">{$data['phone']}</p>
+                </li>
+                <li>
+                    <span>地址：</span>
+                    <p>{$data['province']['name']} {$data['city']['name']} {$data['zone']['name']} {$data['addra']}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="btnBox">
+            <ul>
+                {if condition="$data['status']['id'] eq -1"}
+                <li>
+                    <button id="exchange">修改描述</button>
+                </li>
+                {/if}
+                <li>
+                    <button onclick="del('{$data.id}')">取消订单</button>
+                </li>
+            </ul>
+            <div class="floatr"></div>
+        </div>
+    </div>
+</div>
+<div id="wl">
+    <div class="pHead">
+        <a class=" backP"><img src="__HOME__/img/back.png"/></a>
+        <p>填写物流</p>
+    </div>
+    <div class="myProduce">
+        <div class="produceBox">
+            <div class="floatl">
+                <img src="__PUBLIC__{$data.pro_id.img}" />
+            </div>
+            <div class="floatl">
+                <p>{$data.pro_id.title}</p>
+                <p>{$data.pro_id.name}</p>
+                <p>购买日期：{$data.pro_id.sale_date}</p>
+            </div>
+            <div class="clearl"></div>
+        </div>
+    </div>
+    <div class="ex">
+        <ul>
+            <li>
+                <input type="search" id="c_logistics" value="{$data.c_logistics}" placeholder="请输入物流公司"/>
+                <p>物流公司：</p>
+            </li>
+            <li>
+                <input type="search" id="c_logistics_number" value="{$data.c_logistics_number}" placeholder="填写物流订单号"/>
+                <p>物流单号：</p>
+            </li>
+        </ul>
+    </div>
+    <div class="st">
+        <button onclick="addEXP()">提交</button>
+    </div>
+</div>
+<div id="problem">
+    <div class="pHead">
+        <a class=" backP"><img src="__HOME__/img/back.png"/></a>
+        <p>修改问题描述</p>
+    </div>
+    <div class="problems">
+        <textarea placeholder="请输入问题描述" id="msg">{$data.msg}</textarea>
+    </div>
+    <div class="imgOut">
+        <div class="imgUp">
+            <div class="upBtn floatl upBtn0">
+                <img src="__HOME__/img/add.png" />
+                <input type="file" id="file" />
+            </div>
+            <div class="clearl"></div>
+        </div>
+    </div>
+    <div class="st">
+        <button onclick="edit()">提交</button>
+    </div>
+</div>
+<input type="hidden" id="token" value="{$token}">
+<input type="hidden" id="or_id" value="{$data['id']}">
+<div id="clipArea" style="display: none;">
+    <button id="clipBtn">截取</button>
+</div>
+<div id="showAll" style="display: none;">
+    <img src="" />
+</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/photoClip/iscroll-zoom.js"></script>
+<script type="text/javascript" src="__HOME__/js/photoClip/hammer.js"></script>
+<script type="text/javascript" src="__HOME__/js/photoClip/jquery.photoClip.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/rDetails.js" ></script>
+
+<script type="text/javascript">
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    var imgN = 0;
+    //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    $("#clipArea").photoClip({
+        width: 200,
+        height: 200,
+        file: "#file",
+        view: ".view",
+        ok: "#clipBtn",
+        loadStart: function() {
+            $('#clipArea').show();
+            //开启加载页面
+        },
+        loadComplete: function() {
+            console.log("照片读取完成");
+            //关闭加载页面
+        },
+        clipFinish: function(dataURL) {
+            imgN++;
+            $('#clipArea').hide();
+            if(imgN==4)
+            {
+                $('.upBtn0').hide();
+            }
+            $('.upBtn0').before('<div class="upBtn allimg floatl"><img src="'+dataURL+'" /><a href="###"><img src="__HOME__/img/pClose.png"/></a><input type="hidden" name="images" value="'+dataURL+'"></div>');
+            $('.upBtn').find('a').bind('click',function(){
+                $(this).parent('.upBtn').remove();
+                imgN--;
+                if(imgN<4){
+                    $('.upBtn0').show();
+                }
+            });
+            $('.allimg').on('click',function(){
+                $('#showAll').stop().fadeIn(500);
+                $('#showAll').find('img').attr('src',$(this).children('img').attr('src'));
+            });
+        }
+    });
+
+    function del(id){
+        var token=$('#token').val();
+        console.log(token);
+        popw("温馨提示","确认要取消吗？",2,function(){
+            $.ajax({
+                url:"{:url('order/del')}",
+                type:"post",
+                data:{
+                    "__token__":token,
+                    "id":id
+                },
+                success:function(res){
+                    if(res.code == 1){
+                        layer.msg(res.msg,{time:3000});
+                        window.location.href=res.url;
+                    }else{
+                        layer.msg(res.msg,{time:3000});
+                    }
+                }
+            });
+        });
+    }
+
+    function edit(){
+        var msg = $('#msg').val();
+        var token = $('#token').val();
+        var or_id = $('#or_id').val();
+        var img = [];
+        $('[name="images"]').each(function(){
+            if($(this).val() != ''){
+                var imge = $(this).val();
+                img.push(imge.substr(22));
+            }
+        });
+        $.ajax({
+            url:"{:url('order/edits')}",
+            type:'post',
+            data:{"msg":msg,"__token__":token,"id":or_id,"images":img},
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg,{time:3000});
+                    window.location.href=re.url;
+                }else{
+                    layer.msg(re.msg,{time:3000});
+                }
+            }
+        });
+    }
+
+    function addEXP(){
+        var token = $('#token').val();
+        var or_id = $('#or_id').val();
+        var c_logistics = $('#c_logistics').val();
+        var c_logistics_number = $('#c_logistics_number').val();
+        $.ajax({
+            url:"{:url('order/addexp')}",
+            type:'post',
+            data:{"__token__":token,"id":or_id,"c_logistics":c_logistics,"c_logistics_number":c_logistics_number},
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg,{time:3000});
+                    window.location.href=re.url;
+                }else{
+                    layer.msg(re.msg,{time:3000});
+                }
+            }
+        });
+    }
+</script>
+{/block}

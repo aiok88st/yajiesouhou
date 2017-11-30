@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>首页</title>
+    <title>我的产品</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta content="yes" name="apple-mobile-web-app-capable"/>
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="__HOME__/js/rem.js" ></script>
     <script src="https://cdn.bootcss.com/touchjs/0.2.14/touch.min.js"></script>
     <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
-    <script type="text/javascript" src="__HOME__/js/public.js?v=1" ></script>
+    <!--<script type="text/javascript" src="__HOME__/js/public.js?v=1" ></script>-->
     <style>
         .floatl{
             margin-left: 5px;
@@ -48,56 +48,56 @@
 <div class="detl"></div>
 <div id="produce">
     <div class="pHead">
-        <a class="back"><img src="__HOME__/img/back.png"/></a>
+        <a href="" class="bp"><img src="__HOME__/img/back.png"/></a>
         <p>我的产品</p>
     </div>
 
     <template v-if='searchResult.length>0'>
-    <div class="produces">
+        <div class="produces">
 
-        <template v-for="(key,item) in searchResult">
-        <div class="myProduce">
-            <div class="produceBox">
-                <div class="floatl">
-                    <template v-if='item.model.img'>
-                        <img src="__PUBLIC__/{{item.model.img}}" />
-                    </template>
-                    <template v-else>
-                    <img src="__HOME__/img/thing.jpg" />
-                    </template>
+            <template v-for="(key,item) in searchResult">
+                <div class="myProduce">
+                    <div class="produceBox">
+                        <div class="floatl">
+                            <template v-if='item.model.img'>
+                                <img src="__PUBLIC__/{{item.model.img}}" />
+                            </template>
+                            <template v-else>
+                                <img src="__HOME__/img/thing.jpg" />
+                            </template>
+                        </div>
+                        <div class="floatl">
+                            <p>{{item.model.name}}</p>
+                            <p>{{item.model_vip_code}}</p>
+                            <p>购买日期：{{item.sale_date}}</p>
+                        </div>
+                        <div class="delete centerCenter" onclick="del('{{item.id}}')">
+                            <p>删</p>
+                            <p>除</p>
+                        </div>
+                        <div class="clearl"></div>
+                        <div class="pTouch"></div>
+                    </div>
+                    <div class="repairOne">
+                        <template v-if='item.status == 0'>
+                            <a href="{:url('product/repair')}?id={{item.id}}">一键维修</a>
+                        </template>
+                        <template v-if='item.status == 1'>
+                            <a href="javascript:;">已申请维修</a>
+                        </template>
+                        <template v-if='item.status == -1'>
+                            <a href="javascript:;">不在维修范围内</a>
+                        </template>
+                    </div>
                 </div>
-                <div class="floatl">
-                    <p>{{item.model.name}}</p>
-                    <p>{{item.model_vip_code}}</p>
-                    <p>购买日期：{{item.sale_date}}</p>
+            </template>
+            <div class="myOrder bottomChoice">
+                <div class="moreOrder">
+                    <p>&nbsp;</p>
+                    <a href="javascript:;" class="addNew" onclick="adds()">添加产品</a>
                 </div>
-                <div class="delete centerCenter" onclick="del('{{item.id}}')">
-                    <p>删</p>
-                    <p>除</p>
-                </div>
-                <div class="clearl"></div>
-                <div class="pTouch"></div>
-            </div>
-            <div class="repairOne">
-                <template v-if='item.status == 0'>
-                    <a href="{:url('product/repair')}?id={{item.id}}">申请维修</a>
-                </template>
-                <template v-if='item.status == 1'>
-                    <a href="javascript:;">已申请维修</a>
-                </template>
-                <template v-if='item.status == -1'>
-                    <a href="javascript:;">不在维修范围内</a>
-                </template>
             </div>
         </div>
-        </template>
-        <div class="myOrder bottomChoice">
-            <div class="moreOrder">
-                <p>&nbsp;</p>
-                <a href="javascript:;" class="addNew" onclick="adds()">添加产品</a>
-            </div>
-        </div>
-    </div>
     </template>
     <template v-else>
         <div class="noResult">
@@ -246,3 +246,5 @@
     }
 
 </script>
+</body>
+</html>

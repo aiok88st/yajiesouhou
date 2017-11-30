@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-28 18:52:54
+Date: 2017-11-30 18:17:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -339,7 +339,7 @@ CREATE TABLE `clt_client` (
 -- ----------------------------
 -- Records of clt_client
 -- ----------------------------
-INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', '13736004209', '小王', '6', '石牌桥', '76', '693', '2017-11-19 11:28:58');
+INSERT INTO `clt_client` VALUES ('00000000001', 'deasdsad', '冰和', 'http://wx.qlogo.cn/mmopen/vi_32/QzZ2toyFpHKzoOVR1ic8w4dr88CicwYsoTdIYvmYlZQMlX5SB6m3w0eS0Ox0uAaiaRTfY1gicln7b1Asu2TAYWyKwQ/0', '', '小王', '6', '石牌桥', '76', '693', '2017-11-19 11:28:58');
 
 -- ----------------------------
 -- Table structure for clt_club
@@ -373,7 +373,7 @@ CREATE TABLE `clt_collect` (
 -- Records of clt_collect
 -- ----------------------------
 INSERT INTO `clt_collect` VALUES ('1', '4', '1');
-INSERT INTO `clt_collect` VALUES ('5', '4', '2');
+INSERT INTO `clt_collect` VALUES ('5', '10', '2');
 
 -- ----------------------------
 -- Table structure for clt_config
@@ -448,7 +448,7 @@ INSERT INTO `clt_distributor` VALUES ('4', 'hello', 'e10adc3949ba59abbe56e057f20
 INSERT INTO `clt_distributor` VALUES ('6', 'root01', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510646065', '0', '4', '15173301603', '小张');
 INSERT INTO `clt_distributor` VALUES ('7', 'admin00', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', '1510712653', '0', '0', '15173301603', '张三');
 INSERT INTO `clt_distributor` VALUES ('8', 'A017', null, '127.0.0.1', '1510712653', '1', '0', null, '');
-INSERT INTO `clt_distributor` VALUES ('10', 'A01705', null, '127.0.0.1', '1511832806', '1', '8', '15173301602', '小王');
+INSERT INTO `clt_distributor` VALUES ('10', 'A01705', null, '127.0.0.1', '1512014854', '1', '8', '15173301602', '小王');
 
 -- ----------------------------
 -- Table structure for clt_express
@@ -866,13 +866,13 @@ CREATE TABLE `clt_order` (
   `u_logistics_number` char(100) DEFAULT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_order
 -- ----------------------------
 INSERT INTO `clt_order` VALUES ('00000000006', '1', '2', '1', '陈姐', '18857115777', '31', '383', '3236', '赞成良渚8-1', '873409tshdfoisdhf7qnw ;Ewqug', null, '3', '', null, null, '2', '顺丰', '118461988807', '2017-11-20 09:44:14');
-INSERT INTO `clt_order` VALUES ('00000000007', '1', '5', '1', '王燕萍', '13736004209', '31', '388', '3280', '春江花城', '简介简介军军军军军军军军军军军军军军军军', null, '1', '', '圆通', '123456', '2', '', '', '2017-11-27 16:52:04');
+INSERT INTO `clt_order` VALUES ('00000000010', '1', '5', '1', '王燕萍', '13736004209', '31', '388', '3280', '春江花城', '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈或或或', 'a:2:{i:0;s:43:\"/client/20171130/1138201711301131264036.jpg\";i:1;s:43:\"/client/20171130/6205201711301131262939.jpg\";}', '3', '', '圆通', '123456', '10', '顺丰', '118461988807', '2017-11-29 18:28:19');
 
 -- ----------------------------
 -- Table structure for clt_order_log
@@ -886,7 +886,7 @@ CREATE TABLE `clt_order_log` (
   `content` varchar(255) NOT NULL,
   `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of clt_order_log
@@ -912,6 +912,12 @@ INSERT INTO `clt_order_log` VALUES ('00000000022', '6', '2', '4', '维修完成'
 INSERT INTO `clt_order_log` VALUES ('00000000023', '6', '2', '4', '维修完成', '2017-11-24 15:01:57');
 INSERT INTO `clt_order_log` VALUES ('00000000024', '7', '2', '10', '审核通过', '2017-11-28 17:14:29');
 INSERT INTO `clt_order_log` VALUES ('00000000025', '7', '2', '10', '审核通过', '2017-11-28 17:15:34');
+INSERT INTO `clt_order_log` VALUES ('00000000026', '7', '2', '10', '审核通过', '2017-11-29 09:41:08');
+INSERT INTO `clt_order_log` VALUES ('00000000027', '10', '2', '10', '审核不通过，原因：原因不清数', '2017-11-30 14:44:25');
+INSERT INTO `clt_order_log` VALUES ('00000000028', '10', '2', '10', '审核不通过，原因：啥风格都是更好的发挥', '2017-11-30 14:47:28');
+INSERT INTO `clt_order_log` VALUES ('00000000029', '10', '2', '10', '审核通过', '2017-11-30 15:42:50');
+INSERT INTO `clt_order_log` VALUES ('00000000030', '10', '2', '10', '维修完成', '2017-11-30 15:59:07');
+INSERT INTO `clt_order_log` VALUES ('00000000031', '10', '2', '10', '维修完成', '2017-11-30 16:05:23');
 
 -- ----------------------------
 -- Table structure for clt_page
@@ -1024,7 +1030,7 @@ CREATE TABLE `clt_product` (
 -- ----------------------------
 INSERT INTO `clt_product` VALUES ('00000000002', '1', '174FD893', 'AJ1021-03A-KJ', '99646343', '2017-11-20 09:44:14', '雅洁', '18857115777', '陈姐', '赞成良渚8-1', '31', '383', '3236', '木门', '左内开', '龙', '', '', '1', '2017-11-19 15:17:37', '', null, null);
 INSERT INTO `clt_product` VALUES ('00000000004', '1', '9C543D96', 'AJ1021-03A-KJ0', '30256781', '2017-11-27 16:29:58', '雅洁总公司', '13923211553', '潘院长', '季华七路二号怡翠玫瑰园六座1603房', '6', '80', '746', '木门', '左内开', '陈赵国', '', '', '0', '2017-11-23 15:46:46', '', null, null);
-INSERT INTO `clt_product` VALUES ('00000000005', '1', '00BBD4CB', 'J1021-03', '23273216', '2017-11-27 16:30:01', '宁波新铭佳', '13736004209', '王燕萍', '春江花城', '31', '388', '3280', '钢门', '左外开', '张礼涛', '', '', '0', '2017-11-27 15:06:23', 'A015', '0574-87891219', '13906683996');
+INSERT INTO `clt_product` VALUES ('00000000005', '1', '00BBD4CB', 'J1021-03', '23273216', '2017-11-29 18:28:20', '宁波新铭佳', '13736004209', '王燕萍', '春江花城', '31', '388', '3280', '钢门', '左外开', '张礼涛', '', '', '1', '2017-11-27 15:06:23', 'A015', '0574-87891219', '13906683996');
 
 -- ----------------------------
 -- Table structure for clt_product_img
@@ -4561,7 +4567,7 @@ CREATE TABLE `clt_system` (
 -- ----------------------------
 -- Records of clt_system
 -- ----------------------------
-INSERT INTO `clt_system` VALUES ('1', '10086', '<p>1.超出保修期的雅洁智能门锁产品；<br/></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>2.无有效保修凭证的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>3.保修凭证上的雅洁智能门锁产品型号或编号与实物不相符合的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>4.原厂雅洁门锁产品序列号及保修标签损坏，无法识别出厂日期的硕雅洁能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>5.擅自涂改保修凭证，序列号及标签的智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>6.未按产品使用说明安装或使用而造成损坏的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>7.未经允许的硬件改动造成损坏的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>8.由于人为外力而导致的雅洁智能门锁产品损坏；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>9.因不可抗力（地震，火灾，水灾，战争等灾害）造成损坏的雅洁智能门锁产品。</p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p>', '<p><span style=\"color: rgb(34, 34, 34); font-family: Consolas, \">广东雅洁五金有限公司，始创于1990年，坐落风景秀丽、经济发达的珠江三角洲腹心——佛山市南海区大沥长虹岭工业园，占地面积达200亩。主要生产建筑门锁、五金、门用五金和家具五金四大类产品，涵盖插芯门锁、玻璃门锁、智能门锁、铜锁、工程用锁、卫浴挂件、卫生间附件、门用功能五金、玻璃五金、闭门器、地弹簧、工程配套五金、家具锁、小拉手、滑轨和抽屉、铰链及连接件等共 2000多个品种，150多种专利产品。</span></p>');
+INSERT INTO `clt_system` VALUES ('1', '10086', '<p>1.超出保修期的雅洁智能门锁产品；<br/></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>2.无有效保修凭证的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>3.保修凭证上的雅洁智能门锁产品型号或编号与实物不相符合的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>4.原厂雅洁门锁产品序列号及保修标签损坏，无法识别出厂日期的硕雅洁能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>5.擅自涂改保修凭证，序列号及标签的智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>6.未按产品使用说明安装或使用而造成损坏的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>7.未经允许的硬件改动造成损坏的雅洁智能门锁产品；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>8.由于人为外力而导致的雅洁智能门锁产品损坏；</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span>9.因不可抗力（地震，火灾，水灾，战争等灾害）造成损坏的雅洁智能门锁产品。</p><p><br/></p><p><br/></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p>', '<p>雅洁五金服务条款确认<br/></p><p><span style=\"white-space:pre\"></span></p><p>雅洁五金集团，任何单位和个人非经本公司授权不得以本公司及其所有的网站名义进行商业或非商业活动。卓创资讯提供的服务将严格按照本公司及本网发布的服务条款和操作规则执行。用户必须确认所有服务条款并完成注册程序，才能成为卓创资讯的正式用户。</p><p><span style=\"white-space:pre\"></span></p><p><span style=\"white-space:pre\"></span></p><p><br/></p><p><span style=\"white-space:pre\"></span></p><p>卓创资讯版权声明</p><p><span style=\"white-space:pre\"></span></p><p>雅洁五金的所有内容，包括但不限于文字报导、图片、声音、录像、图表、标志、标识、广告、商标、商号、域名、软件、程序、版面设计、专栏目录与名称、内容分类标准以及为注册用户提供的任何或所有信息，均受《中华人民共和国著</p><p><span style=\"white-space:pre\"></span></p><p><br/></p>');
 
 -- ----------------------------
 -- Table structure for clt_test
@@ -4620,7 +4626,7 @@ CREATE TABLE `clt_tvd` (
 -- Records of clt_tvd
 -- ----------------------------
 INSERT INTO `clt_tvd` VALUES ('1', '雅洁培训视频1', 'color:#222;font-weight:normal;', '/uploads/20171116/9a5ad67f95b0af4584099e8166795362.jpg', '113', '0', '1', 'admin', '0', '1510124882', '1510909886', '0', '', '雅洁培训视频1-1', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '7', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_9a5ad67f95b0af4584099e8166795362.jpg', 'http://www.baidu.com', '123', '第一期', '雅洁 培训 视频', '0', '/uploads/20171117/e22879b375ae19bbe9ce7937c9b9ebf6.jpg');
-INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '83', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
+INSERT INTO `clt_tvd` VALUES ('2', '雅洁培训视频2', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '85', '0', '1', 'admin', '0', '1510125795', '1510909861', '0', '', '雅洁培训视频2-2', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '6', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第二期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
 INSERT INTO `clt_tvd` VALUES ('3', '雅洁培训视频3', 'color:#222;font-weight:normal;', '/uploads/20171116/4f03d9a5668fd1622f0dd729491fcff1.jpg', '20', '0', '0', 'admin', '0', '1510125795', '0', '0', '', '雅洁培训视频2-3', 'https://v.qq.com/iframe/player.html?vid=h0025yp3dmp&tiny=0&auto=0', '13', '江湖告急市政府刚单身狗返回第三方撒奥拉夫氛围灯SVN多少卫计委是你发的卡刷卡就仿佛，都会投入还是等着你吃撒怒火发但是各位千万', '/uploads/20171116/s_4f03d9a5668fd1622f0dd729491fcff1.jpg', 'http://www.baidu.com', '123', '第三期', '雅洁 培训 视频', '28', '/uploads/20171117/935c4219c466012ddb0584b9d16491ec.jpg');
 
 -- ----------------------------
@@ -4698,8 +4704,8 @@ INSERT INTO `clt_utest` VALUES ('3', '4', '7', '[true,true,true]', '9', '1510566
 INSERT INTO `clt_utest` VALUES ('9', '4', '8', '[true,true]', '6', '1510890209', '[{\"type\":\"1\",\"title\":\"\\u5929\\u5927\\u8fd8\\u662f\\u5730\\u5927\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u5929\",\"answer\":\"0\"},{\"val\":\"\\u5730\",\"answer\":\"0\"},{\"val\":\"\\u4e00\\u6837\\u5927\",\"answer\":\"1\"},{\"val\":\"\\u4e0d\\u77e5\\u9053\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u4eca\\u5929\\u5403\\u4ec0\\u4e48\\uff1f\",\"score\":\"3\",\"input\":[{\"val\":\"\\u996d\",\"answer\":\"1\"},{\"val\":\"\\u7c89\",\"answer\":\"0\"},{\"val\":\"\\u83dc\",\"answer\":\"1\"},{\"val\":\"\\u6c64\",\"answer\":\"0\"}]}]', '雅洁培训试题3', '第三期', '1');
 INSERT INTO `clt_utest` VALUES ('10', '4', '13', '[true,false,false]', '66', '1511407403', '[{\"type\":\"1\",\"title\":\"\\u611f\\u67d3\\u4ed6\\u4eba\\u5bb6\\u5ead\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/c1f4a495b2eb2cc374bb1a3e3f352382.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/2462d328ce20fd5b5920733f0cf74d80.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/974d71438c4395e5740ac2c6fdd0dac0.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/e32113d72fca822c6b5225f1d558e908.png\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u53d1\\u7684\\u597d\\u5730\\u65b9\\u597d\\u597d\\u5e72\\u6d3b\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/0eaa669398c7af0a446c2749667af95e.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/8613cd042ec0e47c05883af11252e1e2.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/98aee1e8c758324aaec80f0ed9342fa5.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/908de62865ec927328a06e03ae99a72f.png\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u516c\\u5e03\\u5907\\u4efd\",\"score\":\"66\",\"input\":[{\"val\":\"\\u53d1\\u7ed9\",\"answer\":\"1\"},{\"val\":\"\\u5927\\u9505\\u996d\",\"answer\":\"0\"}]}]', '雅洁测试', '第十期', '2');
 INSERT INTO `clt_utest` VALUES ('11', '4', '13', '[true,true,true]', '198', '1511407819', '[{\"type\":\"1\",\"title\":\"\\u611f\\u67d3\\u4ed6\\u4eba\\u5bb6\\u5ead\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/c1f4a495b2eb2cc374bb1a3e3f352382.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/2462d328ce20fd5b5920733f0cf74d80.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/974d71438c4395e5740ac2c6fdd0dac0.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/e32113d72fca822c6b5225f1d558e908.png\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u53d1\\u7684\\u597d\\u5730\\u65b9\\u597d\\u597d\\u5e72\\u6d3b\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/0eaa669398c7af0a446c2749667af95e.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/8613cd042ec0e47c05883af11252e1e2.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/98aee1e8c758324aaec80f0ed9342fa5.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/908de62865ec927328a06e03ae99a72f.png\",\"answer\":\"1\"}]},{\"type\":\"3\",\"title\":\"\\u516c\\u5e03\\u5907\\u4efd\",\"score\":\"66\",\"input\":[{\"val\":\"\\u53d1\\u7ed9\",\"answer\":\"0\"},{\"val\":\"\\u5927\\u9505\\u996d\",\"answer\":\"1\"}]}]', '雅洁测试', '第十期', '1');
-INSERT INTO `clt_utest` VALUES ('12', '5', '13', '[true,true,true]', '50', '1511407819', '[{\"type\":\"1\",\"title\":\"\\u611f\\u67d3\\u4ed6\\u4eba\\u5bb6\\u5ead\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/c1f4a495b2eb2cc374bb1a3e3f352382.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/2462d328ce20fd5b5920733f0cf74d80.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/974d71438c4395e5740ac2c6fdd0dac0.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/e32113d72fca822c6b5225f1d558e908.png\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u53d1\\u7684\\u597d\\u5730\\u65b9\\u597d\\u597d\\u5e72\\u6d3b\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/0eaa669398c7af0a446c2749667af95e.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/8613cd042ec0e47c05883af11252e1e2.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/98aee1e8c758324aaec80f0ed9342fa5.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/908de62865ec927328a06e03ae99a72f.png\",\"answer\":\"1\"}]},{\"type\":\"3\",\"title\":\"\\u516c\\u5e03\\u5907\\u4efd\",\"score\":\"66\",\"input\":[{\"val\":\"\\u53d1\\u7ed9\",\"answer\":\"0\"},{\"val\":\"\\u5927\\u9505\\u996d\",\"answer\":\"1\"}]}]', '雅洁测试', '第十期', '1');
-INSERT INTO `clt_utest` VALUES ('13', '4', '13', '[false,false,true]', '66', '1511418214', '[{\"type\":\"1\",\"title\":\"\\u611f\\u67d3\\u4ed6\\u4eba\\u5bb6\\u5ead\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/c1f4a495b2eb2cc374bb1a3e3f352382.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/2462d328ce20fd5b5920733f0cf74d80.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/974d71438c4395e5740ac2c6fdd0dac0.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/e32113d72fca822c6b5225f1d558e908.png\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u53d1\\u7684\\u597d\\u5730\\u65b9\\u597d\\u597d\\u5e72\\u6d3b\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/0eaa669398c7af0a446c2749667af95e.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/8613cd042ec0e47c05883af11252e1e2.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/98aee1e8c758324aaec80f0ed9342fa5.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/908de62865ec927328a06e03ae99a72f.png\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u516c\\u5e03\\u5907\\u4efd\",\"score\":\"66\",\"input\":[{\"val\":\"\\u53d1\\u7ed9\",\"answer\":\"0\"},{\"val\":\"\\u5927\\u9505\\u996d\",\"answer\":\"1\"}]}]', '雅洁测试', '第十期', '1');
+INSERT INTO `clt_utest` VALUES ('12', '10', '13', '[true,true,true]', '50', '1511407819', '[{\"type\":\"1\",\"title\":\"\\u611f\\u67d3\\u4ed6\\u4eba\\u5bb6\\u5ead\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/c1f4a495b2eb2cc374bb1a3e3f352382.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/2462d328ce20fd5b5920733f0cf74d80.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/974d71438c4395e5740ac2c6fdd0dac0.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/e32113d72fca822c6b5225f1d558e908.png\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u53d1\\u7684\\u597d\\u5730\\u65b9\\u597d\\u597d\\u5e72\\u6d3b\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/0eaa669398c7af0a446c2749667af95e.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/8613cd042ec0e47c05883af11252e1e2.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/98aee1e8c758324aaec80f0ed9342fa5.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/908de62865ec927328a06e03ae99a72f.png\",\"answer\":\"1\"}]},{\"type\":\"3\",\"title\":\"\\u516c\\u5e03\\u5907\\u4efd\",\"score\":\"66\",\"input\":[{\"val\":\"\\u53d1\\u7ed9\",\"answer\":\"0\"},{\"val\":\"\\u5927\\u9505\\u996d\",\"answer\":\"1\"}]}]', '雅洁测试', '第十期', '2');
+INSERT INTO `clt_utest` VALUES ('13', '10', '13', '[false,false,true]', '66', '1511418214', '[{\"type\":\"1\",\"title\":\"\\u611f\\u67d3\\u4ed6\\u4eba\\u5bb6\\u5ead\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/c1f4a495b2eb2cc374bb1a3e3f352382.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/2462d328ce20fd5b5920733f0cf74d80.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/974d71438c4395e5740ac2c6fdd0dac0.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/e32113d72fca822c6b5225f1d558e908.png\",\"answer\":\"0\"}]},{\"type\":\"2\",\"title\":\"\\u53d1\\u7684\\u597d\\u5730\\u65b9\\u597d\\u597d\\u5e72\\u6d3b\",\"score\":\"66\",\"input\":[{\"val\":\"\\/uploads\\/20171123\\/0eaa669398c7af0a446c2749667af95e.png\",\"answer\":\"0\"},{\"val\":\"\\/uploads\\/20171123\\/8613cd042ec0e47c05883af11252e1e2.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/98aee1e8c758324aaec80f0ed9342fa5.png\",\"answer\":\"1\"},{\"val\":\"\\/uploads\\/20171123\\/908de62865ec927328a06e03ae99a72f.png\",\"answer\":\"0\"}]},{\"type\":\"3\",\"title\":\"\\u516c\\u5e03\\u5907\\u4efd\",\"score\":\"66\",\"input\":[{\"val\":\"\\u53d1\\u7ed9\",\"answer\":\"0\"},{\"val\":\"\\u5927\\u9505\\u996d\",\"answer\":\"1\"}]}]', '雅洁测试', '第十期', '1');
 
 -- ----------------------------
 -- Table structure for clt_video

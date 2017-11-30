@@ -8,7 +8,8 @@ use app\client\model\Product as ProductModel;
 use app\client\model\Client;
 class Product extends Faters
 {
-    public function _initialize(){
+    public function _initialize()
+    {
         parent::_initialize();
         $client=Client::get(UID);
         if(!$client->phone){
@@ -16,7 +17,6 @@ class Product extends Faters
         }
         $product = new ProductModel();
         $product->get_pro_zd($client->phone);
-        define('UID',1);
     }
 
     //产品列表
@@ -33,6 +33,24 @@ class Product extends Faters
         $token = $request->token();
         $this->assign('token',$token);
         return $this->fetch();
+    }
+
+    public function get_region(){  //三级分类
+        if(is_file('region.json')){
+            $region= file_get_contents('region.json');
+            return $region;
+        }else{
+            $list = getLocation('region',1,1);
+            foreach($list as $k=>$v){
+                $list[$k]['city'] = getLocation('region',$v['id'],2);
+                foreach($list[$k]['city'] as $key=>$val){
+                    $list[$k]['city'][$key]['area'] = getLocation('region',$val['id'],3);
+                }
+            }
+            $region = json_encode($list);
+            file_put_contents('region.json',$region);
+            return $region;
+        }
     }
 
     //删除
@@ -59,10 +77,12 @@ class Product extends Faters
         if($pro->status!=0){
             $this->error('此产品不可申请维修');
         }
-        return view('',[
-            'token'=>$request->token(),
-            'data'=>$pro
-        ]);
+        $list = $this->get_region();
+        $token = $request->token();
+        $this->assign('list',$list);
+        $this->assign('token',$token);
+        $this->assign('data',$pro);
+        return $this->fetch();
     }
 
 }

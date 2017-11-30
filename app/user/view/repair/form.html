@@ -21,9 +21,8 @@
     <div class="layui-form-item user_id">
         <label class="layui-form-label">跟进门店</label>
         <div class="layui-input-inline">
-            <input type="hidden" name="user_id" id="user_id" value="">
-            <input type="text" name="shopname" id="shopname"
-                   placeholder="未选择" autocomplete="off" class="layui-input">
+            <input type="hidden" name="user_id" id="user_id" value="{$user_id}">
+            <input type="text" name="shopname" value="{$shop}" id="shopname" placeholder="未选择" autocomplete="off" class="layui-input">
         </div>
         <div class="layui-input-inline">
             <div class="layui-btn layui-btn-primary" onclick="select_user()">

@@ -72,7 +72,7 @@
                         <td>图片描述</td>
                         <td>
                             {volist name="$data['images']" id="v"}
-                            <img src="{$v}" width="100" alt="" onclick="show_img('{$v}')">
+                            <img src="__PUBLIC__{$v}" width="100" alt="" onclick="show_img('{$v}')" style="margin-right: 5px;"/>
                             {/volist}
                         </td>
                     </tr>
@@ -118,7 +118,7 @@
 </div>
 
 <div id="tong" class="hide">
-    <img src="images/tong.jpg">
+    <img src=""/>
 </div>
 {if condition="in_array($data['status']['id'],[0,-1])"}
 {include file="repair/script"/}
@@ -128,8 +128,15 @@
         $ = layui.jquery;
         var element = layui.element;
     })
+</script>
+{/if}
+<script type="text/javascript">
+    layui.use(['layer','element'], function(){
+        $ = layui.jquery;
+        var element = layui.element;
+    })
     function show_img(img) {
-        $('#ton').children('img').attr('src',img);
+        $('#tong').find('img').attr('src','__PUBLIC__'+img);
         layer.open({
             type: 1,
             title: false,
@@ -141,4 +148,3 @@
         });
     }
 </script>
-{/if}

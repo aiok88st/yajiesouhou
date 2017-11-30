@@ -14,8 +14,8 @@ class Fater extends Controller{
         define('WX_APPSECRET', $this->appsecret);
         $member_id=session('member_id');
         //定义用户常量
-        define('UID', 1);//用户ID
-//        define('UID', $member_id);//用户ID
+//        define('UID', 1);//用户ID
+        define('UID', $member_id);//用户ID
     }
 
     //base64上传
@@ -48,7 +48,7 @@ class Fater extends Controller{
         $res=json_decode($res,true);
         if(isset($res['subscribe'])){
             if($res['subscribe']!=1){
-                return ['code'=>0,'msg'=>'请先关注公众号"诗尼曼家居"'];
+                return ['code'=>0,'msg'=>'请先关注公众号"雅洁五金"'];
             }
         }
         return ['code'=>1];

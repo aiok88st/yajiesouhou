@@ -57,7 +57,7 @@ class Weixin extends Controller
     }
     public function oauth(Client $client) {
         if (UID != 0) {
-            $this->redirect('index/index');
+            $this->redirect('client/index');
 
         }
         $token = $this->access_token();

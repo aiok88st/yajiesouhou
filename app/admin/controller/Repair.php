@@ -58,8 +58,6 @@ class Repair extends Common{
         $data=$order::get($id);
         if(!$data)$this->error('您查询的数据不存在');
         if($data['images'])  $data['images']=unserialize($data['images']);
-        //
-
         $p=$region->where('pid',1)->select();
         $c=$region->where('pid',$data['province']['id'])->select();
         $a=$region->where('pid',$data['city']['id'])->select();

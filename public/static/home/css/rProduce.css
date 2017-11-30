@@ -158,4 +158,193 @@ body {
   text-indent: 0.45rem;
   font-weight: bold; }
 
+#quickRepair {
+  position: fixed;
+  top: 0%;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: #F6F4F8;
+  z-index: 10; }
+  #quickRepair .repairBox {
+    width: 100%;
+    background-color: white; }
+    #quickRepair .repairBox .repairIn {
+      margin-top: 0.2rem; }
+      #quickRepair .repairBox .repairIn ul li .type {
+        width: 100%;
+        height: 0.8rem;
+        position: relative; }
+        #quickRepair .repairBox .repairIn ul li .type select {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          border: 0; }
+        #quickRepair .repairBox .repairIn ul li .type p {
+          width: 100%;
+          margin: 0 auto;
+          font-size: 0.28rem;
+          line-height: 0.8rem;
+          position: relative;
+          text-indent: 0.2rem;
+          color: #020202; }
+        #quickRepair .repairBox .repairIn ul li .type span {
+          font-size: 0.28rem;
+          line-height: 0.8rem;
+          position: absolute;
+          right: 0.5rem;
+          top: 0; }
+        #quickRepair .repairBox .repairIn ul li .type img {
+          position: absolute;
+          right: 0.2rem;
+          top: 0.28rem;
+          height: 0.26rem; }
+      #quickRepair .repairBox .repairIn ul li {
+        width: 93.33%;
+        margin: 0 auto;
+        position: relative;
+        font-size: 0.32rem;
+        border-bottom: 1px solid #e2e2e2; }
+        #quickRepair .repairBox .repairIn ul li p {
+          width: 25%;
+          top: 0;
+          margin: 0 auto;
+          font-size: 0.28rem;
+          line-height: 0.8rem;
+          position: absolute;
+          text-indent: 0.2rem;
+          color: #020202; }
+        #quickRepair .repairBox .repairIn ul li textarea {
+          display: block;
+          resize: none;
+          width: 70%;
+          margin-left: 25%;
+          padding: 0.2rem 0;
+          height: 1.6rem;
+          border: 0px;
+          line-height: 0.4rem;
+          font-size: 0.28rem;
+          color: #0b1b27; }
+        #quickRepair .repairBox .repairIn ul li textarea::-ms-input-placeholder {
+          color: #c6c7cc; }
+        #quickRepair .repairBox .repairIn ul li textarea::-webkit-input-placeholder {
+          color: #c6c7cc; }
+        #quickRepair .repairBox .repairIn ul li textarea::-moz-placeholder {
+          color: #c6c7cc; }
+        #quickRepair .repairBox .repairIn ul li input {
+          display: block;
+          resize: none;
+          width: 70%;
+          margin-left: 25%;
+          border: 0px;
+          font-size: 0.28rem;
+          color: #0b1b27;
+          line-height: 0.8rem; }
+        #quickRepair .repairBox .repairIn ul li input::-ms-input-placeholder {
+          color: #c6c7cc; }
+        #quickRepair .repairBox .repairIn ul li input::-webkit-input-placeholder {
+          color: #c6c7cc; }
+        #quickRepair .repairBox .repairIn ul li input::-moz-placeholder {
+          color: #c6c7cc; }
+        #quickRepair .repairBox .repairIn ul li img {
+          position: absolute;
+          top: 0.23rem;
+          height: 0.34rem;
+          right: 0.2rem; }
+      #quickRepair .repairBox .repairIn ul li:last-child {
+        border: 0; }
+      #quickRepair .repairBox .repairIn .imgOut {
+        width: 100%;
+        background-color: #F6F4F8; }
+      #quickRepair .repairBox .repairIn .imgUp {
+        width: 86%;
+        margin: 0 auto;
+        padding: 0.4rem 0; }
+        #quickRepair .repairBox .repairIn .imgUp .upBtn {
+          width: 23%;
+          margin: 0% 1%;
+          position: relative; }
+          #quickRepair .repairBox .repairIn .imgUp .upBtn img {
+            width: 100%; }
+          #quickRepair .repairBox .repairIn .imgUp .upBtn input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            height: 100%; }
+          #quickRepair .repairBox .repairIn .imgUp .upBtn a {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            width: 25%; }
+            #quickRepair .repairBox .repairIn .imgUp .upBtn a img {
+              width: 100%; }
+          #quickRepair .repairBox .repairIn .imgUp .upBtn .sameView {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent !important; }
+        #quickRepair .repairBox .repairIn .imgUp .upBtn0 {
+          margin-right: 0%; }
+        #quickRepair .repairBox .repairIn .imgUp .upBtn:last-child {
+          margin-right: 0%; }
+  #quickRepair .st {
+    padding-bottom: 0.4rem; }
+    #quickRepair .st button {
+      display: block;
+      width: 93.33%;
+      margin: 0 auto;
+      height: 0.8rem;
+      font-size: 0.3rem;
+      background-color: #6d1a7a;
+      border-radius: 4px;
+      color: white;
+      margin-top: 0.4rem; }
+
+#clipArea {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20; }
+  #clipArea button {
+    width: 50%;
+    height: 0.8rem;
+    background-color: #6d1a7a;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    font-size: 0.3rem;
+    left: 25%;
+    bottom: 2%;
+    z-index: 100; }
+
+#showAll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; }
+  #showAll img {
+    width: 200px;
+    height: 200px; }
+
 /*# sourceMappingURL=rProduce.css.map */

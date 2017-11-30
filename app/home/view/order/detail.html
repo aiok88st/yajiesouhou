@@ -1,0 +1,317 @@
+{extend name="common/header" /}
+{block name="headers"}
+<title>订单详情</title>
+<link rel="stylesheet" href="__HOME__/css/indexOrOrder.css" />
+<link rel="stylesheet" href="__HOME__/css/order.css" />
+<link rel="stylesheet" href="__HOME__/css/rDetails.css" />
+<script type="text/javascript" src="__HOME__/js/photoClip/jquery-2.1.1.min.js" type="text/javascript"></script>
+<style>
+    #orderDetails .addr ul li:nth-child(2) {
+        width: 92%;
+        margin: 0 auto;
+        color: #666666;
+        padding: 0.2rem 0;
+        background-size: auto 0.5rem; }
+</style>
+{/block}
+{block name="main"}
+<div id="orderDetails">
+    <div class="pHead">
+        <a class="backP" href="{:url('order/index')}"><img src="__HOME__/img/back.png"/></a>
+        <p>订单详情</p>
+    </div>
+    <div class="rOrderBox">
+        <div class="code">
+            <ul>
+                <li>
+                    <p>订单编号：{$data.id}</p>
+                </li>
+                <li>
+                    <p>订单状态：{$data['status']['name']}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="myProduce">
+            <div class="produceBox">
+                <div class="floatl">
+                    <img src="__PUBLIC__{$data.pro_id.img}" />
+                </div>
+                <div class="floatl">
+                    <p>{$data.pro_id.title}</p>
+                    <p>{$data.pro_id.name}</p>
+                    <p>购买日期：{$data.pro_id.sale_date}</p>
+                </div>
+                <div class="clearl"></div>
+            </div>
+        </div>
+
+        <div class="deci">
+            <ul>
+                <li>
+                    <p>故障描述</p>
+                </li>
+                <li>
+                    <p>{$data.msg}</p>
+                </li>
+                {if condition="$img neq ''"}
+                <li>
+                    <div class="rOut">
+                        {volist name="$img" id="v"}
+                        <div class="rImg floatl">
+                            <img src="__PUBLIC__{$v}" />
+                        </div>
+                        {/volist}
+
+                        <div class="clearl"></div>
+                    </div>
+                </li>
+                {/if}
+            </ul>
+        </div>
+        <div class="server">
+            <div class="title" >
+                <p style="float: left;">服务单信息</p>
+                {if condition="($data['status']['id'] eq 1 || $data['status']['id'] eq 3) and ($data['type']['id']  eq 1) "}
+                <p style="float: right;color: #999999;font-size: 0.24rem;"><a href="{:url('order/express')}?id={$data.id}&status={$data.status.id}">查看物流</a></p>
+                {/if}
+            </div>
+            <div style="clear: both"></div>
+            <ul>
+                <li>
+                    <span>维修方式：</span>
+                    {if condition="$type eq 1"}
+                    <p class="p1">快递至维修点  </p>
+                    {else/}
+                    <p class="p1">上门服务  </p>
+                    {/if}
+
+                </li>
+                <li>
+                    <span>联系人：</span>
+                    <p class="p1">{$data['name']}</p>
+                </li>
+                <li>
+                    <span>联系电话：</span>
+                    <p class="p1">{$data['phone']}</p>
+                </li>
+                <li>
+                    <span>地址：</span>
+                    <p>{$data['province']['name']} {$data['city']['name']} {$data['zone']['name']} {$data['addra']}</p>
+                </li>
+            </ul>
+        </div>
+        {if condition="$data['status']['id'] gt 0"}
+        <div class="server">
+            <div class="title">
+                <p>跟进门店</p>
+            </div>
+            <ul>
+                <li>
+                    <span>门店：</span>
+                    <p class="p1">{$net.title}</p>
+                </li>
+            </ul>
+        </div>
+        {/if}
+        <div class="btnBox">
+            <ul>
+                {if condition="$data['status']['id'] eq 0"}
+                <li>
+                    <button id="exchange">审核不通过</button>
+                </li>
+                <li>
+                    <button id="tong">审核通过</button>
+                </li>
+                {elseif condition="$data['status']['id'] eq 1"}
+                <li>
+                    <button onclick="changeS()">去维修</button>
+                </li>
+                {elseif condition="$data['status']['id'] eq 2"}
+                <li>
+                    {if condition="$data.type.id eq 1"}
+                    <button id="write">维修完成</button>
+                    {else/}
+                    <button onclick="wan()">维修完成</button>
+                    {/if}
+                </li>
+                {else/}
+                <li></li>
+                {/if}
+            </ul>
+            <div class="floatr"></div>
+        </div>
+    </div>
+</div>
+<div id="wl">
+    <div class="pHead">
+        <a class=" backP"><img src="__HOME__/img/back.png"/></a>
+        <p>填写物流</p>
+    </div>
+    <div class="ex">
+        <ul>
+            <li>
+                <input type="search" id="u_logistics" value="" placeholder="请输入物流公司"/>
+                <p>物流公司：</p>
+            </li>
+            <li>
+                <input type="search" id="u_logistics_number" value="" placeholder="填写物流订单号"/>
+                <p>物流单号：</p>
+            </li>
+        </ul>
+    </div>
+    <div class="st">
+        <button onclick="addEXP()">提交</button>
+    </div>
+</div>
+<div id="problem">
+    <div class="pHead">
+        <a class=" backP"><img src="__HOME__/img/back.png"/></a>
+        <p>不通过原因</p>
+    </div>
+    <div class="problems">
+        <textarea placeholder="请输入不通过原因" id="msg"></textarea>
+    </div>
+    <div class="st">
+        <button onclick="notong()">提交</button>
+    </div>
+</div>
+<div id="tongNet">
+    <div class="pHead">
+        <a class=" backP"><img src="__HOME__/img/back.png"/></a>
+        <p>跟进门店</p>
+    </div>
+    <div class="typeOut">
+        <div class="type">
+            <p>选择跟进门店</p>
+            <span>
+                {if condition="$user_id neq ''"}{$net.title}{/if}
+            </span>
+            <select id="user_id">
+                {volist name="list" id="vo"}
+                <option value="{$vo.id}" {if condition="$vo.id eq $user_id"}selected="selected"{/if}>{$vo.title}</option>
+                {/volist}
+            </select>
+            <img src="__HOME__/img/moreOrder.png" />
+        </div>
+    </div>
+    <div class="st">
+        <button onclick="tong()">提交</button>
+    </div>
+    <script>
+        $('.type select').change(function(){
+            $(this).prev('span').html($(this).children('option:selected').html());
+        });
+    </script>
+</div>
+
+<input type="hidden" id="or_id" value="{$data['id']}">
+<div id="clipArea" style="display: none;">
+    <button id="clipBtn">截取</button>
+</div>
+<div id="showAll" style="display: none;">
+    <img src="" />
+</div>
+{/block}
+
+{block name="footer"}
+{include file="common/footer" /}
+<script type="text/javascript" src="__HOME__/js/photoClip/iscroll-zoom.js"></script>
+<script type="text/javascript" src="__HOME__/js/photoClip/hammer.js"></script>
+<script type="text/javascript" src="__HOME__/js/photoClip/jquery.photoClip.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/rDetails.js" ></script>
+
+<script type="text/javascript">
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+
+    function notong(){
+        var audit = $('#msg').val();
+        var or_id = $('#or_id').val();
+            $.ajax({
+                url:"{:url('order/noTong')}",
+                type:"post",
+                data:{"id":or_id,"audit":audit},
+                success:function(res){
+                    if(res.code == 1){
+                        layer.msg(res.msg,{time:3000});
+                        window.location.href=res.url;
+                    }else{
+                        layer.msg(res.msg,{time:3000});
+                    }
+                }
+            });
+    }
+
+    function tong(){
+        var user_id = $('#user_id').val();
+        var or_id = $('#or_id').val();
+        $.ajax({
+            url:"{:url('order/tong')}",
+            type:'post',
+            data:{"id":or_id,"user_id":user_id},
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg,{time:3000});
+                    window.location.href=re.url;
+                }else{
+                    layer.msg(re.msg,{time:3000});
+                }
+            }
+        });
+    }
+
+    function changeS(){
+        var or_id = $('#or_id').val();
+        $.ajax({
+            url:"{:url('order/changeStatus')}",
+            type:'post',
+            data:{"id":or_id},
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg,{time:3000});
+                    window.location.href=re.url;
+                }else{
+                    layer.msg(re.msg,{time:3000});
+                }
+            }
+        });
+    }
+
+    function wan(){
+        var or_id = $('#or_id').val();
+        $.ajax({
+            url:"{:url('order/changeSwan')}",
+            type:'post',
+            data:{"id":or_id},
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg,{time:3000});
+                    window.location.href=re.url;
+                }else{
+                    layer.msg(re.msg,{time:3000});
+                }
+            }
+        });
+    }
+
+    function addEXP(){
+        var or_id = $('#or_id').val();
+        var u_logistics = $('#u_logistics').val();
+        var u_logistics_number = $('#u_logistics_number').val();
+        $.ajax({
+            url:"{:url('order/wanC')}",
+            type:'post',
+            data:{"id":or_id,"u_logistics":u_logistics,"u_logistics_number":u_logistics_number},
+            success:function(re){
+                if(re.code == 1){
+                    layer.msg(re.msg,{time:3000});
+                    window.location.href=re.url;
+                }else{
+                    layer.msg(re.msg,{time:3000});
+                }
+            }
+        });
+    }
+</script>
+{/block}

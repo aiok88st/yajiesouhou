@@ -69,6 +69,8 @@ class Repair extends Common
     public function show(Request $request,Order $order,Region $region,OrderLog $log){  //订单详情
         $id=$request->param()['id'];
         $data=$order::get($id);
+        $shop = $data->user_id;
+        $uid = db('order')->where('id',$id)->field('user_id')->find();
         if(!$data)$this->error('您查询的数据不存在');
         if($data['images'])  $data['images']=unserialize($data['images']);
         $p=$region->where('pid',1)->select();
@@ -80,7 +82,9 @@ class Repair extends Common
             'p'=>$p,
             'c'=>$c,
             'a'=>$a,
-            'log_list'=>$log_list
+            'log_list'=>$log_list,
+            'shop'=>$shop['shopame'],
+            'user_id'=>$uid['user_id']
         ]);
     }
 
@@ -95,22 +99,17 @@ class Repair extends Common
     }
 
     public function didList(Request $request,Network $network){  //获取门店列表
-        $name=$request->param('title','');
-        $phone=$request->param('tle','');
-        $where=[
-            'province'=>$request->param()['province'],
-            'city'=>$request->param()['city'],
-            'area'=>$request->param()['area']
-        ];
-        if(!empty($name))$where['title']=['LIKE',"%{$name}%"];
-        if(!empty($phone))$where['tle']=['LIKE',"%{$phone}%"];
-        $page =input('page')?input('page'):1;
-        $pageSize =input('limit')?input('limit'):config('pageSize');
-        $list=$network->where($where)
-            ->order('id desc')
-            ->paginate(['list_rows'=>$pageSize,'page'=>$page])
-            ->toArray();
-        return $result = ['code'=>0,'msg'=>'获取成功!','data'=>$list['data'],'count'=>$list['total'],'rel'=>1];
+        if (request()->isPost()){
+            $where['did']=['=',session('sid')];
+            $page =input('page')?input('page'):1;
+            $pageSize =input('limit')?input('limit'):config('pageSize');
+            $list=$network->where($where)
+                ->order('id desc')
+                ->paginate(['list_rows'=>$pageSize,'page'=>$page])
+                ->toArray();
+            return $result = ['code'=>0,'msg'=>'获取成功!','data'=>$list['data'],'count'=>$list['total'],'rel'=>1];
+        }
+        return $this->fetch('script');
     }
 
     public function get_region(Request $request,Region $region){  //三级分类
@@ -247,10 +246,10 @@ class Repair extends Common
         $result=$express->getOrderTracesByJson($code['code'], $num);
         $result=json_decode($result,true);
 
-        $Traces= '[{"AcceptTime": "2014/06/25 08:05:37", "AcceptStation": "正在派件..(派件人:邓裕富,电话:18718866310)[深圳 市]", "Remark": null}, {"AcceptTime": "2014/06/25 04:01:28", "AcceptStation": "快件在 深圳集散中心 ,准备送往下一站 深圳 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 01:41:06", "AcceptStation": "快件在 深圳集散中心 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/24 20:18:58", "AcceptStation": "已收件[深圳市]", "Remark": null}, {"AcceptTime": "2014/06/24 20:55:28", "AcceptStation": "快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 10:23:03", "AcceptStation": "派件已签收[深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 10:23:03", "AcceptStation": "签收人是：已签收[深圳市]", "Remark": null}]';
-        $Traces=json_decode($Traces,true);
-        $Traces=array_reverse($Traces, true);
-//        $Traces=array_reverse($result['Traces'], true);
+//        $Traces= '[{"AcceptTime": "2014/06/25 08:05:37", "AcceptStation": "正在派件..(派件人:邓裕富,电话:18718866310)[深圳 市]", "Remark": null}, {"AcceptTime": "2014/06/25 04:01:28", "AcceptStation": "快件在 深圳集散中心 ,准备送往下一站 深圳 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 01:41:06", "AcceptStation": "快件在 深圳集散中心 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/24 20:18:58", "AcceptStation": "已收件[深圳市]", "Remark": null}, {"AcceptTime": "2014/06/24 20:55:28", "AcceptStation": "快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 10:23:03", "AcceptStation": "派件已签收[深圳市]", "Remark": null}, {"AcceptTime": "2014/06/25 10:23:03", "AcceptStation": "签收人是：已签收[深圳市]", "Remark": null}]';
+//        $Traces=json_decode($Traces,true);
+//        $Traces=array_reverse($Traces, true);
+        $Traces=array_reverse($result['Traces'], true);
         $this->assign('Traces',$Traces);
         return $this->fetch();
     }

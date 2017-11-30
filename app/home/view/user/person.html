@@ -43,25 +43,25 @@
             <div class="myOrder">
                 <div class="moreOrder">
                     <p>查看更多</p>
-                    <a href="###" >保修进度</a>
+                    <a href="{:url('Order/index')}" >保修进度</a>
                 </div>
                 <div class="orderBox">
                     <div class="orders floatl">
-                        <a href="order.html">
+                        <a href="{:url('Order/index')}?status=1">
                             <img src="__HOME__/img/repair01.png" />
                             <p>待维修</p>
                             <span>{$order.num1}</span>
                         </a>
                     </div>
                     <div class="orders floatl">
-                        <a href="order.html">
+                        <a href="{:url('Order/index')}?status=2">
                             <img src="__HOME__/img/repair02.png" />
                             <p>维修中</p>
                             <span>{$order.num2}</span>
                         </a>
                     </div>
                     <div class="orders floatl">
-                        <a href="order.html">
+                        <a href="{:url('Order/index')}?status=3">
                             <img src="__HOME__/img/repair03.png" />
                             <p>已完成</p>
                             <span>{$order.num3}</span>

@@ -82,6 +82,67 @@ class Order extends Model
         }
     }
 
+    public function getProIdAttr($value)
+    {
+        $pro=Product::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$pro['model']['model'],
+            'img'=>$pro['model']['img'],
+            'title'=>$pro['model']['name'],
+            'sale_date'=>$pro['sale_date']
+        ];
+    }
+    public function getTypeAttr($value){
+        $attr=[
+            1=>'快递到维修点',
+            2=>'上门服务'
+        ];
+        return ['id'=>$value,'name'=>$attr[$value]];
+    }
+    public function getProvinceAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+    public function getCityAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+
+    public function getZoneAttr($value){
+        $p=Region::get($value);
+        return [
+            'id'=>$value,
+            'name'=>$p['name']
+        ];
+    }
+    public function getUserIdAttr($value){
+        $dis=Network::get($value);
+        return [
+            'shopame'=>$dis['title'],
+            'dis'=>$dis['did'],
+        ];
+    }
+    public function getStatusAttr($value){
+        $status=[
+            '-1'=>'审核不通过',
+            '0'=>'审核中',
+            '1'=>'待维修',
+            '2'=>'维修中',
+            '3'=>'已完成',
+        ];
+        return [
+            'id'=>$value,
+            'name'=>$status[$value]
+        ];
+    }
+
     //改变产品表状态
     public function changeS($cid){
         $ps['status']=1;
@@ -101,24 +162,10 @@ class Order extends Model
                 return rejson(0,$this->getError(),true);
             }
             $this->changeS($param['pro_id']);
-            return rejson(1,'申请成功，请耐心等待审核',true);
+            return rejson(1,'申请成功，请耐心等待审核',true,url('client/Order/index'));
         }catch (Exception $e){
             return rejson(0,$e->getMessage(),true);
         }
     }
 
-    public function edit($param){
-        try{
-
-            $result=$this->allowField(true)->validate($this->veri)->update($param);
-            if(false === $result){
-                // 验证失败 输出错误信息
-                return rejson(0,$this->getError(),true);
-            }
-
-            return rejson(1,'申请成功，请耐心等待审核',true);
-        }catch (Exception $e){
-            return rejson(0,$e->getMessage(),true);
-        }
-    }
 }

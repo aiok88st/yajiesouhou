@@ -7,8 +7,8 @@ use think\Request;
 use app\client\model\Client;
 
 class Weixin extends Controller
-{   protected $appid="wxc058309e9b90cd8e";  //微信APPID
-    protected $appsecret="8179529951e7baa75fe45bd2dbec4abc";  //微信密钥
+{   protected $appid="wxe51333b9199fa330";  //微信APPID
+    protected $appsecret="5b5334a627ccc6a461005dfb89e7aaa9";  //微信密钥
     public function _initialize()
     {
         $member_id=session('user')['user_id'];
@@ -16,10 +16,11 @@ class Weixin extends Controller
     }
     public function index() {
         if (UID != 0) {
-            $this->redirect('client/index');
+            $this->redirect('client/client/index');
         }
 
-        $redirect_uri = urlencode('http://'.$_SERVER['HTTP_HOST'].__ROOT__.'/index/Weixin/oauth');
+//        $redirect_uri = urlencode('http://'.$_SERVER['HTTP_HOST'].__ROOT__.'/index/Weixin/oauth');
+        $redirect_uri = urlencode('http://archie.hengdikeji.com/yajie/index.php/client/Weixin/oauth');
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->appid.'&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_userinfo&state=state#wechat_redirect';
         header('location:'.$url);
     }
@@ -57,15 +58,14 @@ class Weixin extends Controller
     }
     public function oauth(Client $client) {
         if (UID != 0) {
-            $this->redirect('client/index');
+            $this->redirect('client/client/index');
 
         }
         $token = $this->access_token();
 
         $user_info = (array)$this->snsapi_userinfo($token);
-
         if(!$user_info['openid']){
-            $this->redirect('Weixin/index');
+            $this->redirect('client/Weixin/index');
         }
         //检查是否已经存在
         $res = $client->where(array('open_id' => $user_info['openid']))->find();
@@ -86,7 +86,7 @@ class Weixin extends Controller
                 'open_face'=>$user_info['headimgurl'],
             ];
             session('user',$open_info);
-            $this->redirect('client/index');
+            $this->redirect('client/client/index');
         }else {
             //如果不存在,则记录进行跳转绑定已经会员或注册新会员
 
@@ -110,7 +110,7 @@ class Weixin extends Controller
                 'open_face' => $user_info['headimgurl']
             );
             session('user',$open_info);
-            $this->redirect('client/index');
+            $this->redirect('client/client/index');
         }
     }
     public function filterEmoji($str)

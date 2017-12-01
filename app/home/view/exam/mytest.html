@@ -2,12 +2,22 @@
 {block name="headers"}
 <title>我的测试</title>
 <link rel="stylesheet" href="__HOME__/css/mytest.css" />
+<style>
+    .back_home{
+        position: absolute;
+        right: 0%;
+        top: 0;
+        height: 0.32rem;
+        margin-left: 85%;
+    }
+</style>
 {/block}
 {block name="main"}
 		<div id="order">
 			<div class="pHead">
 				<a class="back backP"><img src="__HOME__/img/back.png"/></a>
 				<p>我的测试</p>
+                <a class="back_home" href="{:url('User/index')}"><img src="__HOME__/img/home.png"/></a>
 			</div>
 
             <template v-if='searchResult.length>0'>

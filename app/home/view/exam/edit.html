@@ -2,12 +2,25 @@
 {block name="headers"}
 <title>我的测试</title>
 <link rel="stylesheet" href="__HOME__/css/exam.css" />
+<style>
+    .choice li{
+        line-height: 50px;
+    }
+    .back_home{
+        position: absolute;
+        right: 0%;
+        top: 0;
+        height: 0.32rem;
+        margin-left: 85%;
+    }
+</style>
 {/block}
 {block name="main"}
 <div id="exam" style="overflow: hidden;">
     <div class="pHead">
         <a class="back backP"><img src="__HOME__/img/back.png"/></a>
         <p>开始测试</p>
+        <a class="back_home" href="{:url('User/index')}"><img src="__HOME__/img/home.png"/></a>
     </div>
     <div class="problemBox">
         <div class="pTitle">

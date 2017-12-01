@@ -40,10 +40,20 @@ class User extends Fater
         $num1=0;
         $num2=0;
         $num3=0;
+        $where['status'] = ['IN',[0,1]];
         foreach($nid as $k=>$v){
-            $num1 += $order->where('user_id',$v['id'])->where('status',1)->count();
+            $num1 += $order->where('user_id',$v['id'])->where($where)->count();
             $num2 += $order->where('user_id',$v['id'])->where('status',2)->count();
             $num3 += $order->where('user_id',$v['id'])->where('status',3)->count();
+        }
+        if($num1>99){
+            $num1 = '99+';
+        }
+        if($num2>99){
+            $num2 = '99+';
+        }
+        if($num3>99){
+            $num3 = '99+';
         }
         $orders = [
             'num1'=>$num1,

@@ -90,7 +90,8 @@ class Order extends Model
             'name'=>$pro['model']['model'],
             'img'=>$pro['model']['img'],
             'title'=>$pro['model']['name'],
-            'sale_date'=>$pro['sale_date']
+            'repair_date'=>$pro['repair_date'],
+            'sale_oulets'=>$pro['sale_oulets'],
         ];
     }
     public function getTypeAttr($value){

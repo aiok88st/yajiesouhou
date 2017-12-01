@@ -14,7 +14,7 @@ class Order extends Model
         'client_id','pro_id','type','name','phone','province','city','zone','addra','msg',
         'status','add_time'
     ];
-    protected $insert=['add_time'];
+//    protected $insert=['add_time'];
     protected $veri=[
         'client_id|用户ID'   => 'require',
         'pro_id|产品ID'   => 'require',
@@ -27,9 +27,9 @@ class Order extends Model
         'addra|详细地址'=>'require|max:255',
         'msg|问题描述'=>'require|min:10',
     ];
-    public function setAddTimeAttr(){
-        return date('Y-m-d H:i:s');
-    }
+//    public function setAddTimeAttr(){
+//        return date('Y-m-d H:i:s');
+//    }
     public function setImagesAttr($value)
     {
         $data=[];
@@ -51,22 +51,25 @@ class Order extends Model
     {
         $name=str_replace('省','',$value);
         $pid=(new Region)->where('name','LIKE',"%{$name}%")->value('id');
+
         return $pid;
     }
     public function setCityAttr($value)
     {
         $name=str_replace(['市','自治区'],'',$value);
+
         $pid=(new Region)
-            ->where('pid',$this->province)
+            ->where('pid',$this->province['id'])
             ->where('name','LIKE',"%{$name}%")
             ->value('id');
+
         return $pid;
     }
     public function setZoneAttr($value)
     {
         $name=str_replace(['县','区'],'',$value);
         $pid=(new Region)
-            ->where('pid',$this->city)
+            ->where('pid',$this->city['id'])
             ->where('name','LIKE',"%{$name}%")
             ->value('id');
         return $pid;
@@ -90,7 +93,8 @@ class Order extends Model
             'name'=>$pro['model']['model'],
             'img'=>$pro['model']['img'],
             'title'=>$pro['model']['name'],
-            'sale_date'=>$pro['sale_date']
+            'repair_date'=>$pro['repair_date'],
+            'sale_oulets'=>$pro['sale_oulets'],
         ];
     }
     public function getTypeAttr($value){
@@ -151,12 +155,14 @@ class Order extends Model
 
 
     public function add($param){
+        //先去查询是否已经申请过
         try{
-            //先去查询是否已经申请过
             $pro=$this->where('pro_id',$param['pro_id'])->count();
+
             if($pro>=1) return rejson(0,'请不要重复申请',false);
 
             $result=$this->allowField(true)->validate($this->veri)->save($param);
+
             if(false === $result){
                 // 验证失败 输出错误信息
                 return rejson(0,$this->getError(),true);

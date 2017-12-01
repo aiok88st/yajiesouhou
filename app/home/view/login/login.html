@@ -43,8 +43,9 @@
 				<li>
 					<input  type="text" name="username" id="username" placeholder="登录账号"/>
 				</li>
-				<li>
+				<li style="position: relative">
 					<input  type="password" name="password" id="password" placeholder="登录密码"  style="background-image: url(__HOME__/img/pwd.png);"/>
+                    <a href="javascript:;" onclick="changeSrc()"><img aid="1" id="eye" src="__HOME__/img/eyes.png" alt="" style="position: absolute;top: 0.25rem;right: 0.4rem;height: 0.3rem;"/></a>
 				</li>
 				<li>
 
@@ -81,6 +82,20 @@
                 }
             }
         });
+    }
+
+    function changeSrc(){
+        var aid = $("#eye").attr('aid');
+        if(aid ==1){
+            $("#eye").attr('src','__HOME__/img/eye.png');
+            $("#eye").attr('aid',2);
+            $("#password").attr('type','text');
+        }else{
+            $("#eye").attr('src','__HOME__/img/eyes.png');
+            $("#eye").attr('aid',1);
+            $("#password").attr('type','password');
+        }
+
     }
 </script>
 

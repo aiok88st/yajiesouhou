@@ -11,13 +11,15 @@ class Client extends Faters   //客户首页
 {
     public function _initialize()
     {
+
         parent::_initialize();
         if(!UID){
-            $this->redirect('weixin/index');
+            $this->redirect('client/weixin/index');
         }
     }
 
     public function index(ClientModel $client){  //首页用来展示个人信息
+
         $data=$client::get(UID);
         $list = $this->get_region();
         $orders = $this->gerOrderNum();
@@ -31,9 +33,19 @@ class Client extends Faters   //客户首页
 
     public function gerOrderNum(){
         $order = db('order');
-        $num1 = $order->where('client_id',UID)->where('status',1)->count();
+        $where['status'] = ['IN',[0,1]];
+        $num1 = $order->where('client_id',UID)->where($where)->count();
         $num2 = $order->where('client_id',UID)->where('status',2)->count();
         $num3 = $order->where('client_id',UID)->where('status',3)->count();
+        if($num1>99){
+            $num1 = '99+';
+        }
+        if($num2>99){
+            $num2 = '99+';
+        }
+        if($num3>99){
+            $num3 = '99+';
+        }
         $orders = [
             'num1'=>$num1,
             'num2'=>$num2,

@@ -106,16 +106,16 @@ body {
         margin-top: 0.1rem; }
       #person .orderBox .orders a span {
         position: absolute;
-        right: 0.2rem;
-        top: 0.32rem;
-        border: 1.5px solid #e35a54;
+        right: 0.39rem;
+        top: 0.14rem;
+        border: 1.5px solid #f00;
         border-radius: 50%;
         font-size: 0.24rem;
         width: 0.35rem;
         height: 0.35rem;
         text-align: center;
-        line-height: 0.35rem;
-        color: #e35a54;
+        line-height: 0.56rem;
+        color: #f00;
         background-color: white;
         transform: scale(0.75); }
 #person .twoChoice {
@@ -273,16 +273,16 @@ body {
 
 #person .orderBox .orders a span {
   position: absolute;
-  right: 0.5rem;
-  top: 0.2rem;
-  border: 1.5px solid #e35a54;
+  right: 0.39rem;
+  top: 0.14rem;
+  border: 1.5px solid #f00;
   border-radius: 50%;
   font-size: 0.24rem;
   width: 0.55rem;
   height: 0.55rem;
   text-align: center;
-  line-height: 0.55rem;
-  color: #e35a54;
+  line-height: 0.56rem;
+  color: #f00;
   background-color: white;
   transform: scale(0.75); }
 

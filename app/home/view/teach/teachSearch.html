@@ -60,6 +60,13 @@
     .clistIn{
         overflow-x: scroll;
     }
+    .back_home{
+        position: absolute;
+        right: 0%;
+        top: 0;
+        height: 0.32rem;
+        margin-left: 85%;
+    }
 </style>
 <script>
     $(function(){
@@ -93,6 +100,7 @@
 			<div class="pHead">
 				<a class="back backP"><img src="__HOME__/img/back.png"/></a>
 				<p>培训视频</p>
+                <a class="back_home" href="{:url('User/index')}"><img src="__HOME__/img/home.png"/></a>
 			</div>
 			<div class="search">
 				<a href="{:url('teach/teachHistory')}">输入关键词</a>

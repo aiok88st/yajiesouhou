@@ -20,10 +20,7 @@
                     <p>{$client.open_name}</p>
                 </li>
                 <li>
-                    {php}
-                        $phone=substr_replace($client->phone,'****',3,4);
-                    {/php}
-                    <p>{$phone}</p>
+                    <p>{$client.phone}</p>
                 </li>
             </ul>
         </div>
@@ -40,21 +37,27 @@
                 <a href="{:url('Order/index')}?status=1">
                     <img src="__HOME__/img/repair01.png" />
                     <p>待维修</p>
+                    {if condition="$orders['num1'] neq ''"}
                     <span>{$orders.num1}</span>
+                    {/if}
                 </a>
             </div>
             <div class="orders floatl">
                 <a href="{:url('Order/index')}?status=2">
                     <img src="__HOME__/img/repair02.png" />
                     <p>维修中</p>
+                    {if condition="$orders['num2'] neq ''"}
                     <span>{$orders.num2}</span>
+                    {/if}
                 </a>
             </div>
             <div class="orders floatl">
                 <a href="{:url('Order/index')}?status=3">
                     <img src="__HOME__/img/repair03.png" />
                     <p>已完成</p>
+                    {if condition="$orders['num3'] neq ''"}
                     <span>{$orders.num3}</span>
+                    {/if}
                 </a>
             </div>
             <div class="clearl"></div>

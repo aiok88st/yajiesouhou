@@ -10,11 +10,12 @@ class Faters extends Controller
 {
     public function _initialize()
     {
+
         $member_id=session('user')['user_id'];
-//        define('UID', 1);//用户ID
-        define('UID',$member_id);//用户ID
+        define('UID', 1);//用户ID
+//        define('UID',$member_id);//用户ID
         if(!UID){
-            $this->redirect('weixin/index');
+            $this->redirect('client/weixin/index');
         }
         $open=Client::get(UID);
         if(empty($open)){
@@ -44,7 +45,7 @@ class Faters extends Controller
     public function messge(){
         $data = [
             'msg'=>'请先绑定手机！',
-            'url'=>url('Login/index')
+            'url'=>url('client/Login/index')
         ];
         $this->assign('data',$data);
         return $this->fetch('common/404');

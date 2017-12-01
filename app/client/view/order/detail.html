@@ -1,6 +1,6 @@
 {extend name="common/header" /}
 {block name="headers"}
-<title>订单详情</title>
+<title>服务单详情</title>
 <link rel="stylesheet" href="__HOME__/css/indexOrOrder.css" />
 <link rel="stylesheet" href="__HOME__/css/order.css" />
 <link rel="stylesheet" href="__HOME__/css/rDetails.css" />
@@ -12,22 +12,31 @@
         color: #666666;
         padding: 0.2rem 0;
         background-size: auto 0.5rem; }
+
+    .back_home{
+        position: absolute;
+        right: 0%;
+        top: 0;
+        height: 0.32rem;
+        margin-left: 85%;
+    }
 </style>
 {/block}
 {block name="main"}
 <div id="orderDetails">
     <div class="pHead">
         <a class="backP" href="{:url('order/index')}"><img src="__HOME__/img/back.png"/></a>
-        <p>订单详情</p>
+        <p>服务单详情</p>
+        <a class="back_home" href="{:url('client/index')}"><img src="__HOME__/img/home.png"/></a>
     </div>
     <div class="rOrderBox">
         <div class="code">
             <ul>
                 <li>
-                    <p>订单编号：{$data.id}</p>
+                    <p>服务单编号：{$data.id}</p>
                 </li>
                 <li>
-                    <p>订单状态：{$data['status']['name']}</p>
+                    <p>服务单状态：{$data['status']['name']}</p>
                 </li>
             </ul>
         </div>
@@ -36,10 +45,10 @@
                 <div class="floatl">
                     <img src="__PUBLIC__{$data.pro_id.img}" />
                 </div>
-                <div class="floatl">
-                    <p>{$data.pro_id.title}</p>
-                    <p>{$data.pro_id.name}</p>
-                    <p>购买日期：{$data.pro_id.sale_date}</p>
+                <div class="floatl" style="margin-left: 5px">
+                    <p>{$data.pro_id.title} {$data.pro_id.name}</p>
+                    <p>{$data.pro_id.sale_oulets}</p>
+                    <p>保修至：{$data.pro_id.repair_date}</p>
                 </div>
                 <div class="clearl"></div>
             </div>
@@ -71,7 +80,9 @@
                 <li>
                     {if condition="$type eq 1"}
                     <p>商家已同意申请，请尽早退货</p>
+                    {if condition="$data['c_logistics'] eq ''"}
                     <button id="write">填写物流</button>
+                    {/if}
                     {else/}
                     <p>商家已同意申请，会尽快派人上门维修</p>
                     {/if}
@@ -148,7 +159,7 @@
                 </li>
                 {/if}
                 <li>
-                    <button onclick="del('{$data.id}')">取消订单</button>
+                    <button onclick="del('{$data.id}')">取消服务单</button>
                 </li>
             </ul>
             <div class="floatr"></div>
@@ -165,10 +176,10 @@
             <div class="floatl">
                 <img src="__PUBLIC__{$data.pro_id.img}" />
             </div>
-            <div class="floatl">
-                <p>{$data.pro_id.title}</p>
-                <p>{$data.pro_id.name}</p>
-                <p>购买日期：{$data.pro_id.sale_date}</p>
+            <div class="floatl" style="margin-left: 5px">
+                <p>{$data.pro_id.title} {$data.pro_id.name}</p>
+                <p>{$data.pro_id.sale_oulets}</p>
+                <p>保修至：{$data.pro_id.repair_date}</p>
             </div>
             <div class="clearl"></div>
         </div>
@@ -180,7 +191,7 @@
                 <p>物流公司：</p>
             </li>
             <li>
-                <input type="search" id="c_logistics_number" value="{$data.c_logistics_number}" placeholder="填写物流订单号"/>
+                <input type="search" id="c_logistics_number" value="{$data.c_logistics_number}" placeholder="填写物流服务单号"/>
                 <p>物流单号：</p>
             </li>
         </ul>

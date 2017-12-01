@@ -13,7 +13,7 @@ class Product extends Faters
         parent::_initialize();
         $client=Client::get(UID);
         if(!$client->phone){
-            $this->redirect(url('Faters/messge'));
+            $this->redirect(url('client/Faters/messge'));
         }
         $product = new ProductModel();
         $product->get_pro_zd($client->phone);

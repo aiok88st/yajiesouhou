@@ -41,6 +41,9 @@ class Order extends Fater
                 $where['status'] = ['=',$status];
             }
             $data=$order->where($where)->order("id desc")->paginate(10)->toArray();
+            foreach($data['data'] as $k=>$v){
+                $data['data'][$k]['id'] = sprintf("%05d",$v['id']);
+            }
             $arr = [
                 'list'=> $data['data'],
                 'current_page'=>$data['current_page'],
@@ -89,6 +92,7 @@ class Order extends Fater
         $a=$net->area;
 
         $list = $this->didList();
+        $data['id'] = sprintf("%05d",$data['id']);
         return view('',[
             'data'=>$data,
             'net'=>$net,

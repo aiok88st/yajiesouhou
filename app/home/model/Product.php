@@ -13,8 +13,12 @@ class Product extends Model
     protected $field = [
         'client_id','model_vip_code','model','barcode','sale_date','sale_oulets',
         'cust_tel','cust_name','cust_addr','province','city','zone','mater','direct',
-        'setup_op','stick','sample'
+        'setup_op','stick','sample','add_time','sid','phone','phone2'
     ];
+    protected $insert=['add_time'];
+    public function setAddTimeAttr(){
+        return date('Y-m-d H:i:s');
+    }
     public function setProvinceAttr($value)
     {
         $name=str_replace('省','',$value);

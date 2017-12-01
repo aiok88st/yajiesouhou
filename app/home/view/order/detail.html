@@ -12,6 +12,33 @@
         color: #666666;
         padding: 0.2rem 0;
         background-size: auto 0.5rem; }
+    .back_home{
+        position: absolute;
+        right: 0%;
+        top: 0;
+        height: 0.32rem;
+        margin-left: 85%;
+    }
+    .btu{
+        display: block;
+        width: 93.33%;
+        margin: 0 auto;
+        height: 0.8rem;
+        font-size: 0.3rem;
+        background-color: #6d1a7a;
+        border-radius: 4px;
+        color: white;
+    }
+    #loke{
+        font-size: 0.24rem;
+        margin-left: 1rem;
+        background-color: #6d1a7a;
+
+    }
+    #loke a{
+        color: white;
+        padding-right: 5px;
+    }
 </style>
 {/block}
 {block name="main"}
@@ -19,6 +46,7 @@
     <div class="pHead">
         <a class="backP" href="{:url('order/index')}"><img src="__HOME__/img/back.png"/></a>
         <p>订单详情</p>
+        <a class="back_home" href="{:url('User/index')}"><img src="__HOME__/img/home.png"/></a>
     </div>
     <div class="rOrderBox">
         <div class="code">
@@ -36,10 +64,10 @@
                 <div class="floatl">
                     <img src="__PUBLIC__{$data.pro_id.img}" />
                 </div>
-                <div class="floatl">
-                    <p>{$data.pro_id.title}</p>
-                    <p>{$data.pro_id.name}</p>
-                    <p>购买日期：{$data.pro_id.sale_date}</p>
+                <div class="floatl" style="margin-left: 5px;">
+                    <p>{$data.pro_id.title} {$data.pro_id.name}</p>
+                    <p>{$data.pro_id.sale_oulets}</p>
+                    <p>保修至：{$data.pro_id.repair_date}</p>
                 </div>
                 <div class="clearl"></div>
             </div>
@@ -70,19 +98,21 @@
         </div>
         <div class="server">
             <div class="title" >
-                <p style="float: left;">服务单信息</p>
-                {if condition="($data['status']['id'] eq 1 || $data['status']['id'] eq 3) and ($data['type']['id']  eq 1) "}
-                <p style="float: right;color: #999999;font-size: 0.24rem;"><a href="{:url('order/express')}?id={$data.id}&status={$data.status.id}">查看物流</a></p>
-                {/if}
+                <p>服务单信息</p>
+
             </div>
             <div style="clear: both"></div>
             <ul>
                 <li>
                     <span>维修方式：</span>
                     {if condition="$type eq 1"}
-                    <p class="p1">快递至维修点  </p>
+                    <p class="p1" style="">快递至维修点
+                        {if condition="($data['status']['id'] eq 1 || $data['status']['id'] eq 3) and ($data['type']['id']  eq 1) "}
+                        <span id="loke"><a href="{:url('order/express')}?id={$data.id}&status={$data.status.id}">查看物流</a></span>
+                        {/if}
+                    </p>
                     {else/}
-                    <p class="p1">上门服务  </p>
+                    <p class="p1" style="">上门服务  </p>
                     {/if}
 
                 </li>
@@ -172,7 +202,7 @@
         <textarea placeholder="请输入不通过原因" id="msg"></textarea>
     </div>
     <div class="st">
-        <button onclick="notong()">提交</button>
+        <button class="btu" onclick="notong()">提交</button>
     </div>
 </div>
 <div id="tongNet">

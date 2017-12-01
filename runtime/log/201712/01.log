@@ -1,0 +1,183 @@
+---------------------------------------------------------------
+[ 2017-12-01T09:08:41+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/
+[ error ] [8]未定义变量: city
+[ error ] [8]未定义变量: pid
+[ error ] [8]未定义变量: lats
+[ error ] [8]未定义变量: longs
+[ error ] [8]未定义变量: type
+[ error ] [8]未定义变量: type
+[ error ] [8]未定义变量: areas
+---------------------------------------------------------------
+[ 2017-12-01T09:27:11+08:00 ] 127.0.0.1 127.0.0.1 POST /yajie/admin/network/index
+[ error ] [8]未定义变量: map
+---------------------------------------------------------------
+[ 2017-12-01T09:42:27+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Video/details?id=1
+[ error ] [8]未定义数组索引: content
+---------------------------------------------------------------
+[ 2017-12-01T09:43:15+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Video/details?id=1
+[ error ] [8]未定义数组索引: content
+---------------------------------------------------------------
+[ 2017-12-01T09:43:15+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Video/details?id=1
+[ error ] [8]未定义数组索引: content
+---------------------------------------------------------------
+[ 2017-12-01T11:04:54+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Weixin/index
+[ error ] [8]未定义数组索引: HTTP_REFERER
+---------------------------------------------------------------
+[ 2017-12-01T11:05:11+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Weixin/index
+[ error ] [8]未定义数组索引: HTTP_REFERER
+---------------------------------------------------------------
+[ 2017-12-01T11:05:11+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Weixin/index
+[ error ] [8]未定义数组索引: HTTP_REFERER
+---------------------------------------------------------------
+[ 2017-12-01T15:36:14+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=6
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=6 [运行时间：0.460026s][吞吐率：2.17req/s] [内存消耗：5,611.37kb] [文件加载：60]
+[ error ] [8]未定义变量: img[F:\wamp\www\yajie\app\client\controller\Order.php:103]
+---------------------------------------------------------------
+[ 2017-12-01T15:36:40+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=6
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=6 [运行时间：0.377021s][吞吐率：2.65req/s] [内存消耗：5,903.57kb] [文件加载：62]
+[ error ] [8]未定义变量: img[F:\wamp\www\yajie\app\client\controller\Order.php:103]
+---------------------------------------------------------------
+[ 2017-12-01T15:36:40+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=6
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=6 [运行时间：0.530030s][吞吐率：1.89req/s] [内存消耗：5,611.24kb] [文件加载：60]
+[ error ] [8]未定义变量: img[F:\wamp\www\yajie\app\client\controller\Order.php:103]
+---------------------------------------------------------------
+[ 2017-12-01T15:37:03+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=6
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=6 [运行时间：0.533031s][吞吐率：1.88req/s] [内存消耗：5,903.39kb] [文件加载：62]
+[ error ] [8]未定义变量: img[F:\wamp\www\yajie\app\client\controller\Order.php:103]
+---------------------------------------------------------------
+[ 2017-12-01T15:37:03+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=6
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=6 [运行时间：0.679039s][吞吐率：1.47req/s] [内存消耗：5,611.25kb] [文件加载：60]
+[ error ] [8]未定义变量: img[F:\wamp\www\yajie\app\client\controller\Order.php:103]
+---------------------------------------------------------------
+[ 2017-12-01T16:40:46+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.406023s][吞吐率：2.46req/s] [内存消耗：5,612.38kb] [文件加载：60]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:102]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:231]
+---------------------------------------------------------------
+[ 2017-12-01T16:42:45+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.520030s][吞吐率：1.92req/s] [内存消耗：5,905.88kb] [文件加载：62]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:102]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:232]
+---------------------------------------------------------------
+[ 2017-12-01T16:42:45+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.763044s][吞吐率：1.31req/s] [内存消耗：5,612.12kb] [文件加载：60]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:102]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:232]
+---------------------------------------------------------------
+[ 2017-12-01T16:43:23+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.293017s][吞吐率：3.41req/s] [内存消耗：5,885.71kb] [文件加载：62]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:232]
+---------------------------------------------------------------
+[ 2017-12-01T16:43:23+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.466027s][吞吐率：2.15req/s] [内存消耗：5,592.38kb] [文件加载：60]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:232]
+---------------------------------------------------------------
+[ 2017-12-01T16:43:52+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.547031s][吞吐率：1.83req/s] [内存消耗：5,911.52kb] [文件加载：62]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:232]
+---------------------------------------------------------------
+[ 2017-12-01T16:43:52+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/client/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/client/Order/detail?id=10 [运行时间：0.851048s][吞吐率：1.18req/s] [内存消耗：5,617.97kb] [文件加载：60]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\a83fd1a5c0f1af2b14a6546a673d09f4.php:232]
+---------------------------------------------------------------
+[ 2017-12-01T16:52:23+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/detail?id=10
+[ info ] 127.0.0.1/yajie/home/Order/detail?id=10 [运行时间：0.269015s][吞吐率：3.72req/s] [内存消耗：5,864.36kb] [文件加载：61]
+[ error ] [8]未定义数组索引: sale_date[F:\wamp\www\yajie\runtime\temp\db659869ab122a1ed36f814f8590cf9b.php:110]
+---------------------------------------------------------------
+[ 2017-12-01T17:16:23+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.307018s][吞吐率：3.26req/s] [内存消耗：5,263.13kb] [文件加载：54]
+[ error ] [4]语法错误: unexpected '{'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:16:23+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.212012s][吞吐率：4.72req/s] [内存消耗：4,987.65kb] [文件加载：52]
+[ error ] [4]语法错误: unexpected '{'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:16:38+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.076005s][吞吐率：13.16req/s] [内存消耗：5,321.49kb] [文件加载：55]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:16:38+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.085005s][吞吐率：11.76req/s] [内存消耗：5,046.40kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:17:00+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.075004s][吞吐率：13.33req/s] [内存消耗：5,321.41kb] [文件加载：55]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:17:01+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.075005s][吞吐率：13.33req/s] [内存消耗：5,046.41kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:17:02+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.073004s][吞吐率：13.70req/s] [内存消耗：5,046.41kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:17:02+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.072004s][吞吐率：13.89req/s] [内存消耗：5,046.41kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:18:07+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.077005s][吞吐率：12.99req/s] [内存消耗：5,321.59kb] [文件加载：55]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:18:07+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.076004s][吞吐率：13.16req/s] [内存消耗：5,046.30kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:18:09+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.073004s][吞吐率：13.70req/s] [内存消耗：5,046.30kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:18:09+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.072004s][吞吐率：13.89req/s] [内存消耗：5,046.30kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:18:21+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.081005s][吞吐率：12.34req/s] [内存消耗：5,321.43kb] [文件加载：55]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:18:21+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.094006s][吞吐率：10.64req/s] [内存消耗：5,046.24kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:23:20+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.101005s][吞吐率：9.90req/s] [内存消耗：5,321.52kb] [文件加载：55]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:23:21+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.076004s][吞吐率：13.16req/s] [内存消耗：5,046.36kb] [文件加载：53]
+[ error ] [8]Use of undefined constant item - assumed 'item'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:25:33+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.113007s][吞吐率：8.85req/s] [内存消耗：5,263.02kb] [文件加载：54]
+[ error ] [4]语法错误: unexpected '{'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:25:33+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.112007s][吞吐率：8.93req/s] [内存消耗：4,987.72kb] [文件加载：52]
+[ error ] [4]语法错误: unexpected '{'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:25:35+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.101006s][吞吐率：9.90req/s] [内存消耗：4,987.72kb] [文件加载：52]
+[ error ] [4]语法错误: unexpected '{'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:25:35+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/index?status=3
+[ info ] 127.0.0.1/yajie/home/Order/index?status=3 [运行时间：0.131008s][吞吐率：7.63req/s] [内存消耗：4,987.72kb] [文件加载：52]
+[ error ] [4]语法错误: unexpected '{'[F:\wamp\www\yajie\runtime\temp\b6e1332a07453bf7cabfe38007b6f4a9.php:97]
+---------------------------------------------------------------
+[ 2017-12-01T17:33:17+08:00 ] 127.0.0.1 127.0.0.1 GET /yajie/home/Order/detail?id=00006
+[ info ] 127.0.0.1/yajie/home/Order/detail?id=00006 [运行时间：0.337020s][吞吐率：2.97req/s] [内存消耗：5,585.29kb] [文件加载：59]
+[ error ] [8]未定义变量: img[F:\wamp\www\yajie\app\home\controller\Order.php:102]

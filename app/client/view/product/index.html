@@ -23,6 +23,17 @@
         #produce .repairOne a{
             width: 1.9rem;
         }
+        .layui-flow-more a cite{
+            color: #999999;
+            background-color: #f4f4f4 !important;
+        }
+        .back_home{
+            position: absolute;
+            right: 0%;
+            top: 0;
+            height: 0.32rem;
+            margin-left: 85%;
+        }
     </style>
     <script type="text/javascript">
         AjaxL=function(url,type,data,call){
@@ -48,8 +59,9 @@
 <div class="detl"></div>
 <div id="produce">
     <div class="pHead">
-        <a href="" class="bp"><img src="__HOME__/img/back.png"/></a>
+        <a href="{:url('client/index')}" class="bp"><img src="__HOME__/img/back.png"/></a>
         <p>我的产品</p>
+        <a class="back_home" href="{:url('client/index')}"><img src="__HOME__/img/home.png"/></a>
     </div>
 
     <template v-if='searchResult.length>0'>
@@ -67,9 +79,9 @@
                             </template>
                         </div>
                         <div class="floatl">
-                            <p>{{item.model.name}}</p>
-                            <p>{{item.model_vip_code}}</p>
-                            <p>购买日期：{{item.sale_date}}</p>
+                            <p>{{item.model.name}} {{item.model_vip_code}}</p>
+                            <p>{{item.sale_oulets}}</p>
+                            <p>保修至：{{item.repair_date}}</p>
                         </div>
                         <div class="delete centerCenter" onclick="del('{{item.id}}')">
                             <p>删</p>

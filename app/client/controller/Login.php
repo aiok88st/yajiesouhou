@@ -11,7 +11,7 @@ class Login extends Controller
     {
         $open_id=session('user')['open_id'];
         if(!$open_id){
-            $this->redirect('weixin/index');
+            $this->redirect('client/weixin/index');
         }
     }
     public function index(Request $request)
@@ -39,14 +39,12 @@ class Login extends Controller
             }
             //短信验证码验证通过后进行注册
             $open=session('user');
-            $open['phone']=$param['phone'];
-            $client->allowField(true)->save($open);
-            $open['user_id']=$client->id;
-            session('user',$open);
+            $phone['phone']=$param['phone'];
+            $client->where('id',$open['user_id'])->update($phone);
             return json([
                 'code'=>1,
                 'msg'=>'绑定成功',
-                'url'=>url('client/index')
+                'url'=>url('client/client/index')
             ]);
         }catch (\Exception $e){
             return rejson(0,$e->getMessage());

@@ -50,21 +50,27 @@
                         <a href="{:url('Order/index')}?status=1">
                             <img src="__HOME__/img/repair01.png" />
                             <p>待维修</p>
+                            {if condition="$order['num1'] neq ''"}
                             <span>{$order.num1}</span>
+                            {/if}
                         </a>
                     </div>
                     <div class="orders floatl">
                         <a href="{:url('Order/index')}?status=2">
                             <img src="__HOME__/img/repair02.png" />
                             <p>维修中</p>
+                            {if condition="$order['num2'] neq ''"}
                             <span>{$order.num2}</span>
+                            {/if}
                         </a>
                     </div>
                     <div class="orders floatl">
                         <a href="{:url('Order/index')}?status=3">
                             <img src="__HOME__/img/repair03.png" />
                             <p>已完成</p>
+                            {if condition="$order['num3'] neq ''"}
                             <span>{$order.num3}</span>
+                            {/if}
                         </a>
                     </div>
                     <div class="clearl"></div>
